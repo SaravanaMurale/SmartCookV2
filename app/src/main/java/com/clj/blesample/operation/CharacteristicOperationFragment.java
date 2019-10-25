@@ -32,6 +32,7 @@ import java.util.List;
 public class CharacteristicOperationFragment extends Fragment {
 
     public static final int PROPERTY_READ = 1;
+    public static final int PROPERTY_CHECK = 6;
     public static final int PROPERTY_WRITE = 2;
     public static final int PROPERTY_WRITE_NO_RESPONSE = 3;
     public static final int PROPERTY_NOTIFY = 4;
@@ -44,6 +45,13 @@ public class CharacteristicOperationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_characteric_operation, null);
         initView(v);
+
+
+
+
+
+
+
         return v;
     }
 
@@ -92,7 +100,18 @@ public class CharacteristicOperationFragment extends Fragment {
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    addText(txt, HexUtil.formatHexString(data, true));
+
+                                                    System.out.println("IAMDATA"+data);
+
+
+                                                    String hex=HexUtil.formatHexString(data, true);
+                                                    int decimal=Integer.parseInt(hex,16);
+                                                    System.out.println("IAMDECIMALFORMAT"+decimal);
+                                                    String hexToDecFormat=String.valueOf(decimal);
+
+                                                    addText(txt,hexToDecFormat);
+
+                                                    //addText(txt, HexUtil.formatHexString(data, true));
                                                 }
                                             });
                                         }
@@ -112,6 +131,25 @@ public class CharacteristicOperationFragment extends Fragment {
                     layout_add.addView(view_add);
                 }
                 break;
+                case PROPERTY_CHECK:{
+
+                    View view_add = LayoutInflater.from(getActivity()).inflate(R.layout.layout_characteric_operation_button, null);
+                    Button btn = (Button) view_add.findViewById(R.id.btn);
+                    btn.setText(getActivity().getString(R.string.read));
+
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            //BleManager.getInstance().read();
+
+                        }
+                    });
+
+
+                    break;
+                }
+
 
                 case PROPERTY_WRITE: {
                     View view_add = LayoutInflater.from(getActivity()).inflate(R.layout.layout_characteric_operation_et, null);

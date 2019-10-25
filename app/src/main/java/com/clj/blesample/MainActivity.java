@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initView();
 
         BleManager.getInstance().init(getApplication());
@@ -236,7 +237,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onLeScan(BleDevice bleDevice) {
+            public void onLeScan(BleDevice bleDevice)
+            {
                 super.onLeScan(bleDevice);
             }
 

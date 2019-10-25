@@ -62,6 +62,29 @@ public class HexUtil {
         return sb.toString().trim();
     }
 
+
+
+    //Hex to Decimal
+
+    public static String HexToDecimal(byte[] data, boolean addSpace) {
+
+        if (data == null || data.length < 1)
+            return null;
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < data.length; i++) {
+
+        }
+
+
+        return sb.toString().trim();
+
+    }
+
+
+
+
     public static byte[] decodeHex(char[] data) {
 
         int len = data.length;
