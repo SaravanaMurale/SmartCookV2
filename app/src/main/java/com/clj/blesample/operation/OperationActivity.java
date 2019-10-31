@@ -46,19 +46,6 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         ObserverManager.getInstance().addObserver(this);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        BleManager.getInstance().clearCharacterCallback(bleDevice);
-        ObserverManager.getInstance().deleteObserver(this);
-    }
-
-    @Override
-    public void disConnected(BleDevice device) {
-        if (device != null && bleDevice != null && device.getKey().equals(bleDevice.getKey())) {
-            finish();
-        }
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -95,6 +82,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
 
     private void initData() {
         bleDevice = getIntent().getParcelableExtra(KEY_DATA);
+
         if (bleDevice == null)
             finish();
 
@@ -171,6 +159,21 @@ public class OperationActivity extends AppCompatActivity implements Observer {
 
     public void setCharaProp(int charaProp) {
         this.charaProp = charaProp;
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BleManager.getInstance().clearCharacterCallback(bleDevice);
+        ObserverManager.getInstance().deleteObserver(this);
+    }
+
+    @Override
+    public void disConnected(BleDevice device) {
+        if (device != null && bleDevice != null && device.getKey().equals(bleDevice.getKey())) {
+            finish();
+        }
     }
 
 

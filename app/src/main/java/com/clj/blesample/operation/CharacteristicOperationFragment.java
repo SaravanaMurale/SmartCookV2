@@ -47,11 +47,6 @@ public class CharacteristicOperationFragment extends Fragment {
         initView(v);
 
 
-
-
-
-
-
         return v;
     }
 
@@ -85,6 +80,11 @@ public class CharacteristicOperationFragment extends Fragment {
                 case PROPERTY_READ: {
                     View view_add = LayoutInflater.from(getActivity()).inflate(R.layout.layout_characteric_operation_button, null);
                     Button btn = (Button) view_add.findViewById(R.id.btn);
+
+                    System.out.println("IAMSERVICEUUID"+characteristic.getService().getUuid().toString());
+                    System.out.println("IAMUUID"+characteristic.getUuid().toString());
+
+
                     btn.setText(getActivity().getString(R.string.read));
                     btn.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -104,14 +104,14 @@ public class CharacteristicOperationFragment extends Fragment {
                                                     System.out.println("IAMDATA"+data);
 
 
-                                                    String hex=HexUtil.formatHexString(data, true);
+                                                    /*String hex=HexUtil.formatHexString(data, true);
                                                     int decimal=Integer.parseInt(hex,16);
                                                     System.out.println("IAMDECIMALFORMAT"+decimal);
                                                     String hexToDecFormat=String.valueOf(decimal);
 
-                                                    addText(txt,hexToDecFormat);
+                                                    addText(txt,hexToDecFormat);*/
 
-                                                    //addText(txt, HexUtil.formatHexString(data, true));
+                                                    addText(txt, HexUtil.formatHexString(data, true));
                                                 }
                                             });
                                         }
@@ -276,16 +276,26 @@ public class CharacteristicOperationFragment extends Fragment {
                                                     @Override
                                                     public void run() {
                                                         addText(txt, exception.toString());
+                                                        System.out.println("IamException"+exception);
                                                     }
                                                 });
                                             }
 
                                             @Override
                                             public void onCharacteristicChanged(byte[] data) {
+
+                                                System.out.println("Iamnotifydata"+data);
+
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        addText(txt, HexUtil.formatHexString(characteristic.getValue(), true));
+
+
+                                                           //Converting hex to string
+                                                        addText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                                                true));
+
+                                                        System.out.println("NOTIFY"+characteristic.getValue());
                                                     }
                                                 });
                                             }

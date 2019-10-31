@@ -237,8 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onLeScan(BleDevice bleDevice)
-            {
+            public void onLeScan(BleDevice bleDevice) {
                 super.onLeScan(bleDevice);
             }
 
@@ -356,8 +355,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (String permission : permissions) {
             int permissionCheck = ContextCompat.checkSelfPermission(this, permission);
             if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+
                 onPermissionGranted(permission);
             } else {
+
                 permissionDeniedList.add(permission);
             }
         }
