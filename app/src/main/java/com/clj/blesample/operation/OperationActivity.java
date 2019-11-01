@@ -81,6 +81,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
     }
 
     private void initData() {
+        //Getting Ble Device data
         bleDevice = getIntent().getParcelableExtra(KEY_DATA);
 
         if (bleDevice == null)

@@ -55,7 +55,7 @@ public class CharacteristicOperationFragment extends Fragment {
     }
 
     public void showData() {
-        final BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+         final BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         final BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
         final int charaProp = ((OperationActivity) getActivity()).getCharaProp();
         String child = characteristic.getUuid().toString() + String.valueOf(charaProp);
@@ -163,6 +163,7 @@ public class CharacteristicOperationFragment extends Fragment {
                             if (TextUtils.isEmpty(hex)) {
                                 return;
                             }
+                            //Converting String to byte format
                             BleManager.getInstance().write(
                                     bleDevice,
                                     characteristic.getService().getUuid().toString(),
@@ -170,6 +171,7 @@ public class CharacteristicOperationFragment extends Fragment {
                                     HexUtil.hexStringToBytes(hex),
                                     new BleWriteCallback() {
 
+                                        //Converting byte to String and displaying to user
                                         @Override
                                         public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
                                             runOnUiThread(new Runnable() {

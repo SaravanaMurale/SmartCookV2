@@ -66,6 +66,8 @@ public class ServiceListFragment extends Fragment {
         for (BluetoothGattService service : gatt.getServices()) {
             mResultAdapter.addResult(service);
         }
+
+
         mResultAdapter.notifyDataSetChanged();
     }
 
@@ -119,6 +121,11 @@ public class ServiceListFragment extends Fragment {
             }
 
             BluetoothGattService service = bluetoothGattServices.get(position);
+
+
+            System.out.println("ServicesPosition" + bluetoothGattServices.get(position));
+
+
             String uuid = service.getUuid().toString();
 
             holder.txt_title.setText(String.valueOf(getActivity().getString(R.string.service) + "(" + position + ")"));
