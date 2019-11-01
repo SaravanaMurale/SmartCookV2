@@ -267,7 +267,7 @@ public class CharacteristicOperationFragment extends Fragment {
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        addText(txt, "notify success");
+                                                        //addText(txt, "notify success");
                                                     }
                                                 });
                                             }
@@ -277,7 +277,7 @@ public class CharacteristicOperationFragment extends Fragment {
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        addText(txt, exception.toString());
+                                                        //addText(txt, exception.toString());
                                                         System.out.println("IamException"+exception);
                                                     }
                                                 });
@@ -296,6 +296,9 @@ public class CharacteristicOperationFragment extends Fragment {
                                                            //Converting hex to string
                                                         addText(txt, HexUtil.formatHexString(characteristic.getValue(),
                                                                 true));
+                                                        /*notifyText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                                                true));
+*/
 
                                                         System.out.println("NOTIFY"+characteristic.getValue());
                                                     }
@@ -378,11 +381,19 @@ public class CharacteristicOperationFragment extends Fragment {
         }
     }
 
+
+
     private void runOnUiThread(Runnable runnable) {
         if (isAdded() && getActivity() != null)
             getActivity().runOnUiThread(runnable);
     }
 
+    //Prints in the same Location
+    private void notifyText(TextView txt, String formatHexString) {
+        txt.setText(formatHexString);
+    }
+
+    //Serial Print
     private void addText(TextView textView, String content) {
         textView.append(content);
         textView.append("\n");

@@ -41,6 +41,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         setContentView(R.layout.activity_operation);
         initData();
         initView();
+        //Setting up current Page
         initPage();
 
         ObserverManager.getInstance().addObserver(this);
@@ -101,6 +102,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
     public void changePage(int page) {
         currentPage = page;
         toolbar.setTitle(titles[page]);
+        //Shows current page and hides another page
         updateFragment(page);
         if (currentPage == 1) {
             ((CharacteristicListFragment) fragments.get(1)).showData();

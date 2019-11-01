@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_CODE_OPEN_GPS = 1;
     private static final int REQUEST_CODE_PERMISSION_LOCATION = 2;
+
+    private static final int REQ_CODE_TO_ENABLE = 1;
 
     private LinearLayout layout_setting;
     private TextView txt_setting;
@@ -346,8 +349,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void checkPermissions() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (!bluetoothAdapter.isEnabled()) {
-            Toast.makeText(this, getString(R.string.please_open_blue), Toast.LENGTH_LONG).show();
-            return;
+
+            if(Build.VERSION.SDK_INT<=Build.VERSION_CODES.LOLLIPOP_MR1){
+
+                Toast.makeText(this, getString(R.string.please_open_blue), Toast.LENGTH_LONG).show();
+                return;
+
+            }else {
+
+                requestUserToEnableBluetooth();
+            }
+
         }
 
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
@@ -367,6 +379,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ActivityCompat.requestPermissions(this, deniedPermissions, REQUEST_CODE_PERMISSION_LOCATION);
         }
     }
+
+    private void requestUserToEnableBluetooth() {
+        Intent actionToReqEnableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        startActivityForResult(actionToReqEnableBluetooth, REQ_CODE_TO_ENABLE);
+    }
+
+
+
+
 
     private void onPermissionGranted(String permission) {
         switch (permission) {
@@ -416,6 +437,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setScanRule();
                 startScan();
             }
+        }
+
+       else if (requestCode == REQ_CODE_TO_ENABLE) {
+
+            if (resultCode == RESULT_OK) {
+
+                Toast.makeText(MainActivity.this, "Your Bluetooth is  on", Toast.LENGTH_LONG).show();
+
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(MainActivity.this, "Your Bluetooth Enabling  is cancelled", Toast.LENGTH_LONG).show();
+            }
+
         }
     }
 
