@@ -29,11 +29,29 @@ public class CharacteristicListFragment extends Fragment {
 
     private ResultAdapter mResultAdapter;
 
+    //MyCode
+    BluetoothGattCharacteristic characteristic;
+    List<Integer> propList = new ArrayList<>();
+    List<String> propNameList = new ArrayList<>();
+
+    int SIZE_OF_CHARACTERISTIC=0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_characteric_list, null);
         initView(v);
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+            callMe(0);
+        }
+
+
     }
 
     private void initView(View v) {
@@ -43,7 +61,7 @@ public class CharacteristicListFragment extends Fragment {
         listView_device.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final BluetoothGattCharacteristic characteristic = mResultAdapter.getItem(position);
+                /*final BluetoothGattCharacteristic characteristic = mResultAdapter.getItem(position);
                 final List<Integer> propList = new ArrayList<>();
                 List<String> propNameList = new ArrayList<>();
                 int charaProp = characteristic.getProperties();
@@ -84,10 +102,39 @@ public class CharacteristicListFragment extends Fragment {
                     ((OperationActivity) getActivity()).setCharacteristic(characteristic);
                     ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
                     ((OperationActivity) getActivity()).changePage(2);
-                }
+                }*/
+
+               callMe(position);
+
+
             }
         });
     }
+
+    private void callMe(int position) {
+
+        final BluetoothGattCharacteristic characteristic = mResultAdapter.getItem(position);
+        final List<Integer> propList = new ArrayList<>();
+        List<String> propNameList = new ArrayList<>();
+        int charaProp = characteristic.getProperties();
+        if ((charaProp & BluetoothGattCharacteristic.PROPERTY_WRITE) > 0) {
+            propList.add(CharacteristicOperationFragment.PROPERTY_WRITE);
+            propNameList.add("Write");
+        }
+        if ((charaProp & BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
+            propList.add(CharacteristicOperationFragment.PROPERTY_NOTIFY);
+            propNameList.add("Notify");
+        }
+        if (propList.size() > 0) {
+            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
+            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
+            ((OperationActivity) getActivity()).changePage(2);
+        }
+
+
+
+    }
+
 
     public void showData() {
         BluetoothGattService service = ((OperationActivity) getActivity()).getBluetoothGattService();
@@ -119,6 +166,7 @@ public class CharacteristicListFragment extends Fragment {
 
         @Override
         public int getCount() {
+            SIZE_OF_CHARACTERISTIC=characteristicList.size();
             return characteristicList.size();
         }
 
