@@ -58,19 +58,16 @@ public class CharacteristicOperationFragment extends Fragment {
         initView(v);
 
 
-
-
         return v;
     }
-
 
 
     private void initView(View v) {
         layout_container = (LinearLayout) v.findViewById(R.id.layout_container);
 
-        enterData=(EditText)v.findViewById(R.id.enterData);
-        enter=(Button)v.findViewById(R.id.enter);
-        showData=(TextView)v.findViewById(R.id.showData);
+        enterData = (EditText) v.findViewById(R.id.enterData);
+        enter = (Button) v.findViewById(R.id.enter);
+        showData = (TextView) v.findViewById(R.id.showData);
 
 
     }
@@ -84,7 +81,7 @@ public class CharacteristicOperationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String data=enterData.getText().toString();
+                String data = enterData.getText().toString();
 
                 callMe(data);
 
@@ -95,18 +92,13 @@ public class CharacteristicOperationFragment extends Fragment {
         callMeNotify();
 
 
-
-
-
-
-
     }
 
     public void showData() {
-          bleDevice = ((OperationActivity) getActivity()).getBleDevice();
-         characteristic = ((OperationActivity) getActivity()).getCharacteristic();
-         charaProp = ((OperationActivity) getActivity()).getCharaProp();
-         child = characteristic.getUuid().toString() + String.valueOf(charaProp);
+        bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+        characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+        charaProp = ((OperationActivity) getActivity()).getCharaProp();
+        child = characteristic.getUuid().toString() + String.valueOf(charaProp);
 
         for (int i = 0; i < layout_container.getChildCount(); i++) {
             layout_container.getChildAt(i).setVisibility(View.GONE);
@@ -128,8 +120,8 @@ public class CharacteristicOperationFragment extends Fragment {
                     View view_add = LayoutInflater.from(getActivity()).inflate(R.layout.layout_characteric_operation_button, null);
                     Button btn = (Button) view_add.findViewById(R.id.btn);
 
-                    System.out.println("IAMSERVICEUUID"+characteristic.getService().getUuid().toString());
-                    System.out.println("IAMUUID"+characteristic.getUuid().toString());
+                    System.out.println("IAMSERVICEUUID" + characteristic.getService().getUuid().toString());
+                    System.out.println("IAMUUID" + characteristic.getUuid().toString());
 
 
                     btn.setText(getActivity().getString(R.string.read));
@@ -148,7 +140,7 @@ public class CharacteristicOperationFragment extends Fragment {
                                                 @Override
                                                 public void run() {
 
-                                                    System.out.println("IAMDATA"+data);
+                                                    System.out.println("IAMDATA" + data);
 
 
                                                     /*String hex=HexUtil.formatHexString(data, true);
@@ -178,7 +170,7 @@ public class CharacteristicOperationFragment extends Fragment {
                     layout_add.addView(view_add);
                 }
                 break;
-                case PROPERTY_CHECK:{
+                case PROPERTY_CHECK: {
 
                     View view_add = LayoutInflater.from(getActivity()).inflate(R.layout.layout_characteric_operation_button, null);
                     Button btn = (Button) view_add.findViewById(R.id.btn);
@@ -244,8 +236,6 @@ public class CharacteristicOperationFragment extends Fragment {
                                             });
                                         }
                                     });*/
-
-
 
 
                         }
@@ -438,7 +428,9 @@ public class CharacteristicOperationFragment extends Fragment {
         }
     }
 
-    private void callMeNotify() {
+    public void callMeNotify() {
+
+        System.out.println("IAMCALLED");
 
         BleManager.getInstance().notify(
                 bleDevice,
@@ -462,7 +454,7 @@ public class CharacteristicOperationFragment extends Fragment {
                             @Override
                             public void run() {
                                 //addText(txt, exception.toString());
-                                System.out.println("IamException"+exception);
+                                System.out.println("IamException" + exception);
                             }
                         });
                     }
@@ -470,7 +462,7 @@ public class CharacteristicOperationFragment extends Fragment {
                     @Override
                     public void onCharacteristicChanged(byte[] data) {
 
-                        System.out.println("Iamnotifydata"+data);
+                        System.out.println("Iamnotifydata" + data);
 
                         runOnUiThread(new Runnable() {
                             @Override
@@ -484,9 +476,9 @@ public class CharacteristicOperationFragment extends Fragment {
                                                                 true));
 
 */
-                                                        showData.setText(HexUtil.formatHexString(characteristic.getValue()));
+                                showData.setText(HexUtil.formatHexString(characteristic.getValue()));
 
-                                System.out.println("NOTIFY"+characteristic.getValue());
+                                System.out.println("NOTIFY" + characteristic.getValue());
                             }
                         });
                     }
@@ -523,7 +515,7 @@ public class CharacteristicOperationFragment extends Fragment {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                System.out.println("Exception"+exception.toString());
+                                System.out.println("Exception" + exception.toString());
                             }
                         });
                     }

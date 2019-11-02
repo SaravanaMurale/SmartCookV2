@@ -39,7 +39,7 @@ public class CharacteristicListFragment extends Fragment {
     Button writeBtn;
 
 
-    int SIZE_OF_CHARACTERISTIC=0;
+    int SIZE_OF_CHARACTERISTIC = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,36 +52,35 @@ public class CharacteristicListFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+        //Calls Notify
         if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
             callMe(0);
         }
+
 
         //Notify
         //Have to call without user clicking
         /*notifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
                     callMe(0);
                 }
 
             }
-        });
-*/
+        });*/
         //Write
         //Should be called after user clicked
         writeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
                     callMe(1);
                 }
 
             }
         });
-
-
 
 
     }
@@ -90,8 +89,8 @@ public class CharacteristicListFragment extends Fragment {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service);
 
-        notifyBtn=(Button)v.findViewById(R.id.notify);
-        writeBtn=(Button)v.findViewById(R.id.write);
+        notifyBtn = (Button) v.findViewById(R.id.notify);
+        writeBtn = (Button) v.findViewById(R.id.write);
 
 
         listView_device.setAdapter(mResultAdapter);
@@ -141,7 +140,7 @@ public class CharacteristicListFragment extends Fragment {
                     ((OperationActivity) getActivity()).changePage(2);
                 }*/
 
-               callMe(position);
+                callMe(position);
 
 
             }
@@ -166,8 +165,9 @@ public class CharacteristicListFragment extends Fragment {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             ((OperationActivity) getActivity()).changePage(2);
-        }
 
+
+        }
 
 
     }
@@ -175,7 +175,7 @@ public class CharacteristicListFragment extends Fragment {
 
     public void showData() {
         BluetoothGattService service = ((OperationActivity) getActivity()).getBluetoothGattService();
-        System.out.println("CharacteristicListFragment"+service.getCharacteristics());
+        System.out.println("CharacteristicListFragment" + service.getCharacteristics());
         mResultAdapter.clear();
         for (BluetoothGattCharacteristic characteristic : service.getCharacteristics()) {
             mResultAdapter.addResult(characteristic);
@@ -203,7 +203,7 @@ public class CharacteristicListFragment extends Fragment {
 
         @Override
         public int getCount() {
-            SIZE_OF_CHARACTERISTIC=characteristicList.size();
+            SIZE_OF_CHARACTERISTIC = characteristicList.size();
             return characteristicList.size();
         }
 
