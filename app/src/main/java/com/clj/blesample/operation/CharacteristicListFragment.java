@@ -91,6 +91,7 @@ public class CharacteristicListFragment extends Fragment {
 
     public void showData() {
         BluetoothGattService service = ((OperationActivity) getActivity()).getBluetoothGattService();
+        System.out.println("CharacteristicListFragment"+service.getCharacteristics());
         mResultAdapter.clear();
         for (BluetoothGattCharacteristic characteristic : service.getCharacteristics()) {
             mResultAdapter.addResult(characteristic);

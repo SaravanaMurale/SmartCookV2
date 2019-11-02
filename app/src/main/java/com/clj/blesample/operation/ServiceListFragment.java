@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +29,29 @@ public class ServiceListFragment extends Fragment {
     private TextView txt_name, txt_mac;
     private ResultAdapter mResultAdapter;
 
+    //MyCode
+    int SECOND_POSITION_SERVICE=0;
+    BluetoothGattService service;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_service_list, null);
         initView(v);
         showData();
+
         return v;
+    }
+
+    //MyCode
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(SECOND_POSITION_SERVICE==3 && mResultAdapter!=null ){
+            System.out.println("MyServicePosition"+SECOND_POSITION_SERVICE);
+
+            callMe(2);
+        }
     }
 
     private void initView(View v) {
@@ -46,12 +64,26 @@ public class ServiceListFragment extends Fragment {
         listView_device.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BluetoothGattService service = mResultAdapter.getItem(position);
+
+                /*BluetoothGattService service = mResultAdapter.getItem(position);
                 ((OperationActivity) getActivity()).setBluetoothGattService(service);
-                ((OperationActivity) getActivity()).changePage(1);
+                ((OperationActivity) getActivity()).changePage(1);*/
+
+                callMe(position);
+
+
             }
         });
     }
+
+    //MyCode
+    private void callMe(int position) {
+         service = mResultAdapter.getItem(position);
+        System.out.println("ServiceValue"+service);
+                ((OperationActivity) getActivity()).setBluetoothGattService(service);
+                ((OperationActivity) getActivity()).changePage(1);
+    }
+
 
     private void showData() {
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
@@ -63,8 +95,10 @@ public class ServiceListFragment extends Fragment {
         txt_mac.setText(String.valueOf(getActivity().getString(R.string.mac) + mac));
 
         mResultAdapter.clear();
+
         for (BluetoothGattService service : gatt.getServices()) {
             mResultAdapter.addResult(service);
+
         }
 
 
@@ -91,6 +125,8 @@ public class ServiceListFragment extends Fragment {
 
         @Override
         public int getCount() {
+            System.out.println("SERVICEPOSITION_SIZE"+bluetoothGattServices.size());
+            SECOND_POSITION_SERVICE=bluetoothGattServices.size();
             return bluetoothGattServices.size();
         }
 
@@ -98,6 +134,7 @@ public class ServiceListFragment extends Fragment {
         public BluetoothGattService getItem(int position) {
             if (position > bluetoothGattServices.size())
                 return null;
+
             return bluetoothGattServices.get(position);
         }
 
