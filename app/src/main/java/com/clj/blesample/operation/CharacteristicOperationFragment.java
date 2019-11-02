@@ -80,7 +80,6 @@ public class CharacteristicOperationFragment extends Fragment {
         super.onResume();
 
 
-
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +92,7 @@ public class CharacteristicOperationFragment extends Fragment {
         });
 
 
-       // callMeNotify();
+        callMeNotify();
 
 
 

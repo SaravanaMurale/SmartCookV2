@@ -52,9 +52,13 @@ public class CharacteristicListFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+        if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+            callMe(0);
+        }
+
         //Notify
         //Have to call without user clicking
-        notifyBtn.setOnClickListener(new View.OnClickListener() {
+        /*notifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
@@ -63,7 +67,7 @@ public class CharacteristicListFragment extends Fragment {
 
             }
         });
-
+*/
         //Write
         //Should be called after user clicked
         writeBtn.setOnClickListener(new View.OnClickListener() {
