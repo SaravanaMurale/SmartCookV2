@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.clj.blesample.R;
 import com.clj.fastble.BleManager;
@@ -41,24 +43,71 @@ public class CharacteristicOperationFragment extends Fragment {
     private LinearLayout layout_container;
     private List<String> childList = new ArrayList<>();
 
+    //MyCode
+    EditText enterData;
+    BleDevice bleDevice;
+    BluetoothGattCharacteristic characteristic;
+    int charaProp;
+    String child;
+    Button enter;
+    TextView showData;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_characteric_operation, null);
         initView(v);
 
 
+
+
         return v;
     }
 
+
+
     private void initView(View v) {
         layout_container = (LinearLayout) v.findViewById(R.id.layout_container);
+
+        enterData=(EditText)v.findViewById(R.id.enterData);
+        enter=(Button)v.findViewById(R.id.enter);
+        showData=(TextView)v.findViewById(R.id.showData);
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+
+        enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String data=enterData.getText().toString();
+
+                callMe(data);
+
+            }
+        });
+
+
+       // callMeNotify();
+
+
+
+
+
+
+
     }
 
     public void showData() {
-         final BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
-        final BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
-        final int charaProp = ((OperationActivity) getActivity()).getCharaProp();
-        String child = characteristic.getUuid().toString() + String.valueOf(charaProp);
+          bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+         characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+         charaProp = ((OperationActivity) getActivity()).getCharaProp();
+         child = characteristic.getUuid().toString() + String.valueOf(charaProp);
 
         for (int i = 0; i < layout_container.getChildCount(); i++) {
             layout_container.getChildAt(i).setVisibility(View.GONE);
@@ -75,7 +124,6 @@ public class CharacteristicOperationFragment extends Fragment {
             txt_title.setText(String.valueOf(characteristic.getUuid().toString() + getActivity().getString(R.string.data_changed)));
             final TextView txt = (TextView) view.findViewById(R.id.txt);
             txt.setMovementMethod(ScrollingMovementMethod.getInstance());
-
             switch (charaProp) {
                 case PROPERTY_READ: {
                     View view_add = LayoutInflater.from(getActivity()).inflate(R.layout.layout_characteric_operation_button, null);
@@ -163,8 +211,11 @@ public class CharacteristicOperationFragment extends Fragment {
                             if (TextUtils.isEmpty(hex)) {
                                 return;
                             }
+
+                            callMe(hex);
+
                             //Converting String to byte format
-                            BleManager.getInstance().write(
+                          /*  BleManager.getInstance().write(
                                     bleDevice,
                                     characteristic.getService().getUuid().toString(),
                                     characteristic.getUuid().toString(),
@@ -193,7 +244,11 @@ public class CharacteristicOperationFragment extends Fragment {
                                                 }
                                             });
                                         }
-                                    });
+                                    });*/
+
+
+
+
                         }
                     });
                     layout_add.addView(view_add);
@@ -256,7 +311,7 @@ public class CharacteristicOperationFragment extends Fragment {
                         public void onClick(View view) {
                             if (btn.getText().toString().equals(getActivity().getString(R.string.open_notification))) {
                                 btn.setText(getActivity().getString(R.string.close_notification));
-                                BleManager.getInstance().notify(
+                                /*BleManager.getInstance().notify(
                                         bleDevice,
                                         characteristic.getService().getUuid().toString(),
                                         characteristic.getUuid().toString(),
@@ -296,15 +351,18 @@ public class CharacteristicOperationFragment extends Fragment {
                                                            //Converting hex to string
                                                         addText(txt, HexUtil.formatHexString(characteristic.getValue(),
                                                                 true));
-                                                        /*notifyText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                                        *//*notifyText(txt, HexUtil.formatHexString(characteristic.getValue(),
                                                                 true));
-*/
+*//*
 
                                                         System.out.println("NOTIFY"+characteristic.getValue());
                                                     }
                                                 });
                                             }
-                                        });
+                                        });*/
+
+                                callMeNotify();
+
                             } else {
                                 btn.setText(getActivity().getString(R.string.open_notification));
                                 BleManager.getInstance().stopNotify(
@@ -381,6 +439,98 @@ public class CharacteristicOperationFragment extends Fragment {
         }
     }
 
+    private void callMeNotify() {
+
+        BleManager.getInstance().notify(
+                bleDevice,
+                characteristic.getService().getUuid().toString(),
+                characteristic.getUuid().toString(),
+                new BleNotifyCallback() {
+
+                    @Override
+                    public void onNotifySuccess() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //addText(txt, "notify success");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onNotifyFailure(final BleException exception) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //addText(txt, exception.toString());
+                                System.out.println("IamException"+exception);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCharacteristicChanged(byte[] data) {
+
+                        System.out.println("Iamnotifydata"+data);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+                                //Converting hex to string
+                                /*addText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                        true));
+                                */                        /*notifyText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                                                true));
+
+*/
+                                                        showData.setText(HexUtil.formatHexString(characteristic.getValue()));
+
+                                System.out.println("NOTIFY"+characteristic.getValue());
+                            }
+                        });
+                    }
+                });
+
+    }
+
+    private void callMe(String hex) {
+
+        BleManager.getInstance().write(
+                bleDevice,
+                characteristic.getService().getUuid().toString(),
+                characteristic.getUuid().toString(),
+                HexUtil.hexStringToBytes(hex),
+                new BleWriteCallback() {
+
+                    //Converting byte to String and displaying to user
+                    @Override
+                    public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                /*addText(txt, "write success, current: " + current
+                                        + " total: " + total
+                                        + " justWrite: " + HexUtil.formatHexString(justWrite, true));*/
+
+                                System.out.println("SuccessWritingData");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWriteFailure(final BleException exception) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                System.out.println("Exception"+exception.toString());
+                            }
+                        });
+                    }
+                });
+
+    }
 
 
     private void runOnUiThread(Runnable runnable) {
