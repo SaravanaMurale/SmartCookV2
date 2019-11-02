@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,6 +35,10 @@ public class CharacteristicListFragment extends Fragment {
     List<Integer> propList = new ArrayList<>();
     List<String> propNameList = new ArrayList<>();
 
+    Button notifyBtn;
+    Button writeBtn;
+
+
     int SIZE_OF_CHARACTERISTIC=0;
 
     @Override
@@ -47,9 +52,29 @@ public class CharacteristicListFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
-            callMe(0);
-        }
+        notifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+                    callMe(0);
+                }
+
+            }
+        });
+
+        writeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+                    callMe(1);
+                }
+
+            }
+        });
+
+
 
 
     }
@@ -57,6 +82,11 @@ public class CharacteristicListFragment extends Fragment {
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service);
+
+        notifyBtn=(Button)v.findViewById(R.id.notify);
+        writeBtn=(Button)v.findViewById(R.id.write);
+
+
         listView_device.setAdapter(mResultAdapter);
         listView_device.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
