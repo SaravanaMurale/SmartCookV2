@@ -21,6 +21,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clj.blesample.R;
+import com.clj.fastble.BleManager;
+import com.clj.fastble.callback.BleNotifyCallback;
+import com.clj.fastble.callback.BleWriteCallback;
+import com.clj.fastble.data.BleDevice;
+import com.clj.fastble.exception.BleException;
+import com.clj.fastble.utils.HexUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +59,14 @@ public class CharacteristicListFragment extends Fragment {
         super.onResume();
 
         //Calls Notify
-        if(SIZE_OF_CHARACTERISTIC==2 && mResultAdapter!=null){
+        if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
             callMe(0);
         }
 
 
         //Notify
         //Have to call without user clicking
-        /*notifyBtn.setOnClickListener(new View.OnClickListener() {
+        notifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
@@ -68,7 +74,7 @@ public class CharacteristicListFragment extends Fragment {
                 }
 
             }
-        });*/
+        });
         //Write
         //Should be called after user clicked
         writeBtn.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +155,9 @@ public class CharacteristicListFragment extends Fragment {
 
     private void callMe(int position) {
 
+        //Position 0 -->Notify
+        //Position 1 -->Write
+
         final BluetoothGattCharacteristic characteristic = mResultAdapter.getItem(position);
         final List<Integer> propList = new ArrayList<>();
         List<String> propNameList = new ArrayList<>();
@@ -161,15 +170,137 @@ public class CharacteristicListFragment extends Fragment {
             propList.add(CharacteristicOperationFragment.PROPERTY_NOTIFY);
             propNameList.add("Notify");
         }
-        if (propList.size() > 0) {
+
+        /*if (propList.size() > 0 ) {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             ((OperationActivity) getActivity()).changePage(2);
 
+        }*/
 
+        if (propList.size() > 0 && position == 0) {
+            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
+            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
+            //((OperationActivity) getActivity()).changePage(2);
+
+            //Notify
+            gettingStoveData();
+
+
+        }  if (propList.size() > 0 && position == 1) {
+            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
+            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
+            //((OperationActivity) getActivity()).changePage(2);
+            wrietUserData();
         }
 
 
+    }
+
+    private void gettingStoveData() {
+
+        BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+        BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+
+        BleManager.getInstance().notify(
+                bleDevice,
+                characteristic.getService().getUuid().toString(),
+                characteristic.getUuid().toString(),
+                new BleNotifyCallback() {
+
+                    @Override
+                    public void onNotifySuccess() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //addText(txt, "notify success");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onNotifyFailure(final BleException exception) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //addText(txt, exception.toString());
+                                System.out.println("IamException" + exception);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCharacteristicChanged(byte[] data) {
+
+                        System.out.println("Iamnotifydata" + data);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                System.out.println("DataGettingFromStove");
+
+                                //Converting hex to string
+                                /*addText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                        true));
+                                */                        /*notifyText(txt, HexUtil.formatHexString(characteristic.getValue(),
+                                                                true));
+
+*/
+                                //showData.setText(HexUtil.formatHexString(characteristic.getValue()));
+
+                               // System.out.println("NOTIFY" + characteristic.getValue());
+                            }
+                        });
+                    }
+                });
+
+    }
+
+    private void wrietUserData() {
+        String hex="3232";
+        BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+        BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+
+        BleManager.getInstance().write(
+                bleDevice,
+                characteristic.getService().getUuid().toString(),
+                characteristic.getUuid().toString(),
+                HexUtil.hexStringToBytes(hex),
+                new BleWriteCallback() {
+
+                    //Converting byte to String and displaying to user
+                    @Override
+                    public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                /*addText(txt, "write success, current: " + current
+                                        + " total: " + total
+                                        + " justWrite: " + HexUtil.formatHexString(justWrite, true));*/
+
+                                System.out.println("SuccessWritingData");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWriteFailure(final BleException exception) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                System.out.println("Exception" + exception.toString());
+                            }
+                        });
+                    }
+                });
+
+
+    }
+
+    private void runOnUiThread(Runnable runnable) {
+        if (isAdded() && getActivity() != null)
+            getActivity().runOnUiThread(runnable);
     }
 
 

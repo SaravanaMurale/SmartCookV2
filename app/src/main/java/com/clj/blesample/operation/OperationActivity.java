@@ -98,20 +98,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
     private void initPage() {
         prepareFragment();
         changePage(0);
-        /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        },3000);
-        changePage(1);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        },2000);
-        changePage(2);*/
     }
 
     public void changePage(int page) {
