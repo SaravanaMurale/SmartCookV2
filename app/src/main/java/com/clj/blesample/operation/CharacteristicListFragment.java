@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +45,11 @@ public class CharacteristicListFragment extends Fragment {
     Button notifyBtn;
     Button writeBtn;
 
+    TextView show_data;
+    EditText edit_data;
+    Button send_btn;
+    TextView user_entered_data;
+
 
     int SIZE_OF_CHARACTERISTIC = 0;
 
@@ -60,13 +66,13 @@ public class CharacteristicListFragment extends Fragment {
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-            callMe(0);
+            callMe(0, null);
         }
 
 
         //Notify
         //Have to call without user clicking
-        notifyBtn.setOnClickListener(new View.OnClickListener() {
+        /*notifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
@@ -74,7 +80,7 @@ public class CharacteristicListFragment extends Fragment {
                 }
 
             }
-        });
+        });*/
         //Write
         //Should be called after user clicked
         writeBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +88,7 @@ public class CharacteristicListFragment extends Fragment {
             public void onClick(View v) {
 
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-                    callMe(1);
+                    //callMe(1);
                 }
 
             }
@@ -97,6 +103,24 @@ public class CharacteristicListFragment extends Fragment {
 
         notifyBtn = (Button) v.findViewById(R.id.notify);
         writeBtn = (Button) v.findViewById(R.id.write);
+
+        show_data = (TextView) v.findViewById(R.id.showData);
+        edit_data = (EditText) v.findViewById(R.id.edit_data);
+        send_btn = (Button) v.findViewById(R.id.send_btn);
+        user_entered_data = (TextView) v.findViewById(R.id.user_entered_data);
+
+        send_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String data = edit_data.getText().toString();
+
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+                    callMe(1, data);
+                }
+
+            }
+        });
 
 
         listView_device.setAdapter(mResultAdapter);
@@ -146,14 +170,14 @@ public class CharacteristicListFragment extends Fragment {
                     ((OperationActivity) getActivity()).changePage(2);
                 }*/
 
-                callMe(position);
+                //callMe(position);
 
 
             }
         });
     }
 
-    private void callMe(int position) {
+    private void callMe(int position, String userData) {
 
         //Position 0 -->Notify
         //Position 1 -->Write
@@ -187,11 +211,12 @@ public class CharacteristicListFragment extends Fragment {
             gettingStoveData();
 
 
-        }  if (propList.size() > 0 && position == 1) {
+        }
+        if (propList.size() > 0 && position == 1) {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             //((OperationActivity) getActivity()).changePage(2);
-            wrietUserData();
+            wrietUserData(userData);
         }
 
 
@@ -230,7 +255,7 @@ public class CharacteristicListFragment extends Fragment {
                     }
 
                     @Override
-                    public void onCharacteristicChanged(byte[] data) {
+                    public void onCharacteristicChanged(final byte[] data) {
 
                         System.out.println("Iamnotifydata" + data);
 
@@ -247,9 +272,18 @@ public class CharacteristicListFragment extends Fragment {
                                                                 true));
 
 */
+                                if (HexUtil.formatHexString(data).equals("")) {
+
+                                } else {
+                                    show_data.setText("" + HexUtil.formatHexString(data));
+                                }
+
+
+                                System.out.println("DataReceivedFromStove" + HexUtil.formatHexString(data));
+
                                 //showData.setText(HexUtil.formatHexString(characteristic.getValue()));
 
-                               // System.out.println("NOTIFY" + characteristic.getValue());
+                                // System.out.println("NOTIFY" + characteristic.getValue());
                             }
                         });
                     }
@@ -257,8 +291,8 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
-    private void wrietUserData() {
-        String hex="3232";
+    private void wrietUserData(String hex) {
+        //String hex="3232";
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
 
@@ -279,7 +313,9 @@ public class CharacteristicListFragment extends Fragment {
                                         + " total: " + total
                                         + " justWrite: " + HexUtil.formatHexString(justWrite, true));*/
 
-                                System.out.println("SuccessWritingData");
+                                user_entered_data.setText("User Entered Data Is" + HexUtil.formatHexString(justWrite));
+
+                                System.out.println("WrittenDataIs" + HexUtil.formatHexString(justWrite));
                             }
                         });
                     }
