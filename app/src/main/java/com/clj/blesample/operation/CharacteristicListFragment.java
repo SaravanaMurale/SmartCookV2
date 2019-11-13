@@ -265,6 +265,7 @@ public class CharacteristicListFragment extends Fragment {
 
                                 System.out.println("DataGettingFromStove");
 
+
                                 //Converting hex to string
                                 /*addText(txt, HexUtil.formatHexString(characteristic.getValue(),
                                         true));
@@ -272,6 +273,9 @@ public class CharacteristicListFragment extends Fragment {
                                                                 true));
 
 */
+
+
+
                                 if (HexUtil.formatHexString(data).equals("")) {
 
                                 } else {
@@ -316,6 +320,9 @@ public class CharacteristicListFragment extends Fragment {
                                 user_entered_data.setText("User Entered Data Is" + HexUtil.formatHexString(justWrite));
 
                                 System.out.println("WrittenDataIs" + HexUtil.formatHexString(justWrite));
+
+                                //t
+                                System.out.println(HexUtil.encodeHex(justWrite));
                             }
                         });
                     }

@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 
 public class SqliteManager extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "farmersgen";
+    public static final String DATABASE_NAME = "scsk";
     public static final int DATABASE_VERSION = 1;
 
 
