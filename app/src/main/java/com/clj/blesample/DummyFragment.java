@@ -42,7 +42,7 @@ public class DummyFragment extends Fragment {
         croller.setMin(0);
         croller.setMax(180);
         croller.setLabel("Burner 1");
-        croller.setStartOffset(45);
+        croller.setStartOffset(75);
         croller.setLabelSize(15);
         croller.setIsContinuous(true);
         croller.setLabelColor(Color.BLACK);
