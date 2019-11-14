@@ -42,7 +42,7 @@ public class DummyFragment extends Fragment {
         croller.setMin(0);
         croller.setMax(180);
         croller.setLabel("Burner 1");
-        croller.setStartOffset(75);
+        croller.setStartOffset(45);
         croller.setLabelSize(15);
         croller.setIsContinuous(true);
         croller.setLabelColor(Color.BLACK);
@@ -54,17 +54,17 @@ public class DummyFragment extends Fragment {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
 
-                textView.setText("Position"+progress);
+                textView.setText(String.valueOf(progress));
 
-                if(progress>=0 && progress<=50 ){
-                    croller.setIndicatorColor(Color.parseColor("#0000ff"));
-                    croller.setProgressPrimaryColor(Color.parseColor("#0000ff"));
-                }else if(progress>=51 && progress<=100){
-                    croller.setIndicatorColor(Color.parseColor("#ffff00"));
-                    croller.setProgressPrimaryColor(Color.parseColor("#ffff00"));
-                }else if(progress>=101 && progress<=180){
-                    croller.setIndicatorColor(Color.parseColor("#ff0000"));
-                    croller.setProgressPrimaryColor(Color.parseColor("#ff0000"));
+                if(progress>=0 && progress<=75 ){
+                    croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
+                }else if(progress>=75 && progress<=130){
+                    croller.setIndicatorColor(Color.parseColor("#f3e701"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
+                }else if(progress>=131 && progress<=180){
+                    croller.setIndicatorColor(Color.parseColor("#de7300"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#de7300"));
                 }
 
             }

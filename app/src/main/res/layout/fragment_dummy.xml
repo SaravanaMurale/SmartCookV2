@@ -6,74 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".DummyFragment">
 
-    <TextView
-        android:id="@+id/positionView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/crollers"
-        android:layout_marginTop="20dp"
-         />
+
+
+    <RelativeLayout
+        android:id="@+id/topBorder"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/border_shape"
+        android:visibility="gone"
+
+        ></RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/leftBorder"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="gone"
+        >
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottomBorder"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:background="@color/black">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rightBorder"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/black"
+        android:visibility="gone"
+        ></RelativeLayout>
+
+
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/crollers"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/topBorder"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         app:anticlockwise="true"
         app:back_circle_color="#EDEDED"
         app:indicator_color="#0B3C49"
         app:indicator_width="10"
         app:is_continuous="true"
         app:label_color="#000000"
-        app:main_circle_color="#FFFFFF"
+        app:main_circle_color="#000000"
         app:max="1000"
         app:progress_primary_color="#0B3C49"
         app:progress_secondary_color="#EEEEEE"
         app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/positionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Position"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp" />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/crollersLeft"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginTop="150dp"
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="150dp"
+        android:layout_toRightOf="@id/leftBorder"
         app:anticlockwise="true"
         app:back_circle_color="#EDEDED"
         app:indicator_color="#0B3C49"
         app:indicator_width="10"
         app:is_continuous="true"
-        app:label_size="15"
+        app:label="Burner 2"
         app:label_color="#000000"
+        app:label_size="15"
         app:main_circle_color="#FFFFFF"
         app:max="1000"
-        app:label="Burner 2"
         app:progress_primary_color="#0B3C49"
         app:progress_secondary_color="#EEEEEE"
-        app:start_offset="45"
-        />
+        app:start_offset="45" />
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/crollersRight"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginTop="150dp"
         android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@id/rightBorder"
+        android:layout_marginTop="150dp"
         android:layout_marginRight="15dp"
         app:anticlockwise="true"
         app:back_circle_color="#EDEDED"
         app:indicator_color="#0B3C49"
         app:indicator_width="10"
         app:is_continuous="true"
-        app:label_size="15"
+        app:label="Burner 3"
         app:label_color="#000000"
+        app:label_size="15"
         app:main_circle_color="#FFFFFF"
         app:max="1000"
-        app:label="Burner 3"
         app:progress_primary_color="#0B3C49"
         app:progress_secondary_color="#EEEEEE"
         app:start_offset="45"
