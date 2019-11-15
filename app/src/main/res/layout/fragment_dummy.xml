@@ -7,7 +7,6 @@
     tools:context=".DummyFragment">
 
 
-
     <RelativeLayout
         android:id="@+id/topBorder"
         android:layout_width="match_parent"
@@ -22,8 +21,7 @@
         android:layout_width="30dp"
         android:layout_height="match_parent"
         android:background="@color/black"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
     </RelativeLayout>
 
@@ -32,8 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:visibility="gone">
 
     </RelativeLayout>
 
@@ -43,10 +41,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:background="@color/black"
-        android:visibility="gone"
-        ></RelativeLayout>
-
-
+        android:visibility="gone"></RelativeLayout>
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
@@ -61,21 +56,24 @@
         app:indicator_color="#0B3C49"
         app:indicator_width="10"
         app:is_continuous="true"
+        app:label="Burner 1"
         app:label_color="#000000"
-        app:main_circle_color="#000000"
-        app:max="1000"
+        app:label_size="15"
+        app:main_circle_color="#ffffff"
+        app:max="180"
+        app:min="0"
         app:progress_primary_color="#0B3C49"
         app:progress_secondary_color="#EEEEEE"
         app:start_offset="45" />
 
     <TextView
-        android:id="@+id/positionView"
+        android:id="@+id/positionViewTopBurner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Position"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp" />
+        android:layout_marginTop="80dp"
+        android:text="0"
+        android:textColor="@color/black" />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
@@ -93,20 +91,31 @@
         app:label="Burner 2"
         app:label_color="#000000"
         app:label_size="15"
-        app:main_circle_color="#FFFFFF"
-        app:max="1000"
+        app:main_circle_color="#ffffff"
+        app:max="180"
+        app:min="0"
         app:progress_primary_color="#0B3C49"
         app:progress_secondary_color="#EEEEEE"
         app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/positionViewLeftBurner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="220dp"
+        android:text="0"
+        android:textColor="@color/black" />
+
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/crollersRight"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_alignParentRight="true"
-        android:layout_toLeftOf="@id/rightBorder"
         android:layout_marginTop="150dp"
         android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@id/rightBorder"
         app:anticlockwise="true"
         app:back_circle_color="#EDEDED"
         app:indicator_color="#0B3C49"
@@ -115,11 +124,21 @@
         app:label="Burner 3"
         app:label_color="#000000"
         app:label_size="15"
-        app:main_circle_color="#FFFFFF"
-        app:max="1000"
+        app:main_circle_color="#ffffff"
+        app:max="180"
+        app:min="0"
         app:progress_primary_color="#0B3C49"
         app:progress_secondary_color="#EEEEEE"
-        app:start_offset="45"
+        app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/positionViewRightBurner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_marginRight="95dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="220dp"
 
         />
 
