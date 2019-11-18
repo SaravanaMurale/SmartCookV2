@@ -88,8 +88,8 @@
         android:layout_height="15dp"
         android:layout_below="@id/crollers"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/dummyTextView"
         android:enabled="false"
         android:src="@drawable/whistle_grey" />
@@ -178,12 +178,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/crollersLeft"
-        android:layout_toRightOf="@+id/leftBurnerWhistle"
-        android:layout_marginLeft="5dp"
-        android:text="5"
-        android:layout_marginTop="8dp"
         android:layout_alignBaseline="@+id/leftBurnerWhistle"
-        />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/leftBurnerWhistle"
+        android:text="5" />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
@@ -224,12 +223,11 @@
         android:id="@+id/rightBurnerWhistleCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/crollersRight"
-        android:layout_marginRight="70dp"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="8dp"
-        android:text="0"
-        />
+        android:layout_marginRight="70dp"
+        android:text="0" />
 
 
     <ImageView
@@ -237,22 +235,19 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_below="@+id/crollersRight"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/whistle_grey"
-        android:layout_toLeftOf="@+id/rightBurnerWhistleCount"
         android:layout_marginLeft="5dp"
-
-        />
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/rightBurnerWhistleCount"
+        android:src="@drawable/whistle_grey" />
 
     <ImageView
         android:id="@+id/rightBurnerVess"
         android:layout_width="20dp"
         android:layout_height="18dp"
-        android:layout_marginRight="10dp"
         android:layout_below="@+id/crollersRight"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightBurnerWhistle"
-        android:src="@drawable/vessel"
-        />
+        android:src="@drawable/vessel" />
 
 </RelativeLayout>
