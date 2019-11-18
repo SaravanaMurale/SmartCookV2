@@ -57,8 +57,8 @@
         app:indicator_width="10"
         app:is_continuous="true"
         app:label="Burner 1"
-        app:label_color="#000000"
-        app:label_size="15"
+        app:label_color="@color/red"
+        app:label_size="20"
         app:main_circle_color="#ffffff"
         app:max="180"
         app:min="0"
@@ -75,6 +75,51 @@
         android:text="0"
         android:textColor="@color/black" />
 
+    <TextView
+        android:id="@+id/dummyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/crollers"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/whistle_img"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/crollers"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/dummyTextView"
+        android:enabled="false"
+        android:src="@drawable/whistle_grey" />
+
+    <TextView
+        android:id="@+id/topBurnerWhistleCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/crollers"
+        android:layout_alignBaseline="@+id/whistle_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="13dp"
+        android:layout_toRightOf="@id/whistle_img"
+        android:enabled="false"
+        android:text="0" />
+
+    <ImageView
+        android:id="@+id/topBurnerVessel"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
+        android:layout_below="@+id/crollers"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@id/dummyTextView"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/vessel_grey"
+        android:layout_marginTop="15dp"
+        android:saveEnabled="false"
+
+        />
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/crollersLeft"
@@ -89,8 +134,8 @@
         app:indicator_width="10"
         app:is_continuous="true"
         app:label="Burner 2"
-        app:label_color="#000000"
-        app:label_size="15"
+        app:label_color="#76ff03"
+        app:label_size="20"
         app:main_circle_color="#ffffff"
         app:max="180"
         app:min="0"
@@ -102,7 +147,7 @@
         android:id="@+id/positionViewLeftBurner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="95dp"
+        android:layout_marginLeft="90dp"
         android:layout_marginTop="220dp"
         android:text="0"
         android:textColor="@color/black" />
@@ -122,8 +167,8 @@
         app:indicator_width="10"
         app:is_continuous="true"
         app:label="Burner 3"
-        app:label_color="#000000"
-        app:label_size="15"
+        app:label_color="#2962ff"
+        app:label_size="20"
         app:main_circle_color="#ffffff"
         app:max="180"
         app:min="0"
@@ -135,10 +180,10 @@
         android:id="@+id/positionViewRightBurner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_marginRight="95dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="220dp"
+        android:layout_marginRight="90dp"
+        android:text="0"
 
         />
 
