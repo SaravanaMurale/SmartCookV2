@@ -23,6 +23,8 @@ public class DummyFragment extends Fragment {
     ImageView whistleCountTop;
     ImageView topBurnerVessel;
 
+    final int THREE=3;
+
 
 
     @Override
@@ -50,6 +52,8 @@ public class DummyFragment extends Fragment {
 
         whistleCountTop.setEnabled(false);
 
+
+
         //crollerTop.setAntiClockwise(true);
         //crollerTop.setIndicatorWidth(10);
         //crollerTop.setBackCircleColor(Color.parseColor("#EDEDED"));
@@ -70,7 +74,8 @@ public class DummyFragment extends Fragment {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
 
-                textView.setText(String.valueOf(progress));
+
+
 
                 int i=0;
 
@@ -80,15 +85,17 @@ public class DummyFragment extends Fragment {
 
                 }
 
+                croller.setProgressSecondaryColor(Color.parseColor("#EEEEEE"));
+
                 if(progress>=0 && progress<=75 ){
 
-                    croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
                 }else if(progress>=75 && progress<=130){
-                    croller.setIndicatorColor(Color.parseColor("#f3e701"));
+                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
                 }else if(progress>=131 && progress<=180){
-                    croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
 

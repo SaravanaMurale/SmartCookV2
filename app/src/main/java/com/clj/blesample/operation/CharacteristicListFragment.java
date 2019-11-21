@@ -266,6 +266,15 @@ public class CharacteristicListFragment extends Fragment {
                                 System.out.println("DataGettingFromStove");
 
 
+
+                                /*for(int i=0;data.length<=8;i++){
+                                    int b1=data[i];
+                                    int b2=data[i];
+
+                                }
+*/
+
+
                                 //Converting hex to string
                                 /*addText(txt, HexUtil.formatHexString(characteristic.getValue(),
                                         true));
