@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gray"
+    android:background="@drawable/bg_gray"
 
     tools:context=".DummyFragment">
 
@@ -88,7 +88,7 @@
         android:layout_height="170dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:src="@drawable/circle_rotate" />
+        android:src="@drawable/knob" />
 
     <TextView
         android:id="@+id/positionViewTopBurner"

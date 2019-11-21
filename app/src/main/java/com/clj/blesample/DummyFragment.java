@@ -76,6 +76,7 @@ public class DummyFragment extends Fragment {
 
 
 
+                textView.setText(String.valueOf(progress));
 
                 int i=0;
 
@@ -85,7 +86,7 @@ public class DummyFragment extends Fragment {
 
                 }
 
-                croller.setProgressSecondaryColor(Color.parseColor("#EEEEEE"));
+                //croller.setProgressSecondaryColor(Color.parseColor("#EEEEEE"));
 
                 if(progress>=0 && progress<=75 ){
 
