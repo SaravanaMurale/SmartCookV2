@@ -195,20 +195,19 @@
         android:id="@+id/leftBurnerVessel"
         android:layout_width="25dp"
         android:layout_height="23dp"
-        android:layout_below="@+id/crollersLeft"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="10dp"
         android:src="@drawable/vessel" />
 
     <ImageView
         android:id="@+id/leftBurnerWhistle"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_below="@+id/crollersLeft"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/leftBurnerVessel"
         android:src="@drawable/whistle_icon"
+        android:layout_alignBaseline="@+id/leftBurnerVessel"
 
         />
 
@@ -216,7 +215,7 @@
         android:id="@+id/leftBurnerWhistleCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/crollersLeft"
+        android:layout_alignParentBottom="true"
         android:layout_alignBaseline="@+id/leftBurnerWhistle"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="8dp"
@@ -277,7 +276,7 @@
         android:id="@+id/rightBurnerWhistleCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/crollersRight"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="8dp"
         android:layout_marginRight="70dp"
@@ -286,9 +285,9 @@
 
     <ImageView
         android:id="@+id/rightBurnerWhistle"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_below="@+id/crollersRight"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/rightBurnerWhistleCount"
@@ -296,9 +295,9 @@
 
     <ImageView
         android:id="@+id/rightBurnerVess"
-        android:layout_width="20dp"
-        android:layout_height="18dp"
-        android:layout_below="@+id/crollersRight"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightBurnerWhistle"
