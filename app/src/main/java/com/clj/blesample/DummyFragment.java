@@ -2,6 +2,7 @@ package com.clj.blesample;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ public class DummyFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
@@ -38,6 +40,8 @@ public class DummyFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_dummy, container, false);
+
+
 
          textView=(TextView)view.findViewById(R.id.positionViewTopBurner);
          leftBurner=(TextView)view.findViewById(R.id.positionViewLeftBurner);
@@ -76,6 +80,10 @@ public class DummyFragment extends Fragment {
 
 
 
+
+                Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+
+                textView.setTypeface(typeface);
                 textView.setText(String.valueOf(progress));
 
                 int i=0;
@@ -117,6 +125,10 @@ public class DummyFragment extends Fragment {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
 
+                Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+
+                leftBurner.setTypeface(typeface);
+
                 leftBurner.setText(String.valueOf(progress));
 
                 if(progress>=0 && progress<=75 ){
@@ -147,6 +159,11 @@ public class DummyFragment extends Fragment {
         crollerRight.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
+
+                Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+
+                rightBurner.setTypeface(typeface);
+
 
                 rightBurner.setText(String.valueOf(progress));
 
