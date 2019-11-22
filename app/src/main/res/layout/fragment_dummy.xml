@@ -221,8 +221,8 @@
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/crollersRight"
-        android:layout_width="181dp"
-        android:layout_height="181dp"
+        android:layout_width="179dp"
+        android:layout_height="179dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="120dp"
         android:layout_marginRight="15dp"
@@ -248,7 +248,7 @@
         android:layout_height="155dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="133dp"
-        android:layout_marginRight="29dp"
+        android:layout_marginRight="27dp"
         android:src="@drawable/knob"
 
 
@@ -297,9 +297,9 @@
         android:src="@drawable/vessel" />
 
     <ImageView
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:src="@drawable/preethi"
+        android:src="@drawable/preethi_logo"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         />
