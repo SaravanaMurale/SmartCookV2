@@ -105,8 +105,8 @@
 
     <ImageView
         android:id="@+id/whistle_img"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_below="@id/crollers"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
@@ -123,15 +123,15 @@
         android:layout_alignBaseline="@+id/whistle_img"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="16dp"
         android:layout_toRightOf="@id/whistle_img"
         android:enabled="false"
         android:text="0" />
 
     <ImageView
         android:id="@+id/topBurnerVessel"
-        android:layout_width="20dp"
-        android:layout_height="18dp"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
         android:layout_below="@+id/crollers"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
@@ -193,8 +193,8 @@
 
     <ImageView
         android:id="@+id/leftBurnerVessel"
-        android:layout_width="20dp"
-        android:layout_height="18dp"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
         android:layout_below="@+id/crollersLeft"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="10dp"
@@ -202,8 +202,8 @@
 
     <ImageView
         android:id="@+id/leftBurnerWhistle"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_below="@+id/crollersLeft"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
