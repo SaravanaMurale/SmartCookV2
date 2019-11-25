@@ -98,9 +98,9 @@
         android:layout_marginTop="85dp"
         android:text="7"
 
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textColor="@color/black" />
+        android:textStyle="bold" />
 
 
     <ImageView
@@ -167,7 +167,6 @@
         app:start_offset="45" />
 
 
-
     <ImageView
         android:layout_width="162dp"
         android:layout_height="162dp"
@@ -185,10 +184,9 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="200dp"
         android:text="0"
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textColor="@color/black" />
-
+        android:textStyle="bold" />
 
 
     <ImageView
@@ -203,11 +201,12 @@
         android:id="@+id/leftBurnerWhistle"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/leftBurnerVessel"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/leftBurnerVessel"
         android:src="@drawable/whistle_icon"
-        android:layout_alignBaseline="@+id/leftBurnerVessel"
+
 
         />
 
@@ -215,8 +214,8 @@
         android:id="@+id/leftBurnerWhistleCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignBaseline="@+id/leftBurnerWhistle"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/leftBurnerWhistle"
@@ -266,9 +265,9 @@
         android:layout_marginTop="200dp"
         android:layout_marginRight="97dp"
         android:text="0"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
 
         />
 
@@ -276,8 +275,8 @@
         android:id="@+id/rightBurnerWhistleCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
         android:layout_marginRight="70dp"
         android:text="0" />
@@ -306,11 +305,9 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:src="@drawable/preethi_logo"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        />
-
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/preethi_logo" />
 
 
 </RelativeLayout>

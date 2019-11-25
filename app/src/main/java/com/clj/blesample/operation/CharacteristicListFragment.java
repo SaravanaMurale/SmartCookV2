@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clj.blesample.R;
+import com.clj.blesample.utils.FormatConversion;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.callback.BleWriteCallback;
@@ -34,6 +36,8 @@ import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment {
+
+    int pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7;
 
     private ResultAdapter mResultAdapter;
 
@@ -76,7 +80,7 @@ public class CharacteristicListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-                    callMe(0);
+                    callMe(0,null);
                 }
 
             }
@@ -104,7 +108,7 @@ public class CharacteristicListFragment extends Fragment {
         notifyBtn = (Button) v.findViewById(R.id.notify);
         writeBtn = (Button) v.findViewById(R.id.write);
 
-        show_data = (TextView) v.findViewById(R.id.showData);
+        show_data = (TextView) v.findViewById(R.id.show_received_data);
         edit_data = (EditText) v.findViewById(R.id.edit_data);
         send_btn = (Button) v.findViewById(R.id.send_btn);
         user_entered_data = (TextView) v.findViewById(R.id.user_entered_data);
@@ -195,7 +199,7 @@ public class CharacteristicListFragment extends Fragment {
             propNameList.add("Notify");
         }
 
-        /*if (propList.size() > 0 ) {
+       /* if (propList.size() > 0 ) {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             ((OperationActivity) getActivity()).changePage(2);
@@ -225,7 +229,7 @@ public class CharacteristicListFragment extends Fragment {
     private void gettingStoveData() {
 
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
-        BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+        final BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
 
         BleManager.getInstance().notify(
                 bleDevice,
@@ -263,16 +267,67 @@ public class CharacteristicListFragment extends Fragment {
                             @Override
                             public void run() {
 
-                                System.out.println("DataGettingFromStove");
+                                System.out.println("DataGettingFromStove"+HexUtil.formatHexString(data));
+
+                                System.out.println("DataGettingFromStove"+HexUtil.formatHexString(characteristic.getValue()));
+
+                                System.out.println("Length"+data.length);
+
+                               
+                                doGetLoopDate(data);
+
+                                doFindBurnerDetails();
+
+                                doFindVesselDetails();
 
 
 
-                                /*for(int i=0;data.length<=8;i++){
-                                    int b1=data[i];
-                                    int b2=data[i];
+                                /*for(int i=data.length-1;i>=0;i--){
+                                    System.out.println("LoopValue"+data[i]);
+                                    //j=data[i];
 
-                                }
-*/
+                                    if(i==7) {
+                                        pos7=data[i];
+
+                                        //show_data.setText(String.valueOf(data[i]));
+                                    }
+                                    if(i==6){
+                                        pos6=data[i];
+                                    }
+
+                                    if(i==5){
+                                        pos5=data[i];
+                                    }
+                                    if(i==4){
+                                        pos4=data[i];
+                                    }
+                                    if(i==3){
+                                        pos3=data[i];
+                                    }
+                                    if(i==2){
+                                        pos2=data[i];
+                                    }
+                                    if(i==1){
+                                        pos1=data[i];
+                                    }
+
+                                    if(i==0){
+                                        pos0=data[i];
+                                    }
+
+                                }*/
+                                
+
+
+
+                                //show_data.setText(HexUtil.formatHexString(characteristic.getValue()));
+
+
+
+
+
+
+                                //int in=data;
 
 
                                 //Converting hex to string
@@ -282,20 +337,6 @@ public class CharacteristicListFragment extends Fragment {
                                                                 true));
 
 */
-
-
-
-                                if (HexUtil.formatHexString(data).equals("")) {
-
-                                } else {
-                                    show_data.setText("" + HexUtil.formatHexString(data));
-                                }
-
-
-                                System.out.println("DataReceivedFromStove" + HexUtil.formatHexString(data));
-
-                                //showData.setText(HexUtil.formatHexString(characteristic.getValue()));
-
                                 // System.out.println("NOTIFY" + characteristic.getValue());
                             }
                         });
@@ -303,6 +344,86 @@ public class CharacteristicListFragment extends Fragment {
                 });
 
     }
+
+    private void doFindVesselDetails() {
+
+        if (String.valueOf(pos0).equals("0")) {
+            System.out.println("Vessel Not Detected " + pos0);
+        } else if (String.valueOf(pos0).equals("1")) {
+            System.out.println("Vessel Detected " + pos0);
+        }
+    }
+
+    private void doGetLoopDate(byte[] data) {
+
+        for(int i=data.length-1;i>=0;i--){
+            System.out.println("LoopValue"+data[i]);
+            //j=data[i];
+
+            if(i==7) {
+                pos7=data[i];
+
+                //show_data.setText(String.valueOf(data[i]));
+            }
+            if(i==6){
+                pos6=data[i];
+            }
+
+            if(i==5){
+                pos5=data[i];
+            }
+            if(i==4){
+                pos4=data[i];
+            }
+            if(i==3){
+                pos3=data[i];
+            }
+            if(i==2){
+                pos2=data[i];
+            }
+            if(i==1){
+                pos1=data[i];
+            }
+
+            if(i==0){
+                pos0=data[i];
+
+                System.out.println("IAMPOSITION0"+pos0);
+            }
+
+        }
+    }
+
+    private void doFindBurnerDetails() {
+
+        String burnerPosition = String.valueOf(pos6) + String.valueOf(pos7);
+
+        if (burnerPosition.equals("00")) {
+            System.out.println("Burner No 4");
+        } else if (burnerPosition.equals("01")) {
+            System.out.println("Burner No 1");
+        } else if (burnerPosition.equals("10")) {
+            System.out.println("Burner No 2");
+        } else if (burnerPosition.equals("11")) {
+            System.out.println("Burner No 3");
+
+        }
+
+
+        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
+                + String.valueOf(pos5);
+
+        System.out.println("Received Knob angle in binary value "+knobAngel);
+        int decimal = Integer.parseInt(knobAngel, 2);
+
+        // System.out.println("Burner Position " + burnerPosition);
+
+        System.out.println("Knob Angel " + decimal);
+
+        show_data.setText(""+decimal);
+
+    }
+
 
     private void wrietUserData(String hex) {
         //String hex="3232";
@@ -464,5 +585,7 @@ public class CharacteristicListFragment extends Fragment {
             TextView txt_type;
             ImageView img_next;
         }
+
+
     }
 }
