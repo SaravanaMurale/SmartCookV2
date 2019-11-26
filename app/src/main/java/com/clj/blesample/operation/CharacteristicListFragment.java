@@ -37,7 +37,8 @@ import java.util.List;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment {
 
-    int pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7;
+    int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
+    char c0,c1,c2,c3,c4,c5,c6,c7;
 
     private ResultAdapter mResultAdapter;
 
@@ -267,64 +268,55 @@ public class CharacteristicListFragment extends Fragment {
                             @Override
                             public void run() {
 
-                                System.out.println("DataGettingFromStove"+HexUtil.formatHexString(data));
+                                System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
 
-                                System.out.println("DataGettingFromStove"+HexUtil.formatHexString(characteristic.getValue()));
+                                String hexadecimal = HexUtil.formatHexString(data);
 
-                                System.out.println("Length"+data.length);
+                                int decimal = FormatConversion.hexaDecimalToDecimal(hexadecimal);
 
-                               
-                                doGetLoopDate(data);
+                                String binary = FormatConversion.decimalToBinary(decimal);
+
+                                System.out.println("IamBinaryData" + binary);
+
+                                if (binary.length() >= 8) {
+
+                                    c7 = binary.charAt(7);
+                                    c6 = binary.charAt(6);
+                                    c5 = binary.charAt(5);
+                                    c4 = binary.charAt(4);
+                                    c3 = binary.charAt(3);
+                                    c2 = binary.charAt(2);
+                                    c1 = binary.charAt(1);
+                                    c0 = binary.charAt(0);
+
+
+                                }
+                                System.out.println(c0);
+                                System.out.println(c1);
+                                System.out.println(c2);
+                                System.out.println(c3);
+                                System.out.println(c4);
+                                System.out.println(c5);
+                                System.out.println(c6);
+                                System.out.println(c7);
+
+                                pos7=Character.getNumericValue(c7);
+                                pos6=Character.getNumericValue(c6);
+                                pos5=Character.getNumericValue(c5);
+                                pos4=Character.getNumericValue(c4);
+                                pos3=Character.getNumericValue(c3);
+                                pos2=Character.getNumericValue(c2);
+                                pos1=Character.getNumericValue(c1);
+                                pos0=Character.getNumericValue(c0);
 
                                 doFindBurnerDetails();
 
                                 doFindVesselDetails();
 
-
-
-                                /*for(int i=data.length-1;i>=0;i--){
-                                    System.out.println("LoopValue"+data[i]);
-                                    //j=data[i];
-
-                                    if(i==7) {
-                                        pos7=data[i];
-
-                                        //show_data.setText(String.valueOf(data[i]));
-                                    }
-                                    if(i==6){
-                                        pos6=data[i];
-                                    }
-
-                                    if(i==5){
-                                        pos5=data[i];
-                                    }
-                                    if(i==4){
-                                        pos4=data[i];
-                                    }
-                                    if(i==3){
-                                        pos3=data[i];
-                                    }
-                                    if(i==2){
-                                        pos2=data[i];
-                                    }
-                                    if(i==1){
-                                        pos1=data[i];
-                                    }
-
-                                    if(i==0){
-                                        pos0=data[i];
-                                    }
-
-                                }*/
-                                
-
+                                doFindKnobAngle();
 
 
                                 //show_data.setText(HexUtil.formatHexString(characteristic.getValue()));
-
-
-
-
 
 
                                 //int in=data;
@@ -345,6 +337,20 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
+    private void doFindKnobAngle() {
+        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
+                + String.valueOf(pos5);
+
+        System.out.println("Received Knob angle in binary value " + knobAngel);
+        int decimal = Integer.parseInt(knobAngel, 2);
+
+        // System.out.println("Burner Position " + burnerPosition);
+
+        System.out.println("Knob Angel " + decimal);
+
+        show_data.setText("" + decimal);
+    }
+
     private void doFindVesselDetails() {
 
         if (String.valueOf(pos0).equals("0")) {
@@ -354,45 +360,6 @@ public class CharacteristicListFragment extends Fragment {
         }
     }
 
-    private void doGetLoopDate(byte[] data) {
-
-        for(int i=data.length-1;i>=0;i--){
-            System.out.println("LoopValue"+data[i]);
-            //j=data[i];
-
-            if(i==7) {
-                pos7=data[i];
-
-                //show_data.setText(String.valueOf(data[i]));
-            }
-            if(i==6){
-                pos6=data[i];
-            }
-
-            if(i==5){
-                pos5=data[i];
-            }
-            if(i==4){
-                pos4=data[i];
-            }
-            if(i==3){
-                pos3=data[i];
-            }
-            if(i==2){
-                pos2=data[i];
-            }
-            if(i==1){
-                pos1=data[i];
-            }
-
-            if(i==0){
-                pos0=data[i];
-
-                System.out.println("IAMPOSITION0"+pos0);
-            }
-
-        }
-    }
 
     private void doFindBurnerDetails() {
 
@@ -410,17 +377,7 @@ public class CharacteristicListFragment extends Fragment {
         }
 
 
-        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
-                + String.valueOf(pos5);
 
-        System.out.println("Received Knob angle in binary value "+knobAngel);
-        int decimal = Integer.parseInt(knobAngel, 2);
-
-        // System.out.println("Burner Position " + burnerPosition);
-
-        System.out.println("Knob Angel " + decimal);
-
-        show_data.setText(""+decimal);
 
     }
 

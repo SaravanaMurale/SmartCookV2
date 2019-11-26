@@ -42,4 +42,20 @@ public class FormatConversion {
         }
 
     }
+
+    public static int hexaDecimalToDecimal(String hexadecimal){
+
+        int decimal = Integer.parseInt(hexadecimal, 16);
+
+        return decimal;
+
+    }
+
+    public static String decimalToBinary(int decimal){
+
+        String binary = Integer.toBinaryString(decimal);
+
+        return binary;
+
+    }
 }
