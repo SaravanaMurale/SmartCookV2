@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -64,6 +65,7 @@ public class CharacteristicListFragment extends Fragment {
         initView(v);
         return v;
     }
+
 
     @Override
     public void onResume() {
@@ -344,8 +346,6 @@ public class CharacteristicListFragment extends Fragment {
         System.out.println("Received Knob angle in binary value " + knobAngel);
         int decimal = Integer.parseInt(knobAngel, 2);
 
-        // System.out.println("Burner Position " + burnerPosition);
-
         System.out.println("Knob Angel " + decimal);
 
         show_data.setText("" + decimal);
@@ -383,9 +383,41 @@ public class CharacteristicListFragment extends Fragment {
 
 
     private void wrietUserData(String hex) {
-        //String hex="3232";
+        //String hexi="f8";
+
+        /*String finalHex=hex;
+
+        int userEnterBurPos=Integer.parseInt(hex);
+
+        if(userEnterBurPos<=10){
+           finalHex="A";
+
+        }else if(userEnterBurPos>10 && userEnterBurPos<=20){
+            finalHex="14";
+        }else if(userEnterBurPos>20 && userEnterBurPos<=30){
+            finalHex="1E";
+        }else if(userEnterBurPos>30 && userEnterBurPos<=40){
+            finalHex="28";
+        }else if(userEnterBurPos>40 && userEnterBurPos<=50){
+            finalHex="32";
+        }else if(userEnterBurPos>50 && userEnterBurPos<=60){
+            finalHex="3C";
+        }else if(userEnterBurPos>60 && userEnterBurPos<=70){
+            finalHex="46";
+        }else if(userEnterBurPos>70 && userEnterBurPos<=80){
+            finalHex="50";
+        }else if(userEnterBurPos>80 && userEnterBurPos<=90){
+            finalHex="5A";
+            hexToByte(finalHex);
+        }else if(userEnterBurPos>90 && userEnterBurPos<=100){
+            finalHex="64";
+        }*/
+
+
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+        //HexUtil.hexStringToBytes(hex),
+
 
         BleManager.getInstance().write(
                 bleDevice,
@@ -424,6 +456,20 @@ public class CharacteristicListFragment extends Fragment {
                         });
                     }
                 });
+
+
+    }
+
+    private void hexToByte(String finalHex) {
+
+        byte[] b=new byte[1];
+        b=finalHex.getBytes();
+
+        System.out.println("ByteALength"+b.length);
+
+        for (int i=0;i<b.length;i++){
+            System.out.println("CheckData"+b[i]);
+        }
 
 
     }

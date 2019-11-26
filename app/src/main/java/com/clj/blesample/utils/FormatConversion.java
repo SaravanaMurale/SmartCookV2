@@ -1,5 +1,7 @@
 package com.clj.blesample.utils;
 
+import static com.clj.fastble.utils.HexUtil.charToByte;
+
 public class FormatConversion {
 
     public static void doGetLoopData(byte[] data){
@@ -58,4 +60,34 @@ public class FormatConversion {
         return binary;
 
     }
+
+    public static byte[] stringToByte(String data){
+
+        byte[] b=new byte[1];
+
+        //b[0]=(byte)data;
+
+
+        return b;
+    }
+
+    public static byte[] hexStringToBytes(String hexString) {
+        if (hexString == null || hexString.equals("")) {
+            return null;
+        }
+        hexString = hexString.trim();
+        hexString = hexString.toUpperCase();
+        int length = hexString.length() / 2;
+        char[] hexChars = hexString.toCharArray();
+        byte[] d = new byte[length];
+        for (int i = 0; i < length; i++) {
+            int pos = i * 2;
+            d[i] = (byte) (charToByte(hexChars[pos]) << 4 | charToByte(hexChars[pos + 1]));
+
+            System.out.println("DataFind"+d[i]);
+
+        }
+        return d;
+    }
+
 }
