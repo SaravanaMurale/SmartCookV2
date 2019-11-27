@@ -61,14 +61,15 @@ public class FormatConversion {
 
     }
 
-    public static byte[] stringToByte(String data){
+    public static byte[] stringToByte(String val){
 
-        byte[] b=new byte[1];
+        byte[] a=new byte[1];
+        String s="0x";
 
-        //b[0]=(byte)data;
+        //a={(byte)s+""+val};
 
 
-        return b;
+        return a;
     }
 
     public static byte[] hexStringToBytes(String hexString) {
