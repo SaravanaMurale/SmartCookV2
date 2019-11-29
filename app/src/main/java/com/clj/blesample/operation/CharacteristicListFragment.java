@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -25,8 +26,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
 import com.clj.blesample.utils.FormatConversion;
+import com.clj.blesample.utils.OnBackPressed;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.callback.BleWriteCallback;
@@ -40,13 +43,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class CharacteristicListFragment extends Fragment {
+public class CharacteristicListFragment extends Fragment  {
 
     TextView knobAngleTop,knobAngleLeft,knobAngleRight;
     Croller burnerTop,burnerLeft,burnerRight;
     ImageView topBurnerVesselImage,leftBurnerVesselImage,rightBurnerVesselImage;
     ImageView topBurnerWhistleImage,leftBurnerWhistleImage,rightBurnerWhistleImage;
     TextView topBurnerWhistleCount,leftBurnerWhistleCount,rightBurnerWhistleCount;
+
+    ImageView menuIcon;
 
     int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
     char c0,c1,c2,c3,c4,c5,c6,c7;
@@ -100,7 +105,7 @@ public class CharacteristicListFragment extends Fragment {
         });*/
         //Write
         //Should be called after user clicked
-        writeBtn.setOnClickListener(new View.OnClickListener() {
+        /*writeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -109,7 +114,7 @@ public class CharacteristicListFragment extends Fragment {
                 }
 
             }
-        });
+        });*/
 
 
     }
@@ -148,8 +153,11 @@ public class CharacteristicListFragment extends Fragment {
         leftBurnerWhistleCount=(TextView)v.findViewById(R.id.leftBurner_Whistle_Count);
         rightBurnerWhistleCount=(TextView)v.findViewById(R.id.rightBurner_Whistle_Count);
 
+        menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
 
-        send_btn.setOnClickListener(new View.OnClickListener() {
+
+        //To check write Data
+        /*send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -158,6 +166,14 @@ public class CharacteristicListFragment extends Fragment {
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
                     callMe(1, data);
                 }
+
+            }
+        });*/
+
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMenuItems();
 
             }
         });
@@ -173,7 +189,12 @@ public class CharacteristicListFragment extends Fragment {
 
                 String data=String.valueOf(progress);
 
-                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+                int onClickListener_=1;
+
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null && onClickListener_==1) {
+
+                    System.out.println("Iamcalled");
+
                     callMe(1, data);
                 }
 
@@ -256,6 +277,13 @@ public class CharacteristicListFragment extends Fragment {
 
             }
         });
+    }
+
+    private void callMenuItems() {
+
+        Intent menuIntent=new Intent(this.getActivity(),MenuActivity.class);
+        startActivity(menuIntent);
+
     }
 
     private void callMe(int position, String userData) {
@@ -367,14 +395,7 @@ public class CharacteristicListFragment extends Fragment {
 
 
                                 }
-                                System.out.println(c0);
-                                System.out.println(c1);
-                                System.out.println(c2);
-                                System.out.println(c3);
-                                System.out.println(c4);
-                                System.out.println(c5);
-                                System.out.println(c6);
-                                System.out.println(c7);
+
 
                                 pos7=Character.getNumericValue(c7);
                                 pos6=Character.getNumericValue(c6);
@@ -422,7 +443,7 @@ public class CharacteristicListFragment extends Fragment {
 
         System.out.println("Knob Angel " + decimal);
 
-        //show_data.setText("" + decimal);
+        show_data.setText("" + decimal);
 
         knobAngleTop.setText("" + decimal);
     }
@@ -475,9 +496,15 @@ public class CharacteristicListFragment extends Fragment {
 
         //show_data.setText("" + decimal);
 
+        int onClickListener_=2;
+        setBurner(decimal,onClickListener_);
+        
         burnerTop.setProgress(decimal);
         knobAngleTop.setText("" + decimal);
 
+    }
+
+    private void setBurner(int decimal, int onClickListener_) {
     }
 
 
@@ -508,7 +535,7 @@ public class CharacteristicListFragment extends Fragment {
             finalHex="50";
         }else if(userEnterBurPos>80 && userEnterBurPos<=90){
             finalHex="5A";
-            hexToByte(finalHex);
+            //hexToByte(finalHex);
         }else if(userEnterBurPos>90 && userEnterBurPos<=100){
             finalHex="64";
         }
@@ -540,12 +567,12 @@ public class CharacteristicListFragment extends Fragment {
                                         + " total: " + total
                                         + " justWrite: " + HexUtil.formatHexString(justWrite, true));*/
 
-                                user_entered_data.setText("User Entered Data Is" + HexUtil.formatHexString(justWrite));
+                                //user_entered_data.setText("User Entered Data Is" + HexUtil.formatHexString(justWrite));
 
                                 System.out.println("WrittenDataIs" + HexUtil.formatHexString(justWrite));
 
                                 //t
-                                System.out.println(HexUtil.encodeHex(justWrite));
+                                //System.out.println(HexUtil.encodeHex(justWrite));
                             }
                         });
                     }
@@ -593,6 +620,10 @@ public class CharacteristicListFragment extends Fragment {
         }
         mResultAdapter.notifyDataSetChanged();
     }
+
+
+
+
 
     private class ResultAdapter extends BaseAdapter {
 
@@ -695,4 +726,6 @@ public class CharacteristicListFragment extends Fragment {
 
 
     }
+
+
 }

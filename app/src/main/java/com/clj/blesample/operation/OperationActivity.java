@@ -3,6 +3,7 @@ package com.clj.blesample.operation;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
 import com.clj.blesample.comm.Observer;
 import com.clj.blesample.comm.ObserverManager;
@@ -181,5 +183,31 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        
 
+
+        startActivity(new Intent(OperationActivity.this, MainActivity.class));
+        finish();
+    }
+
+    /*private void findFragments() {
+
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        for(Fragment f : fragments){
+            if(f != null && f instanceof CharacteristicListFragment) {
+                ((CharacteristicListFragment) f).onBackPressed();
+
+            }*//*else if(f != null && f instanceof MenuCartFragment){
+
+                Toast.makeText(HomeActivity.this,"Menu Cart Fragment",Toast.LENGTH_LONG).show();
+
+            }else if(f != null && f instanceof MenuAccountFragment){
+                Toast.makeText(HomeActivity.this,"Menu Setting Fragment",Toast.LENGTH_LONG).show();
+            }*//*
+        }
+
+    }*/
 }

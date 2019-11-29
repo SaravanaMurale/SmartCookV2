@@ -82,6 +82,26 @@
 
 
 
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/menu"
+        android:layout_margin="10dp"
+        />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/maintaence"
+        android:layout_toRightOf="@+id/menuIcon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+
+        />
+
+
+
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/burnerTop"
         android:layout_width="180dp"
