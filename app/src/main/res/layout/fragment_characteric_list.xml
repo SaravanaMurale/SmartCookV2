@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gray"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
 
     <ListView
         android:id="@+id/list_service"
@@ -68,4 +77,274 @@
 
         />
 
-</LinearLayout>
+    </LinearLayout>
+
+
+
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/burnerTop"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        app:anticlockwise="true"
+        app:back_circle_color="#EDEDED"
+
+
+        app:indicator_color="#000000"
+        app:indicator_width="15"
+
+        app:is_continuous="true"
+
+        app:label="Burner 1"
+        app:label_color="@color/red"
+        app:label_size="20"
+
+        app:main_circle_color="#EDEDED"
+        app:max="180"
+        app:min="0"
+
+        app:progress_primary_color="#000000"
+        app:progress_secondary_color="#EEEEEE"
+
+        app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/dummyTextView_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/burnerTop"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/knob" />
+
+    <TextView
+        android:id="@+id/topBurnerKnobAngle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:text="7"
+
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/topBurner_whistle_img"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/burnerTop"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/dummyTextView_"
+        android:enabled="false"
+        android:src="@drawable/whistle_grey" />
+
+    <TextView
+        android:id="@+id/topBurner_Whistle_Count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/burnerTop"
+        android:layout_alignBaseline="@+id/topBurner_whistle_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/topBurner_whistle_img"
+        android:enabled="false"
+        android:text="0" />
+
+    <ImageView
+        android:id="@+id/top_Burner_Vessel"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/burnerTop"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/dummyTextView_"
+        android:saveEnabled="false"
+        android:src="@drawable/vessel_grey"
+
+        />
+
+
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/burnerLeft"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="120dp"
+        app:anticlockwise="true"
+        app:back_circle_color="#EDEDED"
+        app:indicator_color="#0B3C49"
+        app:indicator_width="10"
+        app:is_continuous="true"
+        app:label="Burner 2"
+        app:label_color="#76ff03"
+        app:label_size="20"
+        app:main_circle_color="#ffffff"
+
+        app:max="180"
+        app:min="0"
+        app:progress_primary_color="#0B3C49"
+
+        app:progress_secondary_color="#EEEEEE"
+        app:start_offset="45" />
+
+    <ImageView
+        android:layout_width="162dp"
+        android:layout_height="162dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="135dp"
+        android:src="@drawable/knob"
+
+
+        />
+
+    <TextView
+        android:id="@+id/leftBurnerKnobAngle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="200dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/leftBurner_Vessel"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="70dp"
+        android:src="@drawable/vessel" />
+
+    <ImageView
+        android:id="@+id/leftBurner_Whistle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/leftBurner_Vessel"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/leftBurner_Vessel"
+        android:src="@drawable/whistle_icon"
+
+
+        />
+
+    <TextView
+        android:id="@+id/leftBurner_Whistle_Count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/leftBurner_Whistle"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/leftBurner_Whistle"
+        android:text="5" />
+
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/burnerRight"
+        android:layout_width="179dp"
+        android:layout_height="179dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="15dp"
+        app:anticlockwise="true"
+        app:back_circle_color="#EDEDED"
+        app:indicator_color="#0B3C49"
+        app:indicator_width="10"
+        app:is_continuous="true"
+        app:label="Burner 3"
+        app:label_color="#2962ff"
+        app:label_size="20"
+        app:main_circle_color="#ffffff"
+        app:max="180"
+        app:min="0"
+        app:progress_primary_color="#0B3C49"
+        app:progress_secondary_color="#EEEEEE"
+        app:start_offset="45" />
+
+    <ImageView
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="133dp"
+        android:layout_marginRight="27dp"
+        android:src="@drawable/knob"
+
+
+        />
+
+    <TextView
+        android:id="@+id/rightBurnerKnobAngle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="97dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/rightBurner_Whistle_Count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="70dp"
+        android:text="0" />
+
+    <ImageView
+        android:id="@+id/rightBurner_Whistle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/rightBurner_Whistle_Count"
+        android:src="@drawable/whistle_grey" />
+
+    <ImageView
+        android:id="@+id/rightBurnerVess_"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/rightBurner_Whistle"
+        android:src="@drawable/vessel" />
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/preethi_logo" />
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

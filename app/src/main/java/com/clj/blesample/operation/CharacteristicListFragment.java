@@ -6,6 +6,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,12 +33,20 @@ import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 import com.clj.fastble.utils.HexUtil;
+import com.sdsmdg.harjot.crollerTest.Croller;
+import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment {
+
+    TextView knobAngleTop,knobAngleLeft,knobAngleRight;
+    Croller burnerTop,burnerLeft,burnerRight;
+    ImageView topBurnerVesselImage,leftBurnerVesselImage,rightBurnerVesselImage;
+    ImageView topBurnerWhistleImage,leftBurnerWhistleImage,rightBurnerWhistleImage;
+    TextView topBurnerWhistleCount,leftBurnerWhistleCount,rightBurnerWhistleCount;
 
     int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
     char c0,c1,c2,c3,c4,c5,c6,c7;
@@ -116,6 +126,29 @@ public class CharacteristicListFragment extends Fragment {
         send_btn = (Button) v.findViewById(R.id.send_btn);
         user_entered_data = (TextView) v.findViewById(R.id.user_entered_data);
 
+
+
+        burnerTop = (Croller)v.findViewById(R.id.burnerTop);
+        burnerLeft=(Croller)v.findViewById(R.id.burnerLeft);
+        burnerRight=(Croller)v.findViewById(R.id.burnerRight);
+
+        knobAngleTop=(TextView)v.findViewById(R.id.topBurnerKnobAngle);
+        knobAngleLeft=(TextView)v.findViewById(R.id.leftBurnerKnobAngle);
+        knobAngleRight=(TextView)v.findViewById(R.id.rightBurnerKnobAngle);
+
+        topBurnerVesselImage=(ImageView)v.findViewById(R.id.top_Burner_Vessel);
+        leftBurnerVesselImage=(ImageView)v.findViewById(R.id.leftBurner_Vessel);
+        rightBurnerVesselImage=(ImageView)v.findViewById(R.id.rightBurnerVess_);
+
+        topBurnerWhistleImage=(ImageView)v.findViewById(R.id.topBurner_whistle_img);
+        leftBurnerWhistleImage=(ImageView)v.findViewById(R.id.leftBurner_Whistle);
+        rightBurnerWhistleImage=(ImageView)v.findViewById(R.id.rightBurner_Whistle);
+
+        topBurnerWhistleCount=(TextView)v.findViewById(R.id.topBurner_Whistle_Count);
+        leftBurnerWhistleCount=(TextView)v.findViewById(R.id.leftBurner_Whistle_Count);
+        rightBurnerWhistleCount=(TextView)v.findViewById(R.id.rightBurner_Whistle_Count);
+
+
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +158,47 @@ public class CharacteristicListFragment extends Fragment {
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
                     callMe(1, data);
                 }
+
+            }
+        });
+
+
+        burnerTop.setOnCrollerChangeListener(new OnCrollerChangeListener() {
+            @Override
+            public void onProgressChanged(Croller croller, int progress) {
+                Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+
+                knobAngleTop.setTypeface(typeface);
+                knobAngleTop.setText(String.valueOf(progress));
+
+                String data=String.valueOf(progress);
+
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+                    callMe(1, data);
+                }
+
+
+                if(progress>=0 && progress<=75 ){
+
+                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
+                }else if(progress>=75 && progress<=130){
+                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
+                }else if(progress>=131 && progress<=180){
+                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(Croller croller) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(Croller croller) {
 
             }
         });
@@ -315,7 +389,7 @@ public class CharacteristicListFragment extends Fragment {
 
                                 doFindVesselDetails();
 
-                                doFindKnobAngle();
+                                //doFindKnobAngle();
 
 
                                 //show_data.setText(HexUtil.formatHexString(characteristic.getValue()));
@@ -348,7 +422,9 @@ public class CharacteristicListFragment extends Fragment {
 
         System.out.println("Knob Angel " + decimal);
 
-        show_data.setText("" + decimal);
+        //show_data.setText("" + decimal);
+
+        knobAngleTop.setText("" + decimal);
     }
 
     private void doFindVesselDetails() {
@@ -367,8 +443,14 @@ public class CharacteristicListFragment extends Fragment {
 
         if (burnerPosition.equals("00")) {
             System.out.println("Burner No 4");
+
+            doFindKnobAngleForFirstBurner();
+
         } else if (burnerPosition.equals("01")) {
             System.out.println("Burner No 1");
+
+            doFindKnobAngleForFirstBurner();
+
         } else if (burnerPosition.equals("10")) {
             System.out.println("Burner No 2");
         } else if (burnerPosition.equals("11")) {
@@ -378,6 +460,23 @@ public class CharacteristicListFragment extends Fragment {
 
 
 
+
+    }
+
+    private void doFindKnobAngleForFirstBurner() {
+
+        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
+                + String.valueOf(pos5);
+
+        System.out.println("Received Knob angle in binary value " + knobAngel);
+        int decimal = Integer.parseInt(knobAngel, 2);
+
+        System.out.println("Knob Angel " + decimal);
+
+        //show_data.setText("" + decimal);
+
+        burnerTop.setProgress(decimal);
+        knobAngleTop.setText("" + decimal);
 
     }
 
