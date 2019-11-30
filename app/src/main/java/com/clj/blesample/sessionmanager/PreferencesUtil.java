@@ -4,11 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class PreferencesUtil {
 
     //Shared Preference Name For Whole App
     private static final String SHARED_PREF_NAME = "pref_name_scsk";
+    public static final String KNOB_ANGLE="knob_angle";
+    public static final String NO_VALUE="no_value";
+    public static final String BURNER_NAME="burner_name";
 
+    public static final String WRITE_VALUE="write_value";
 
     public static void setValueString(Context context, String key, String value) {
 
@@ -23,7 +29,7 @@ public class PreferencesUtil {
     public static String getValueString(Context context, String key) {
 
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_NAME, Activity.MODE_PRIVATE);
-        return preferences.getString(key, null);
+        return preferences.getString(key, NO_VALUE);
 
 
     }
@@ -42,6 +48,16 @@ public class PreferencesUtil {
     public static int getValueInt(Context context, String key) {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_NAME, Activity.MODE_PRIVATE);
         return preferences.getInt(key, -1);
+
+    }
+
+    public static void remove(Context contextRemoveRewardID,String key){
+
+        SharedPreferences removeRewardID = contextRemoveRewardID.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = removeRewardID.edit();
+        editor.remove(key);
+        editor.commit();
+
 
     }
 

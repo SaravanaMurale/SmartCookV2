@@ -91,4 +91,21 @@ public class FormatConversion {
         return d;
     }
 
+
+    /*private void doFindKnobAngle() {
+        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
+                + String.valueOf(pos5);
+
+        System.out.println("Received Knob angle in binary value " + knobAngel);
+        int decimal = Integer.parseInt(knobAngel, 2);
+
+        System.out.println("Knob Angel " + decimal);
+
+        show_data.setText("" + decimal);
+
+        knobAngleTop.setText("" + decimal);
+    }
+*/
+
+
 }

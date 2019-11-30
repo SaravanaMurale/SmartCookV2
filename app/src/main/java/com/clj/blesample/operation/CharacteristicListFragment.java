@@ -24,10 +24,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.blesample.utils.FormatConversion;
 import com.clj.blesample.utils.OnBackPressed;
 import com.clj.fastble.BleManager;
@@ -44,6 +46,13 @@ import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment  {
+
+    String toCheck="";
+
+    ImageView knobRound;
+    TextView burnerTopOnClick;
+
+    RelativeLayout relativeLayout;
 
     TextView knobAngleTop,knobAngleLeft,knobAngleRight;
     Croller burnerTop,burnerLeft,burnerRight;
@@ -155,6 +164,28 @@ public class CharacteristicListFragment extends Fragment  {
 
         menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
 
+        burnerTopOnClick=(TextView)v.findViewById(R.id.burnerTopOnClick);
+
+        knobRound=(ImageView)v.findViewById(R.id.knobRound);
+
+        //relativeLayout=(RelativeLayout)v.findViewById(R.id.relativeLayout);
+
+        /*relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                System.out.println("BurnerTopViewOnClick");
+
+                PreferencesUtil.setValueSInt(getActivity(),PreferencesUtil.WRITE_VALUE,0);
+
+
+
+            }
+        });
+*/
+
+
+
 
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {
@@ -179,23 +210,44 @@ public class CharacteristicListFragment extends Fragment  {
         });
 
 
+
+
+
+
+
+
         burnerTop.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
                 Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+
+                System.out.println("Check"+progress);
+
 
                 knobAngleTop.setTypeface(typeface);
                 knobAngleTop.setText(String.valueOf(progress));
 
                 String data=String.valueOf(progress);
 
-                int onClickListener_=1;
 
-                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null && onClickListener_==1) {
+                String burnerNumber=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.BURNER_NAME);
+
+                String knobRotationAngle=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.KNOB_ANGLE);
+
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
 
                     System.out.println("Iamcalled");
 
-                    callMe(1, data);
+                    int writeVal=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WRITE_VALUE);
+
+                    if(writeVal==1) {
+
+
+                    }else  {
+
+                        callMe(1, data);
+
+                    }
                 }
 
 
@@ -434,29 +486,6 @@ public class CharacteristicListFragment extends Fragment  {
 
     }
 
-    private void doFindKnobAngle() {
-        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
-                + String.valueOf(pos5);
-
-        System.out.println("Received Knob angle in binary value " + knobAngel);
-        int decimal = Integer.parseInt(knobAngel, 2);
-
-        System.out.println("Knob Angel " + decimal);
-
-        show_data.setText("" + decimal);
-
-        knobAngleTop.setText("" + decimal);
-    }
-
-    private void doFindVesselDetails() {
-
-        if (String.valueOf(pos0).equals("0")) {
-            System.out.println("Vessel Not Detected " + pos0);
-        } else if (String.valueOf(pos0).equals("1")) {
-            System.out.println("Vessel Detected " + pos0);
-        }
-    }
-
 
     private void doFindBurnerDetails() {
 
@@ -465,12 +494,12 @@ public class CharacteristicListFragment extends Fragment  {
         if (burnerPosition.equals("00")) {
             System.out.println("Burner No 4");
 
-            doFindKnobAngleForFirstBurner();
+            doFindKnobAngleForFirstBurner(burnerPosition);
 
         } else if (burnerPosition.equals("01")) {
             System.out.println("Burner No 1");
 
-            doFindKnobAngleForFirstBurner();
+            doFindKnobAngleForFirstBurner(burnerPosition);
 
         } else if (burnerPosition.equals("10")) {
             System.out.println("Burner No 2");
@@ -484,7 +513,24 @@ public class CharacteristicListFragment extends Fragment  {
 
     }
 
-    private void doFindKnobAngleForFirstBurner() {
+
+    private void doFindVesselDetails() {
+
+        if (String.valueOf(pos0).equals("0")) {
+            System.out.println("Vessel Not Detected " + pos0);
+        } else if (String.valueOf(pos0).equals("1")) {
+            System.out.println("Vessel Detected " + pos0);
+        }
+    }
+
+
+
+
+    private void doFindKnobAngleForFirstBurner(String burner_Number) {
+
+        String burnerNumber=PreferencesUtil.getValueString(this.getActivity(),PreferencesUtil.BURNER_NAME);
+        System.out.println("SharedPreBurnerNumber"+burner_Number);
+        String knobRotationAngle=PreferencesUtil.getValueString(this.getActivity(),PreferencesUtil.KNOB_ANGLE);
 
         String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
                 + String.valueOf(pos5);
@@ -492,19 +538,36 @@ public class CharacteristicListFragment extends Fragment  {
         System.out.println("Received Knob angle in binary value " + knobAngel);
         int decimal = Integer.parseInt(knobAngel, 2);
 
+        String knob_val_string=String.valueOf(decimal);
+
         System.out.println("Knob Angel " + decimal);
 
         //show_data.setText("" + decimal);
 
-        int onClickListener_=2;
-        setBurner(decimal,onClickListener_);
+        if(!burnerNumber.equals(burner_Number) || !knobRotationAngle.equals(knob_val_string)){
+
+            PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,0);
+
+            burnerTop.setProgress(decimal);
+
+
+            knobAngleTop.setText("" + decimal);
+
+            PreferencesUtil.setValueString(this.getActivity(),PreferencesUtil.BURNER_NAME,burner_Number);
+            PreferencesUtil.setValueString(this.getActivity(),PreferencesUtil.KNOB_ANGLE,knob_val_string);
+
+
+        }else if (burnerNumber.equals(burner_Number) && knobRotationAngle.equals(knob_val_string)){
+
+            //If value is 1 means data wont write
+            PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
+
+
+
+        }
+
         
-        burnerTop.setProgress(decimal);
-        knobAngleTop.setText("" + decimal);
 
-    }
-
-    private void setBurner(int decimal, int onClickListener_) {
     }
 
 

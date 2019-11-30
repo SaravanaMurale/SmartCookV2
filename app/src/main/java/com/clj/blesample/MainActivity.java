@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.clj.blesample.adapter.DeviceAdapter;
 import com.clj.blesample.comm.ObserverManager;
 import com.clj.blesample.operation.OperationActivity;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleGattCallback;
 import com.clj.fastble.callback.BleMtuChangedCallback;
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         initView();
 
         BleManager.getInstance().init(getApplication());
@@ -85,10 +88,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setOperateTimeout(5000);
     }
 
+
+
+    private void removeSessionValue() {
+
+        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.BURNER_NAME);
+        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         showConnectedDevice();
+
+        removeSessionValue();
     }
 
     @Override
