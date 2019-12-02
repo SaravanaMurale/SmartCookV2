@@ -47,12 +47,6 @@ import java.util.List;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment  {
 
-    String toCheck="";
-
-    ImageView knobRound;
-    TextView burnerTopOnClick;
-
-    RelativeLayout relativeLayout;
 
     TextView knobAngleTop,knobAngleLeft,knobAngleRight;
     Croller burnerTop,burnerLeft,burnerRight;
@@ -97,7 +91,7 @@ public class CharacteristicListFragment extends Fragment  {
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-            callMe(0, null);
+            callMe(0, null,null);
         }
 
 
@@ -164,25 +158,10 @@ public class CharacteristicListFragment extends Fragment  {
 
         menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
 
-        burnerTopOnClick=(TextView)v.findViewById(R.id.burnerTopOnClick);
-
-        knobRound=(ImageView)v.findViewById(R.id.knobRound);
-
-        //relativeLayout=(RelativeLayout)v.findViewById(R.id.relativeLayout);
-
-        /*relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                System.out.println("BurnerTopViewOnClick");
-
-                PreferencesUtil.setValueSInt(getActivity(),PreferencesUtil.WRITE_VALUE,0);
 
 
 
-            }
-        });
-*/
+
 
 
 
@@ -223,6 +202,8 @@ public class CharacteristicListFragment extends Fragment  {
 
                 System.out.println("Check"+progress);
 
+                String FOURTH_BURNER="44";
+
 
                 knobAngleTop.setTypeface(typeface);
                 knobAngleTop.setText(String.valueOf(progress));
@@ -240,7 +221,7 @@ public class CharacteristicListFragment extends Fragment  {
 
                     if(!knobRotation_Angle.equals(data)){
 
-                        callMe(1, data);
+                        callMe(1, data,FOURTH_BURNER);
                         PreferencesUtil.setValueString(getActivity(),PreferencesUtil.KNOB_ANGLE,data);
 
                         System.out.println("Iamcalled");
@@ -249,17 +230,6 @@ public class CharacteristicListFragment extends Fragment  {
                     }
 
 
-
-                    /*int writeVal=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WRITE_VALUE);
-
-                    if(writeVal==1) {
-
-
-                    }else  {
-
-                        callMe(1, data);
-
-                    }*/
                 }
 
 
@@ -350,7 +320,7 @@ public class CharacteristicListFragment extends Fragment  {
 
     }
 
-    private void callMe(int position, String userData) {
+    private void callMe(int position, String userData,String BURNER) {
 
         //Position 0 -->Notify
         //Position 1 -->Write
@@ -389,7 +359,7 @@ public class CharacteristicListFragment extends Fragment  {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             //((OperationActivity) getActivity()).changePage(2);
-            wrietUserData(userData);
+            wrietUserData(userData,BURNER);
         }
 
 
@@ -459,6 +429,9 @@ public class CharacteristicListFragment extends Fragment  {
 
 
                                 }
+                                else {
+
+                                }
 
 
                                 pos7=Character.getNumericValue(c7);
@@ -505,6 +478,7 @@ public class CharacteristicListFragment extends Fragment  {
 
         if (burnerPosition.equals("00")) {
             System.out.println("Burner No 4");
+            String FOURTH_BURDER="44";
 
             doFindKnobAngleForFirstBurner(burnerPosition);
 
@@ -583,7 +557,7 @@ public class CharacteristicListFragment extends Fragment  {
     }
 
 
-    private void wrietUserData(String hex) {
+    private void wrietUserData(String hex,String bur_ner) {
         //String hexi="f8";
 
         //Hexadecimal Format
@@ -592,27 +566,42 @@ public class CharacteristicListFragment extends Fragment  {
         int userEnterBurPos=Integer.parseInt(hex);
 
         if(userEnterBurPos<=10){
-           finalHex="A";
+           finalHex="3130"+bur_ner;
 
         }else if(userEnterBurPos>10 && userEnterBurPos<=20){
-            finalHex="14";
+            finalHex="3230"+bur_ner;
         }else if(userEnterBurPos>20 && userEnterBurPos<=30){
-            finalHex="1E";
+            finalHex="33304"+bur_ner;
         }else if(userEnterBurPos>30 && userEnterBurPos<=40){
-            finalHex="28";
+            finalHex="3430"+bur_ner;
         }else if(userEnterBurPos>40 && userEnterBurPos<=50){
-            finalHex="32";
+            finalHex="3530"+bur_ner;
         }else if(userEnterBurPos>50 && userEnterBurPos<=60){
-            finalHex="3C";
+            finalHex="3630";
         }else if(userEnterBurPos>60 && userEnterBurPos<=70){
-            finalHex="46";
+            finalHex="3730";
         }else if(userEnterBurPos>70 && userEnterBurPos<=80){
-            finalHex="50";
+            finalHex="3830";
         }else if(userEnterBurPos>80 && userEnterBurPos<=90){
-            finalHex="5A";
-            //hexToByte(finalHex);
+            finalHex="3930";
         }else if(userEnterBurPos>90 && userEnterBurPos<=100){
-            finalHex="64";
+            finalHex="313030";
+        }else if(userEnterBurPos>100 && userEnterBurPos<=110){
+            finalHex="313130";
+        }else if(userEnterBurPos>110 && userEnterBurPos<=120){
+            finalHex="313230";
+        }else if(userEnterBurPos>120 && userEnterBurPos<=130){
+            finalHex="313330";
+        }else if(userEnterBurPos>130 && userEnterBurPos<=140){
+            finalHex="313430";
+        }else if(userEnterBurPos>140 && userEnterBurPos<=150){
+            finalHex="313530";
+        }else if(userEnterBurPos>150 && userEnterBurPos<=160){
+            finalHex="313630";
+        }else if(userEnterBurPos>160 && userEnterBurPos<=170){
+            finalHex="313730";
+        }else if(userEnterBurPos>170 && userEnterBurPos<=180){
+            finalHex="313830";
         }
 
 
@@ -629,7 +618,7 @@ public class CharacteristicListFragment extends Fragment  {
                 bleDevice,
                 characteristic.getService().getUuid().toString(),
                 characteristic.getUuid().toString(),
-                HexUtil.hexStringToBytes(hex),
+                HexUtil.hexStringToBytes(finalHex),
                 new BleWriteCallback() {
 
                     //Converting byte to String and displaying to user
