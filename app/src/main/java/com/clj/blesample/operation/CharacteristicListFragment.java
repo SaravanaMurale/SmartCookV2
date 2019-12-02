@@ -236,9 +236,21 @@ public class CharacteristicListFragment extends Fragment  {
 
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
 
-                    System.out.println("Iamcalled");
+                    String knobRotation_Angle=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.KNOB_ANGLE);
 
-                    int writeVal=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WRITE_VALUE);
+                    if(!knobRotation_Angle.equals(data)){
+
+                        callMe(1, data);
+                        PreferencesUtil.setValueString(getActivity(),PreferencesUtil.KNOB_ANGLE,data);
+
+                        System.out.println("Iamcalled");
+                    }else {
+
+                    }
+
+
+
+                    /*int writeVal=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WRITE_VALUE);
 
                     if(writeVal==1) {
 
@@ -247,7 +259,7 @@ public class CharacteristicListFragment extends Fragment  {
 
                         callMe(1, data);
 
-                    }
+                    }*/
                 }
 
 
@@ -499,7 +511,7 @@ public class CharacteristicListFragment extends Fragment  {
         } else if (burnerPosition.equals("01")) {
             System.out.println("Burner No 1");
 
-            doFindKnobAngleForFirstBurner(burnerPosition);
+           // doFindKnobAngleForFirstBurner(burnerPosition);
 
         } else if (burnerPosition.equals("10")) {
             System.out.println("Burner No 2");
@@ -546,7 +558,7 @@ public class CharacteristicListFragment extends Fragment  {
 
         if(!burnerNumber.equals(burner_Number) || !knobRotationAngle.equals(knob_val_string)){
 
-            PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,0);
+            //PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,0);
 
             burnerTop.setProgress(decimal);
 
@@ -560,7 +572,7 @@ public class CharacteristicListFragment extends Fragment  {
         }else if (burnerNumber.equals(burner_Number) && knobRotationAngle.equals(knob_val_string)){
 
             //If value is 1 means data wont write
-            PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
+           // PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
 
 
 
