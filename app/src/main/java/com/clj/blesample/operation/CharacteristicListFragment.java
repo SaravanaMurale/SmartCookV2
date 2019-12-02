@@ -560,6 +560,12 @@ public class CharacteristicListFragment extends Fragment  {
     private void wrietUserData(String hex,String bur_ner) {
         //String hexi="f8";
 
+        String finalHexa_Decimal=FormatConversion.decimalToHexaDecimalConversion(hex,bur_ner);
+
+        System.out.println("FinalVAlue"+finalHexa_Decimal);
+
+        /*System.out.println("FinalVAlue"+finalDecimal);
+
         //Hexadecimal Format
         String finalHex=hex;
 
@@ -602,14 +608,14 @@ public class CharacteristicListFragment extends Fragment  {
             finalHex="313730";
         }else if(userEnterBurPos>170 && userEnterBurPos<=180){
             finalHex="313830";
-        }
+        }*/
 
 
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
         //HexUtil.hexStringToBytes(hex),
 
-        byte[] bbb=FormatConversion.stringToByte(finalHex);
+        //byte[] bbb=FormatConversion.stringToByte(finalHexa_Decimal);
 
         //System.out.println("BBB "+HexUtil.formatHexString(bbb));
 
@@ -618,7 +624,7 @@ public class CharacteristicListFragment extends Fragment  {
                 bleDevice,
                 characteristic.getService().getUuid().toString(),
                 characteristic.getUuid().toString(),
-                HexUtil.hexStringToBytes(finalHex),
+                HexUtil.hexStringToBytes(finalHexa_Decimal),
                 new BleWriteCallback() {
 
                     //Converting byte to String and displaying to user
