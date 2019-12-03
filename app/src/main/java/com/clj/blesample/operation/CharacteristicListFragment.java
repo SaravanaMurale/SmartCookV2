@@ -41,6 +41,7 @@ import com.clj.fastble.utils.HexUtil;
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -316,6 +317,7 @@ public class CharacteristicListFragment extends Fragment  {
     private void callMenuItems() {
 
         Intent menuIntent=new Intent(this.getActivity(),MenuActivity.class);
+
         startActivity(menuIntent);
 
     }
@@ -563,52 +565,6 @@ public class CharacteristicListFragment extends Fragment  {
         String finalHexa_Decimal=FormatConversion.decimalToHexaDecimalConversion(hex,bur_ner);
 
         System.out.println("FinalVAlue"+finalHexa_Decimal);
-
-        /*System.out.println("FinalVAlue"+finalDecimal);
-
-        //Hexadecimal Format
-        String finalHex=hex;
-
-        int userEnterBurPos=Integer.parseInt(hex);
-
-        if(userEnterBurPos<=10){
-           finalHex="3130"+bur_ner;
-
-        }else if(userEnterBurPos>10 && userEnterBurPos<=20){
-            finalHex="3230"+bur_ner;
-        }else if(userEnterBurPos>20 && userEnterBurPos<=30){
-            finalHex="33304"+bur_ner;
-        }else if(userEnterBurPos>30 && userEnterBurPos<=40){
-            finalHex="3430"+bur_ner;
-        }else if(userEnterBurPos>40 && userEnterBurPos<=50){
-            finalHex="3530"+bur_ner;
-        }else if(userEnterBurPos>50 && userEnterBurPos<=60){
-            finalHex="3630";
-        }else if(userEnterBurPos>60 && userEnterBurPos<=70){
-            finalHex="3730";
-        }else if(userEnterBurPos>70 && userEnterBurPos<=80){
-            finalHex="3830";
-        }else if(userEnterBurPos>80 && userEnterBurPos<=90){
-            finalHex="3930";
-        }else if(userEnterBurPos>90 && userEnterBurPos<=100){
-            finalHex="313030";
-        }else if(userEnterBurPos>100 && userEnterBurPos<=110){
-            finalHex="313130";
-        }else if(userEnterBurPos>110 && userEnterBurPos<=120){
-            finalHex="313230";
-        }else if(userEnterBurPos>120 && userEnterBurPos<=130){
-            finalHex="313330";
-        }else if(userEnterBurPos>130 && userEnterBurPos<=140){
-            finalHex="313430";
-        }else if(userEnterBurPos>140 && userEnterBurPos<=150){
-            finalHex="313530";
-        }else if(userEnterBurPos>150 && userEnterBurPos<=160){
-            finalHex="313630";
-        }else if(userEnterBurPos>160 && userEnterBurPos<=170){
-            finalHex="313730";
-        }else if(userEnterBurPos>170 && userEnterBurPos<=180){
-            finalHex="313830";
-        }*/
 
 
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
