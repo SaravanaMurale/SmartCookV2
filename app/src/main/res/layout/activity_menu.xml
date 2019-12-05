@@ -1,9 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".operation.MenuActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/menuToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"></android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/myAccountBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuToolbar"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Account"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/usagePatterBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myAccountBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/usagePatternImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/usage_pattern" />
+
+        <TextView
+            android:id="@+id/usagePatternText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/usagePatternImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Usage Pattern"
+            android:textColor="@color/color_grey_ke"
+
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/avgConsumptionPerDayBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usagePatterBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/avgConsumptionPerDayImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/consumption_per_day" />
+
+        <TextView
+            android:id="@+id/avgConsumptionPerDayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/avgConsumptionPerDayImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Gas Consumption Per Day" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/balanceGasBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/avgConsumptionPerDayBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/balanceGasImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/balance_gas" />
+
+        <TextView
+            android:id="@+id/balanceGasText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/balanceGasImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Balance Gas(Approx.)" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/historyOfMaintenanceBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/balanceGasBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/historyOfMaintenanceImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/gas_service" />
+
+        <TextView
+            android:id="@+id/gasMaintenanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/historyOfMaintenanceImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="History Of Maintenance Service" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/historyOfCyclenderRefilBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/historyOfMaintenanceBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/historyOfGasRefillImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/gas_refill" />
+
+        <TextView
+            android:id="@+id/gasRefillText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/historyOfGasRefillImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="History Of Gas Refill" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/callCenterServiceBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/historyOfCyclenderRefilBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/callCenterServiceImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/call_center" />
+
+        <TextView
+            android:id="@+id/callCenterServiceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/callCenterServiceImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Call Center Service" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

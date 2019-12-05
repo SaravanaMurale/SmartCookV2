@@ -9,4 +9,9 @@
     <color name="yellow">#ffeb3b</color>
     <color name="green">#76ff03</color>
 
+    <color name="grey">#fafafa</color>
+
+    <color name="white">#ffffff</color>
+    <color name="color_grey_ke">#808080</color>
+
 </resources>
