@@ -88,11 +88,6 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
     }
 
     private void initView() {
