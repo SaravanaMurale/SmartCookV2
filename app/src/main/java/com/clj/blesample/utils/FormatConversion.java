@@ -72,6 +72,14 @@ public class FormatConversion {
         return a;
     }
 
+    public static String integerToString(int data){
+
+        String str_val=String.valueOf(data);
+
+        return str_val;
+    }
+
+
     public static byte[] hexStringToBytes(String hexString) {
         if (hexString == null || hexString.equals("")) {
             return null;

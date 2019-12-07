@@ -194,18 +194,10 @@ public class CharacteristicListFragment extends Fragment  {
         });
 
 
-
-
-
-
-
-
         burnerTop.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
                 //Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
-
-
 
                 System.out.println("Check"+progress);
 
@@ -215,8 +207,7 @@ public class CharacteristicListFragment extends Fragment  {
                 knobAngleTop.setTypeface(octinPrisonFont);
                 knobAngleTop.setText(String.valueOf(progress));
 
-                String data=String.valueOf(progress);
-
+                String data=FormatConversion.integerToString(progress);
 
                 String burnerNumber=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.BURNER_NAME);
 
@@ -490,6 +481,8 @@ public class CharacteristicListFragment extends Fragment  {
 
                                 //System.out.println("IamBinaryData" + binary);
 
+
+
                                 if (binary.length() >= 8) {
 
                                     c7 = binary.charAt(7);
@@ -546,6 +539,8 @@ public class CharacteristicListFragment extends Fragment  {
                 });
 
     }
+
+
 
 
     private void doFindBurnerDetails() {
