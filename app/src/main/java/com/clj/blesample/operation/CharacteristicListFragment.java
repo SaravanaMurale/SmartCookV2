@@ -30,6 +30,7 @@ import android.widget.TextView;
 import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
 import com.clj.blesample.sessionmanager.PreferencesUtil;
+import com.clj.blesample.utils.FontUtil;
 import com.clj.blesample.utils.FormatConversion;
 import com.clj.blesample.utils.OnBackPressed;
 import com.clj.fastble.BleManager;
@@ -78,11 +79,21 @@ public class CharacteristicListFragment extends Fragment  {
 
     int SIZE_OF_CHARACTERISTIC = 0;
 
+    Typeface octinPrisonFont;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_characteric_list, null);
+
+        getFont();
+
         initView(v);
         return v;
+    }
+
+    private void getFont() {
+
+        octinPrisonFont=FontUtil.getOctinPrisonFont(getActivity());
     }
 
 
@@ -160,13 +171,6 @@ public class CharacteristicListFragment extends Fragment  {
         menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
 
 
-
-
-
-
-
-
-
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,14 +203,16 @@ public class CharacteristicListFragment extends Fragment  {
         burnerTop.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
-                Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+                //Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
+
+
 
                 System.out.println("Check"+progress);
 
                 String FOURTH_BURNER="44";
 
 
-                knobAngleTop.setTypeface(typeface);
+                knobAngleTop.setTypeface(octinPrisonFont);
                 knobAngleTop.setText(String.valueOf(progress));
 
                 String data=String.valueOf(progress);
@@ -225,7 +231,7 @@ public class CharacteristicListFragment extends Fragment  {
                         callMe(1, data,FOURTH_BURNER);
                         PreferencesUtil.setValueString(getActivity(),PreferencesUtil.KNOB_ANGLE,data);
 
-                        System.out.println("Iamcalled");
+
                     }else {
 
                     }
@@ -233,6 +239,72 @@ public class CharacteristicListFragment extends Fragment  {
 
                 }
 
+
+                if(progress>=0 && progress<=75 ){
+
+                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
+                }else if(progress>=75 && progress<=130){
+                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
+                }else if(progress>=131 && progress<=180){
+                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(Croller croller) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(Croller croller) {
+
+            }
+        });
+
+
+        burnerLeft.setOnCrollerChangeListener(new OnCrollerChangeListener() {
+            @Override
+            public void onProgressChanged(Croller croller, int progress) {
+
+                knobAngleLeft.setTypeface(octinPrisonFont);
+                knobAngleLeft.setText(String.valueOf(progress));
+
+
+                if(progress>=0 && progress<=75 ){
+
+                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
+                }else if(progress>=75 && progress<=130){
+                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
+                }else if(progress>=131 && progress<=180){
+                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+                    croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(Croller croller) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(Croller croller) {
+
+            }
+        });
+
+        burnerRight.setOnCrollerChangeListener(new OnCrollerChangeListener() {
+            @Override
+            public void onProgressChanged(Croller croller, int progress) {
+
+                knobAngleRight.setTypeface(octinPrisonFont);
+                knobAngleRight.setText(String.valueOf(progress));
 
                 if(progress>=0 && progress<=75 ){
 
@@ -408,7 +480,7 @@ public class CharacteristicListFragment extends Fragment  {
                             @Override
                             public void run() {
 
-                                System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
+                                //System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
 
                                 String hexadecimal = HexUtil.formatHexString(data);
 
@@ -416,7 +488,7 @@ public class CharacteristicListFragment extends Fragment  {
 
                                 String binary = FormatConversion.decimalToBinary(decimal);
 
-                                System.out.println("IamBinaryData" + binary);
+                                //System.out.println("IamBinaryData" + binary);
 
                                 if (binary.length() >= 8) {
 
@@ -432,6 +504,8 @@ public class CharacteristicListFragment extends Fragment  {
 
                                 }
                                 else {
+
+                                    System.out.println("Received Data From Stove Is Less Then 8 Character");
 
                                 }
 

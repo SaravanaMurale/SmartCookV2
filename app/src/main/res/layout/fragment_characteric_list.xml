@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_gray"
     android:orientation="vertical">
 
@@ -10,97 +10,91 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
-    <ListView
-        android:id="@+id/list_service"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:scrollbars="none"
-        android:visibility="gone" />
+        <ListView
+            android:id="@+id/list_service"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:scrollbars="none"
+            android:visibility="gone" />
 
-    <Button
-        android:id="@+id/notify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Notify" />
+        <Button
+            android:id="@+id/notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Notify" />
 
-    <Button
-        android:id="@+id/write"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Write" />
+        <Button
+            android:id="@+id/write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Write" />
 
-    <TextView
-        android:id="@+id/show_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Showing Received Data From Stove" />
+        <TextView
+            android:id="@+id/show_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Showing Received Data From Stove" />
 
-    <TextView
-        android:id="@+id/show_received_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:id="@+id/show_received_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
 
-    <EditText
-        android:id="@+id/edit_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="send data to stove"
+        <EditText
+            android:id="@+id/edit_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="send data to stove"
 
-        />
+            />
 
-    <Button
-        android:id="@+id/send_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Send" />
+        <Button
+            android:id="@+id/send_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Send" />
 
-    <TextView
-        android:id="@+id/user_entered_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        <TextView
+            android:id="@+id/user_entered_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
 
-        />
+            />
 
     </LinearLayout>
-
-
 
 
     <ImageView
         android:id="@+id/menuIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/menu"
         android:layout_margin="10dp"
-        />
+        android:src="@drawable/menu" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/maintaence"
-        android:layout_toRightOf="@+id/menuIcon"
-        android:layout_marginTop="10dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/menuIcon"
+        android:src="@drawable/maintanence"
 
         />
-
-
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
@@ -119,6 +113,7 @@
         app:is_continuous="true"
 
         app:label="Burner 1"
+
         app:label_color="@color/red"
         app:label_size="20"
 
@@ -130,9 +125,6 @@
         app:progress_secondary_color="#EEEEEE"
 
         app:start_offset="45" />
-
-
-
 
 
     <TextView
@@ -151,7 +143,6 @@
         android:src="@drawable/knob" />
 
 
-
     <TextView
         android:id="@+id/topBurnerKnobAngle"
         android:layout_width="wrap_content"
@@ -166,15 +157,15 @@
 
     <ImageView
         android:id="@+id/topBurner_whistle_img"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
         android:layout_below="@id/burnerTop"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/dummyTextView_"
         android:enabled="false"
-        android:src="@drawable/whistle_grey" />
+        android:src="@drawable/cooker_whistle1" />
 
     <TextView
         android:id="@+id/topBurner_Whistle_Count"
@@ -187,7 +178,8 @@
         android:layout_marginTop="16dp"
         android:layout_toRightOf="@id/topBurner_whistle_img"
         android:enabled="false"
-        android:text="0" />
+        android:text="0"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/top_Burner_Vessel"
@@ -199,10 +191,9 @@
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@id/dummyTextView_"
         android:saveEnabled="false"
-        android:src="@drawable/vessel_grey"
+        android:src="@drawable/vessel_orange"
 
         />
-
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
@@ -255,7 +246,8 @@
         android:layout_height="23dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="70dp"
-        android:src="@drawable/vessel" />
+        android:src="@drawable/vessel"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/leftBurner_Whistle"
@@ -266,7 +258,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/leftBurner_Vessel"
         android:src="@drawable/whistle_icon"
-
+        android:visibility="invisible"
 
         />
 
@@ -279,7 +271,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/leftBurner_Whistle"
-        android:text="5" />
+        android:text="5"
+        android:visibility="gone" />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
@@ -337,7 +330,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
         android:layout_marginRight="70dp"
-        android:text="0" />
+        android:text="0"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/rightBurner_Whistle"
@@ -347,7 +341,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle_Count"
-        android:src="@drawable/whistle_grey" />
+        android:src="@drawable/whistle_grey"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/rightBurnerVess_"
@@ -357,7 +352,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle"
-        android:src="@drawable/vessel" />
+        android:src="@drawable/vessel"
+        android:visibility="invisible" />
 
 
     <ImageView
@@ -366,13 +362,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/preethi_logo" />
-
-
-
-
-
-
-
 
 
 </RelativeLayout>
