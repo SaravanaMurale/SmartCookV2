@@ -62,12 +62,18 @@ public class MenuActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        dialog.cancel();
+                        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+                        smsIntent.setType("vnd.android-dir/mms-sms");
+                        //Key both address and sms_body should not change
+
+                        smsIntent.putExtra("address", "9123521374");
+                        smsIntent.putExtra("sms_body","");
+                        startActivity(smsIntent);
                     }
                 });
 
 
-                builder.setNeutralButton("Cancel!", new DialogInterface.OnClickListener() {
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
