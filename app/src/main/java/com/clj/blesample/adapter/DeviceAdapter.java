@@ -130,6 +130,7 @@ public class DeviceAdapter extends BaseAdapter {
             public void onClick(View view) {
                 if (mListener != null) {
                     mListener.onConnect(bleDevice);
+
                 }
             }
         });
@@ -143,6 +144,7 @@ public class DeviceAdapter extends BaseAdapter {
             }
         });
 
+        //enter
         holder.btn_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,6 +166,7 @@ public class DeviceAdapter extends BaseAdapter {
         LinearLayout layout_connected;
         Button btn_disconnect;
         Button btn_connect;
+        //enter
         Button btn_detail;
     }
 

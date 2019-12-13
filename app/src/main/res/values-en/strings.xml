@@ -36,6 +36,6 @@
     <string name="connect">Connect</string>
     <string name="connected">Connected</string>
     <string name="disconnect">Disconnect</string>
-    <string name="enter">Enter</string>
+    <string name="enter">Connect</string>
 
 </resources>

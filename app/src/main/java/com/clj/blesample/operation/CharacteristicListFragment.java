@@ -465,13 +465,14 @@ public class CharacteristicListFragment extends Fragment  {
                     @Override
                     public void onCharacteristicChanged(final byte[] data) {
 
+
                         System.out.println("Iamnotifydata" + data);
 
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
 
-                                //System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
+                                System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
 
                                 String hexadecimal = HexUtil.formatHexString(data);
 
@@ -482,6 +483,8 @@ public class CharacteristicListFragment extends Fragment  {
                                 //System.out.println("IamBinaryData" + binary);
 
 
+                                System.out.println("ReceivedBinary"+binary);
+                                System.out.println("TotalLength"+binary.length());
 
                                 if (binary.length() >= 8) {
 
@@ -548,7 +551,7 @@ public class CharacteristicListFragment extends Fragment  {
         String burnerPosition = String.valueOf(pos6) + String.valueOf(pos7);
 
         if (burnerPosition.equals("00")) {
-            System.out.println("Burner No 4");
+            System.out.println("BurnerNo4");
             String FOURTH_BURDER="44";
 
             doFindKnobAngleForFirstBurner(burnerPosition);
@@ -562,6 +565,7 @@ public class CharacteristicListFragment extends Fragment  {
             System.out.println("Burner No 2");
         } else if (burnerPosition.equals("11")) {
             System.out.println("Burner No 3");
+            //doFindKnobAngleForFirstBurner(burnerPosition);
 
         }
 
@@ -597,7 +601,7 @@ public class CharacteristicListFragment extends Fragment  {
 
         String knob_val_string=String.valueOf(decimal);
 
-        System.out.println("Knob Angel " + decimal);
+        System.out.println("KnobAngel " + decimal);
 
         //show_data.setText("" + decimal);
 

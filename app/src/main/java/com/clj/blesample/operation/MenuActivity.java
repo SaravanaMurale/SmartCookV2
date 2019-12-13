@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.clj.blesample.R;
+import com.clj.blesample.menuoperationactivity.HistoryOfGasRefillActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class MenuActivity extends AppCompatActivity {
         initView();
 
 
+        //Customercare Service call and message
         customerServiceBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,11 +90,23 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+
+        gasRefillBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent historyOfGasRefillActivity=new Intent(MenuActivity.this, HistoryOfGasRefillActivity.class);
+                startActivity(historyOfGasRefillActivity);
+
+            }
+        });
+
     }
 
     private void initView() {
 
         customerServiceBlock=(RelativeLayout)findViewById(R.id.callCenterServiceBlock);
+        gasRefillBlock=(RelativeLayout)findViewById(R.id.historyOfCyclenderRefilBlock);
 
     }
 }

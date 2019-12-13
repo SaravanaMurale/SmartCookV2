@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.clj.blesample.adapter.DeviceAdapter;
 import com.clj.blesample.comm.ObserverManager;
+import com.clj.blesample.operation.MenuActivity;
 import com.clj.blesample.operation.OperationActivity;
 import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.fastble.BleManager;
@@ -166,7 +167,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!BleManager.getInstance().isConnected(bleDevice)) {
                     BleManager.getInstance().cancelScan();
                     connect(bleDevice);
+
                 }
+
+
+
             }
 
             @Override
@@ -291,9 +296,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
                 mDeviceAdapter.addDevice(bleDevice);
                 mDeviceAdapter.notifyDataSetChanged();
+
+                //Mycode
+                if (BleManager.getInstance().isConnected(bleDevice)) {
+                    progressDialog.dismiss();
+                    Intent intent = new Intent(MainActivity.this, OperationActivity.class);
+                    intent.putExtra(OperationActivity.KEY_DATA, bleDevice);
+                    startActivity(intent);
+                }
+                else {
+
+                    Toast.makeText(MainActivity.this,"Please Connect With Stove",Toast.LENGTH_LONG).show();
+                }
+
             }
 
             @Override
