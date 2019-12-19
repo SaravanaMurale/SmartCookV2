@@ -37,7 +37,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+                AlertDialog.Builder builder = new  AlertDialog.Builder(MenuActivity.this);
 
                 builder.setTitle("Customer Service Assistance");
 

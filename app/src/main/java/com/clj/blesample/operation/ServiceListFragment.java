@@ -54,6 +54,8 @@ public class ServiceListFragment extends Fragment {
         }
     }
 
+
+
     private void initView(View v) {
         txt_name = (TextView) v.findViewById(R.id.txt_name);
         txt_mac = (TextView) v.findViewById(R.id.txt_mac);

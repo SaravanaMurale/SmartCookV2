@@ -134,6 +134,15 @@ public class CharacteristicListFragment extends Fragment  {
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        Intent intent=new Intent(getActivity(),MainActivity.class);
+        startActivity(intent);
+
+    }
+
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service);
