@@ -183,7 +183,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         }
     }
 
-    @Override
+   /* @Override
     public void onBackPressed() {
         super.onBackPressed();
         
@@ -191,7 +191,7 @@ public class OperationActivity extends AppCompatActivity implements Observer {
 
         startActivity(new Intent(OperationActivity.this, MainActivity.class));
         finish();
-    }
+    }*/
 
     /*private void findFragments() {
 
