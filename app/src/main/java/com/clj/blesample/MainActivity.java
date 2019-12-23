@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.BURNER_NAME);
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
 
+        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.SESSION_CLEAR);
+
     }
 
     @Override

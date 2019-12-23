@@ -104,6 +104,9 @@ public class CharacteristicListFragment extends Fragment  {
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
             callMe(0, null,null);
+
+            PreferencesUtil.setValueString(getActivity(),PreferencesUtil.SESSION_CLEAR,"1");
+
         }
 
 

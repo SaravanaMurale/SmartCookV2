@@ -17,6 +17,7 @@ import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
 import com.clj.blesample.comm.Observer;
 import com.clj.blesample.comm.ObserverManager;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.data.BleDevice;
 
@@ -125,18 +126,31 @@ public class OperationActivity extends AppCompatActivity implements Observer {
     }
 
     private void updateFragment(int  position) {
-        if (position > fragments.size() - 1) {
-            return;
-        }
-        for (int i = 0; i < fragments.size(); i++) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            Fragment fragment = fragments.get(i);
-            if (i == position) {
-                transaction.show(fragment);
-            } else {
-                transaction.hide(fragment);
+
+        String sessionClear= PreferencesUtil.getValueString(OperationActivity.this,PreferencesUtil.SESSION_CLEAR);
+
+        if(position==0 && sessionClear.equals("1")){
+
+            Intent intent=new Intent(OperationActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }else {
+
+            if (position > fragments.size() - 1) {
+                return;
             }
-            transaction.commit();
+            for (int i = 0; i < fragments.size(); i++) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                Fragment fragment = fragments.get(i);
+                if (i == position) {
+                    transaction.show(fragment);
+                } else {
+                    transaction.hide(fragment);
+                }
+                transaction.commit();
+            }
+
         }
     }
 

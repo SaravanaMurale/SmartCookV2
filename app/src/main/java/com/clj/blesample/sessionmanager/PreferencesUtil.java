@@ -14,6 +14,8 @@ public class PreferencesUtil {
     public static final String NO_VALUE="no_value";
     public static final String BURNER_NAME="burner_name";
 
+    public static final String SESSION_CLEAR="session_clear";
+
     public static final String WRITE_VALUE="write_value";
 
     public static void setValueString(Context context, String key, String value) {
