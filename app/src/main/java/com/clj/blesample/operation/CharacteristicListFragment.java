@@ -97,6 +97,8 @@ public class CharacteristicListFragment extends Fragment  {
     }
 
 
+
+
     @Override
     public void onResume() {
         super.onResume();
@@ -105,7 +107,6 @@ public class CharacteristicListFragment extends Fragment  {
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
             callMe(0, null,null);
 
-            PreferencesUtil.setValueString(getActivity(),PreferencesUtil.SESSION_CLEAR,"1");
 
         }
 
@@ -137,22 +138,6 @@ public class CharacteristicListFragment extends Fragment  {
 
     }
 
-   /* @Override
-    public void onPause() {
-        super.onPause();
-
-        Intent intent=new Intent(getActivity(),MainActivity.class);
-        startActivity(intent);
-
-    }*/
-
-    /*@Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        Intent intent=new Intent(getActivity(),MainActivity.class);
-        startActivity(intent);
-    }*/
 
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());

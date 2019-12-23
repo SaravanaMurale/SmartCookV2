@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.BURNER_NAME);
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
 
-        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.SESSION_CLEAR);
 
     }
 
@@ -113,7 +112,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         BleManager.getInstance().disconnectAllDevice();
         BleManager.getInstance().destroy();
+
+
+
     }
+
 
     @Override
     public void onClick(View v) {
@@ -308,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent(MainActivity.this, OperationActivity.class);
                     intent.putExtra(OperationActivity.KEY_DATA, bleDevice);
                     startActivity(intent);
+
                 }
                 else {
 

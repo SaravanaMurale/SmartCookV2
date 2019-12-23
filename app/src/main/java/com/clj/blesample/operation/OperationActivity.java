@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
@@ -55,6 +56,17 @@ public class OperationActivity extends AppCompatActivity implements Observer {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            //If keyCode==4 onBack Button is pressed, so directly calling Main Activity from characteristicListFragment
+            //My Code
+            if (keyCode==4 && currentPage==1){
+
+                currentPage=0;
+            } //end of My Code
+
+            System.out.println("KEYCODE" + keyCode);
+            System.out.println("KEYCODE_currentPage" + currentPage);
+
             if (currentPage != 0) {
                 currentPage--;
                 changePage(currentPage);
@@ -125,33 +137,25 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         }
     }
 
-    private void updateFragment(int  position) {
+    private void updateFragment(int position) {
 
-        String sessionClear= PreferencesUtil.getValueString(OperationActivity.this,PreferencesUtil.SESSION_CLEAR);
 
-        if(position==0 && sessionClear.equals("1")){
 
-            Intent intent=new Intent(OperationActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
-
-        }else {
-
-            if (position > fragments.size() - 1) {
-                return;
-            }
-            for (int i = 0; i < fragments.size(); i++) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment fragment = fragments.get(i);
-                if (i == position) {
-                    transaction.show(fragment);
-                } else {
-                    transaction.hide(fragment);
-                }
-                transaction.commit();
-            }
-
+        if (position > fragments.size() - 1) {
+            return;
         }
+        for (int i = 0; i < fragments.size(); i++) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            Fragment fragment = fragments.get(i);
+            if (i == position) {
+                transaction.show(fragment);
+            } else {
+                transaction.hide(fragment);
+            }
+            transaction.commit();
+        }
+
+
     }
 
     public BleDevice getBleDevice() {
@@ -197,31 +201,5 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         }
     }
 
-   /* @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        
 
-
-        startActivity(new Intent(OperationActivity.this, MainActivity.class));
-        finish();
-    }*/
-
-    /*private void findFragments() {
-
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        for(Fragment f : fragments){
-            if(f != null && f instanceof CharacteristicListFragment) {
-                ((CharacteristicListFragment) f).onBackPressed();
-
-            }*//*else if(f != null && f instanceof MenuCartFragment){
-
-                Toast.makeText(HomeActivity.this,"Menu Cart Fragment",Toast.LENGTH_LONG).show();
-
-            }else if(f != null && f instanceof MenuAccountFragment){
-                Toast.makeText(HomeActivity.this,"Menu Setting Fragment",Toast.LENGTH_LONG).show();
-            }*//*
-        }
-
-    }*/
 }
