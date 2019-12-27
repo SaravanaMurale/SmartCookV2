@@ -287,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onStartConnect() {
                 progressDialog.show();
+                progressDialog.setMessage("Connecting Please Wait");
             }
 
             @Override
@@ -306,9 +307,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //Mycode
                 if (BleManager.getInstance().isConnected(bleDevice)) {
-                    progressDialog.dismiss();
+
                     Intent intent = new Intent(MainActivity.this, OperationActivity.class);
                     intent.putExtra(OperationActivity.KEY_DATA, bleDevice);
+                    progressDialog.dismiss();
                     startActivity(intent);
 
                 }

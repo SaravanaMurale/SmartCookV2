@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.clj.blesample.R;
 import com.clj.blesample.menuoperationactivity.HistoryOfGasRefillActivity;
+import com.clj.blesample.menuoperationactivity.MaintenanceServiceActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -101,12 +102,26 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+
+        historyOfMaintenanceBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent=new Intent(MenuActivity.this, MaintenanceServiceActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 
     private void initView() {
 
         customerServiceBlock=(RelativeLayout)findViewById(R.id.callCenterServiceBlock);
         gasRefillBlock=(RelativeLayout)findViewById(R.id.historyOfCyclenderRefilBlock);
+        historyOfMaintenanceBlock=(RelativeLayout)findViewById(R.id.historyOfMaintenanceBlock);
 
     }
 }
