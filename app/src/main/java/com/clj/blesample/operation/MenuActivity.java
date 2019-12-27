@@ -96,8 +96,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent historyOfGasRefillActivity=new Intent(MenuActivity.this, HistoryOfGasRefillActivity.class);
-                startActivity(historyOfGasRefillActivity);
+                /*Intent historyOfGasRefillActivity=new Intent(MenuActivity.this, HistoryOfGasRefillActivity.class);
+                startActivity(historyOfGasRefillActivity);*/
 
             }
         });
@@ -108,8 +108,8 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                Intent intent=new Intent(MenuActivity.this, MaintenanceServiceActivity.class);
-                startActivity(intent);
+                /*Intent intent=new Intent(MenuActivity.this, MaintenanceServiceActivity.class);
+                startActivity(intent);*/
 
             }
         });

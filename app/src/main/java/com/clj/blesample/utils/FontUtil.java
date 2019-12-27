@@ -2,6 +2,7 @@ package com.clj.blesample.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.provider.Settings;
 
 public class FontUtil {
 
@@ -11,6 +12,15 @@ public class FontUtil {
 
         return typeface;
 
+
+    }
+
+    public static String deviceID(Context context){
+
+        String ANDROID_MOBILE_ID = Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
+        return ANDROID_MOBILE_ID;
 
     }
 

@@ -44,6 +44,7 @@ public class MServiceAdapter extends RecyclerView.Adapter<MServiceAdapter.MServi
         mServiceViewHolder.mIssue.setText(mServiceList.get(i).getmServiceIssue());
 
 
+
     }
 
     @Override
