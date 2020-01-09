@@ -47,19 +47,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class CharacteristicListFragment extends Fragment  {
+public class CharacteristicListFragment extends Fragment {
 
 
-    TextView knobAngleTop,knobAngleLeft,knobAngleRight;
-    Croller burnerTop,burnerLeft,burnerRight;
-    ImageView topBurnerVesselImage,leftBurnerVesselImage,rightBurnerVesselImage;
-    ImageView topBurnerWhistleImage,leftBurnerWhistleImage,rightBurnerWhistleImage;
-    TextView topBurnerWhistleCount,leftBurnerWhistleCount,rightBurnerWhistleCount;
+    TextView knobAngleTop, knobAngleLeft, knobAngleRight;
+    Croller burnerTop, burnerLeft, burnerRight;
+    ImageView topBurnerVesselImage, leftBurnerVesselImage, rightBurnerVesselImage;
+    ImageView topBurnerWhistleImage, leftBurnerWhistleImage, rightBurnerWhistleImage;
+    TextView topBurnerWhistleCount, leftBurnerWhistleCount, rightBurnerWhistleCount;
 
     ImageView menuIcon;
 
     int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
-    char c0,c1,c2,c3,c4,c5,c6,c7;
+    char c0, c1, c2, c3, c4, c5, c6, c7;
 
     private ResultAdapter mResultAdapter;
 
@@ -93,10 +93,8 @@ public class CharacteristicListFragment extends Fragment  {
 
     private void getFont() {
 
-        octinPrisonFont=FontUtil.getOctinPrisonFont(getActivity());
+        octinPrisonFont = FontUtil.getOctinPrisonFont(getActivity());
     }
-
-
 
 
     @Override
@@ -105,7 +103,7 @@ public class CharacteristicListFragment extends Fragment  {
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-            callMe(0, null,null);
+            callMe(0, null, null);
 
 
         }
@@ -152,28 +150,27 @@ public class CharacteristicListFragment extends Fragment  {
         user_entered_data = (TextView) v.findViewById(R.id.user_entered_data);
 
 
+        burnerTop = (Croller) v.findViewById(R.id.burnerTop);
+        burnerLeft = (Croller) v.findViewById(R.id.burnerLeft);
+        burnerRight = (Croller) v.findViewById(R.id.burnerRight);
 
-        burnerTop = (Croller)v.findViewById(R.id.burnerTop);
-        burnerLeft=(Croller)v.findViewById(R.id.burnerLeft);
-        burnerRight=(Croller)v.findViewById(R.id.burnerRight);
+        knobAngleTop = (TextView) v.findViewById(R.id.topBurnerKnobAngle);
+        knobAngleLeft = (TextView) v.findViewById(R.id.leftBurnerKnobAngle);
+        knobAngleRight = (TextView) v.findViewById(R.id.rightBurnerKnobAngle);
 
-        knobAngleTop=(TextView)v.findViewById(R.id.topBurnerKnobAngle);
-        knobAngleLeft=(TextView)v.findViewById(R.id.leftBurnerKnobAngle);
-        knobAngleRight=(TextView)v.findViewById(R.id.rightBurnerKnobAngle);
+        topBurnerVesselImage = (ImageView) v.findViewById(R.id.top_Burner_Vessel);
+        leftBurnerVesselImage = (ImageView) v.findViewById(R.id.leftBurner_Vessel);
+        rightBurnerVesselImage = (ImageView) v.findViewById(R.id.rightBurnerVess_);
 
-        topBurnerVesselImage=(ImageView)v.findViewById(R.id.top_Burner_Vessel);
-        leftBurnerVesselImage=(ImageView)v.findViewById(R.id.leftBurner_Vessel);
-        rightBurnerVesselImage=(ImageView)v.findViewById(R.id.rightBurnerVess_);
+        topBurnerWhistleImage = (ImageView) v.findViewById(R.id.topBurner_whistle_img);
+        leftBurnerWhistleImage = (ImageView) v.findViewById(R.id.leftBurner_Whistle);
+        rightBurnerWhistleImage = (ImageView) v.findViewById(R.id.rightBurner_Whistle);
 
-        topBurnerWhistleImage=(ImageView)v.findViewById(R.id.topBurner_whistle_img);
-        leftBurnerWhistleImage=(ImageView)v.findViewById(R.id.leftBurner_Whistle);
-        rightBurnerWhistleImage=(ImageView)v.findViewById(R.id.rightBurner_Whistle);
+        topBurnerWhistleCount = (TextView) v.findViewById(R.id.topBurner_Whistle_Count);
+        leftBurnerWhistleCount = (TextView) v.findViewById(R.id.leftBurner_Whistle_Count);
+        rightBurnerWhistleCount = (TextView) v.findViewById(R.id.rightBurner_Whistle_Count);
 
-        topBurnerWhistleCount=(TextView)v.findViewById(R.id.topBurner_Whistle_Count);
-        leftBurnerWhistleCount=(TextView)v.findViewById(R.id.leftBurner_Whistle_Count);
-        rightBurnerWhistleCount=(TextView)v.findViewById(R.id.rightBurner_Whistle_Count);
-
-        menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
+        menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
 
 
         //To check write Data
@@ -204,31 +201,32 @@ public class CharacteristicListFragment extends Fragment  {
             public void onProgressChanged(Croller croller, int progress) {
                 //Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/octin prison rg.ttf");
 
-                System.out.println("Check"+progress);
+                System.out.println("Check" + progress);
 
-                String FOURTH_BURNER="44";
+                String FOURTH_BURNER = "00";
 
 
                 knobAngleTop.setTypeface(octinPrisonFont);
-                knobAngleTop.setText(String.valueOf(progress));
+                int pro=progress/10;
+                knobAngleTop.setText(String.valueOf(pro));
 
-                String data=FormatConversion.integerToString(progress);
+                String data = FormatConversion.integerToString(progress);
 
-                String burnerNumber=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.BURNER_NAME);
+                String burnerNumber = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.BURNER_NAME);
 
-                String knobRotationAngle=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.KNOB_ANGLE);
+                String knobRotationAngle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
 
                 if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
 
-                    String knobRotation_Angle=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.KNOB_ANGLE);
+                    String knobRotation_Angle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
 
-                    if(!knobRotation_Angle.equals(data)){
+                    if (!knobRotation_Angle.equals(data)) {
 
-                        callMe(1, data,FOURTH_BURNER);
-                        PreferencesUtil.setValueString(getActivity(),PreferencesUtil.KNOB_ANGLE,data);
+                        callMe(1, data, FOURTH_BURNER);
+                        PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, data);
 
 
-                    }else {
+                    } else {
 
                     }
 
@@ -236,14 +234,14 @@ public class CharacteristicListFragment extends Fragment  {
                 }
 
 
-                if(progress>=0 && progress<=75 ){
+                if (progress >= 0 && progress <= 75) {
 
                     //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
-                }else if(progress>=75 && progress<=130){
+                } else if (progress >= 75 && progress <= 130) {
                     //croller.setIndicatorColor(Color.parseColor("#f3e701"));
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
-                }else if(progress>=131 && progress<=180){
+                } else if (progress >= 131 && progress <= 180) {
                     //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
@@ -270,14 +268,14 @@ public class CharacteristicListFragment extends Fragment  {
                 knobAngleLeft.setText(String.valueOf(progress));
 
 
-                if(progress>=0 && progress<=75 ){
+                if (progress >= 0 && progress <= 75) {
 
                     //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
-                }else if(progress>=75 && progress<=130){
+                } else if (progress >= 75 && progress <= 130) {
                     //croller.setIndicatorColor(Color.parseColor("#f3e701"));
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
-                }else if(progress>=131 && progress<=180){
+                } else if (progress >= 131 && progress <= 180) {
                     //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
@@ -302,14 +300,14 @@ public class CharacteristicListFragment extends Fragment  {
                 knobAngleRight.setTypeface(octinPrisonFont);
                 knobAngleRight.setText(String.valueOf(progress));
 
-                if(progress>=0 && progress<=75 ){
+                if (progress >= 0 && progress <= 75) {
 
                     //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
-                }else if(progress>=75 && progress<=130){
+                } else if (progress >= 75 && progress <= 130) {
                     //croller.setIndicatorColor(Color.parseColor("#f3e701"));
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
-                }else if(progress>=131 && progress<=180){
+                } else if (progress >= 131 && progress <= 180) {
                     //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
@@ -384,13 +382,13 @@ public class CharacteristicListFragment extends Fragment  {
 
     private void callMenuItems() {
 
-        Intent menuIntent=new Intent(this.getActivity(),MenuActivity.class);
+        Intent menuIntent = new Intent(this.getActivity(), MenuActivity.class);
 
         startActivity(menuIntent);
 
     }
 
-    private void callMe(int position, String userData,String BURNER) {
+    private void callMe(int position, String userData, String BURNER) {
 
         //Position 0 -->Notify
         //Position 1 -->Write
@@ -429,7 +427,7 @@ public class CharacteristicListFragment extends Fragment  {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             //((OperationActivity) getActivity()).changePage(2);
-            wrietUserData(userData,BURNER);
+            wrietUserData(userData, BURNER);
         }
 
 
@@ -488,8 +486,8 @@ public class CharacteristicListFragment extends Fragment  {
                                 //System.out.println("IamBinaryData" + binary);
 
 
-                                System.out.println("ReceivedBinary"+binary);
-                                System.out.println("TotalLength"+binary.length());
+                                System.out.println("ReceivedBinary" + binary);
+                                System.out.println("TotalLength" + binary.length());
 
                                 if (binary.length() >= 8) {
 
@@ -503,22 +501,21 @@ public class CharacteristicListFragment extends Fragment  {
                                     c0 = binary.charAt(0);
 
 
-                                }
-                                else {
+                                } else {
 
                                     System.out.println("Received Data From Stove Is Less Then 8 Character");
 
                                 }
 
 
-                                pos7=Character.getNumericValue(c7);
-                                pos6=Character.getNumericValue(c6);
-                                pos5=Character.getNumericValue(c5);
-                                pos4=Character.getNumericValue(c4);
-                                pos3=Character.getNumericValue(c3);
-                                pos2=Character.getNumericValue(c2);
-                                pos1=Character.getNumericValue(c1);
-                                pos0=Character.getNumericValue(c0);
+                                pos7 = Character.getNumericValue(c7);
+                                pos6 = Character.getNumericValue(c6);
+                                pos5 = Character.getNumericValue(c5);
+                                pos4 = Character.getNumericValue(c4);
+                                pos3 = Character.getNumericValue(c3);
+                                pos2 = Character.getNumericValue(c2);
+                                pos1 = Character.getNumericValue(c1);
+                                pos0 = Character.getNumericValue(c0);
 
                                 doFindBurnerDetails();
 
@@ -549,22 +546,20 @@ public class CharacteristicListFragment extends Fragment  {
     }
 
 
-
-
     private void doFindBurnerDetails() {
 
         String burnerPosition = String.valueOf(pos6) + String.valueOf(pos7);
 
         if (burnerPosition.equals("00")) {
             System.out.println("BurnerNo4");
-            String FOURTH_BURDER="44";
+            String FOURTH_BURDER = "44";
 
             doFindKnobAngleForFirstBurner(burnerPosition);
 
         } else if (burnerPosition.equals("01")) {
             System.out.println("Burner No 1");
 
-           // doFindKnobAngleForFirstBurner(burnerPosition);
+            // doFindKnobAngleForFirstBurner(burnerPosition);
 
         } else if (burnerPosition.equals("10")) {
             System.out.println("Burner No 2");
@@ -573,8 +568,6 @@ public class CharacteristicListFragment extends Fragment  {
             //doFindKnobAngleForFirstBurner(burnerPosition);
 
         }
-
-
 
 
     }
@@ -590,13 +583,11 @@ public class CharacteristicListFragment extends Fragment  {
     }
 
 
-
-
     private void doFindKnobAngleForFirstBurner(String burner_Number) {
 
-        String burnerNumber=PreferencesUtil.getValueString(this.getActivity(),PreferencesUtil.BURNER_NAME);
-        System.out.println("SharedPreBurnerNumber"+burner_Number);
-        String knobRotationAngle=PreferencesUtil.getValueString(this.getActivity(),PreferencesUtil.KNOB_ANGLE);
+        String burnerNumber = PreferencesUtil.getValueString(this.getActivity(), PreferencesUtil.BURNER_NAME);
+        System.out.println("SharedPreBurnerNumber" + burner_Number);
+        String knobRotationAngle = PreferencesUtil.getValueString(this.getActivity(), PreferencesUtil.KNOB_ANGLE);
 
         String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
                 + String.valueOf(pos5);
@@ -604,45 +595,67 @@ public class CharacteristicListFragment extends Fragment  {
         System.out.println("Received Knob angle in binary value " + knobAngel);
         int decimal = Integer.parseInt(knobAngel, 2);
 
-        String knob_val_string=String.valueOf(decimal);
+        String knob_val_string = String.valueOf(decimal);
 
         System.out.println("KnobAngel " + decimal);
 
         //show_data.setText("" + decimal);
 
-        if(!burnerNumber.equals(burner_Number) || !knobRotationAngle.equals(knob_val_string)){
+        if (!burnerNumber.equals(burner_Number) || !knobRotationAngle.equals(knob_val_string)) {
 
             //PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,0);
 
-            burnerTop.setProgress(decimal);
+            burnerTop.setProgress(decimal*10);
 
 
-            knobAngleTop.setText("" + decimal);
+            knobAngleTop.setText("" + decimal*10);
 
-            PreferencesUtil.setValueString(this.getActivity(),PreferencesUtil.BURNER_NAME,burner_Number);
-            PreferencesUtil.setValueString(this.getActivity(),PreferencesUtil.KNOB_ANGLE,knob_val_string);
+            PreferencesUtil.setValueString(this.getActivity(), PreferencesUtil.BURNER_NAME, burner_Number);
+            PreferencesUtil.setValueString(this.getActivity(), PreferencesUtil.KNOB_ANGLE, knob_val_string);
 
 
-        }else if (burnerNumber.equals(burner_Number) && knobRotationAngle.equals(knob_val_string)){
+        } else if (burnerNumber.equals(burner_Number) && knobRotationAngle.equals(knob_val_string)) {
 
             //If value is 1 means data wont write
-           // PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
-
+            // PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
 
 
         }
 
-        
 
     }
 
 
-    private void wrietUserData(String hex,String bur_ner) {
+    private void wrietUserData(String hex, String bur_ner) {
         //String hexi="f8";
 
-        String finalHexa_Decimal=FormatConversion.decimalToHexaDecimalConversion(hex,bur_ner);
+        int angel_=Integer.parseInt(hex)/10;
+        int burner_=Integer.parseInt(bur_ner);
+        int vessel=1;
+        int sendbyte=0;
+        sendbyte=((angel_<<2)|(burner_)|(vessel<<7));
 
-        System.out.println("FinalVAlue"+finalHexa_Decimal);
+        //byte c=(byte)sendbyte;
+
+        byte[] ret = new byte[1];
+        ret[0] = (byte) (sendbyte);
+
+       // byte[] b=;
+
+
+
+       // String wireteBinaryData=vessel+Integer.toBinaryString(angel_)+bur_ner;
+
+        /*String wireteBinaryData="00011000";
+        System.out.println("NewBinary"+wireteBinaryData);
+
+       String writeHexFormat= FormatConversion.convertBinaryToHexadecimal(wireteBinaryData);
+
+        byte[] a=FormatConversion.hexStringToByteArray(writeHexFormat);*/
+
+        /*String finalHexa_Decimal = FormatConversion.decimalToHexaDecimalConversion(hex, bur_ner);
+
+        System.out.println("FinalVAlue" + finalHexa_Decimal);*/
 
 
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
@@ -658,7 +671,7 @@ public class CharacteristicListFragment extends Fragment  {
                 bleDevice,
                 characteristic.getService().getUuid().toString(),
                 characteristic.getUuid().toString(),
-                HexUtil.hexStringToBytes(finalHexa_Decimal),
+                ret,
                 new BleWriteCallback() {
 
                     //Converting byte to String and displaying to user
@@ -697,13 +710,13 @@ public class CharacteristicListFragment extends Fragment  {
 
     private void hexToByte(String finalHex) {
 
-        byte[] b=new byte[1];
-        b=finalHex.getBytes();
+        byte[] b = new byte[1];
+        b = finalHex.getBytes();
 
-        System.out.println("ByteALength"+b.length);
+        System.out.println("ByteALength" + b.length);
 
-        for (int i=0;i<b.length;i++){
-            System.out.println("CheckData"+b[i]);
+        for (int i = 0; i < b.length; i++) {
+            System.out.println("CheckData" + b[i]);
         }
 
 
@@ -724,9 +737,6 @@ public class CharacteristicListFragment extends Fragment  {
         }
         mResultAdapter.notifyDataSetChanged();
     }
-
-
-
 
 
     private class ResultAdapter extends BaseAdapter {

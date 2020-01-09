@@ -124,28 +124,28 @@ public class FormatConversion {
         int userEnterBurPos = Integer.parseInt(userEnteredHexData);
 
         if (userEnterBurPos >= 0 && userEnterBurPos <= 10) {
-            finalHex = "3130";
+            finalHex = "303130";
 
         } else if (userEnterBurPos > 10 && userEnterBurPos <= 20) {
-            finalHex = "3230";
+            finalHex = "303230";
 
         } else if (userEnterBurPos > 20 && userEnterBurPos <= 30) {
-            finalHex = "33304";
+            finalHex = "3033304";
 
         } else if (userEnterBurPos > 30 && userEnterBurPos <= 40) {
-            finalHex = "3430";
+            finalHex = "303430";
 
         } else if (userEnterBurPos > 40 && userEnterBurPos <= 50) {
-            finalHex = "3530";
+            finalHex = "303530";
 
         } else if (userEnterBurPos > 50 && userEnterBurPos <= 60) {
-            finalHex = "3630";
+            finalHex = "303630";
         } else if (userEnterBurPos > 60 && userEnterBurPos <= 70) {
-            finalHex = "3730";
+            finalHex = "303730";
         } else if (userEnterBurPos > 70 && userEnterBurPos <= 80) {
-            finalHex = "3830";
+            finalHex = "303830";
         } else if (userEnterBurPos > 80 && userEnterBurPos <= 90) {
-            finalHex = "3930";
+            finalHex = "303930";
         } else if (userEnterBurPos > 90 && userEnterBurPos <= 100) {
             finalHex = "313030";
         } else if (userEnterBurPos > 100 && userEnterBurPos <= 110) {
@@ -169,6 +169,72 @@ public class FormatConversion {
 
         return finalHex + bur_ner;
     }
+
+    public static String convertBinaryToHexadecimal(String number) {
+        String hexa = "";
+        char[] hex = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
+                'b', 'c', 'd', 'e', 'f' };
+        if (number != null && !number.isEmpty()) {
+            int decimal = convertBinaryToDecimal(number);
+            while (decimal > 0) {
+                hexa = hex[decimal % 16] + hexa;
+                decimal /= 16;
+            }
+            //System.out.println("The hexa decimal number is: " + hexa);
+
+            //finalHexValue=hexa;
+        }
+        return hexa;
+
+
+    }
+
+
+    public static int convertBinaryToDecimal(String number) {
+        int length = number.length() - 1;
+        int decimal = 0;
+        if (isBinary(number)) {
+            char[] digits = number.toCharArray();
+            for (char digit : digits) {
+                if (String.valueOf(digit).equals("1")) {
+                    decimal += Math.pow(2, length);
+                }
+                --length;
+            }
+            // System.out.println("The decimal number is : " + decimal);
+        }
+        return decimal;
+    }
+
+    public static boolean isBinary(String number) {
+        boolean isBinary = false;
+        if (number != null && !number.isEmpty()) {
+            long num = Long.parseLong(number);
+            while (num > 0) {
+                if (num % 10 <= 1) {
+                    isBinary = true;
+                } else {
+                    isBinary = false;
+                    break;
+                }
+                num /= 10;
+            }
+        }
+        return isBinary;
+    }
+
+    public static byte[] hexStringToByteArray(String s) {
+        byte[]  b = new byte[s.length() / 2];
+        for (int i = 0; i < b.length; i++) {
+            int index = i * 2;
+            int v = Integer.parseInt(s.substring(index, index + 2), 16);
+
+            b[i] = (byte) v;
+        }
+        return b;
+
+    }
+
 
 
 }
