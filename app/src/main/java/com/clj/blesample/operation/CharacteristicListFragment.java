@@ -206,8 +206,9 @@ public class CharacteristicListFragment extends Fragment {
                 String FOURTH_BURNER = "00";
 
 
+
                 knobAngleTop.setTypeface(octinPrisonFont);
-                int pro=progress/10;
+                int pro=progress;
                 knobAngleTop.setText(String.valueOf(pro));
 
                 String data = FormatConversion.integerToString(progress);
@@ -475,7 +476,10 @@ public class CharacteristicListFragment extends Fragment {
                             @Override
                             public void run() {
 
-                                System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
+                                //int burnervalue=data&0x03;
+
+
+                                //System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
 
                                 String hexadecimal = HexUtil.formatHexString(data);
 
