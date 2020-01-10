@@ -59,6 +59,7 @@ public class CharacteristicListFragment extends Fragment {
     ImageView menuIcon;
 
     int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
+    String pos_0, pos_1, pos_2, pos_3, pos_4, pos_5, pos_6, pos_7;
     char c0, c1, c2, c3, c4, c5, c6, c7;
 
     private ResultAdapter mResultAdapter;
@@ -436,6 +437,8 @@ public class CharacteristicListFragment extends Fragment {
 
     private void gettingStoveData() {
 
+        final char char0,char1,char2,char3,char4,char5,char6,char7;
+
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         final BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
 
@@ -476,6 +479,11 @@ public class CharacteristicListFragment extends Fragment {
                             @Override
                             public void run() {
 
+                                splitEachBurnerDataFromReceivedByte(data);
+
+
+
+
                                 //int burnervalue=data&0x03;
 
 
@@ -487,7 +495,10 @@ public class CharacteristicListFragment extends Fragment {
 
                                 String binary = FormatConversion.decimalToBinary(decimal);
 
-                                //System.out.println("IamBinaryData" + binary);
+                                System.out.println("IamBinaryData" + binary);
+
+
+                                //dofindBurner_Angle_Vessel_Details(binary);
 
 
                                 System.out.println("ReceivedBinary" + binary);
@@ -504,7 +515,6 @@ public class CharacteristicListFragment extends Fragment {
                                     c1 = binary.charAt(1);
                                     c0 = binary.charAt(0);
 
-
                                 } else {
 
                                     System.out.println("Received Data From Stove Is Less Then 8 Character");
@@ -512,14 +522,23 @@ public class CharacteristicListFragment extends Fragment {
                                 }
 
 
-                                pos7 = Character.getNumericValue(c7);
+                                /*pos7 = Character.getNumericValue(c7);
                                 pos6 = Character.getNumericValue(c6);
                                 pos5 = Character.getNumericValue(c5);
                                 pos4 = Character.getNumericValue(c4);
                                 pos3 = Character.getNumericValue(c3);
                                 pos2 = Character.getNumericValue(c2);
                                 pos1 = Character.getNumericValue(c1);
-                                pos0 = Character.getNumericValue(c0);
+                                pos0 = Character.getNumericValue(c0);*/
+
+                                pos_7 = Character.toString(c7);
+                                pos_6 = Character.toString(c6);
+                                pos_5 = Character.toString(c5);
+                                pos_4 = Character.toString(c4);
+                                pos_3 = Character.toString(c3);
+                                pos_2 = Character.toString(c2);
+                                pos_1 = Character.toString(c1);
+                                pos_0 = Character.toString(c0);
 
                                 doFindBurnerDetails();
 
@@ -549,10 +568,126 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
+    private void splitEachBurnerDataFromReceivedByte(byte[] data) {
+
+        byte[] topBurReceivedVal=new byte[1];
+        byte[] leftBurReceivedVal=new byte[1];
+        byte[] rightBurReceivedVal=new byte[1];
+
+        for (int i = 0; i <data.length ; i++) {
+
+
+            int k=data[i];
+
+            if(i==0) {
+                topBurReceivedVal[i] = data[i];
+            }
+            if(i==1) {
+                leftBurReceivedVal[i-1] = data[i];
+            }
+            if(i==2) {
+                rightBurReceivedVal[i-2] = data[i];
+            }
+
+
+
+        }
+        
+        String topBurnerHexValue=HexUtil.formatHexString(topBurReceivedVal);
+        String leftBurnerHexValue=HexUtil.formatHexString(leftBurReceivedVal);
+        String rightBurnerHexValue=HexUtil.formatHexString(rightBurReceivedVal);
+
+        int topBurnerdecimalValue = FormatConversion.hexaDecimalToDecimal(topBurnerHexValue);
+        String topBurnerBinaryValue = FormatConversion.decimalToBinary(topBurnerdecimalValue);
+
+        int leftBurnerdecimalValue = FormatConversion.hexaDecimalToDecimal(leftBurnerHexValue);
+        String leftBurnerBinaryValue = FormatConversion.decimalToBinary(leftBurnerdecimalValue);
+
+        int rightBurnerdecimalValue = FormatConversion.hexaDecimalToDecimal(rightBurnerHexValue);
+        String rightBurnerBinaryValue = FormatConversion.decimalToBinary(rightBurnerdecimalValue);
+        
+        
+        doRatateTopBurner(topBurnerBinaryValue);
+        doRatateLeftBurner(leftBurnerBinaryValue);
+        doRatateRightBurner(rightBurnerBinaryValue);
+
+    }
+
+
+
+    private void doRatateTopBurner(String topBurnerBinaryValue) {
+
+        char topChar0='\u0000',topChar1='\u0000',topChar2='\u0000',topChar3='\u0000',topChar4='\u0000',topChar5='\u0000',topChar6='\u0000',topChar7='\u0000';
+        String topString0,topString1,topString2,topString3,topString4,topString5,topString6,topString7;
+
+        if (topBurnerBinaryValue.length() == 8) {
+
+            topChar7 = topBurnerBinaryValue.charAt(7);
+            topChar6 = topBurnerBinaryValue.charAt(6);
+            topChar5 = topBurnerBinaryValue.charAt(5);
+            topChar4 = topBurnerBinaryValue.charAt(4);
+            topChar3 = topBurnerBinaryValue.charAt(3);
+            topChar2 = topBurnerBinaryValue.charAt(2);
+            topChar1 = topBurnerBinaryValue.charAt(1);
+            topChar0 = topBurnerBinaryValue.charAt(0);
+
+        } else {
+
+            System.out.println("Received Data From Stove Is Less Then 8 Character");
+
+        }
+
+
+        topString7=Character.toString(topChar7);
+        topString6=Character.toString(topChar6);
+        topString5=Character.toString(topChar5);
+        topString4=Character.toString(topChar4);
+        topString3=Character.toString(topChar3);
+        topString2=Character.toString(topChar2);
+        topString1=Character.toString(topChar1);
+        topString0=Character.toString(topChar0);
+
+
+    }
+
+    private void doRatateRightBurner(String rightBurnerBinaryValue) {
+    }
+
+    private void doRatateLeftBurner(String leftBurnerBinaryValue) {
+    }
+
+   /* private void dofindBurner_Angle_Vessel_Details(String binary) {
+
+        char
+
+        if (binary.length() >= 8) {
+
+           char c7 = binary.charAt(7);
+            c6 = binary.charAt(6);
+            c5 = binary.charAt(5);
+            c4 = binary.charAt(4);
+            c3 = binary.charAt(3);
+            c2 = binary.charAt(2);
+            c1 = binary.charAt(1);
+            c0 = binary.charAt(0);
+
+        } else {
+
+            System.out.println("Received Data From Stove Is Less Then 8 Character");
+
+        }
+
+
+
+
+    }*/
+
 
     private void doFindBurnerDetails() {
 
-        String burnerPosition = String.valueOf(pos6) + String.valueOf(pos7);
+        String burnerPosition=pos_6+pos_7;
+
+        //String burnerPosition = String.valueOf(pos6) + String.valueOf(pos7);
 
         if (burnerPosition.equals("00")) {
             System.out.println("BurnerNo4");
@@ -593,8 +728,10 @@ public class CharacteristicListFragment extends Fragment {
         System.out.println("SharedPreBurnerNumber" + burner_Number);
         String knobRotationAngle = PreferencesUtil.getValueString(this.getActivity(), PreferencesUtil.KNOB_ANGLE);
 
-        String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
-                + String.valueOf(pos5);
+        /*String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
+                + String.valueOf(pos5);*/
+
+        String knobAngel=pos_1+pos_2+pos_3+pos_4+pos_5;
 
         System.out.println("Received Knob angle in binary value " + knobAngel);
         int decimal = Integer.parseInt(knobAngel, 2);
@@ -625,6 +762,8 @@ public class CharacteristicListFragment extends Fragment {
 
 
         }
+
+
 
 
     }
