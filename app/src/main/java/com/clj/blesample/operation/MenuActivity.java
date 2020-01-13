@@ -20,7 +20,7 @@ import com.clj.blesample.menuoperationactivity.MaintenanceServiceActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    RelativeLayout userPatternBlock, gasConsumptionBlock, balanceGasBlock, historyOfMaintenanceBlock, gasRefillBlock, customerServiceBlock;
+    RelativeLayout userPatternBlock, gasConsumptionBlock, balanceGasBlock, historyOfMaintenanceBlock, gasRefillBlock, customerServiceBlock,viewStaticsReportBlock;
 
     public static final int REQUEST_PHONE_CALL=121;
 
@@ -115,6 +115,16 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
+        viewStaticsReportBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+
+
     }
 
     private void initView() {
@@ -122,6 +132,7 @@ public class MenuActivity extends AppCompatActivity {
         customerServiceBlock=(RelativeLayout)findViewById(R.id.callCenterServiceBlock);
         gasRefillBlock=(RelativeLayout)findViewById(R.id.historyOfCyclenderRefilBlock);
         historyOfMaintenanceBlock=(RelativeLayout)findViewById(R.id.historyOfMaintenanceBlock);
+        viewStaticsReportBlock=(RelativeLayout)findViewById(R.id.viewStaticsReportBlock);
 
     }
 }

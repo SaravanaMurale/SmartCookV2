@@ -224,6 +224,7 @@ public class CharacteristicListFragment extends Fragment {
 
                     if (!knobRotation_Angle.equals(data)) {
 
+
                         callMe(1, data, FOURTH_BURNER);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, data);
 
