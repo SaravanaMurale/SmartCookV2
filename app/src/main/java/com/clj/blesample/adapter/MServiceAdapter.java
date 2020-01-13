@@ -23,6 +23,12 @@ public class MServiceAdapter extends RecyclerView.Adapter<MServiceAdapter.MServi
         this.mServiceList = mServiceList;
     }
 
+    public void dataSetChanged(List<MaintenaceServiceDTO> mServiceList) {
+
+        this.mServiceList = mServiceList;
+
+    }
+
     @NonNull
     @Override
     public MServiceViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -42,7 +48,6 @@ public class MServiceAdapter extends RecyclerView.Adapter<MServiceAdapter.MServi
         mServiceViewHolder.mDate.setText(mServiceList.get(i).getmServiceDate());
         mServiceViewHolder.mPerson.setText(mServiceList.get(i).getmServiceDName());
         mServiceViewHolder.mIssue.setText(mServiceList.get(i).getmServiceIssue());
-
 
 
     }

@@ -108,8 +108,8 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                /*Intent intent=new Intent(MenuActivity.this, MaintenanceServiceActivity.class);
-                startActivity(intent);*/
+                Intent intent=new Intent(MenuActivity.this, MaintenanceServiceActivity.class);
+                startActivity(intent);
 
             }
         });

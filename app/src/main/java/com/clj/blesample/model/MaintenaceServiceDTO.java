@@ -6,12 +6,14 @@ public class MaintenaceServiceDTO {
     String mServiceDate;
     String mServiceDName;
     String mServiceIssue;
+    String mDeviceID;
 
-    public MaintenaceServiceDTO(String mServiceIssue_ID, String mServiceDate, String mServiceDName, String mServiceIssue) {
+    public MaintenaceServiceDTO(String mServiceIssue_ID, String mServiceDate, String mServiceDName, String mServiceIssue, String mDeviceID) {
         this.mServiceIssue_ID = mServiceIssue_ID;
         this.mServiceDate = mServiceDate;
         this.mServiceDName = mServiceDName;
         this.mServiceIssue = mServiceIssue;
+        this.mDeviceID = mDeviceID;
     }
 
     public String getmServiceIssue_ID() {
@@ -28,5 +30,9 @@ public class MaintenaceServiceDTO {
 
     public String getmServiceIssue() {
         return mServiceIssue;
+    }
+
+    public String getmDeviceID() {
+        return mDeviceID;
     }
 }

@@ -2,10 +2,16 @@ package com.clj.blesample.databasemanager;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
+
+import com.clj.blesample.model.MaintenaceServiceDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqliteManager extends SQLiteOpenHelper {
 
@@ -63,7 +69,7 @@ public class SqliteManager extends SQLiteOpenHelper {
     }
 
 
-    public boolean addMaintenanceServiceData(String m_issueID,String issueFixedDate,String personName,String issue){
+    public boolean addMaintenanceServiceData(String m_issueID,String issueFixedDate,String personName,String issue,String deviceID){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -75,8 +81,37 @@ public class SqliteManager extends SQLiteOpenHelper {
         contentValues.put(FIXED_DATE, issueFixedDate);
         contentValues.put(PERSON_NAME, personName);
         contentValues.put(ISSUE, issue);
+        contentValues.put(DEVICE_ID, deviceID);
 
         return sqLiteDatabase.insert(TABLE_NAME, null, contentValues) != -1;
+
+    }
+
+    public List<MaintenaceServiceDTO> getAllM_ServiceData(String mDeviceId){
+
+        List<MaintenaceServiceDTO> maintenaceServiceDTOList=new ArrayList<>();
+
+        SQLiteDatabase selectAllData = getReadableDatabase();
+
+       Cursor cursor=selectAllData.rawQuery("select missue_id,fixed_date,mperson,issue,deviceid from maintenaceservice where deviceid=?", new String[]{mDeviceId});
+
+
+       if(cursor.moveToFirst()){
+
+           do {
+
+               MaintenaceServiceDTO maintenaceServiceDTO=new MaintenaceServiceDTO(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4));
+
+               maintenaceServiceDTOList.add(maintenaceServiceDTO);
+
+           }
+           while (cursor.moveToNext());
+
+       }
+
+
+        return maintenaceServiceDTOList;
+
 
     }
 
