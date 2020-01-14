@@ -4,6 +4,9 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.provider.Settings;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FontUtil {
 
     public static Typeface getOctinPrisonFont(Context context){
@@ -23,5 +26,30 @@ public class FontUtil {
         return ANDROID_MOBILE_ID;
 
     }
+
+    public static String timeVal(Context context){
+
+        Date time=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
+        String currentDateTimeString = sdf.format(time);
+
+
+        return currentDateTimeString;
+
+    }
+
+    public static String dateVal(Context context){
+
+        Date date=new Date();
+        SimpleDateFormat sDate=new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDAte = sDate.format(date);
+        //System.out.println("DateAlone "+formattedDAte);
+
+        return formattedDAte;
+    }
+
+
+
+
 
 }

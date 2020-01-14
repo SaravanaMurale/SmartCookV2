@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
 import com.clj.blesample.model.MaintenaceServiceDTO;
+import com.clj.blesample.model.StatisticsDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +17,27 @@ import java.util.List;
 public class SqliteManager extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "scsk";
-    public static final String TABLE_NAME="maintenaceservice";
     public static final int DATABASE_VERSION = 1;
 
-    public static final String COLUMN_ID="id";
-    public static final String MISSUE_ID="missue_id";
-    public static final String FIXED_DATE="fixed_date";
-    public static final String PERSON_NAME="mperson";
-    public static final String ISSUE="issue";
-    public static final String DEVICE_ID="deviceid";
+    //Maintenance Service Column Datas
+    public static final String TABLE_NAME = "maintenaceservice";
+
+    public static final String COLUMN_ID = "id";
+    public static final String MISSUE_ID = "missue_id";
+    public static final String FIXED_DATE = "fixed_date";
+    public static final String PERSON_NAME = "mperson";
+    public static final String ISSUE = "issue";
+    public static final String DEVICE_ID = "deviceid";
+    //End Of //Maintenance Service Column Datas
+
+    public static final String ST_TABLE_NAME = "statisticsreport";
+    public static final String ST_COOKING_ID = "cooking_id";
+    public static final String ST_DATE = "cooking_date";
+    public static final String ST_TIME = "cooking_time";
+    public static final String ST_BURNER = "cooking_burner";
+    public static final String ST_ANGLE = "cooking_angle";
+    public static final String ST_DURATION = "cooking_duration";
+    public static final String ST_COOKING_STATUS = "cooking_status";
 
 
     public SqliteManager(Context context) {
@@ -33,8 +46,6 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-
 
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(\n" +
                 "    " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT add_cart_pk PRIMARY KEY AUTOINCREMENT,\n" +
@@ -46,19 +57,21 @@ public class SqliteManager extends SQLiteOpenHelper {
                 ");";
 
 
-        /*String sql = "CREATE TABLE " +TABLE_NAME+ "(\n" +
-                "+COLUMN_ID+         INTEGER        PRIMARY KEY AUTOINCREMENT\n" +
-                "                              UNIQUE\n" +
-                "                              NOT NULL,\n" +
-                "    missue_id  VARCHAR (50)   NOT NULL\n" +
-                "                              UNIQUE,\n" +
-                "    fixed_date DATETIME (200) NOT NULL,\n" +
-                "    mperson    VARCHAR (200)  NOT NULL,\n" +
-                "    issue      VARCHAR (300),\n" +
-                "    deviceid   VARCHAR (200) \n" +
-                ");";*/
+        String statisticsTable = "CREATE TABLE IF NOT EXISTS " + ST_TABLE_NAME + "(\n" +
+                "    " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT add_cart_pk PRIMARY KEY AUTOINCREMENT,\n" +
+                "    " + ST_COOKING_ID + " varchar(200) NOT NULL,\n" +
+                "    " + ST_DATE + " tinyint(4) NOT NULL,\n" +
+                "    " + ST_TIME + " varchar(200) NOT NULL,\n" +
+                "    " + ST_BURNER + " varchar(200) NOT NULL,\n" +
+                "    " + ST_ANGLE + " varchar(200) NOT NULL\n," +
+                "    " + ST_DURATION + " varchar(200) NOT NULL\n," +
+                "    " + ST_COOKING_STATUS + " varchar(200) NOT NULL\n," +
+                "    " + DEVICE_ID + " varchar(200) NOT NULL\n" +
+                ");";
+
 
         db.execSQL(sql);
+        db.execSQL(statisticsTable);
 
 
     }
@@ -69,7 +82,7 @@ public class SqliteManager extends SQLiteOpenHelper {
     }
 
 
-    public boolean addMaintenanceServiceData(String m_issueID,String issueFixedDate,String personName,String issue,String deviceID){
+    public boolean addMaintenanceServiceData(String m_issueID, String issueFixedDate, String personName, String issue, String deviceID) {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -87,27 +100,27 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     }
 
-    public List<MaintenaceServiceDTO> getAllM_ServiceData(String mDeviceId){
+    public List<MaintenaceServiceDTO> getAllM_ServiceData(String mDeviceId) {
 
-        List<MaintenaceServiceDTO> maintenaceServiceDTOList=new ArrayList<>();
+        List<MaintenaceServiceDTO> maintenaceServiceDTOList = new ArrayList<>();
 
         SQLiteDatabase selectAllData = getReadableDatabase();
 
-       Cursor cursor=selectAllData.rawQuery("select missue_id,fixed_date,mperson,issue,deviceid from maintenaceservice where deviceid=?", new String[]{mDeviceId});
+        Cursor cursor = selectAllData.rawQuery("select missue_id,fixed_date,mperson,issue,deviceid from maintenaceservice where deviceid=?", new String[]{mDeviceId});
 
 
-       if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
 
-           do {
+            do {
 
-               MaintenaceServiceDTO maintenaceServiceDTO=new MaintenaceServiceDTO(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4));
+                MaintenaceServiceDTO maintenaceServiceDTO = new MaintenaceServiceDTO(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
 
-               maintenaceServiceDTOList.add(maintenaceServiceDTO);
+                maintenaceServiceDTOList.add(maintenaceServiceDTO);
 
-           }
-           while (cursor.moveToNext());
+            }
+            while (cursor.moveToNext());
 
-       }
+        }
 
 
         return maintenaceServiceDTOList;
@@ -116,7 +129,128 @@ public class SqliteManager extends SQLiteOpenHelper {
     }
 
 
+    public boolean addStatisticsBurnerValue(String cooking_ID, String date, String time, String burner, String angle, String duration, String cookingStatus) {
 
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ST_COOKING_ID, cooking_ID);
+        contentValues.put(ST_DATE, date);
+        contentValues.put(ST_TIME, time);
+        contentValues.put(ST_BURNER, burner);
+        contentValues.put(ST_ANGLE, angle);
+        contentValues.put(ST_DURATION, duration);
+        contentValues.put(ST_COOKING_STATUS, cookingStatus);
+
+        return sqLiteDatabase.insert(ST_TABLE_NAME, null, contentValues) != -1;
+
+    }
+
+    public List<StatisticsDTO> getBurnerStatisticsReport(String burnerNumber, String deviceID) {
+
+        //Has unique cooking ID
+        List<StatisticsDTO> statisticsDTOSList = new ArrayList<>();
+
+        burnerNumber = "1";
+
+        SQLiteDatabase selectAllData = getReadableDatabase();
+
+        Cursor cursor = selectAllData.rawQuery("select DISTINCT cooking_id from statisticsreport where deviceid=?", new String[]{deviceID});
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                StatisticsDTO statisticsDTO = new StatisticsDTO(cursor.getString(0));
+                statisticsDTOSList.add(statisticsDTO);
+
+            }
+            while (cursor.moveToNext());
+
+        }
+
+        List<StatisticsDTO> reportList = new ArrayList<>();
+
+        for (int i = 0; i < statisticsDTOSList.size(); i++) {
+
+            String cookingID = statisticsDTOSList.get(i).getCookingID();
+
+            String startTime = getStartTimeOfCookingID(cookingID, burnerNumber, deviceID);
+
+            String[] end_duration = getEndTimeOfCookingID(cookingID, burnerNumber, deviceID);
+
+            StatisticsDTO statisticsDTO = new StatisticsDTO(end_duration[2], startTime, end_duration[0], end_duration[1]);
+
+            reportList.add(statisticsDTO);
+
+
+        }
+
+        return reportList;
+
+
+    }
+
+
+    private String getStartTimeOfCookingID(String cookingID, String burnerNumber, String deviceID) {
+
+        String startTime = "";
+
+        SQLiteDatabase selectAllData = getReadableDatabase();
+
+        Cursor StartTime = selectAllData.rawQuery("select cooking_time from statisticsreport where cooking_status=? and cooking_id=? and cooking_burner=? and deviceid=?", new String[]{"0", cookingID, burnerNumber, deviceID});
+
+
+        if (StartTime.moveToFirst()) {
+
+            do {
+
+                startTime = StartTime.getString(0);
+
+            }
+            while (StartTime.moveToNext());
+
+        }
+
+
+        return startTime;
+
+
+    }
+
+    private String[] getEndTimeOfCookingID(String cookingID, String burnerNumber, String deviceID) {
+
+        String endTime = "";
+        String duration = "";
+        String cookingDate = "";
+
+        String[] end_duration = new String[3];
+
+        SQLiteDatabase selectAllData = getReadableDatabase();
+
+        Cursor endTimeCurser = selectAllData.rawQuery("select cooking_time,cooking_duration,cooking_date from statisticsreport where cooking_status=? and cooking_id=? and cooking_burner=? and deviceid=?", new String[]{"2", cookingID, burnerNumber, deviceID});
+
+        if (endTimeCurser.moveToFirst()) {
+
+            do {
+
+                endTime = endTimeCurser.getString(0);
+                duration = endTimeCurser.getString(1);
+                cookingDate = endTimeCurser.getString(2);
+
+                end_duration[0] = endTime;
+                end_duration[1] = duration;
+                end_duration[2] = cookingDate;
+
+            }
+            while (endTimeCurser.moveToNext());
+
+        }
+
+        return end_duration;
+
+    }
 
 
 }

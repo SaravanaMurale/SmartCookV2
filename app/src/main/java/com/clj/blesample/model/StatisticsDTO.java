@@ -2,6 +2,7 @@ package com.clj.blesample.model;
 
 public class StatisticsDTO {
 
+    String cookingDate;
     String cookingID;
     int burnerNo;
     int burnerPosition;
@@ -11,7 +12,8 @@ public class StatisticsDTO {
     String cookingEndTime;
     String totalCookingDuration;
 
-    public StatisticsDTO(String cookingID, int burnerNo, int burnerPosition, String cookingStartStatus, String cookingEndStatus, String cookingStartTime, String cookingEndTime, String totalCookingDuration) {
+    public StatisticsDTO( String cookingDate,String cookingID, int burnerNo, int burnerPosition, String cookingStartStatus, String cookingEndStatus, String cookingStartTime, String cookingEndTime, String totalCookingDuration) {
+        this.cookingDate=cookingDate;
         this.cookingID = cookingID;
         this.burnerNo = burnerNo;
         this.burnerPosition = burnerPosition;
@@ -20,6 +22,21 @@ public class StatisticsDTO {
         this.cookingStartTime = cookingStartTime;
         this.cookingEndTime = cookingEndTime;
         this.totalCookingDuration = totalCookingDuration;
+    }
+
+    public StatisticsDTO(String cookingID) {
+        this.cookingID = cookingID;
+    }
+
+    public StatisticsDTO(String cookingDate, String cookingStartTime, String cookingEndTime, String totalCookingDuration) {
+        this.cookingDate = cookingDate;
+        this.cookingStartTime = cookingStartTime;
+        this.cookingEndTime = cookingEndTime;
+        this.totalCookingDuration = totalCookingDuration;
+    }
+
+    public String getCookingDate() {
+        return cookingDate;
     }
 
     public String getCookingID() {

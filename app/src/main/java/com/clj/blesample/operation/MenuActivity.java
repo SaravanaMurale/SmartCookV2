@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.clj.blesample.R;
 import com.clj.blesample.menuoperationactivity.HistoryOfGasRefillActivity;
 import com.clj.blesample.menuoperationactivity.MaintenanceServiceActivity;
+import com.clj.blesample.menuoperationactivity.StatisticsReportActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -119,6 +120,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent=new Intent(MenuActivity.this, StatisticsReportActivity.class);
+                startActivity(intent);
 
 
             }
