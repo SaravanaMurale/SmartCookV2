@@ -207,9 +207,8 @@ public class CharacteristicListFragment extends Fragment {
                 String FOURTH_BURNER = "00";
 
 
-
                 knobAngleTop.setTypeface(octinPrisonFont);
-                int pro=progress;
+                int pro = progress;
                 knobAngleTop.setText(String.valueOf(pro));
 
                 String data = FormatConversion.integerToString(progress);
@@ -438,7 +437,7 @@ public class CharacteristicListFragment extends Fragment {
 
     private void gettingStoveData() {
 
-        final char char0,char1,char2,char3,char4,char5,char6,char7;
+        final char char0, char1, char2, char3, char4, char5, char6, char7;
 
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         final BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
@@ -481,8 +480,6 @@ public class CharacteristicListFragment extends Fragment {
                             public void run() {
 
                                 splitEachBurnerDataFromReceivedByte(data);
-
-
 
 
                                 //int burnervalue=data&0x03;
@@ -571,32 +568,31 @@ public class CharacteristicListFragment extends Fragment {
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
 
-        byte[] topBurReceivedVal=new byte[1];
-        byte[] leftBurReceivedVal=new byte[1];
-        byte[] rightBurReceivedVal=new byte[1];
+        byte[] topBurReceivedVal = new byte[1];
+        byte[] leftBurReceivedVal = new byte[1];
+        byte[] rightBurReceivedVal = new byte[1];
 
-        for (int i = 0; i <data.length ; i++) {
+        for (int i = 0; i < data.length; i++) {
 
 
-            int k=data[i];
+            int k = data[i];
 
-            if(i==0) {
+            if (i == 0) {
                 topBurReceivedVal[i] = data[i];
             }
-            if(i==1) {
-                leftBurReceivedVal[i-1] = data[i];
+            if (i == 1) {
+                leftBurReceivedVal[i - 1] = data[i];
             }
-            if(i==2) {
-                rightBurReceivedVal[i-2] = data[i];
+            if (i == 2) {
+                rightBurReceivedVal[i - 2] = data[i];
             }
-
 
 
         }
-        
-        String topBurnerHexValue=HexUtil.formatHexString(topBurReceivedVal);
-        String leftBurnerHexValue=HexUtil.formatHexString(leftBurReceivedVal);
-        String rightBurnerHexValue=HexUtil.formatHexString(rightBurReceivedVal);
+
+        String topBurnerHexValue = HexUtil.formatHexString(topBurReceivedVal);
+        String leftBurnerHexValue = HexUtil.formatHexString(leftBurReceivedVal);
+        String rightBurnerHexValue = HexUtil.formatHexString(rightBurReceivedVal);
 
         int topBurnerdecimalValue = FormatConversion.hexaDecimalToDecimal(topBurnerHexValue);
         String topBurnerBinaryValue = FormatConversion.decimalToBinary(topBurnerdecimalValue);
@@ -606,20 +602,22 @@ public class CharacteristicListFragment extends Fragment {
 
         int rightBurnerdecimalValue = FormatConversion.hexaDecimalToDecimal(rightBurnerHexValue);
         String rightBurnerBinaryValue = FormatConversion.decimalToBinary(rightBurnerdecimalValue);
-        
-        
-        doRatateTopBurner(topBurnerBinaryValue);
-        doRatateLeftBurner(leftBurnerBinaryValue);
-        doRatateRightBurner(rightBurnerBinaryValue);
+
+
+        doSplitTopBurner(topBurnerBinaryValue);
+        doSplitLeftBurner(leftBurnerBinaryValue);
+        doSplitRightBurner(rightBurnerBinaryValue);
 
     }
 
 
+    private void doSplitTopBurner(String topBurnerBinaryValue) {
 
-    private void doRatateTopBurner(String topBurnerBinaryValue) {
-
-        char topChar0='\u0000',topChar1='\u0000',topChar2='\u0000',topChar3='\u0000',topChar4='\u0000',topChar5='\u0000',topChar6='\u0000',topChar7='\u0000';
-        String topString0,topString1,topString2,topString3,topString4,topString5,topString6,topString7;
+        char topChar0 = '\u0000', topChar1 = '\u0000', topChar2 = '\u0000', topChar3 = '\u0000', topChar4 = '\u0000', topChar5 = '\u0000', topChar6 = '\u0000', topChar7 = '\u0000';
+        String topString0, topString1, topString2, topString3, topString4, topString5, topString6, topString7;
+        String topKnobAngleValue;
+        String topBurnerAngleInString;
+        String topBurnerVessel;
 
         if (topBurnerBinaryValue.length() == 8) {
 
@@ -639,23 +637,121 @@ public class CharacteristicListFragment extends Fragment {
         }
 
 
-        topString7=Character.toString(topChar7);
-        topString6=Character.toString(topChar6);
-        topString5=Character.toString(topChar5);
-        topString4=Character.toString(topChar4);
-        topString3=Character.toString(topChar3);
-        topString2=Character.toString(topChar2);
-        topString1=Character.toString(topChar1);
-        topString0=Character.toString(topChar0);
+        topString7 = Character.toString(topChar7);
+        topString6 = Character.toString(topChar6);
+        topString5 = Character.toString(topChar5);
+        topString4 = Character.toString(topChar4);
+        topString3 = Character.toString(topChar3);
+        topString2 = Character.toString(topChar2);
+        topString1 = Character.toString(topChar1);
+        topString0 = Character.toString(topChar0);
+
+
+        topKnobAngleValue = topString1 + topString2 + topString3 + topString4 + topString5;
+
+        int topBurnerAngleInDecimal = Integer.parseInt(topKnobAngleValue, 2);
+        topBurnerAngleInString = String.valueOf(topBurnerAngleInDecimal);
+        topBurnerVessel = topString0;
+
+
+        //doRotateTopBurner(topBurnerAngleInString, topBurnerVessel);
 
 
     }
 
-    private void doRatateRightBurner(String rightBurnerBinaryValue) {
+
+    private void doSplitRightBurner(String rightBurnerBinaryValue) {
+
+        char rightChar0 = '\u0000', rightChar1 = '\u0000', rightChar2 = '\u0000', rightChar3 = '\u0000', rightChar4 = '\u0000', rightChar5 = '\u0000', rightChar6 = '\u0000', rightChar7 = '\u0000';
+        String rightString0, rightString1, rightString2, rightString3, rightString4, rightString5, rightString6, rightString7;
+        String rightKnobAngleValue;
+        String rightBurnerAngleInString;
+        String rightBurnerVessel;
+
+        if (rightBurnerBinaryValue.length() == 8) {
+
+            rightChar7 = rightBurnerBinaryValue.charAt(7);
+            rightChar6 = rightBurnerBinaryValue.charAt(6);
+            rightChar5 = rightBurnerBinaryValue.charAt(5);
+            rightChar4 = rightBurnerBinaryValue.charAt(4);
+            rightChar3 = rightBurnerBinaryValue.charAt(3);
+            rightChar2 = rightBurnerBinaryValue.charAt(2);
+            rightChar1 = rightBurnerBinaryValue.charAt(1);
+            rightChar0 = rightBurnerBinaryValue.charAt(0);
+
+        } else {
+
+            System.out.println("Received Data From Stove Is Less Then 8 Character");
+
+        }
+
+        rightString7 = Character.toString(rightChar7);
+        rightString6 = Character.toString(rightChar6);
+        rightString5 = Character.toString(rightChar5);
+        rightString4 = Character.toString(rightChar4);
+        rightString3 = Character.toString(rightChar3);
+        rightString2 = Character.toString(rightChar2);
+        rightString1 = Character.toString(rightChar1);
+        rightString0 = Character.toString(rightChar0);
+
+        rightKnobAngleValue = rightString1 + rightString2 + rightString3 + rightString4 + rightString5;
+
+        int rightBurnerAngleInDecimal = Integer.parseInt(rightKnobAngleValue, 2);
+        rightBurnerAngleInString = String.valueOf(rightBurnerAngleInDecimal);
+        rightBurnerVessel = rightString0;
+
+        //doRotateRightBurner(rightBurnerAngleInString, rightBurnerVessel);
+
+
     }
 
-    private void doRatateLeftBurner(String leftBurnerBinaryValue) {
+    private void doSplitLeftBurner(String leftBurnerBinaryValue) {
+
+        char leftChar0 = '\u0000', leftChar1 = '\u0000', leftChar2 = '\u0000', leftChar3 = '\u0000', leftChar4 = '\u0000', leftChar5 = '\u0000', leftChar6 = '\u0000', leftChar7 = '\u0000';
+        String leftString0, leftString1, leftString2, leftString3, leftString4, leftString5, leftString6, leftString7;
+        String leftKnobAngleValue;
+        String leftBurnerAngleInString;
+        String leftBurnerVessel;
+
+        if (leftBurnerBinaryValue.length() == 8) {
+
+            leftChar7 = leftBurnerBinaryValue.charAt(7);
+            leftChar6 = leftBurnerBinaryValue.charAt(6);
+            leftChar5 = leftBurnerBinaryValue.charAt(5);
+            leftChar4 = leftBurnerBinaryValue.charAt(4);
+            leftChar3 = leftBurnerBinaryValue.charAt(3);
+            leftChar2 = leftBurnerBinaryValue.charAt(2);
+            leftChar1 = leftBurnerBinaryValue.charAt(1);
+            leftChar0 = leftBurnerBinaryValue.charAt(0);
+
+        } else {
+
+            System.out.println("Received Data From Stove Is Less Then 8 Character");
+
+        }
+
+        leftString7 = Character.toString(leftChar7);
+        leftString6 = Character.toString(leftChar6);
+        leftString5 = Character.toString(leftChar5);
+        leftString4 = Character.toString(leftChar4);
+        leftString3 = Character.toString(leftChar3);
+        leftString2 = Character.toString(leftChar2);
+        leftString1 = Character.toString(leftChar1);
+        leftString0 = Character.toString(leftChar0);
+
+        leftKnobAngleValue = leftString1 + leftString2 + leftString3 + leftString4 + leftString5;
+
+        int leftBurnerAngleInDecimal = Integer.parseInt(leftKnobAngleValue, 2);
+        leftBurnerAngleInString = String.valueOf(leftBurnerAngleInDecimal);
+        leftBurnerVessel = leftString0;
+
+
+        //doRotateLeftBurner(leftBurnerAngleInString, leftBurnerVessel);
+
+
     }
+
+
 
    /* private void dofindBurner_Angle_Vessel_Details(String binary) {
 
@@ -686,7 +782,7 @@ public class CharacteristicListFragment extends Fragment {
 
     private void doFindBurnerDetails() {
 
-        String burnerPosition=pos_6+pos_7;
+        String burnerPosition = pos_6 + pos_7;
 
         //String burnerPosition = String.valueOf(pos6) + String.valueOf(pos7);
 
@@ -732,7 +828,7 @@ public class CharacteristicListFragment extends Fragment {
         /*String knobAngel = String.valueOf(pos1) + String.valueOf(pos2) + String.valueOf(pos3) + String.valueOf(pos4)
                 + String.valueOf(pos5);*/
 
-        String knobAngel=pos_1+pos_2+pos_3+pos_4+pos_5;
+        String knobAngel = pos_1 + pos_2 + pos_3 + pos_4 + pos_5;
 
         System.out.println("Received Knob angle in binary value " + knobAngel);
         int decimal = Integer.parseInt(knobAngel, 2);
@@ -747,10 +843,10 @@ public class CharacteristicListFragment extends Fragment {
 
             //PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,0);
 
-            burnerTop.setProgress(decimal*10);
+            burnerTop.setProgress(decimal * 10);
 
 
-            knobAngleTop.setText("" + decimal*10);
+            knobAngleTop.setText("" + decimal * 10);
 
             PreferencesUtil.setValueString(this.getActivity(), PreferencesUtil.BURNER_NAME, burner_Number);
             PreferencesUtil.setValueString(this.getActivity(), PreferencesUtil.KNOB_ANGLE, knob_val_string);
@@ -765,30 +861,27 @@ public class CharacteristicListFragment extends Fragment {
         }
 
 
-
-
     }
 
 
     private void wrietUserData(String hex, String bur_ner) {
         //String hexi="f8";
 
-        int angel_=Integer.parseInt(hex)/10;
-        int burner_=Integer.parseInt(bur_ner);
-        int vessel=1;
-        int sendbyte=0;
-        sendbyte=((angel_<<2)|(burner_)|(vessel<<7));
+        int angel_ = Integer.parseInt(hex) / 10;
+        int burner_ = Integer.parseInt(bur_ner);
+        int vessel = 1;
+        int sendbyte = 0;
+        sendbyte = ((angel_ << 2) | (burner_) | (vessel << 7));
 
         //byte c=(byte)sendbyte;
 
         byte[] ret = new byte[1];
         ret[0] = (byte) (sendbyte);
 
-       // byte[] b=;
+        // byte[] b=;
 
 
-
-       // String wireteBinaryData=vessel+Integer.toBinaryString(angel_)+bur_ner;
+        // String wireteBinaryData=vessel+Integer.toBinaryString(angel_)+bur_ner;
 
         /*String wireteBinaryData="00011000";
         System.out.println("NewBinary"+wireteBinaryData);

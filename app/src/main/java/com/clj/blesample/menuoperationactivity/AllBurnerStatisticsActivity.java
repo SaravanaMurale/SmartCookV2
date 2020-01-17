@@ -44,17 +44,17 @@ public class AllBurnerStatisticsActivity extends AppCompatActivity {
 
 
 
-       getStatisticsReportFromSqliteDB();
+      getStatisticsReportFromSqliteDB();
 
     }
 
     private void addBurnerDetailsManually() {
 
-        String cooking_ID="cook1";
+        String cooking_ID="cook2";
         String date="17-01-2020";
-        String time="11:10";
+        String time="12:10";
         String burner="1";
-        String angle="70";
+        String angle="90";
         String duration="10";
         String cookingStatus="2";
 

@@ -232,8 +232,6 @@ public class SqliteManager extends SQLiteOpenHelper {
 
         Cursor endTimeCurser = selectAllDatas.rawQuery("select cooking_time,cooking_duration,cooking_date from statisticsreport where cooking_status=? and cooking_id=? and cooking_burner=? and deviceid=?", new String[]{"2", cookingID, burnerNumber, deviceID});
 
-        System.out.println("CurserValue"+endTimeCurser);
-
         if (endTimeCurser.moveToFirst()) {
 
             do {
