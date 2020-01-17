@@ -1,9 +1,12 @@
 package com.clj.blesample.menuoperationactivity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.clj.blesample.R;
 import com.clj.blesample.adapter.StatisticsAdapter;
@@ -14,31 +17,49 @@ import java.util.List;
 
 public class StatisticsReportActivity extends AppCompatActivity {
 
-    RecyclerView stat_report_recyclerView;
-    List<StatisticsDTO> statisticsDTOList;
-    StatisticsAdapter statisticsAdapter;
+    Button leftButton, centerButton, rightButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics_report);
 
-        stat_report_recyclerView=(RecyclerView)findViewById(R.id.stati_report_recyclerview);
-        stat_report_recyclerView.setHasFixedSize(true);
-        stat_report_recyclerView.setLayoutManager(new LinearLayoutManager(StatisticsReportActivity.this));
+        leftButton = (Button) findViewById(R.id.leftBurnerType);
+        centerButton = (Button) findViewById(R.id.centerBurnerType);
+        rightButton = (Button) findViewById(R.id.rightBurnerType);
 
-        statisticsDTOList=new ArrayList<>();
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callAllBurnerStatisticsActivity=new Intent(StatisticsReportActivity.this,AllBurnerStatisticsActivity.class);
+                callAllBurnerStatisticsActivity.putExtra("BURNERTYPE","LEFT1");
+                startActivity(callAllBurnerStatisticsActivity);
+            }
+        });
 
-        statisticsAdapter=new StatisticsAdapter(StatisticsReportActivity.this,statisticsDTOList);
-        stat_report_recyclerView.setAdapter(statisticsAdapter);
+        centerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        getStatisticsReportFromSqliteDB();
+                Intent callAllBurnerStatisticsActivity=new Intent(StatisticsReportActivity.this,AllBurnerStatisticsActivity.class);
+                callAllBurnerStatisticsActivity.putExtra("BURNERTYPE","CENTER1");
+                startActivity(callAllBurnerStatisticsActivity);
+
+            }
+        });
+
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callAllBurnerStatisticsActivity=new Intent(StatisticsReportActivity.this,AllBurnerStatisticsActivity.class);
+                callAllBurnerStatisticsActivity.putExtra("BURNERTYPE","RIGHT1");
+                startActivity(callAllBurnerStatisticsActivity);
+            }
+        });
+
 
     }
 
-    private void getStatisticsReportFromSqliteDB() {
 
-
-
-    }
 }

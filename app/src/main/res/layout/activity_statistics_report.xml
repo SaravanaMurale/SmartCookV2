@@ -7,64 +7,47 @@
     android:orientation="vertical"
     tools:context=".menuoperationactivity.StatisticsReportActivity">
 
+
     <LinearLayout
-        android:id="@+id/statistis_heading"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal"
-        android:weightSum="5">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/st_head_date"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/leftBurnerType"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Date" />
+            android:background="@drawable/layout_burner_type"
+            android:text="Left Burner"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/st_head_starttime"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/centerBurnerType"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Start Time" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/layout_burner_type"
+            android:text="Center Burner"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/st_head_endtime"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/rightBurnerType"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="End Time" />
-
-
-        <TextView
-            android:id="@+id/st_head_duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Duration" />
-
-        <TextView
-            android:id="@+id/st_head_burner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Burner" />
-
+            android:layout_marginTop="10dp"
+            android:background="@drawable/layout_burner_type"
+            android:text="Right Burner"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/stati_report_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/statistis_heading"
-        android:layout_margin="5dp"
-        ></android.support.v7.widget.RecyclerView>
+
+
+
+
 
 </RelativeLayout>

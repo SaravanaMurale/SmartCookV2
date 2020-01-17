@@ -12,7 +12,10 @@ public class StatisticsDTO {
     String cookingEndTime;
     String totalCookingDuration;
 
-    public StatisticsDTO( String cookingDate,String cookingID, int burnerNo, int burnerPosition, String cookingStartStatus, String cookingEndStatus, String cookingStartTime, String cookingEndTime, String totalCookingDuration) {
+    public StatisticsDTO() {
+    }
+
+    public StatisticsDTO(String cookingDate, String cookingID, int burnerNo, int burnerPosition, String cookingStartStatus, String cookingEndStatus, String cookingStartTime, String cookingEndTime, String totalCookingDuration) {
         this.cookingDate=cookingDate;
         this.cookingID = cookingID;
         this.burnerNo = burnerNo;

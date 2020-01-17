@@ -129,7 +129,7 @@ public class SqliteManager extends SQLiteOpenHelper {
     }
 
 
-    public boolean addStatisticsBurnerValue(String cooking_ID, String date, String time, String burner, String angle, String duration, String cookingStatus) {
+    public boolean addStatisticsBurnerValue(String cooking_ID, String date, String time, String burner, String angle, String duration, String cookingStatus,String deviceID) {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -142,6 +142,7 @@ public class SqliteManager extends SQLiteOpenHelper {
         contentValues.put(ST_ANGLE, angle);
         contentValues.put(ST_DURATION, duration);
         contentValues.put(ST_COOKING_STATUS, cookingStatus);
+        contentValues.put(DEVICE_ID, deviceID);
 
         return sqLiteDatabase.insert(ST_TABLE_NAME, null, contentValues) != -1;
 
@@ -221,15 +222,17 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     private String[] getEndTimeOfCookingID(String cookingID, String burnerNumber, String deviceID) {
 
-        String endTime = "";
-        String duration = "";
-        String cookingDate = "";
+        String endTime;
+        String duration;
+        String cookingDate;
 
         String[] end_duration = new String[3];
 
-        SQLiteDatabase selectAllData = getReadableDatabase();
+        SQLiteDatabase selectAllDatas = getReadableDatabase();
 
-        Cursor endTimeCurser = selectAllData.rawQuery("select cooking_time,cooking_duration,cooking_date from statisticsreport where cooking_status=? and cooking_id=? and cooking_burner=? and deviceid=?", new String[]{"2", cookingID, burnerNumber, deviceID});
+        Cursor endTimeCurser = selectAllDatas.rawQuery("select cooking_time,cooking_duration,cooking_date from statisticsreport where cooking_status=? and cooking_id=? and cooking_burner=? and deviceid=?", new String[]{"2", cookingID, burnerNumber, deviceID});
+
+        System.out.println("CurserValue"+endTimeCurser);
 
         if (endTimeCurser.moveToFirst()) {
 

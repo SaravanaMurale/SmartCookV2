@@ -15,12 +15,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".menuoperationactivity.StatisticsReportActivity"></activity>
+        <activity android:name=".menuoperationactivity.AllBurnerStatisticsActivity"></activity>
+        <activity android:name=".menuoperationactivity.StatisticsReportActivity" />
         <activity android:name=".menuoperationactivity.MaintenanceServiceActivity" />
         <activity android:name=".menuoperationactivity.HistoryOfGasRefillActivity" /> <!-- <activity android:name=".operation.MenuActivity" /> -->
         <!-- <activity android:name=".MainActivity"></activity> -->
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".DummyActivity">
+        <activity android:name=".operation.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

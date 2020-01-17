@@ -23,6 +23,11 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.St
         this.statisticsDTOList = statisticsDTOList;
     }
 
+    public void dataSetChanged(List<StatisticsDTO> statisticsDTOList){
+        this.statisticsDTOList=statisticsDTOList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public StatisticsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -40,7 +45,7 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.St
         statisticsViewHolder.st_StartTime.setText(statisticsDTOList.get(i).getCookingStartTime());
         statisticsViewHolder.st_EndTime.setText(statisticsDTOList.get(i).getCookingEndTime());
         statisticsViewHolder.st_Duration.setText(statisticsDTOList.get(i).getTotalCookingDuration());
-        statisticsViewHolder.st_Burner.setText(statisticsDTOList.get(i).getBurnerNo());
+        statisticsViewHolder.st_Burner.setText(String.valueOf(statisticsDTOList.get(i).getBurnerNo()));
 
 
     }
