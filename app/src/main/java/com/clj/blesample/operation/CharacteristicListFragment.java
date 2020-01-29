@@ -204,7 +204,7 @@ public class CharacteristicListFragment extends Fragment {
 
                 System.out.println("Check" + progress);
 
-                String FOURTH_BURNER = "00";
+                String FOURTH_BURNER = "01";
 
 
                 knobAngleTop.setTypeface(octinPrisonFont);
@@ -482,21 +482,15 @@ public class CharacteristicListFragment extends Fragment {
                                 splitEachBurnerDataFromReceivedByte(data);
 
 
-                                //int burnervalue=data&0x03;
 
 
-                                //System.out.println("DataGettingFromStove " + HexUtil.formatHexString(data));
-
-                                String hexadecimal = HexUtil.formatHexString(data);
+                                /*String hexadecimal = HexUtil.formatHexString(data);
 
                                 int decimal = FormatConversion.hexaDecimalToDecimal(hexadecimal);
 
                                 String binary = FormatConversion.decimalToBinary(decimal);
 
                                 System.out.println("IamBinaryData" + binary);
-
-
-                                //dofindBurner_Angle_Vessel_Details(binary);
 
 
                                 System.out.println("ReceivedBinary" + binary);
@@ -520,14 +514,7 @@ public class CharacteristicListFragment extends Fragment {
                                 }
 
 
-                                /*pos7 = Character.getNumericValue(c7);
-                                pos6 = Character.getNumericValue(c6);
-                                pos5 = Character.getNumericValue(c5);
-                                pos4 = Character.getNumericValue(c4);
-                                pos3 = Character.getNumericValue(c3);
-                                pos2 = Character.getNumericValue(c2);
-                                pos1 = Character.getNumericValue(c1);
-                                pos0 = Character.getNumericValue(c0);*/
+
 
                                 pos_7 = Character.toString(c7);
                                 pos_6 = Character.toString(c6);
@@ -540,25 +527,9 @@ public class CharacteristicListFragment extends Fragment {
 
                                 doFindBurnerDetails();
 
-                                doFindVesselDetails();
-
-                                //doFindKnobAngle();
+                                doFindVesselDetails();*/
 
 
-                                //show_data.setText(HexUtil.formatHexString(characteristic.getValue()));
-
-
-                                //int in=data;
-
-
-                                //Converting hex to string
-                                /*addText(txt, HexUtil.formatHexString(characteristic.getValue(),
-                                        true));
-                                */                        /*notifyText(txt, HexUtil.formatHexString(characteristic.getValue(),
-                                                                true));
-
-*/
-                                // System.out.println("NOTIFY" + characteristic.getValue());
                             }
                         });
                     }
@@ -571,7 +542,12 @@ public class CharacteristicListFragment extends Fragment {
         byte[] topBurReceivedVal = new byte[1];
         byte[] leftBurReceivedVal = new byte[1];
         byte[] rightBurReceivedVal = new byte[1];
+        int vessel1;
+        int burner1;
+        int angle1;
 
+        /*int vessel2;
+        int vessel3;*/
         for (int i = 0; i < data.length; i++) {
 
 
@@ -579,20 +555,40 @@ public class CharacteristicListFragment extends Fragment {
 
             if (i == 0) {
                 topBurReceivedVal[i] = data[i];
+
+                System.out.println("FirstBurner "+data[i]);
             }
             if (i == 1) {
                 leftBurReceivedVal[i - 1] = data[i];
+                System.out.println("SecondBurner "+data[i]);
             }
             if (i == 2) {
                 rightBurReceivedVal[i - 2] = data[i];
+                System.out.println("ThirdBurner "+data[i]);
             }
 
 
         }
 
+        vessel1=(topBurReceivedVal[0]&0x80)>>7;
+
+        burner1=(topBurReceivedVal[0]&0x7C)>>2;
+
+        angle1=(topBurReceivedVal[0]&0x03);
+
+
+        System.out.println("Checking "+vessel1+" " +burner1+" " +angle1);
+
+
         String topBurnerHexValue = HexUtil.formatHexString(topBurReceivedVal);
         String leftBurnerHexValue = HexUtil.formatHexString(leftBurReceivedVal);
         String rightBurnerHexValue = HexUtil.formatHexString(rightBurReceivedVal);
+
+
+
+
+
+        System.out.println("TopBurnerVal "+topBurnerHexValue +"lefBurnerVal "+leftBurnerHexValue +" RightBurnerVal "+rightBurnerHexValue);
 
         int topBurnerdecimalValue = FormatConversion.hexaDecimalToDecimal(topBurnerHexValue);
         String topBurnerBinaryValue = FormatConversion.decimalToBinary(topBurnerdecimalValue);
@@ -611,6 +607,8 @@ public class CharacteristicListFragment extends Fragment {
     }
 
 
+
+
     private void doSplitTopBurner(String topBurnerBinaryValue) {
 
         char topChar0 = '\u0000', topChar1 = '\u0000', topChar2 = '\u0000', topChar3 = '\u0000', topChar4 = '\u0000', topChar5 = '\u0000', topChar6 = '\u0000', topChar7 = '\u0000';
@@ -618,6 +616,7 @@ public class CharacteristicListFragment extends Fragment {
         String topKnobAngleValue;
         String topBurnerAngleInString;
         String topBurnerVessel;
+        String burnerNumber;
 
         if (topBurnerBinaryValue.length() == 8) {
 
@@ -652,9 +651,48 @@ public class CharacteristicListFragment extends Fragment {
         int topBurnerAngleInDecimal = Integer.parseInt(topKnobAngleValue, 2);
         topBurnerAngleInString = String.valueOf(topBurnerAngleInDecimal);
         topBurnerVessel = topString0;
+        burnerNumber=topString6+topString7;
 
 
-        //doRotateTopBurner(topBurnerAngleInString, topBurnerVessel);
+
+
+        doRotateTopBurner(topBurnerAngleInString, topBurnerVessel,burnerNumber);
+
+
+    }
+
+    private void doRotateTopBurner(String topBurnerAngleInString, String topBurnerVessel,String burner_Number) {
+
+        String burnerNumber = PreferencesUtil.getValueString(this.getActivity(), PreferencesUtil.BURNER_NAME);
+        System.out.println("SharedPreBurnerNumber" + topBurnerAngleInString);
+        String knobRotationAngle = PreferencesUtil.getValueString(this.getActivity(), PreferencesUtil.KNOB_ANGLE);
+
+        int decimal = Integer.parseInt(topBurnerAngleInString, 2);
+
+        String knob_val_string = String.valueOf(decimal);
+
+        if (!burnerNumber.equals(burner_Number) || !knobRotationAngle.equals(knob_val_string)) {
+
+            //PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,0);
+
+            burnerTop.setProgress(decimal * 10);
+
+
+            knobAngleTop.setText("" + decimal * 10);
+
+            PreferencesUtil.setValueString(this.getActivity(), PreferencesUtil.BURNER_NAME, topBurnerAngleInString);
+            PreferencesUtil.setValueString(this.getActivity(), PreferencesUtil.KNOB_ANGLE, knob_val_string);
+
+
+        }else if (burnerNumber.equals(burner_Number) && knobRotationAngle.equals(knob_val_string)) {
+
+            //If value is 1 means data wont write
+            // PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
+
+
+        }
+
+
 
 
     }
@@ -869,14 +907,20 @@ public class CharacteristicListFragment extends Fragment {
 
         int angel_ = Integer.parseInt(hex) / 10;
         int burner_ = Integer.parseInt(bur_ner);
+        int left_burner_ = 5;
+        int right_burner_ = 6;
         int vessel = 1;
-        int sendbyte = 0;
-        sendbyte = ((angel_ << 2) | (burner_) | (vessel << 7));
+        int sendbyte = 0,secondbyte=0,thirdbyte=0;
+        sendbyte = ((angel_ << 2) | (0x01) | (vessel << 7));
+        secondbyte = ((1 << 2) | (0x02) | (vessel << 7));
+        thirdbyte = ((2 << 2) | (0x03) | (vessel << 7));
 
         //byte c=(byte)sendbyte;
 
-        byte[] ret = new byte[1];
+        byte[] ret = new byte[3];
         ret[0] = (byte) (sendbyte);
+        ret[1] = (byte) (secondbyte);
+        ret[2] = (byte) (thirdbyte);
 
         // byte[] b=;
 

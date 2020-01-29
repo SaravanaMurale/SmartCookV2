@@ -16,24 +16,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Date" />
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left"
+            android:text="Date"
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/st_starttime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Start Time" />
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left"
+            android:text="Start Time"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/st_endtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="End Time" />
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left"
+            android:text="End Time"
+            android:textSize="10sp" />
 
 
         <TextView
@@ -41,8 +47,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="Duration" />
+            android:text="Duration"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/st_burner"
@@ -50,11 +58,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="10sp"
+            android:fontFamily="sans-serif-condensed"
             android:text="Burner" />
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

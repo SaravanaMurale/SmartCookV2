@@ -50,7 +50,7 @@ public class AllBurnerStatisticsActivity extends AppCompatActivity {
 
     private void addBurnerDetailsManually() {
 
-        String cooking_ID="cook2";
+        String cooking_ID="cook1";
         String date="17-01-2020";
         String time="12:10";
         String burner="1";

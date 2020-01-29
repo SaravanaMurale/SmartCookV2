@@ -44,9 +44,9 @@ public class MaintenanceServiceActivity extends AppCompatActivity {
 
         mServiceRecyclerView.setAdapter(mServiceAdapter);
 
-        /*insertMaintenanceServiceData();
+       // insertMaintenanceServiceData();
 
-        try {
+       /* try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class MaintenanceServiceActivity extends AppCompatActivity {
 
         //addMaintenanceServiceData(String m_issueID,String issueFixedDate,String personName,String issue,String deviceID)
 
-        sqliteManager.addMaintenanceServiceData("ISSU1","13-01-2020","Murali","Low Flame",FontUtil.deviceID(this));
+        sqliteManager.addMaintenanceServiceData("ISSU2","15-01-2020","Saravana","High Flame",FontUtil.deviceID(this));
 
     }
 

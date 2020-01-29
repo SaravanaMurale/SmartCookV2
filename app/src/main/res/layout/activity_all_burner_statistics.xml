@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimary"
             android:text="Date" />
 
         <TextView
@@ -30,6 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimary"
             android:text="Start Time" />
 
         <TextView
@@ -37,6 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimary"
             android:gravity="center"
             android:text="End Time" />
 
@@ -46,6 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimary"
             android:gravity="center"
             android:text="Duration" />
 
@@ -55,6 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimary"
             android:text="Burner" />
 
 

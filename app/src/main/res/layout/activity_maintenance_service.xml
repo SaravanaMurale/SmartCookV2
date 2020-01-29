@@ -23,6 +23,8 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimary"
             />
 
         <TextView
@@ -33,6 +35,8 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"
             />
 
         <TextView
@@ -43,6 +47,8 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"
             />
 
     </LinearLayout>
