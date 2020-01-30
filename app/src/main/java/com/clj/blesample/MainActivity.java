@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void removeSessionValue() {
 
-        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.BURNER_NAME);
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
 
 
@@ -181,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDisConnect(final BleDevice bleDevice) {
                 if (BleManager.getInstance().isConnected(bleDevice)) {
+
                     BleManager.getInstance().disconnect(bleDevice);
                 }
             }
@@ -255,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BleManager.getInstance().scan(new BleScanCallback() {
             @Override
             public void onScanStarted(boolean success) {
+
                 mDeviceAdapter.clearScanDevice();
                 mDeviceAdapter.notifyDataSetChanged();
                 img_loading.startAnimation(operatingAnim);
