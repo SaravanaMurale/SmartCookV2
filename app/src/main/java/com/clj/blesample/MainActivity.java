@@ -91,8 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void removeSessionValue() {
-
+        String removeVal=PreferencesUtil.getValueString(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
+        System.out.println("RemoveVal "+removeVal);
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
+
+        String removedVal=PreferencesUtil.getValueString(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
+        System.out.println("Removed_Val "+removedVal);
 
 
     }

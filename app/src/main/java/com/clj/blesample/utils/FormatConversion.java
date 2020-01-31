@@ -117,57 +117,55 @@ public class FormatConversion {
 
 
     //User entered data to hexadecimal conversion
-    public static String decimalToHexaDecimalConversion(String userEnteredHexData, String bur_ner) {
+    public static int dataToRanceConversion(int userEnteredHexData) {
 
-        String finalHex = userEnteredHexData;
+        int userEnterBurPos=userEnteredHexData;
+        int finalHex=0;
 
-        int userEnterBurPos = Integer.parseInt(userEnteredHexData);
-
-        if (userEnterBurPos >= 0 && userEnterBurPos <= 10) {
-            finalHex = "303130";
+        if (userEnterBurPos > 0 && userEnterBurPos <= 10) {
+            finalHex = 1;
 
         } else if (userEnterBurPos > 10 && userEnterBurPos <= 20) {
-            finalHex = "303230";
+            finalHex = 2;
 
         } else if (userEnterBurPos > 20 && userEnterBurPos <= 30) {
-            finalHex = "3033304";
+            finalHex =3;
 
         } else if (userEnterBurPos > 30 && userEnterBurPos <= 40) {
-            finalHex = "303430";
+            finalHex = 4;
 
         } else if (userEnterBurPos > 40 && userEnterBurPos <= 50) {
-            finalHex = "303530";
+            finalHex = 5;
 
         } else if (userEnterBurPos > 50 && userEnterBurPos <= 60) {
-            finalHex = "303630";
+            finalHex = 6;
         } else if (userEnterBurPos > 60 && userEnterBurPos <= 70) {
-            finalHex = "303730";
+            finalHex = 7;
         } else if (userEnterBurPos > 70 && userEnterBurPos <= 80) {
-            finalHex = "303830";
+            finalHex = 8;
         } else if (userEnterBurPos > 80 && userEnterBurPos <= 90) {
-            finalHex = "303930";
+            finalHex = 9;
         } else if (userEnterBurPos > 90 && userEnterBurPos <= 100) {
-            finalHex = "313030";
+            finalHex = 10;
         } else if (userEnterBurPos > 100 && userEnterBurPos <= 110) {
-            finalHex = "313130";
+            finalHex = 11;
         } else if (userEnterBurPos > 110 && userEnterBurPos <= 120) {
-            finalHex = "313230";
+            finalHex = 12;
         } else if (userEnterBurPos > 120 && userEnterBurPos <= 130) {
-            finalHex = "313330";
+            finalHex = 13;
         } else if (userEnterBurPos > 130 && userEnterBurPos <= 140) {
-            finalHex = "313430";
+            finalHex = 14;
         } else if (userEnterBurPos > 140 && userEnterBurPos <= 150) {
-            finalHex = "313530";
+            finalHex = 15;
         } else if (userEnterBurPos > 150 && userEnterBurPos <= 160) {
-            finalHex = "313630";
+            finalHex = 16;
         } else if (userEnterBurPos > 160 && userEnterBurPos <= 170) {
-            finalHex = "313730";
+            finalHex = 17;
         } else if (userEnterBurPos > 170 && userEnterBurPos <= 180) {
-            finalHex = "313830";
+            finalHex = 18;
         }
 
-
-        return finalHex + bur_ner;
+        return finalHex ;
     }
 
     public static String convertBinaryToHexadecimal(String number) {
