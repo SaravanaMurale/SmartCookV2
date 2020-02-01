@@ -104,7 +104,7 @@ public class CharacteristicListFragment extends Fragment {
         super.onResume();
 
         String knobRotation_Angle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
-        System.out.println("OnResumeValue "+knobRotation_Angle);
+        System.out.println("OnResumeValue " + knobRotation_Angle);
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
@@ -210,15 +210,15 @@ public class CharacteristicListFragment extends Fragment {
                 System.out.println("ProgressValue " + progress);
 
 
-              int pro=  FormatConversion.dataToRanceConversion(progress);
-              String proString=String.valueOf(pro);
+                int pro = FormatConversion.dataToRanceConversion(progress);
+                String proString = String.valueOf(pro);
 
                 System.out.println("ReturnedProgressValue " + pro);
 
                 knobAngleTop.setTypeface(octinPrisonFont);
 
 
-                String userRotation = FormatConversion.integerToString(pro*10);
+                String userRotation = FormatConversion.integerToString(pro * 10);
 
                 System.out.println("BurnerValue " + userRotation);
 
@@ -233,7 +233,7 @@ public class CharacteristicListFragment extends Fragment {
                         knobAngleTop.setText(String.valueOf(userRotation));
 
 
-                        System.out.println("SendValue "+userRotation);
+                        System.out.println("SendValue " + userRotation);
                         callMe(1, userRotation, FOURTH_BURNER);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, proString);
                         System.out.println("BurnerSharedPreferenceValue " + knobRotation_Angle);
@@ -278,7 +278,31 @@ public class CharacteristicListFragment extends Fragment {
             public void onProgressChanged(Croller croller, int progress) {
 
                 knobAngleLeft.setTypeface(octinPrisonFont);
-                knobAngleLeft.setText(String.valueOf(progress));
+
+
+                String LEFT_BURNER = "10";
+
+                int pro = FormatConversion.dataToRanceConversion(progress);
+                String proString = String.valueOf(pro);
+
+                String userRotation = FormatConversion.integerToString(pro * 10);
+
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+
+
+                    String knobRotation_Angle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
+
+                    if (!knobRotation_Angle.equals(proString)) {
+
+                        knobAngleLeft.setText(String.valueOf(userRotation));
+                        callMe(1, userRotation, LEFT_BURNER);
+                        PreferencesUtil.setValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE, proString);
+
+                    }else {
+
+                    }
+
+                }
 
 
                 if (progress >= 0 && progress <= 75) {
@@ -311,7 +335,24 @@ public class CharacteristicListFragment extends Fragment {
             public void onProgressChanged(Croller croller, int progress) {
 
                 knobAngleRight.setTypeface(octinPrisonFont);
-                knobAngleRight.setText(String.valueOf(progress));
+
+                String RIGHT_BURNER = "11";
+
+                int pro = FormatConversion.dataToRanceConversion(progress);
+                String proString = String.valueOf(pro);
+
+                String userRotation = FormatConversion.integerToString(pro * 10);
+
+                if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+
+                    String knobRotation_Angle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
+
+                    knobAngleRight.setText(String.valueOf(userRotation));
+                    callMe(1, userRotation, RIGHT_BURNER);
+                    PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE, proString);
+
+                }
+
 
                 if (progress >= 0 && progress <= 75) {
 
@@ -475,7 +516,7 @@ public class CharacteristicListFragment extends Fragment {
                     public void onCharacteristicChanged(final byte[] data) {
 
 
-                       // System.out.println("Iamnotifydata" + data);
+                        // System.out.println("Iamnotifydata" + data);
 
                         runOnUiThread(new Runnable() {
                             @Override
@@ -504,9 +545,17 @@ public class CharacteristicListFragment extends Fragment {
 
         for (int i = 0; i < data.length; i++) {
 
-            if (i == 0) {
+            if(i==0){
+                System.out.println("*Data"+data[i]);
+            }
+            if(i==4){
+                System.out.println("#Data "+data[i]);
+            }
 
-                topBurReceivedVal[i] = data[i];
+
+            if (i == 1) {
+
+                topBurReceivedVal[0] = data[i];
 
                 vessel1 = (topBurReceivedVal[0] & 0x80) >> 7;
 
@@ -518,15 +567,13 @@ public class CharacteristicListFragment extends Fragment {
                 String topBurnerVessel = intToString(vessel1);
                 String burner_Number = intToString(burner1);
 
-                //String topBurnerHexValue = HexUtil.formatHexString(topBurReceivedVal);
-               // System.out.println("HexValue " + topBurnerHexValue);
 
                 doRotateTopBurner(topBurnerAngleInString, topBurnerVessel, burner_Number);
 
 
             }
-            if (i == 1) {
-                leftBurReceivedVal[i - 1] = data[i];
+            if (i == 2) {
+                leftBurReceivedVal[i - 2] = data[i];
 
                 leftVessel = (leftBurReceivedVal[0] & 0x80) >> 7;
 
@@ -543,9 +590,22 @@ public class CharacteristicListFragment extends Fragment {
 
                 //System.out.println("SecondBurner " + data[i]);
             }
-            if (i == 2) {
-                rightBurReceivedVal[i - 2] = data[i];
-                //System.out.println("ThirdBurner " + data[i]);
+            if (i == 3) {
+                rightBurReceivedVal[i - 3] = data[i];
+
+                rightVessel = (rightBurReceivedVal[0] & 0x80) >> 7;
+
+                rightBurner = (rightBurReceivedVal[0] & 0x7C) >> 2;
+
+                rightAngle = (rightBurReceivedVal[0] & 0x03);
+
+                String rightBurnerAngleInString=intToString(rightAngle);
+                String rightBurnerVessel=intToString(rightVessel);
+                String rightBurner_number=intToString(rightBurner);
+
+                doRotateRightBurner(rightBurnerAngleInString,rightBurnerVessel,rightBurner_number);
+
+
             }
 
 
@@ -555,10 +615,23 @@ public class CharacteristicListFragment extends Fragment {
     }
 
 
+
+
     private void doRotateTopBurner(String topBurnerAngleInString, String topBurnerVessel, String burner_Number) {
 
 
         String preferenceAngle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
+
+        System.out.println("VesselDetection " + vesselDetection(topBurnerVessel));
+
+        if (vesselDetection(topBurnerVessel)) {
+
+            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL, 1);
+            topBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
+        } else {
+            topBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL, 0);
+        }
 
         System.out.println("ReceivedValue " + topBurnerAngleInString);
         System.out.println("SharedPreBurnerNumber" + preferenceAngle);
@@ -568,14 +641,12 @@ public class CharacteristicListFragment extends Fragment {
 
             int decimal = Integer.parseInt(topBurnerAngleInString);
 
-            int burnerValue=decimal*10;
+            int burnerValue = decimal * 10;
             PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, topBurnerAngleInString);
 
             burnerTop.setProgress(burnerValue);
 
             knobAngleTop.setText("" + burnerValue);
-
-
 
 
         } else if (preferenceAngle.equals(topBurnerAngleInString)) {
@@ -589,54 +660,101 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
+
     private void doRatateLeftBurner(String leftBurnerAngleInString, String leftBurnerVessel, String leftburner_number) {
+
+        String preferenceAngle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
+
+        if (vesselDetection(leftBurnerVessel)) {
+
+            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL, 1);
+            leftBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
+        } else {
+            leftBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL, 0);
+        }
+
+        if (!preferenceAngle.equals(leftBurnerAngleInString)) {
+
+            int decimal = Integer.parseInt(leftBurnerAngleInString);
+            int burnerValue = decimal * 10;
+            PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, leftBurnerAngleInString);
+
+            burnerLeft.setProgress(burnerValue);
+
+            knobAngleLeft.setText("" + burnerValue);
+
+        } else if (preferenceAngle.equals(leftBurnerAngleInString)) {
+
+
+        }
+
+    }
+
+
+    private void doRotateRightBurner(String rightBurnerAngleInString, String rightBurnerVessel, String rightBurner_number) {
+
+        String preferenceAngle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
+
+        if (vesselDetection(rightBurnerVessel)) {
+
+            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL, 1);
+            rightBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
+        } else {
+            rightBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL, 0);
+        }
+
+
+        if (!preferenceAngle.equals(rightBurnerAngleInString)) {
+
+            int decimal = Integer.parseInt(rightBurnerAngleInString);
+            int burnerValue = decimal * 10;
+            PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, rightBurnerAngleInString);
+
+            burnerRight.setProgress(burnerValue);
+
+            knobAngleRight.setText("" + burnerValue);
+
+        }else if (preferenceAngle.equals(rightBurnerAngleInString)) {
+
+            //If value is 1 means data wont write
+            // PreferencesUtil.setValueSInt(this.getActivity(),PreferencesUtil.WRITE_VALUE,1);
+
+
+        }
+
     }
 
 
     private void wrietUserData(String hex, String bur_ner) {
-        //String hexi="f8";
 
         int angel_ = Integer.parseInt(hex) / 10;
         int burner_ = Integer.parseInt(bur_ner);
         int left_burner_ = 5;
         int right_burner_ = 6;
         int vessel = 0;
+
+        //int vessel=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.TOP_BURNER_VESSEL);
+        int vesselLeft=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.LEFT_BURNER_VESSEL);
+        int vesselRight=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.RIGHT_BURNER_VESSEL);
         int sendbyte = 0, secondbyte = 0, thirdbyte = 0;
         sendbyte = ((angel_ << 2) | (0x01) | (vessel << 7));
-        secondbyte = ((1 << 2) | (0x02) | (vessel << 7));
-        thirdbyte = ((2 << 2) | (0x03) | (vessel << 7));
+        secondbyte = ((1 << 2) | (0x02) | (vesselLeft << 7));
+        thirdbyte = ((2 << 2) | (0x03) | (vesselRight << 7));
 
         //byte c=(byte)sendbyte;
 
-        byte[] ret = new byte[1];
-        ret[0] = (byte) (sendbyte);
-        /*ret[1] = (byte) (secondbyte);
-        ret[2] = (byte) (thirdbyte);*/
-
-        // byte[] b=;
-
-
-        // String wireteBinaryData=vessel+Integer.toBinaryString(angel_)+bur_ner;
-
-        /*String wireteBinaryData="00011000";
-        System.out.println("NewBinary"+wireteBinaryData);
-
-       String writeHexFormat= FormatConversion.convertBinaryToHexadecimal(wireteBinaryData);
-
-        byte[] a=FormatConversion.hexStringToByteArray(writeHexFormat);*/
-
-        /*String finalHexa_Decimal = FormatConversion.decimalToHexaDecimalConversion(hex, bur_ner);
-
-        System.out.println("FinalVAlue" + finalHexa_Decimal);*/
+        byte[] ret = new byte[5];
+        ret[0] = (byte) ('*');
+        ret[1] = (byte) (sendbyte);
+        ret[2] = (byte) (secondbyte);
+        ret[3] = (byte) (thirdbyte);
+        ret[4] = (byte) ('#');
 
 
         BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
         BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
-        //HexUtil.hexStringToBytes(hex),
-
-        //byte[] bbb=FormatConversion.stringToByte(finalHexa_Decimal);
-
-        //System.out.println("BBB "+HexUtil.formatHexString(bbb));
 
 
         BleManager.getInstance().write(
@@ -652,16 +770,7 @@ public class CharacteristicListFragment extends Fragment {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                /*addText(txt, "write success, current: " + current
-                                        + " total: " + total
-                                        + " justWrite: " + HexUtil.formatHexString(justWrite, true));*/
 
-                                //user_entered_data.setText("User Entered Data Is" + HexUtil.formatHexString(justWrite));
-
-                                //System.out.println("WrittenDataIs" + HexUtil.formatHexString(justWrite));
-
-                                //t
-                                //System.out.println(HexUtil.encodeHex(justWrite));
                             }
                         });
                     }
@@ -680,19 +789,16 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
-    private void hexToByte(String finalHex) {
+    private boolean vesselDetection(String topBurnerVessel) {
 
-        byte[] b = new byte[1];
-        b = finalHex.getBytes();
-
-        System.out.println("ByteALength" + b.length);
-
-        for (int i = 0; i < b.length; i++) {
-            System.out.println("CheckData" + b[i]);
+        if (topBurnerVessel.equals("1")) {
+            return true;
         }
 
+        return false;
 
     }
+
 
     private void runOnUiThread(Runnable runnable) {
         if (isAdded() && getActivity() != null)
