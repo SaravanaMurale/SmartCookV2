@@ -591,9 +591,9 @@ public class CharacteristicListFragment extends Fragment {
 
                 leftVessel = (leftBurReceivedVal[0] & 0x80) >> 7;
 
-                leftBurner = (leftBurReceivedVal[0] & 0x7C) >> 2;
+                leftAngle = (leftBurReceivedVal[0] & 0x7C) >> 2;
 
-                leftAngle = (leftBurReceivedVal[0] & 0x03);
+                leftBurner= (leftBurReceivedVal[0] & 0x03);
 
                 String leftBurnerAngleInString = intToString(leftAngle);
                 String leftBurnerVessel = intToString(leftVessel);
@@ -609,9 +609,9 @@ public class CharacteristicListFragment extends Fragment {
 
                 rightVessel = (rightBurReceivedVal[0] & 0x80) >> 7;
 
-                rightBurner = (rightBurReceivedVal[0] & 0x7C) >> 2;
+                 rightAngle = (rightBurReceivedVal[0] & 0x7C) >> 2;
 
-                rightAngle = (rightBurReceivedVal[0] & 0x03);
+                rightBurner  = (rightBurReceivedVal[0] & 0x03);
 
                 String rightBurnerAngleInString = intToString(rightAngle);
                 String rightBurnerVessel = intToString(rightVessel);
@@ -689,7 +689,7 @@ public class CharacteristicListFragment extends Fragment {
 
             int decimal = Integer.parseInt(leftBurnerAngleInString);
             int burnerValue = decimal * 10;
-            PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, leftBurnerAngleInString);
+            PreferencesUtil.setValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE, leftBurnerAngleInString);
 
             burnerLeft.setProgress(burnerValue);
 
@@ -721,7 +721,7 @@ public class CharacteristicListFragment extends Fragment {
 
             int decimal = Integer.parseInt(rightBurnerAngleInString);
             int burnerValue = decimal * 10;
-            PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, rightBurnerAngleInString);
+            PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE, rightBurnerAngleInString);
 
             burnerRight.setProgress(burnerValue);
 
