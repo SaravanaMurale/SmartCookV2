@@ -20,6 +20,8 @@ public class PreferencesUtil {
     public static final String LEFT_BURNER_VESSEL="left_burner_vessel";
     public static final String RIGHT_BURNER_VESSEL="right_burner_vessel";
 
+    public static final String RECEIVED_STATUS="received_status";
+
 
     public static final String WRITE_VALUE="write_value";
 

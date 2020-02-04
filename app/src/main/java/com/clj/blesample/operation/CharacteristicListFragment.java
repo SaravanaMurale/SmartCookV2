@@ -528,6 +528,8 @@ public class CharacteristicListFragment extends Fragment {
                             @Override
                             public void run() {
 
+
+
                                 splitEachBurnerDataFromReceivedByte(data);
 
 
@@ -539,6 +541,8 @@ public class CharacteristicListFragment extends Fragment {
     }
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
+
+
 
         byte[] topBurReceivedVal = new byte[1];
         byte[] leftBurReceivedVal = new byte[1];
@@ -623,6 +627,8 @@ public class CharacteristicListFragment extends Fragment {
             }
 
         }
+
+        PreferencesUtil.setValueString(getActivity(),PreferencesUtil.RECEIVED_STATUS,"true");
 
 
     }
@@ -740,6 +746,13 @@ public class CharacteristicListFragment extends Fragment {
 
     private void wrietUserData(String hex, String bur_ner) {
 
+        String recevied_status=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.RECEIVED_STATUS);
+        System.out.println("ConnectedStatus "+recevied_status);
+       if(recevied_status.equals("true")){
+
+
+
+
         int topBurnereAngle = 0;
         int leftBurnerAngle = 0;
         int rightBurnerAngle = 0;
@@ -773,10 +786,7 @@ public class CharacteristicListFragment extends Fragment {
         int angel_top = topBurnereAngle;
         int angel_left = leftBurnerAngle;
         int angel_right = rightBurnerAngle;
-        int burner_ = Integer.parseInt(bur_ner);
-        int left_burner_ = 5;
-        int right_burner_ = 6;
-        //int vessel = 0;
+
 
         int vessel = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL);
         int vesselLeft = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL);
@@ -829,6 +839,9 @@ public class CharacteristicListFragment extends Fragment {
                 });
 
 
+        }else {
+            System.out.println("Not recevied data yet");
+        }
     }
 
 

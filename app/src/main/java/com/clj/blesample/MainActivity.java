@@ -12,11 +12,13 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.FontResourcesParserCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -91,12 +93,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void removeSessionValue() {
-        String removeVal=PreferencesUtil.getValueString(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
-        System.out.println("RemoveVal "+removeVal);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },1000);
+
+        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.RECEIVED_STATUS);
+
+        String connectedStating=PreferencesUtil.getValueString(MainActivity.this,PreferencesUtil.RECEIVED_STATUS);
+
+        System.out.println("MainActivityConnectedStatus "+connectedStating);
+
         PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
 
-        String removedVal=PreferencesUtil.getValueString(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
-        System.out.println("Removed_Val "+removedVal);
+
 
 
     }
