@@ -99,8 +99,8 @@
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/burnerTop"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         app:anticlockwise="true"
@@ -136,10 +136,10 @@
 
     <ImageView
         android:id="@+id/knobRound"
-        android:layout_width="178dp"
-        android:layout_height="178dp"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/knob" />
 
 
@@ -148,7 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="110dp"
         android:text="0"
 
         android:textColor="@color/black"
@@ -198,9 +198,9 @@
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/burnerLeft"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
-        android:layout_marginLeft="15dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="120dp"
         app:anticlockwise="true"
         app:back_circle_color="#EDEDED"
@@ -220,10 +220,10 @@
         app:start_offset="45" />
 
     <ImageView
-        android:layout_width="162dp"
-        android:layout_height="162dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="135dp"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="138dp"
         android:src="@drawable/knob"
 
 
@@ -233,8 +233,8 @@
         android:id="@+id/leftBurnerKnobAngle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="225dp"
         android:text="0"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -247,7 +247,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="70dp"
         android:src="@drawable/vessel"
-        android:visibility="invisible" />
+         />
 
     <ImageView
         android:id="@+id/leftBurner_Whistle"
@@ -258,7 +258,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/leftBurner_Vessel"
         android:src="@drawable/whistle_icon"
-        android:visibility="invisible"
+
 
         />
 
@@ -277,8 +277,8 @@
 
     <com.sdsmdg.harjot.crollerTest.Croller
         android:id="@+id/burnerRight"
-        android:layout_width="179dp"
-        android:layout_height="179dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="120dp"
         android:layout_marginRight="15dp"
@@ -298,11 +298,11 @@
         app:start_offset="45" />
 
     <ImageView
-        android:layout_width="155dp"
-        android:layout_height="155dp"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="133dp"
-        android:layout_marginRight="27dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginRight="31dp"
         android:src="@drawable/knob"
 
 
@@ -313,8 +313,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="200dp"
-        android:layout_marginRight="97dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginRight="120dp"
         android:text="0"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -342,7 +342,7 @@
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle_Count"
         android:src="@drawable/whistle_grey"
-        android:visibility="invisible" />
+         />
 
     <ImageView
         android:id="@+id/rightBurnerVess_"
@@ -353,7 +353,7 @@
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle"
         android:src="@drawable/vessel"
-        android:visibility="invisible" />
+         />
 
 
     <ImageView
