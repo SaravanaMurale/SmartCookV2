@@ -249,13 +249,13 @@ public class CharacteristicListFragment extends Fragment {
 
                 if (progress >= 0 && progress <= 75) {
 
-                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
                 } else if (progress >= 75 && progress <= 130) {
-                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
                 } else if (progress >= 131 && progress <= 180) {
-                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
 
@@ -307,13 +307,13 @@ public class CharacteristicListFragment extends Fragment {
 
                 if (progress >= 0 && progress <= 75) {
 
-                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
                 } else if (progress >= 75 && progress <= 130) {
-                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
                 } else if (progress >= 131 && progress <= 180) {
-                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
 
@@ -353,7 +353,7 @@ public class CharacteristicListFragment extends Fragment {
                         callMe(1, userRotation, RIGHT_BURNER);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE, proString);
 
-                    }else {
+                    } else {
 
                     }
 
@@ -362,13 +362,13 @@ public class CharacteristicListFragment extends Fragment {
 
                 if (progress >= 0 && progress <= 75) {
 
-                    //croller.setIndicatorColor(Color.parseColor("#76c9f5"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#76c9f5"));
                 } else if (progress >= 75 && progress <= 130) {
-                    //croller.setIndicatorColor(Color.parseColor("#f3e701"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#f3e701"));
                 } else if (progress >= 131 && progress <= 180) {
-                    //croller.setIndicatorColor(Color.parseColor("#d32f2f"));
+
                     croller.setProgressPrimaryColor(Color.parseColor("#d32f2f"));
                 }
 
@@ -529,7 +529,6 @@ public class CharacteristicListFragment extends Fragment {
                             public void run() {
 
 
-
                                 splitEachBurnerDataFromReceivedByte(data);
 
 
@@ -541,7 +540,6 @@ public class CharacteristicListFragment extends Fragment {
     }
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
-
 
 
         byte[] topBurReceivedVal = new byte[1];
@@ -597,7 +595,7 @@ public class CharacteristicListFragment extends Fragment {
 
                 leftAngle = (leftBurReceivedVal[0] & 0x7C) >> 2;
 
-                leftBurner= (leftBurReceivedVal[0] & 0x03);
+                leftBurner = (leftBurReceivedVal[0] & 0x03);
 
                 String leftBurnerAngleInString = intToString(leftAngle);
                 String leftBurnerVessel = intToString(leftVessel);
@@ -613,9 +611,9 @@ public class CharacteristicListFragment extends Fragment {
 
                 rightVessel = (rightBurReceivedVal[0] & 0x80) >> 7;
 
-                 rightAngle = (rightBurReceivedVal[0] & 0x7C) >> 2;
+                rightAngle = (rightBurReceivedVal[0] & 0x7C) >> 2;
 
-                rightBurner  = (rightBurReceivedVal[0] & 0x03);
+                rightBurner = (rightBurReceivedVal[0] & 0x03);
 
                 String rightBurnerAngleInString = intToString(rightAngle);
                 String rightBurnerVessel = intToString(rightVessel);
@@ -628,7 +626,7 @@ public class CharacteristicListFragment extends Fragment {
 
         }
 
-        PreferencesUtil.setValueString(getActivity(),PreferencesUtil.RECEIVED_STATUS,"true");
+        PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS, "true");
 
 
     }
@@ -645,8 +643,11 @@ public class CharacteristicListFragment extends Fragment {
 
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL, 1);
             topBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
+            topBurnerVesselImage.setVisibility(View.VISIBLE);
+
         } else {
-            topBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+            topBurnerVesselImage.setVisibility(View.INVISIBLE);
+           // topBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL, 0);
         }
 
@@ -686,8 +687,10 @@ public class CharacteristicListFragment extends Fragment {
 
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL, 1);
             leftBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
+            leftBurnerVesselImage.setVisibility(View.VISIBLE);
         } else {
-            leftBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+            leftBurnerVesselImage.setVisibility(View.INVISIBLE);
+            //leftBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL, 0);
         }
 
@@ -717,8 +720,10 @@ public class CharacteristicListFragment extends Fragment {
 
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL, 1);
             rightBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
+            rightBurnerVesselImage.setVisibility(View.VISIBLE);
         } else {
-            rightBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+            rightBurnerVesselImage.setVisibility(View.INVISIBLE);
+            //rightBurnerVesselImage.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL, 0);
         }
 
@@ -746,100 +751,98 @@ public class CharacteristicListFragment extends Fragment {
 
     private void wrietUserData(String hex, String bur_ner) {
 
-        String recevied_status=PreferencesUtil.getValueString(getActivity(),PreferencesUtil.RECEIVED_STATUS);
-        System.out.println("ConnectedStatus "+recevied_status);
-       if(recevied_status.equals("true")){
+        String recevied_status = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS);
+        System.out.println("ConnectedStatus " + recevied_status);
+        if (recevied_status.equals("true")) {
 
 
+            int topBurnereAngle = 0;
+            int leftBurnerAngle = 0;
+            int rightBurnerAngle = 0;
+
+            if (bur_ner.equals("01")) {
+
+                topBurnereAngle = Integer.parseInt(hex) / 10;
+                String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
+                leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
+                String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
+                rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
 
 
-        int topBurnereAngle = 0;
-        int leftBurnerAngle = 0;
-        int rightBurnerAngle = 0;
-
-        if (bur_ner.equals("01")) {
-
-            topBurnereAngle = Integer.parseInt(hex) / 10;
-            String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
-            leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
-            String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
-            rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
+            } else if (bur_ner.equals("10")) {
+                leftBurnerAngle = Integer.parseInt(hex) / 10;
+                String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
+                topBurnereAngle = Integer.parseInt(topBurnereAngleString);
+                String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
+                rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
 
 
-        } else if (bur_ner.equals("10")) {
-            leftBurnerAngle = Integer.parseInt(hex) / 10;
-            String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
-            topBurnereAngle = Integer.parseInt(topBurnereAngleString);
-            String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
-            rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
+            } else if (bur_ner.equals("11")) {
+                rightBurnerAngle = Integer.parseInt(hex) / 10;
+                String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
+                topBurnereAngle = Integer.parseInt(topBurnereAngleString);
+                String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
+                leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
+            }
 
 
-        } else if (bur_ner.equals("11")) {
-            rightBurnerAngle = Integer.parseInt(hex) / 10;
-            String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
-            topBurnereAngle = Integer.parseInt(topBurnereAngleString);
-            String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
-            leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
-        }
+            int angel_top = topBurnereAngle;
+            int angel_left = leftBurnerAngle;
+            int angel_right = rightBurnerAngle;
 
 
-        int angel_top = topBurnereAngle;
-        int angel_left = leftBurnerAngle;
-        int angel_right = rightBurnerAngle;
+            int vessel = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL);
+            int vesselLeft = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL);
+            int vesselRight = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL);
+            int sendbyte = 0, secondbyte = 0, thirdbyte = 0;
+            sendbyte = ((angel_top << 2) | (0x01) | (vessel << 7));
+            secondbyte = ((angel_left << 2) | (0x02) | (vesselLeft << 7));
+            thirdbyte = ((angel_right << 2) | (0x03) | (vesselRight << 7));
 
 
-        int vessel = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL);
-        int vesselLeft = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL);
-        int vesselRight = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL);
-        int sendbyte = 0, secondbyte = 0, thirdbyte = 0;
-        sendbyte = ((angel_top << 2) | (0x01) | (vessel << 7));
-        secondbyte = ((angel_left << 2) | (0x02) | (vesselLeft << 7));
-        thirdbyte = ((angel_right << 2) | (0x03) | (vesselRight << 7));
+            byte[] ret = new byte[5];
+            ret[0] = (byte) ('*');
+            ret[1] = (byte) (sendbyte);
+            ret[2] = (byte) (secondbyte);
+            ret[3] = (byte) (thirdbyte);
+            ret[4] = (byte) ('#');
 
 
-        byte[] ret = new byte[5];
-        ret[0] = (byte) ('*');
-        ret[1] = (byte) (sendbyte);
-        ret[2] = (byte) (secondbyte);
-        ret[3] = (byte) (thirdbyte);
-        ret[4] = (byte) ('#');
+            BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+            BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
 
 
-        BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
-        BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+            BleManager.getInstance().write(
+                    bleDevice,
+                    characteristic.getService().getUuid().toString(),
+                    characteristic.getUuid().toString(),
+                    ret,
+                    new BleWriteCallback() {
+
+                        //Converting byte to String and displaying to user
+                        @Override
+                        public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onWriteFailure(final BleException exception) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    System.out.println("Exception" + exception.toString());
+                                }
+                            });
+                        }
+                    });
 
 
-        BleManager.getInstance().write(
-                bleDevice,
-                characteristic.getService().getUuid().toString(),
-                characteristic.getUuid().toString(),
-                ret,
-                new BleWriteCallback() {
-
-                    //Converting byte to String and displaying to user
-                    @Override
-                    public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onWriteFailure(final BleException exception) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                System.out.println("Exception" + exception.toString());
-                            }
-                        });
-                    }
-                });
-
-
-        }else {
+        } else {
             System.out.println("Not recevied data yet");
         }
     }

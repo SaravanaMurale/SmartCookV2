@@ -165,7 +165,9 @@
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/dummyTextView_"
         android:enabled="false"
-        android:src="@drawable/cooker_whistle1" />
+        android:src="@drawable/whistle_orange"
+        android:visibility="invisible"
+        />
 
     <TextView
         android:id="@+id/topBurner_Whistle_Count"
@@ -191,7 +193,8 @@
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@id/dummyTextView_"
         android:saveEnabled="false"
-        android:src="@drawable/vessel_grey"
+        android:src="@drawable/vessel_orange"
+        android:visibility="invisible"
 
         />
 
@@ -246,7 +249,8 @@
         android:layout_height="23dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="70dp"
-        android:src="@drawable/vessel"
+        android:src="@drawable/vessel_orange"
+        android:visibility="gone"
          />
 
     <ImageView
@@ -257,8 +261,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/leftBurner_Vessel"
-        android:src="@drawable/whistle_icon"
-
+        android:src="@drawable/whistle_orange"
+        android:visibility="invisible"
 
         />
 
@@ -302,7 +306,7 @@
         android:layout_height="205dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="138dp"
-        android:layout_marginRight="31dp"
+        android:layout_marginRight="32dp"
         android:src="@drawable/knob"
 
 
@@ -341,7 +345,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle_Count"
-        android:src="@drawable/whistle_grey"
+        android:src="@drawable/whistle_orange"
+        android:visibility="gone"
          />
 
     <ImageView
@@ -352,7 +357,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle"
-        android:src="@drawable/vessel"
+        android:src="@drawable/vessel_orange"
+        android:visibility="gone"
          />
 
 

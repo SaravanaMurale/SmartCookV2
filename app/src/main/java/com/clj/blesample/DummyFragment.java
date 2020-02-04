@@ -90,7 +90,7 @@ public class DummyFragment extends Fragment {
 
                 if(i==1){
 
-                    topBurnerVessel.setImageDrawable(getResources().getDrawable(R.drawable.vessel));
+                    topBurnerVessel.setImageDrawable(getResources().getDrawable(R.drawable.vessel_orange));
 
                 }
 
