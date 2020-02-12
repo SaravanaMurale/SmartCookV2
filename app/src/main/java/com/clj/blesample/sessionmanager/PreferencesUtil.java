@@ -22,7 +22,6 @@ public class PreferencesUtil {
 
     public static final String RECEIVED_STATUS="received_status";
 
-
     public static final String WRITE_VALUE="write_value";
 
     public static void setValueString(Context context, String key, String value) {

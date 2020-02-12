@@ -5,8 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.sdsmdg.harjot.crollerTest.Croller;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -18,6 +22,8 @@ public class DummyActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
 
     float value;
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,22 @@ public class DummyActivity extends AppCompatActivity {
         SimpleDateFormat sDate=new SimpleDateFormat("dd-MM-yyyy");
         String formattedDAte = sDate.format(date);
         System.out.println("DateAlone "+formattedDAte);
+
+        Croller croller = (Croller) findViewById(R.id.crollerDummy);
+
+        textView=(TextView) findViewById(R.id.texttt);
+
+        /*croller.setBackCircleRadius(1);
+        croller.setBackCircleColor();*/
+
+        croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
+            @Override
+            public void onProgressChanged(int progress) {
+
+                textView.setText(""+progress);
+
+            }
+        });
 
 
 

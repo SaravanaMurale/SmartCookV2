@@ -140,7 +140,9 @@
         android:layout_height="205dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:src="@drawable/knob" />
+        android:src="@drawable/knob"
+
+        />
 
 
     <TextView
@@ -166,8 +168,7 @@
         android:layout_toRightOf="@+id/dummyTextView_"
         android:enabled="false"
         android:src="@drawable/whistle_orange"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/topBurner_Whistle_Count"
@@ -248,10 +249,9 @@
         android:layout_width="25dp"
         android:layout_height="23dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="100dp"
         android:src="@drawable/vessel_orange"
-        android:visibility="gone"
-         />
+        />
 
     <ImageView
         android:id="@+id/leftBurner_Whistle"
@@ -262,7 +262,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/leftBurner_Vessel"
         android:src="@drawable/whistle_orange"
-        android:visibility="invisible"
+android:visibility="invisible"
 
         />
 
@@ -346,8 +346,8 @@
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle_Count"
         android:src="@drawable/whistle_orange"
-        android:visibility="gone"
-         />
+        android:visibility="invisible"
+        />
 
     <ImageView
         android:id="@+id/rightBurnerVess_"
@@ -358,7 +358,6 @@
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightBurner_Whistle"
         android:src="@drawable/vessel_orange"
-        android:visibility="gone"
          />
 
 

@@ -4,15 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DummyActivity">
 
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
     </FrameLayout>
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/crollerDummy"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        app:back_circle_color="#ff0000"
+
+        app:indicator_color="#0B3C49"
+        app:indicator_width="10"
+        app:is_continuous="true"
+        app:label_color="#000000"
+        app:main_circle_color="#60b246"
+        app:main_circle_radius="1"
+        app:max="1000"
+        app:progress_primary_color="#0B3C49"
+        app:progress_secondary_color="#EEEEEE"
+        app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/texttt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="0"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

@@ -74,9 +74,12 @@ public class DummyFragment extends Fragment {
         //crollerTop.setProgressSecondaryColor(Color.parseColor("#EEEEEE"));
 
 
+
+
         crollerTop.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
+
 
 
 
