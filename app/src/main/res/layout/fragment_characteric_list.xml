@@ -106,7 +106,6 @@
         app:anticlockwise="true"
         app:back_circle_color="#EDEDED"
 
-
         app:indicator_color="#000000"
         app:indicator_width="15"
 

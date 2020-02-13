@@ -359,6 +359,8 @@ public class CharacteristicListFragment extends Fragment {
 
                     } else {
 
+
+
                     }
 
                 }
