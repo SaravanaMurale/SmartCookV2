@@ -98,7 +98,7 @@
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
-        android:id="@+id/burnerTop"
+        android:id="@+id/burnerRight"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_centerHorizontal="true"
@@ -131,7 +131,7 @@
         android:id="@+id/dummyTextView_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/burnerTop"
+        android:layout_below="@+id/burnerRight"
         android:layout_centerHorizontal="true" />
 
     <ImageView
@@ -146,7 +146,7 @@
 
 
     <TextView
-        android:id="@+id/topBurnerKnobAngle"
+        android:id="@+id/rightBurnerKnobAngle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -158,10 +158,10 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/topBurner_whistle_img"
+        android:id="@+id/rightBurner_Whistle"
         android:layout_width="25dp"
         android:layout_height="23dp"
-        android:layout_below="@id/burnerTop"
+        android:layout_below="@id/burnerRight"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="15dp"
@@ -171,24 +171,24 @@
         android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/topBurner_Whistle_Count"
+        android:id="@+id/rightBurner_Whistle_Count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/burnerTop"
-        android:layout_alignBaseline="@+id/topBurner_whistle_img"
+        android:layout_below="@+id/burnerRight"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@id/topBurner_whistle_img"
+        android:layout_toRightOf="@id/rightBurner_Whistle"
         android:enabled="false"
         android:text="0"
         android:visibility="gone" />
 
     <ImageView
-        android:id="@+id/top_Burner_Vessel"
+        android:id="@+id/rightBurnerVess_"
         android:layout_width="25dp"
         android:layout_height="23dp"
-        android:layout_below="@+id/burnerTop"
+        android:layout_below="@+id/burnerRight"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginRight="5dp"
@@ -251,7 +251,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="100dp"
         android:src="@drawable/vessel_orange"
-        />
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/leftBurner_Whistle"
@@ -262,7 +262,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/leftBurner_Vessel"
         android:src="@drawable/whistle_orange"
-android:visibility="invisible"
+        android:visibility="invisible"
 
         />
 
@@ -280,7 +280,7 @@ android:visibility="invisible"
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
-        android:id="@+id/burnerRight"
+        android:id="@+id/burnerTop"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_alignParentRight="true"
@@ -313,7 +313,7 @@ android:visibility="invisible"
         />
 
     <TextView
-        android:id="@+id/rightBurnerKnobAngle"
+        android:id="@+id/topBurnerKnobAngle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -327,7 +327,7 @@ android:visibility="invisible"
         />
 
     <TextView
-        android:id="@+id/rightBurner_Whistle_Count"
+        android:id="@+id/topBurner_Whistle_Count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -338,27 +338,26 @@ android:visibility="invisible"
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/rightBurner_Whistle"
+        android:id="@+id/topBurner_whistle_img"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@+id/rightBurner_Whistle_Count"
+        android:layout_toLeftOf="@+id/topBurner_Whistle_Count"
         android:src="@drawable/whistle_orange"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/rightBurnerVess_"
+        android:id="@+id/top_Burner_Vessel"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/rightBurner_Whistle"
+        android:layout_toLeftOf="@+id/topBurner_whistle_img"
         android:src="@drawable/vessel_orange"
-         />
+        android:visibility="invisible" />
 
 
     <ImageView

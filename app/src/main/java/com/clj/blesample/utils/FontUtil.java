@@ -15,7 +15,6 @@ public class FontUtil {
 
         return typeface;
 
-
     }
 
     public static String deviceID(Context context){

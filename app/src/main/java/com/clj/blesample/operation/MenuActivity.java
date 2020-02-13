@@ -49,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        String phone = "9123521374";
+                        String phone = "9445903393";
                         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                         if (ContextCompat.checkSelfPermission(MenuActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions(MenuActivity.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
