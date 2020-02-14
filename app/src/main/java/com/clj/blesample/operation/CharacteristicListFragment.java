@@ -538,6 +538,8 @@ public class CharacteristicListFragment extends Fragment {
                                 splitEachBurnerDataFromReceivedByte(data);
 
 
+
+
                             }
                         });
                     }
@@ -757,99 +759,108 @@ public class CharacteristicListFragment extends Fragment {
 
     private void wrietUserData(String hex, String bur_ner) {
 
-        String recevied_status = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS);
-        System.out.println("ConnectedStatus " + recevied_status);
-        if (recevied_status.equals("true")) {
+        if(hex.equals("0")){
+            Toast.makeText(getActivity(),"Data wont write",Toast.LENGTH_LONG).show();
+        }else {
 
 
-            int topBurnereAngle = 0;
-            int leftBurnerAngle = 0;
-            int rightBurnerAngle = 0;
-
-            if (bur_ner.equals("01")) {
-
-                topBurnereAngle = Integer.parseInt(hex) / 10;
-                String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
-                leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
-                String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
-                rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
+            String recevied_status = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS);
+            System.out.println("ConnectedStatus " + recevied_status);
+            if (recevied_status.equals("true")) {
 
 
-            } else if (bur_ner.equals("10")) {
-                leftBurnerAngle = Integer.parseInt(hex) / 10;
-                String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
-                topBurnereAngle = Integer.parseInt(topBurnereAngleString);
-                String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
-                rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
+                int topBurnereAngle = 0;
+                int leftBurnerAngle = 0;
+                int rightBurnerAngle = 0;
+
+                if (bur_ner.equals("01")) {
+
+                    topBurnereAngle = Integer.parseInt(hex) / 10;
+                    String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
+                    leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
+                    String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
+                    rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
 
 
-            } else if (bur_ner.equals("11")) {
-                rightBurnerAngle = Integer.parseInt(hex) / 10;
-                String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
-                topBurnereAngle = Integer.parseInt(topBurnereAngleString);
-                String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
-                leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
+                } else if (bur_ner.equals("10")) {
+                    leftBurnerAngle = Integer.parseInt(hex) / 10;
+                    String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
+                    topBurnereAngle = Integer.parseInt(topBurnereAngleString);
+                    String rightBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE);
+                    rightBurnerAngle = Integer.parseInt(rightBurnerAngleString);
+
+
+                } else if (bur_ner.equals("11")) {
+                    rightBurnerAngle = Integer.parseInt(hex) / 10;
+                    String topBurnereAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
+                    topBurnereAngle = Integer.parseInt(topBurnereAngleString);
+                    String leftBurnerAngleString = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE);
+                    leftBurnerAngle = Integer.parseInt(leftBurnerAngleString);
+                }
+
+
+                int angel_top = topBurnereAngle;
+                int angel_left = leftBurnerAngle;
+                int angel_right = rightBurnerAngle;
+
+
+                int vessel = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL);
+                int vesselLeft = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL);
+                int vesselRight = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL);
+                int sendbyte = 0, secondbyte = 0, thirdbyte = 0;
+
+
+                sendbyte = ((angel_top << 2) | (0x01) | (vessel << 7));
+                secondbyte = ((angel_left << 2) | (0x02) | (vesselLeft << 7));
+                thirdbyte = ((angel_right << 2) | (0x03) | (vesselRight << 7));
+
+
+                byte[] ret = new byte[5];
+                ret[0] = (byte) ('*');
+                ret[1] = (byte) (sendbyte);
+                ret[2] = (byte) (secondbyte);
+                ret[3] = (byte) (thirdbyte);
+                ret[4] = (byte) ('#');
+
+
+                BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+                BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+
+
+                BleManager.getInstance().write(
+                        bleDevice,
+                        characteristic.getService().getUuid().toString(),
+                        characteristic.getUuid().toString(),
+                        ret,
+                        new BleWriteCallback() {
+
+                            //Converting byte to String and displaying to user
+                            @Override
+                            public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onWriteFailure(final BleException exception) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        System.out.println("Exception" + exception.toString());
+                                    }
+                                });
+                            }
+                        });
+
+
+            } else {
+                System.out.println("Not recevied data yet");
             }
 
-
-            int angel_top = topBurnereAngle;
-            int angel_left = leftBurnerAngle;
-            int angel_right = rightBurnerAngle;
-
-
-            int vessel = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL);
-            int vesselLeft = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.LEFT_BURNER_VESSEL);
-            int vesselRight = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.RIGHT_BURNER_VESSEL);
-            int sendbyte = 0, secondbyte = 0, thirdbyte = 0;
-            sendbyte = ((angel_top << 2) | (0x01) | (vessel << 7));
-            secondbyte = ((angel_left << 2) | (0x02) | (vesselLeft << 7));
-            thirdbyte = ((angel_right << 2) | (0x03) | (vesselRight << 7));
-
-
-            byte[] ret = new byte[5];
-            ret[0] = (byte) ('*');
-            ret[1] = (byte) (sendbyte);
-            ret[2] = (byte) (secondbyte);
-            ret[3] = (byte) (thirdbyte);
-            ret[4] = (byte) ('#');
-
-
-            BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
-            BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
-
-
-            BleManager.getInstance().write(
-                    bleDevice,
-                    characteristic.getService().getUuid().toString(),
-                    characteristic.getUuid().toString(),
-                    ret,
-                    new BleWriteCallback() {
-
-                        //Converting byte to String and displaying to user
-                        @Override
-                        public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onWriteFailure(final BleException exception) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    System.out.println("Exception" + exception.toString());
-                                }
-                            });
-                        }
-                    });
-
-
-        } else {
-            System.out.println("Not recevied data yet");
         }
     }
 

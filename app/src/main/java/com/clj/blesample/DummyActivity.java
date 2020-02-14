@@ -30,7 +30,21 @@ public class DummyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummy);
 
-       /* DummyFragment dummyFragment=new DummyFragment();
+
+
+
+
+
+
+    }
+
+
+
+
+}
+
+
+  /* DummyFragment dummyFragment=new DummyFragment();
 
         fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction().add(R.id.fragmentContainer,dummyFragment,null);
@@ -50,7 +64,7 @@ public class DummyActivity extends AppCompatActivity {
         Toast.makeText(this, formattedDate, Toast.LENGTH_SHORT).show();*/
 
 
-        Date time=new Date();
+       /* Date time=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
         String currentDateTimeString = sdf.format(time);
         System.out.println("TimeAlone "+currentDateTimeString);
@@ -65,8 +79,8 @@ public class DummyActivity extends AppCompatActivity {
 
         textView=(TextView) findViewById(R.id.texttt);
 
-        /*croller.setBackCircleRadius(1);
-        croller.setBackCircleColor();*/
+        *//*croller.setBackCircleRadius(1);
+        croller.setBackCircleColor();*//*
 
         croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
             @Override
@@ -76,10 +90,4 @@ public class DummyActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-    }
-}
+*/

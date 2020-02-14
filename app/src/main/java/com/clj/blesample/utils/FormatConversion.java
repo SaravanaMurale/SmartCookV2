@@ -122,10 +122,15 @@ public class FormatConversion {
         int userEnterBurPos=userEnteredHexData;
         int finalHex=0;
 
-        if (userEnterBurPos > 0 && userEnterBurPos <= 10) {
+        if (userEnterBurPos > 0 && userEnterBurPos <= 5) {
             finalHex = 1;
 
-        } else if (userEnterBurPos > 10 && userEnterBurPos <= 20) {
+        }else if (userEnterBurPos > 5 && userEnterBurPos <= 10) {
+            finalHex = 1;
+
+        }
+
+        else if (userEnterBurPos > 10 && userEnterBurPos <= 20) {
             finalHex = 2;
 
         } else if (userEnterBurPos > 20 && userEnterBurPos <= 30) {
