@@ -230,7 +230,13 @@ public class CharacteristicListFragment extends Fragment {
                     System.out.println("BurnerSharedPreferenceValueBefore " + knobRotation_Angle);
 
                     if (!knobRotation_Angle.equals(proString)) {
-                        knobAngleTop.setText(String.valueOf(userRotation));
+
+                        if(proString.equals("19")){
+                            knobAngleTop.setText("0");
+                        }else {
+                            knobAngleTop.setText(String.valueOf(userRotation));
+                        }
+
 
 
                         System.out.println("SendValue " + userRotation);
@@ -672,7 +678,13 @@ public class CharacteristicListFragment extends Fragment {
 
             burnerTop.setProgress(burnerValue);
 
-            knobAngleTop.setText("" + burnerValue);
+            if(burnerValue==19){
+                knobAngleTop.setText(""+0);
+            }else {
+                knobAngleTop.setText(""+burnerValue);
+            }
+
+
 
 
         } else if (preferenceAngle.equals(topBurnerAngleInString)) {
@@ -763,7 +775,7 @@ public class CharacteristicListFragment extends Fragment {
             Toast.makeText(getActivity(),"Data wont write",Toast.LENGTH_LONG).show();
         }else {
 
-
+            Toast.makeText(getActivity(),"Data Writing",Toast.LENGTH_LONG).show();
             String recevied_status = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS);
             System.out.println("ConnectedStatus " + recevied_status);
             if (recevied_status.equals("true")) {

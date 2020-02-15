@@ -72,9 +72,9 @@ public class FormatConversion {
         return a;
     }
 
-    public static String integerToString(int data){
+    public static String integerToString(int data) {
 
-        String str_val=String.valueOf(data);
+        String str_val = String.valueOf(data);
 
         return str_val;
     }
@@ -119,22 +119,20 @@ public class FormatConversion {
     //User entered data to hexadecimal conversion
     public static int dataToRanceConversion(int userEnteredHexData) {
 
-        int userEnterBurPos=userEnteredHexData;
-        int finalHex=0;
+        int userEnterBurPos = userEnteredHexData;
+        int finalHex = 0;
 
-        if (userEnterBurPos > 0 && userEnterBurPos <= 5) {
+        if (userEnterBurPos >=1 && userEnterBurPos <= 5) {
+            finalHex = 19;
+
+        } else if (userEnterBurPos >5 && userEnterBurPos <= 10) {
             finalHex = 1;
 
-        }else if (userEnterBurPos > 5 && userEnterBurPos <= 10) {
-            finalHex = 1;
-
-        }
-
-        else if (userEnterBurPos > 10 && userEnterBurPos <= 20) {
+        } else if (userEnterBurPos > 10 && userEnterBurPos <= 20) {
             finalHex = 2;
 
         } else if (userEnterBurPos > 20 && userEnterBurPos <= 30) {
-            finalHex =3;
+            finalHex = 3;
 
         } else if (userEnterBurPos > 30 && userEnterBurPos <= 40) {
             finalHex = 4;
@@ -170,13 +168,13 @@ public class FormatConversion {
             finalHex = 18;
         }
 
-        return finalHex ;
+        return finalHex;
     }
 
     public static String convertBinaryToHexadecimal(String number) {
         String hexa = "";
-        char[] hex = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
-                'b', 'c', 'd', 'e', 'f' };
+        char[] hex = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
+                'b', 'c', 'd', 'e', 'f'};
         if (number != null && !number.isEmpty()) {
             int decimal = convertBinaryToDecimal(number);
             while (decimal > 0) {
@@ -227,7 +225,7 @@ public class FormatConversion {
     }
 
     public static byte[] hexStringToByteArray(String s) {
-        byte[]  b = new byte[s.length() / 2];
+        byte[] b = new byte[s.length() / 2];
         for (int i = 0; i < b.length; i++) {
             int index = i * 2;
             int v = Integer.parseInt(s.substring(index, index + 2), 16);
@@ -237,7 +235,6 @@ public class FormatConversion {
         return b;
 
     }
-
 
 
 }
