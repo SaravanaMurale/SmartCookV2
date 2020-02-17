@@ -198,7 +198,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDisConnect(final BleDevice bleDevice) {
                 if (BleManager.getInstance().isConnected(bleDevice)) {
 
+                  /* PreferencesUtil.setValueSInt(MainActivity.this,PreferencesUtil.ZERO_WRITE_STATUS,0);
+                   int s=PreferencesUtil.getValueInt(MainActivity.this,PreferencesUtil.ZERO_WRITE_STATUS);
+                   Toast.makeText(MainActivity.this,"Data Received "+s,Toast.LENGTH_LONG).show();*/
                     BleManager.getInstance().disconnect(bleDevice);
+
                 }
             }
 

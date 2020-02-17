@@ -122,8 +122,8 @@ public class FormatConversion {
         int userEnterBurPos = userEnteredHexData;
         int finalHex = 0;
 
-        if (userEnterBurPos >=1 && userEnterBurPos <= 5) {
-            finalHex = 19;
+        if (userEnterBurPos >=0 && userEnterBurPos <= 5) {
+            finalHex = 0;
 
         } else if (userEnterBurPos >5 && userEnterBurPos <= 10) {
             finalHex = 1;

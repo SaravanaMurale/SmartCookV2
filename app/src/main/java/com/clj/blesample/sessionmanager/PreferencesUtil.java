@@ -24,6 +24,8 @@ public class PreferencesUtil {
 
     public static final String WRITE_VALUE="write_value";
 
+    public static final String ZERO_WRITE_STATUS="zero_write_status";
+
     public static void setValueString(Context context, String key, String value) {
 
         if (context == null) return;
@@ -55,7 +57,7 @@ public class PreferencesUtil {
 
     public static int getValueInt(Context context, String key) {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_NAME, Activity.MODE_PRIVATE);
-        return preferences.getInt(key, -1);
+        return preferences.getInt(key, 0);
 
     }
 

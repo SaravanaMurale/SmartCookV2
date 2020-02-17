@@ -50,6 +50,8 @@ import java.util.List;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment {
 
+    int tempVal=0;
+
 
     TextView knobAngleTop, knobAngleLeft, knobAngleRight;
     Croller burnerTop, burnerLeft, burnerRight;
@@ -108,6 +110,7 @@ public class CharacteristicListFragment extends Fragment {
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+            int writeFromBurner=0;
             callMe(0, null, null);
 
 
@@ -231,15 +234,15 @@ public class CharacteristicListFragment extends Fragment {
 
                     if (!knobRotation_Angle.equals(proString)) {
 
-                        if(proString.equals("19")){
-                            knobAngleTop.setText("0");
-                        }else {
+
                             knobAngleTop.setText(String.valueOf(userRotation));
-                        }
 
 
+
+                            int writeFromBurner=1;
 
                         System.out.println("SendValue " + userRotation);
+
                         callMe(1, userRotation, FOURTH_BURNER);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, proString);
                         System.out.println("BurnerSharedPreferenceValue " + knobRotation_Angle);
@@ -301,6 +304,7 @@ public class CharacteristicListFragment extends Fragment {
                     if (!knobRotation_Angle.equals(proString)) {
 
                         knobAngleLeft.setText(String.valueOf(userRotation));
+                        int writeFromBurner=1;
                         callMe(1, userRotation, LEFT_BURNER);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.LEFT_KNOB_ANGLE, proString);
 
@@ -360,6 +364,7 @@ public class CharacteristicListFragment extends Fragment {
                     if (!knobRotation_Angle.equals(proString)) {
 
                         knobAngleRight.setText(String.valueOf(userRotation));
+                        int writeFromBurner=1;
                         callMe(1, userRotation, RIGHT_BURNER);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RIGHT_KNOB_ANGLE, proString);
 
@@ -771,10 +776,14 @@ public class CharacteristicListFragment extends Fragment {
 
     private void wrietUserData(String hex, String bur_ner) {
 
-        if(hex.equals("0")){
+        //int status=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.ZERO_WRITE_STATUS);
+
+        if(hex.equals("0") && tempVal==0){
             Toast.makeText(getActivity(),"Data wont write",Toast.LENGTH_LONG).show();
+            //PreferencesUtil.setValueSInt(getActivity(),PreferencesUtil.ZERO_WRITE_STATUS,1);
         }else {
 
+            tempVal=1;
             Toast.makeText(getActivity(),"Data Writing",Toast.LENGTH_LONG).show();
             String recevied_status = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS);
             System.out.println("ConnectedStatus " + recevied_status);
