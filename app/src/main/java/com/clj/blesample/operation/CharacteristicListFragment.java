@@ -19,12 +19,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +62,7 @@ public class CharacteristicListFragment extends Fragment {
     TextView topBurnerWhistleCount, leftBurnerWhistleCount, rightBurnerWhistleCount;
 
     ImageView menuIcon;
+    ImageView whistleSet;
 
     int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
     String pos_0, pos_1, pos_2, pos_3, pos_4, pos_5, pos_6, pos_7;
@@ -82,6 +85,8 @@ public class CharacteristicListFragment extends Fragment {
 
 
     int SIZE_OF_CHARACTERISTIC = 0;
+
+    Spinner mSpinner,mSpinnerWhistleCount;
 
     Typeface octinPrisonFont;
 
@@ -110,7 +115,7 @@ public class CharacteristicListFragment extends Fragment {
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-            int writeFromBurner=0;
+
             callMe(0, null, null);
 
 
@@ -180,6 +185,7 @@ public class CharacteristicListFragment extends Fragment {
 
         menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
 
+        whistleSet=(ImageView)v.findViewById(R.id.whistleSet);
 
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +200,83 @@ public class CharacteristicListFragment extends Fragment {
 
             }
         });*/
+
+        whistleSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String burners[] = {"Burner","Center","Left","Right"};
+                String whistleCount[] = {"Whistle","1","2","3","4","5"};
+
+                AlertDialog.Builder  mBuilder=new AlertDialog.Builder(getActivity());
+                View mView=getLayoutInflater().inflate(R.layout.dialog_spinner,null);
+                mBuilder.setTitle("Select");
+
+                 mSpinner=(Spinner)mView.findViewById(R.id.spinnerData);
+                mSpinnerWhistleCount=(Spinner)mView.findViewById(R.id.spinnerWhistleCount);
+
+
+                ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,
+                        burners);
+
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                ArrayAdapter<String> arrayAdapterWhistle=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,
+                        whistleCount);
+
+                        arrayAdapterWhistle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+                        mSpinner.setAdapter(arrayAdapter);
+                        mSpinnerWhistleCount.setAdapter(arrayAdapterWhistle);
+
+
+
+
+                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(mSpinner.getSelectedItem().toString().equals("Burner") && mSpinnerWhistleCount.getSelectedItem().toString().equals("Whistle")){
+
+                            Toast.makeText(getActivity(),"Please Select Burner and Whistle Count",Toast.LENGTH_LONG).show();
+
+                        }else {
+                            Toast.makeText(getActivity(),"Selected",Toast.LENGTH_LONG).show();
+                        }
+
+
+
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+                mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                });
+
+                mBuilder.setView(mView);
+                AlertDialog alertDialog=mBuilder.create();
+                alertDialog.show();
+
+
+
+
+
+
+            }
+        });
+
+
+
+
 
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -912,7 +995,6 @@ public class CharacteristicListFragment extends Fragment {
         }
         mResultAdapter.notifyDataSetChanged();
     }
-
 
     private class ResultAdapter extends BaseAdapter {
 

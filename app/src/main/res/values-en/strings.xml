@@ -39,4 +39,11 @@
     <string name="enter">Connect</string>
 
 
+    <string-array name="burnerlist">
+        <item>Left</item>
+        <item>Right</item>
+        <item>Center</item>
+    </string-array>
+
+
 </resources>

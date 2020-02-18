@@ -96,14 +96,14 @@
 
         />
 
-   <!-- <ImageView
+    <ImageView
         android:id="@+id/whistleSet"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/whistle_set"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
-        />-->
+        />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
