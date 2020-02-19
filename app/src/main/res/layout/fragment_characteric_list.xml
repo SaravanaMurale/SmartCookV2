@@ -100,9 +100,18 @@
         android:id="@+id/whistleSet"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/whistle_set"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
+        android:src="@drawable/whistle_set" />
+
+    <ImageView
+        android:id="@+id/eStop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_toLeftOf="@+id/whistleSet"
+        android:src="@drawable/eoff"
+
         />
 
 
@@ -190,7 +199,7 @@
         android:layout_toRightOf="@id/rightBurner_Whistle"
         android:enabled="false"
         android:text="0"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/rightBurnerVess_"
@@ -284,7 +293,7 @@
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/leftBurner_Whistle"
         android:text="5"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
