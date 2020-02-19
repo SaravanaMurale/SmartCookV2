@@ -904,9 +904,17 @@ public class CharacteristicListFragment extends Fragment {
 
             if(secondFrameStatus==1){
 
-                byte[] secondFrame = new byte[5];
+                byte[] secondFrame = new byte[1];
                 //hex burner
                 //bur_ner whistle count
+
+                int sendbyte=0;
+                int angel_top=17;
+                int vessel=1;
+
+                sendbyte = ((angel_top << 2) | (0x01) | (vessel << 7));
+
+                secondFrame[0] = (byte) (sendbyte);
 
                 Toast.makeText(getActivity(), "New Data Write", Toast.LENGTH_LONG).show();
 
