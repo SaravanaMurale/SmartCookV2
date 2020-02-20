@@ -171,6 +171,14 @@ public class FormatConversion {
         return finalHex;
     }
 
+
+    public static int stringToInt(String data){
+
+        int whistleCount=Integer.parseInt(data);
+
+        return  whistleCount;
+    }
+
     public static String convertBinaryToHexadecimal(String number) {
         String hexa = "";
         char[] hex = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
