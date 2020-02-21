@@ -26,6 +26,8 @@ public class PreferencesUtil {
 
     public static final String ZERO_WRITE_STATUS="zero_write_status";
 
+    public static final String PREVIOUS_VALUE_CHECK="prev_val_check";
+
     public static void setValueString(Context context, String key, String value) {
 
         if (context == null) return;

@@ -304,9 +304,11 @@ public class CharacteristicListFragment extends Fragment {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
 
+
+
                 String FOURTH_BURNER = "01";
 
-                System.out.println("ProgressValue " + progress);
+                System.out.println("ProgressValueRight " + progress);
 
 
                 int pro = FormatConversion.dataToRanceConversion(progress);
@@ -336,7 +338,7 @@ public class CharacteristicListFragment extends Fragment {
 
                         int writeFromBurner = 1;
 
-                        System.out.println("SendValue " + userRotation);
+                        System.out.println("SendValueRight " + userRotation);
 
                         callMe(1, userRotation, FOURTH_BURNER, 0);
                         PreferencesUtil.setValueString(getActivity(), PreferencesUtil.KNOB_ANGLE, proString);
@@ -798,7 +800,7 @@ public class CharacteristicListFragment extends Fragment {
             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.TOP_BURNER_VESSEL, 0);
         }
 
-        System.out.println("ReceivedValue " + topBurnerAngleInString);
+        System.out.println("BleReceivedValue " + topBurnerAngleInString);
         System.out.println("SharedPreBurnerNumber" + preferenceAngle);
 
 
@@ -1052,13 +1054,8 @@ public class CharacteristicListFragment extends Fragment {
                     BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
 
 
+                    System.out.println("BleSentValue" + angel_top);
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    },5000);
 
                     BleManager.getInstance().write(
                             bleDevice,
