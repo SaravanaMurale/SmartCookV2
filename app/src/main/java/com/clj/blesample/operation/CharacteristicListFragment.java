@@ -88,7 +88,7 @@ public class CharacteristicListFragment extends Fragment {
 
     int SIZE_OF_CHARACTERISTIC = 0;
 
-    Spinner mSpinner, mSpinnerWhistleCount,mSelectBurner;
+    Spinner mSpinner, mSpinnerWhistleCount, mSelectBurner;
     ImageView eTimer;
 
     Typeface octinPrisonFont;
@@ -203,8 +203,8 @@ public class CharacteristicListFragment extends Fragment {
                 View mView = getLayoutInflater().inflate(R.layout.dialog_set_timer, null);
                 builder.setTitle("Set Timer");
 
-                getTimerText=(EditText)mView.findViewById(R.id.setTimer);
-                mSelectBurner=(Spinner)mView.findViewById(R.id.selectBurner);
+                getTimerText = (EditText) mView.findViewById(R.id.setTimer);
+                mSelectBurner = (Spinner) mView.findViewById(R.id.selectBurner);
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,
                         burners);
@@ -217,33 +217,32 @@ public class CharacteristicListFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        int timer=0;
+                        int timer = 0;
 
-                        String time=getTimerText.getText().toString();
-                        if(time.equals("")){
-                            Toast.makeText(getActivity(),"Please Set Timer",Toast.LENGTH_LONG).show();
-                        }else {
-                            timer=Integer.parseInt(time);
+                        String time = getTimerText.getText().toString();
+                        if (time.equals("")) {
+                            Toast.makeText(getActivity(), "Please Set Timer", Toast.LENGTH_LONG).show();
+                        } else {
+                            timer = Integer.parseInt(time);
                         }
 
 
-                        if(timer>120){
-                            Toast.makeText(getActivity(),"Please Set Timer Below 120min",Toast.LENGTH_LONG).show();
-                        }else if(timer==0){
-                            Toast.makeText(getActivity(),"Please Set Timer",Toast.LENGTH_LONG).show();
-                        }else {
+                        if (timer > 120) {
+                            Toast.makeText(getActivity(), "Please Set Timer Below 120min", Toast.LENGTH_LONG).show();
+                        } else if (timer == 0) {
+                            Toast.makeText(getActivity(), "Please Set Timer", Toast.LENGTH_LONG).show();
+                        } else {
 
-                            Toast.makeText(getActivity(),"Burner will turnoff in"+timer+"mins",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Burner will turnoff in" + timer + "mins", Toast.LENGTH_LONG).show();
 
-                            String timeVal=String.valueOf(timer);
+                            String timeVal = String.valueOf(timer);
 
                             String burner = burnerFinder(mSelectBurner.getSelectedItem().toString());
 
                             if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
-                                callMe(1, burner,timeVal, 2);
+                                callMe(1, burner, timeVal, 2);
                             }
                         }
-
 
 
                     }
@@ -370,7 +369,6 @@ public class CharacteristicListFragment extends Fragment {
         burnerTop.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
-
 
 
                 String FOURTH_BURNER = "01";
@@ -846,6 +844,58 @@ public class CharacteristicListFragment extends Fragment {
 
                 System.out.println("SecondFrameData " + data[i]);
 
+                if (i == 0) {
+
+                }
+                if (i == 1) {
+
+                }
+                if (i == 2) {
+                    int topBurnerWhistle = data[i];
+
+                    if(topBurnerWhistle==0){
+                        topBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                    }else {
+                        topBurnerWhistleCount.setText(""+topBurnerWhistle);
+                    }
+                }
+                if (i == 3) {
+
+                    int topBurnerTimer=data[i];
+
+                    if(topBurnerTimer>0){
+
+                    }
+                }
+                if (i == 4) {
+                    int leftBurnerWhistle = data[i];
+
+                    if(leftBurnerWhistle==0){
+                        leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                    }else {
+                        leftBurnerWhistleCount.setText(""+leftBurnerWhistle);
+                    }
+
+                }
+                if (i == 5) {
+                    int leftBurnerTimer=data[i];
+                }
+                if (i == 6) {
+                    int rightBurnerWhistle = data[i];
+
+                    if(rightBurnerWhistle==0){
+                        rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                    }else {
+                        rightBurnerWhistleCount.setText(""+rightBurnerWhistle);
+                    }
+                }
+                if (i == 7) {
+                    int rightBurnerTimer=data[i];
+                }
+                if (i == 8) {
+
+                }
+
             }
 
             //Whistle and timer goes here
@@ -1056,7 +1106,7 @@ public class CharacteristicListFragment extends Fragment {
                         });
 
 
-            } else if(secondFrameStatus==2){
+            } else if (secondFrameStatus == 2) {
 
                 int topBurnerTimer = 0, leftBurnerTimer = 0, rightBurnerTimer = 0;
                 int topBurnerWhistle = 0, leftBurnerWhistle = 0, rightBurnerWhistle = 0;
@@ -1123,8 +1173,7 @@ public class CharacteristicListFragment extends Fragment {
                             }
                         });
 
-            }
-            else {
+            } else {
 
 
                 tempVal = 1;
