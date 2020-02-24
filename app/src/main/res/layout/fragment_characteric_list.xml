@@ -105,7 +105,7 @@
         android:src="@drawable/whistle_set" />
 
     <ImageView
-        android:id="@+id/eStop"
+        android:id="@+id/eTimer"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"

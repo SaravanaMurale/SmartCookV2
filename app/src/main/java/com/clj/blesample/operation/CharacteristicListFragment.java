@@ -83,11 +83,13 @@ public class CharacteristicListFragment extends Fragment {
     Button send_btn;
     TextView user_entered_data;
 
+    EditText getTimerText;
+
 
     int SIZE_OF_CHARACTERISTIC = 0;
 
-    Spinner mSpinner, mSpinnerWhistleCount;
-    ImageView eStop;
+    Spinner mSpinner, mSpinnerWhistleCount,mSelectBurner;
+    ImageView eTimer;
 
     Typeface octinPrisonFont;
 
@@ -188,12 +190,77 @@ public class CharacteristicListFragment extends Fragment {
 
         whistleSet = (ImageView) v.findViewById(R.id.whistleSet);
 
-        eStop = (ImageView) v.findViewById(R.id.eStop);
+        eTimer = (ImageView) v.findViewById(R.id.eTimer);
 
-        eStop.setOnClickListener(new View.OnClickListener() {
+
+        eTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String burners[] = {"Select Burner", "Center", "Left", "Right"};
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                View mView = getLayoutInflater().inflate(R.layout.dialog_set_timer, null);
+                builder.setTitle("Set Timer");
+
+                getTimerText=(EditText)mView.findViewById(R.id.setTimer);
+                mSelectBurner=(Spinner)mView.findViewById(R.id.selectBurner);
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,
+                        burners);
+
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                mSelectBurner.setAdapter(arrayAdapter);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        int timer=0;
+
+                        String time=getTimerText.getText().toString();
+                        if(time.equals("")){
+                            Toast.makeText(getActivity(),"Please Set Timer",Toast.LENGTH_LONG).show();
+                        }else {
+                            timer=Integer.parseInt(time);
+                        }
+
+
+                        if(timer>120){
+                            Toast.makeText(getActivity(),"Please Set Timer Below 120min",Toast.LENGTH_LONG).show();
+                        }else if(timer==0){
+                            Toast.makeText(getActivity(),"Please Set Timer",Toast.LENGTH_LONG).show();
+                        }else {
+
+                            Toast.makeText(getActivity(),"Burner will turnoff in"+timer+"mins",Toast.LENGTH_LONG).show();
+
+                            String timeVal=String.valueOf(timer);
+
+                            String burner = burnerFinder(mSelectBurner.getSelectedItem().toString());
+
+                            if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+                                callMe(1, burner,timeVal, 2);
+                            }
+                        }
+
+
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                });
+
+                builder.setView(mView);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
             }
         });
@@ -618,6 +685,13 @@ public class CharacteristicListFragment extends Fragment {
             wrietUserData(userData, BURNER, secondFrameStatus);
         }
 
+        if (propList.size() > 0 && position == 1 && secondFrameStatus == 2) {
+            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
+            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
+            //((OperationActivity) getActivity()).changePage(2);
+            wrietUserData(userData, BURNER, secondFrameStatus);
+        }
+
 
     }
 
@@ -934,9 +1008,6 @@ public class CharacteristicListFragment extends Fragment {
 
                 }
 
-                /*sendbyte = ((angel_top << 2) | (0x01) | (vessel << 7));
-                secondbyte = ((angel_left << 2) | (0x02) | (vesselLeft << 7));
-                thirdbyte = ((angel_right << 2) | (0x03) | (vesselRight << 7));*/
 
                 secondFrame[0] = (byte) ('*');
                 secondFrame[1] = (byte) (0xC0);
@@ -985,7 +1056,75 @@ public class CharacteristicListFragment extends Fragment {
                         });
 
 
-            } else {
+            } else if(secondFrameStatus==2){
+
+                int topBurnerTimer = 0, leftBurnerTimer = 0, rightBurnerTimer = 0;
+                int topBurnerWhistle = 0, leftBurnerWhistle = 0, rightBurnerWhistle = 0;
+
+                byte[] secondFrameWithTimer = new byte[9];
+
+
+                if (hex.equals("01")) {
+
+                    topBurnerTimer = FormatConversion.stringToInt(bur_ner);
+
+                } else if (hex.equals("10")) {
+
+                    leftBurnerTimer = FormatConversion.stringToInt(bur_ner);
+
+                } else if (hex.equals("11")) {
+
+                    rightBurnerTimer = FormatConversion.stringToInt(bur_ner);
+
+                }
+
+                secondFrameWithTimer[0] = (byte) ('*');
+                secondFrameWithTimer[1] = (byte) (0xC0);
+                secondFrameWithTimer[2] = (byte) (topBurnerWhistle);
+                secondFrameWithTimer[3] = (byte) (topBurnerTimer);
+                secondFrameWithTimer[4] = (byte) (leftBurnerWhistle);
+                secondFrameWithTimer[5] = (byte) (leftBurnerTimer);
+                secondFrameWithTimer[6] = (byte) (rightBurnerWhistle);
+                secondFrameWithTimer[7] = (byte) (rightBurnerTimer);
+                secondFrameWithTimer[8] = (byte) ('#');
+
+                Toast.makeText(getActivity(), "Timer Data Sent", Toast.LENGTH_LONG).show();
+
+                BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+                BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+
+
+                BleManager.getInstance().write(
+                        bleDevice,
+                        characteristic.getService().getUuid().toString(),
+                        characteristic.getUuid().toString(),
+                        secondFrameWithTimer,
+                        new BleWriteCallback() {
+
+                            //Converting byte to String and displaying to user
+                            @Override
+                            public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onWriteFailure(final BleException exception) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        System.out.println("Exception" + exception.toString());
+                                    }
+                                });
+                            }
+                        });
+
+            }
+            else {
 
 
                 tempVal = 1;
