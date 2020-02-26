@@ -865,17 +865,29 @@ public class CharacteristicListFragment extends Fragment {
             PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS, "true");
         } else if (data.length == 9) {
 
+            boolean whistleTimerFlag = false;
+
             for (int i = 0; i < data.length; i++) {
 
                 System.out.println("SecondFrameData " + data[i]);
 
                 if (i == 0) {
 
-                }
-                if (i == 1) {
+                    int k = data[i];
+
+                    if (k == 42) {
+                        System.out.println("*Data" + k);
+                        whistleTimerFlag = true;
+                    } else {
+
+                        whistleTimerFlag = false;
+                    }
 
                 }
-                if (i == 2) {
+                if (i == 1 && whistleTimerFlag) {
+
+                }
+                if (i == 2 && whistleTimerFlag) {
                     int topBurnerWhistle = data[i];
 
                     if(topBurnerWhistle==0){
@@ -884,7 +896,7 @@ public class CharacteristicListFragment extends Fragment {
                         topBurnerWhistleCount.setText(""+topBurnerWhistle);
                     }
                 }
-                if (i == 3) {
+                if (i == 3 && whistleTimerFlag) {
 
                     int topBurnerTimer=data[i];
 
@@ -892,7 +904,7 @@ public class CharacteristicListFragment extends Fragment {
 
                     }
                 }
-                if (i == 4) {
+                if (i == 4 && whistleTimerFlag) {
                     int leftBurnerWhistle = data[i];
 
                     if(leftBurnerWhistle==0){
@@ -902,10 +914,10 @@ public class CharacteristicListFragment extends Fragment {
                     }
 
                 }
-                if (i == 5) {
+                if (i == 5 && whistleTimerFlag) {
                     int leftBurnerTimer=data[i];
                 }
-                if (i == 6) {
+                if (i == 6 && whistleTimerFlag) {
                     int rightBurnerWhistle = data[i];
 
                     if(rightBurnerWhistle==0){
@@ -914,10 +926,10 @@ public class CharacteristicListFragment extends Fragment {
                         rightBurnerWhistleCount.setText(""+rightBurnerWhistle);
                     }
                 }
-                if (i == 7) {
+                if (i == 7 && whistleTimerFlag) {
                     int rightBurnerTimer=data[i];
                 }
-                if (i == 8) {
+                if (i == 8 && whistleTimerFlag) {
 
                 }
 
