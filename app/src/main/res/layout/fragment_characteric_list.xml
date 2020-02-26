@@ -208,7 +208,7 @@
         android:layout_below="@+id/burnerRight"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="8dp"
         android:layout_toLeftOf="@id/dummyTextView_"
         android:saveEnabled="false"
         android:src="@drawable/vessel_orange"
@@ -346,13 +346,34 @@
         />
 
     <TextView
-        android:id="@+id/topBurner_Whistle_Count"
+        android:id="@+id/topBurnerShowTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/burnerTop"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginRight="40dp"
+        />
+
+    <ImageView
+        android:id="@+id/topBurnerTimerIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@+id/topBurnerShowTimer"
+        android:layout_below="@id/burnerTop"
+        android:src="@drawable/timer"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        />
+
+    <TextView
+        android:id="@+id/topBurner_Whistle_Count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/burnerTop"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/topBurnerShowTimer"
+        android:layout_marginRight="5dp"
         android:text="0"
         android:visibility="invisible" />
 
