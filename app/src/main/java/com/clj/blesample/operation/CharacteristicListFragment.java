@@ -395,7 +395,6 @@ public class CharacteristicListFragment extends Fragment {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
 
-
                 String FOURTH_BURNER = "01";
 
                 System.out.println("ProgressValueRight " + progress);
