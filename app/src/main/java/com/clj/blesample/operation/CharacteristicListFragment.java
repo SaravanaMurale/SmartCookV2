@@ -217,11 +217,11 @@ public class CharacteristicListFragment extends Fragment {
 
         topTimerIcon = (ImageView) v.findViewById(R.id.topTimerIcon);
         leftTimerIcon = (ImageView) v.findViewById(R.id.LeftTimerIcon);
-        rightTimerIcon=(ImageView)v.findViewById(R.id.rightBurnerTimerIcon);
+        rightTimerIcon = (ImageView) v.findViewById(R.id.rightBurnerTimerIcon);
 
         topTimerCount = (TextView) v.findViewById(R.id.topBurnerShowTimer);
         leftTimerCount = (TextView) v.findViewById(R.id.leftBurnerTimer);
-        rightTimerCount=(TextView)v.findViewById(R.id.rightBurnerTimer);
+        rightTimerCount = (TextView) v.findViewById(R.id.rightBurnerTimer);
 
 
         menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
@@ -362,6 +362,26 @@ public class CharacteristicListFragment extends Fragment {
                             if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
 
                                 String burner = burnerFinder(mSpinner.getSelectedItem().toString());
+
+                                if (burner.equals("01")) {
+
+                                    topBurnerWhistleImage.setVisibility(View.VISIBLE);
+                                    topBurnerWhistleCount.setVisibility(View.VISIBLE);
+                                    topBurnerWhistleCount.setText("0");
+
+                                } else if (burner.equals("10")) {
+
+                                    leftBurnerWhistleImage.setVisibility(View.VISIBLE);
+                                    leftBurnerWhistleCount.setVisibility(View.VISIBLE);
+                                    leftBurnerWhistleCount.setText("0");
+
+
+                                } else if (burner.equals("11")) {
+
+                                    rightBurnerWhistleImage.setVisibility(View.VISIBLE);
+                                    rightBurnerWhistleCount.setVisibility(View.VISIBLE);
+                                    rightBurnerWhistleCount.setText("0");
+                                }
 
 
                                 callMe(1, burner, mSpinnerWhistleCount.getSelectedItem().toString(), 1);
@@ -660,9 +680,9 @@ public class CharacteristicListFragment extends Fragment {
 
         if (toString.equals("Right")) {
             burner = "01";
-        } else if (toString.equals("Center")) {
-            burner = "10";
         } else if (toString.equals("Left")) {
+            burner = "10";
+        } else if (toString.equals("Center")) {
             burner = "11";
         }
 
@@ -904,10 +924,15 @@ public class CharacteristicListFragment extends Fragment {
                 if (i == 2 && whistleTimerFlag) {
                     int topBurnerWhistle = data[i];
 
-                    if (topBurnerWhistle == 0) {
-                        topBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                    } else {
+                    if (topBurnerWhistle > 0) {
+
+                        topBurnerWhistleImage.setVisibility(View.VISIBLE);
+                        topBurnerWhistleCount.setVisibility(View.VISIBLE);
                         topBurnerWhistleCount.setText("" + topBurnerWhistle);
+                    }else if(topBurnerWhistle==0){
+                        topBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                        topBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                        topBurnerWhistleCount.setText("");
                     }
                 }
                 if (i == 3 && whistleTimerFlag) {
@@ -930,10 +955,15 @@ public class CharacteristicListFragment extends Fragment {
                 if (i == 4 && whistleTimerFlag) {
                     int leftBurnerWhistle = data[i];
 
-                    if (leftBurnerWhistle == 0) {
-                        leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                    } else {
+                    if (leftBurnerWhistle > 0) {
+
+                        leftBurnerWhistleImage.setVisibility(View.VISIBLE);
+                        leftBurnerWhistleCount.setVisibility(View.VISIBLE);
                         leftBurnerWhistleCount.setText("" + leftBurnerWhistle);
+                    }else if(leftBurnerWhistle==0){
+                        leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                        leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                        leftBurnerWhistleCount.setText("");
                     }
 
                 }
@@ -957,10 +987,15 @@ public class CharacteristicListFragment extends Fragment {
                 if (i == 6 && whistleTimerFlag) {
                     int rightBurnerWhistle = data[i];
 
-                    if (rightBurnerWhistle == 0) {
-                        rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                    } else {
+                    if (rightBurnerWhistle > 0) {
+
+                        rightBurnerWhistleImage.setVisibility(View.VISIBLE);
+                        rightBurnerWhistleCount.setVisibility(View.VISIBLE);
                         rightBurnerWhistleCount.setText("" + rightBurnerWhistle);
+                    }else if(rightBurnerWhistle==0){
+                        rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                        rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                        rightBurnerWhistleCount.setText("");
                     }
                 }
                 if (i == 7 && whistleTimerFlag) {
@@ -971,8 +1006,8 @@ public class CharacteristicListFragment extends Fragment {
 
                         rightTimerIcon.setVisibility(View.VISIBLE);
                         rightTimerCount.setVisibility(View.VISIBLE);
-                        rightTimerCount.setText(""+minutes);
-                    }else {
+                        rightTimerCount.setText("" + minutes);
+                    } else {
                         rightTimerIcon.setVisibility(View.INVISIBLE);
                         rightTimerCount.setVisibility(View.INVISIBLE);
                     }
@@ -1022,11 +1057,13 @@ public class CharacteristicListFragment extends Fragment {
 
             burnerTop.setProgress(burnerValue);
 
-            if (burnerValue == 19) {
+            knobAngleLeft.setText("" + burnerValue);
+
+            /*if (burnerValue == 19) {
                 knobAngleTop.setText("" + 0);
             } else {
                 knobAngleTop.setText("" + burnerValue);
-            }
+            }*/
 
 
         } else if (preferenceAngle.equals(topBurnerAngleInString)) {
