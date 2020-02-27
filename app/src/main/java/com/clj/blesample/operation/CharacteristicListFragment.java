@@ -48,6 +48,7 @@ import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class CharacteristicListFragment extends Fragment {
@@ -63,6 +64,9 @@ public class CharacteristicListFragment extends Fragment {
 
     ImageView menuIcon;
     ImageView whistleSet;
+
+    ImageView leftTimerIcon, rightTimerIcon, topTimerIcon;
+    TextView topTimerCount, rightTimerCount, leftTimerCount;
 
     int pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7;
     String pos_0, pos_1, pos_2, pos_3, pos_4, pos_5, pos_6, pos_7;
@@ -106,7 +110,7 @@ public class CharacteristicListFragment extends Fragment {
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT) {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
             getActivity().getWindow().getDecorView().setSystemUiVisibility(flags);
             final View decorView = getActivity().getWindow().getDecorView();
             decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -119,7 +123,7 @@ public class CharacteristicListFragment extends Fragment {
             });
         }
 
-         //end of status bar
+        //end of status bar
         View v = inflater.inflate(R.layout.fragment_characteric_list, null);
 
         getFont();
@@ -210,6 +214,15 @@ public class CharacteristicListFragment extends Fragment {
         topBurnerWhistleCount = (TextView) v.findViewById(R.id.topBurner_Whistle_Count);
         leftBurnerWhistleCount = (TextView) v.findViewById(R.id.leftBurner_Whistle_Count);
         rightBurnerWhistleCount = (TextView) v.findViewById(R.id.rightBurner_Whistle_Count);
+
+        topTimerIcon = (ImageView) v.findViewById(R.id.topTimerIcon);
+        leftTimerIcon = (ImageView) v.findViewById(R.id.LeftTimerIcon);
+        rightTimerIcon=(ImageView)v.findViewById(R.id.rightBurnerTimerIcon);
+
+        topTimerCount = (TextView) v.findViewById(R.id.topBurnerShowTimer);
+        leftTimerCount = (TextView) v.findViewById(R.id.leftBurnerTimer);
+        rightTimerCount=(TextView)v.findViewById(R.id.rightBurnerTimer);
+
 
         menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
 
@@ -700,6 +713,7 @@ public class CharacteristicListFragment extends Fragment {
             wrietUserData(userData, BURNER, 0);
         }
 
+        //Whistle Count Set
         if (propList.size() > 0 && position == 1 && secondFrameStatus == 1) {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
@@ -707,6 +721,7 @@ public class CharacteristicListFragment extends Fragment {
             wrietUserData(userData, BURNER, secondFrameStatus);
         }
 
+        //Timer Count Set
         if (propList.size() > 0 && position == 1 && secondFrameStatus == 2) {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
@@ -889,44 +904,78 @@ public class CharacteristicListFragment extends Fragment {
                 if (i == 2 && whistleTimerFlag) {
                     int topBurnerWhistle = data[i];
 
-                    if(topBurnerWhistle==0){
+                    if (topBurnerWhistle == 0) {
                         topBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                    }else {
-                        topBurnerWhistleCount.setText(""+topBurnerWhistle);
+                    } else {
+                        topBurnerWhistleCount.setText("" + topBurnerWhistle);
                     }
                 }
                 if (i == 3 && whistleTimerFlag) {
 
-                    int topBurnerTimer=data[i];
+                    int topBurnerTimer = data[i];
 
-                    if(topBurnerTimer>0){
+                    if (topBurnerTimer > 0) {
 
+                        int minutes = (int) TimeUnit.SECONDS.toMinutes(topBurnerTimer);
+
+                        topTimerIcon.setVisibility(View.VISIBLE);
+                        topTimerCount.setText("" + minutes);
+
+
+                    } else {
+                        topTimerIcon.setVisibility(View.INVISIBLE);
+                        topTimerCount.setVisibility(View.INVISIBLE);
                     }
                 }
                 if (i == 4 && whistleTimerFlag) {
                     int leftBurnerWhistle = data[i];
 
-                    if(leftBurnerWhistle==0){
+                    if (leftBurnerWhistle == 0) {
                         leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                    }else {
-                        leftBurnerWhistleCount.setText(""+leftBurnerWhistle);
+                    } else {
+                        leftBurnerWhistleCount.setText("" + leftBurnerWhistle);
                     }
 
                 }
                 if (i == 5 && whistleTimerFlag) {
-                    int leftBurnerTimer=data[i];
+                    int leftBurnerTimer = data[i];
+
+                    if (leftBurnerTimer > 0) {
+                        int minutes = (int) TimeUnit.SECONDS.toMinutes(leftBurnerTimer);
+
+                        leftTimerIcon.setVisibility(View.VISIBLE);
+                        leftTimerCount.setText("" + minutes);
+
+
+                    } else {
+
+                        leftTimerIcon.setVisibility(View.INVISIBLE);
+                        leftTimerCount.setVisibility(View.INVISIBLE);
+                    }
+
                 }
                 if (i == 6 && whistleTimerFlag) {
                     int rightBurnerWhistle = data[i];
 
-                    if(rightBurnerWhistle==0){
+                    if (rightBurnerWhistle == 0) {
                         rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                    }else {
-                        rightBurnerWhistleCount.setText(""+rightBurnerWhistle);
+                    } else {
+                        rightBurnerWhistleCount.setText("" + rightBurnerWhistle);
                     }
                 }
                 if (i == 7 && whistleTimerFlag) {
-                    int rightBurnerTimer=data[i];
+                    int rightBurnerTimer = data[i];
+
+                    if (rightBurnerTimer > 0) {
+                        int minutes = (int) TimeUnit.SECONDS.toMinutes(rightBurnerTimer);
+
+                        rightTimerIcon.setVisibility(View.VISIBLE);
+                        rightTimerCount.setVisibility(View.VISIBLE);
+                        rightTimerCount.setText(""+minutes);
+                    }else {
+                        rightTimerIcon.setVisibility(View.INVISIBLE);
+                        rightTimerCount.setVisibility(View.INVISIBLE);
+                    }
                 }
                 if (i == 8 && whistleTimerFlag) {
 
