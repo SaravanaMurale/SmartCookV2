@@ -1009,6 +1009,7 @@ public class CharacteristicListFragment extends Fragment {
 
 
                     } else {
+                        stopImageBlinking(topTimerIcon);
                         topTimerIcon.setVisibility(View.INVISIBLE);
                         topTimerCount.setVisibility(View.INVISIBLE);
                     }
@@ -1065,6 +1066,7 @@ public class CharacteristicListFragment extends Fragment {
 
                     } else {
 
+                        stopImageBlinking(leftTimerIcon);
                         leftTimerIcon.setVisibility(View.INVISIBLE);
                         leftTimerCount.setVisibility(View.INVISIBLE);
                     }
@@ -1119,6 +1121,7 @@ public class CharacteristicListFragment extends Fragment {
                         imageBlinking(rightTimerIcon);
 
                     } else {
+                        stopImageBlinking(rightTimerIcon);
                         rightTimerIcon.setVisibility(View.INVISIBLE);
                         rightTimerCount.setVisibility(View.INVISIBLE);
                     }
@@ -1133,6 +1136,10 @@ public class CharacteristicListFragment extends Fragment {
 
         }
 
+    }
+
+    private void stopImageBlinking(ImageView topTimerIcon) {
+        topTimerIcon.clearAnimation();
     }
 
     private void imageBlinking(ImageView timerIcon) {
