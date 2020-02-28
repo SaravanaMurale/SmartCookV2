@@ -18,6 +18,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -276,6 +279,7 @@ public class CharacteristicListFragment extends Fragment {
                             String timeVal = String.valueOf(timer);
 
                             String burner = burnerFinder(mSelectBurner.getSelectedItem().toString());
+
 
                             if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
                                 callMe(1, burner, timeVal, 2);
@@ -946,7 +950,7 @@ public class CharacteristicListFragment extends Fragment {
                 }
                 if (i == 1 && whistleTimerFlag) {
 
-                    System.out.println("secondFrame*"+data[i]);
+                    System.out.println("secondFrame*" + data[i]);
 
                 }
                 if (i == 2 && whistleTimerFlag) {
@@ -958,10 +962,10 @@ public class CharacteristicListFragment extends Fragment {
                         topBurnerWhistleCount.setVisibility(View.VISIBLE);
                         topBurnerWhistleCount.setText("" + topBurnerWhistle);
 
-                        int whistleCount=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WHISTLE_COUNT);
+                        int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                        if(topBurnerWhistle==whistleCount){
-                            PreferencesUtil.setValueSInt(getActivity(),PreferencesUtil.WHISTLE_COUNT,0);
+                        if (topBurnerWhistle == whistleCount) {
+                            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                             builder.setCancelable(false);
@@ -983,7 +987,6 @@ public class CharacteristicListFragment extends Fragment {
                             alertDialog.show();
 
 
-
                         }
 
                     }
@@ -994,10 +997,15 @@ public class CharacteristicListFragment extends Fragment {
 
                     if (topBurnerTimer > 0) {
 
-                        int minutes = (int) TimeUnit.SECONDS.toMinutes(topBurnerTimer);
+                        // int minutes = (int) TimeUnit.SECONDS.toMinutes(topBurnerTimer);
 
                         topTimerIcon.setVisibility(View.VISIBLE);
-                        topTimerCount.setText("" + minutes);
+                        topTimerCount.setVisibility(View.VISIBLE);
+                        topTimerCount.setText("" + topBurnerTimer);
+
+                        imageBlinking(topTimerIcon);
+
+
 
 
                     } else {
@@ -1014,10 +1022,10 @@ public class CharacteristicListFragment extends Fragment {
                         leftBurnerWhistleCount.setVisibility(View.VISIBLE);
                         leftBurnerWhistleCount.setText("" + leftBurnerWhistle);
 
-                        int whistleCount=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WHISTLE_COUNT);
+                        int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                        if(leftBurnerWhistle==whistleCount){
-                            PreferencesUtil.setValueSInt(getActivity(),PreferencesUtil.WHISTLE_COUNT,0);
+                        if (leftBurnerWhistle == whistleCount) {
+                            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                             builder.setCancelable(false);
@@ -1046,10 +1054,13 @@ public class CharacteristicListFragment extends Fragment {
                     int leftBurnerTimer = data[i];
 
                     if (leftBurnerTimer > 0) {
-                        int minutes = (int) TimeUnit.SECONDS.toMinutes(leftBurnerTimer);
+                        //int minutes = (int) TimeUnit.SECONDS.toMinutes(leftBurnerTimer);
 
                         leftTimerIcon.setVisibility(View.VISIBLE);
-                        leftTimerCount.setText("" + minutes);
+                        leftTimerCount.setVisibility(View.VISIBLE);
+                        leftTimerCount.setText("" + leftBurnerTimer);
+
+                        imageBlinking(leftTimerIcon);
 
 
                     } else {
@@ -1068,10 +1079,10 @@ public class CharacteristicListFragment extends Fragment {
                         rightBurnerWhistleCount.setVisibility(View.VISIBLE);
                         rightBurnerWhistleCount.setText("" + rightBurnerWhistle);
 
-                        int whistleCount=PreferencesUtil.getValueInt(getActivity(),PreferencesUtil.WHISTLE_COUNT);
+                        int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                        if(rightBurnerWhistle==whistleCount){
-                            PreferencesUtil.setValueSInt(getActivity(),PreferencesUtil.WHISTLE_COUNT,0);
+                        if (rightBurnerWhistle == whistleCount) {
+                            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                             builder.setCancelable(false);
@@ -1099,11 +1110,14 @@ public class CharacteristicListFragment extends Fragment {
                     int rightBurnerTimer = data[i];
 
                     if (rightBurnerTimer > 0) {
-                        int minutes = (int) TimeUnit.SECONDS.toMinutes(rightBurnerTimer);
+                        // int minutes = (int) TimeUnit.SECONDS.toMinutes(rightBurnerTimer);
 
                         rightTimerIcon.setVisibility(View.VISIBLE);
                         rightTimerCount.setVisibility(View.VISIBLE);
-                        rightTimerCount.setText("" + minutes);
+                        rightTimerCount.setText("" + rightBurnerTimer);
+
+                        imageBlinking(rightTimerIcon);
+
                     } else {
                         rightTimerIcon.setVisibility(View.INVISIBLE);
                         rightTimerCount.setVisibility(View.INVISIBLE);
@@ -1118,6 +1132,17 @@ public class CharacteristicListFragment extends Fragment {
             //Whistle and timer goes here
 
         }
+
+    }
+
+    private void imageBlinking(ImageView timerIcon) {
+
+        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+        animation.setDuration(1000); //1 second duration for each animation cycle
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+        animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+        timerIcon.startAnimation(animation);
 
     }
 
@@ -1154,7 +1179,7 @@ public class CharacteristicListFragment extends Fragment {
 
             burnerTop.setProgress(burnerValue);
 
-            knobAngleLeft.setText("" + burnerValue);
+            knobAngleTop.setText(""+ burnerValue);
 
             /*if (burnerValue == 19) {
                 knobAngleTop.setText("" + 0);
@@ -1336,14 +1361,20 @@ public class CharacteristicListFragment extends Fragment {
                 if (hex.equals("01")) {
 
                     topBurnerTimer = FormatConversion.stringToInt(bur_ner);
+                    rightBurnerTimer = 0xff;
+                    leftBurnerTimer = 0xff;
 
                 } else if (hex.equals("10")) {
 
                     leftBurnerTimer = FormatConversion.stringToInt(bur_ner);
+                    rightBurnerTimer = 0xff;
+                    topBurnerTimer = 0xff;
 
                 } else if (hex.equals("11")) {
 
                     rightBurnerTimer = FormatConversion.stringToInt(bur_ner);
+                    leftBurnerTimer = 0xff;
+                    topBurnerTimer = 0xff;
 
                 }
 
