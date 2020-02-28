@@ -199,8 +199,8 @@
         android:layout_toRightOf="@id/rightBurner_Whistle"
         android:enabled="false"
         android:text="0"
-        android:textSize="20sp"
         android:textColor="@color/red"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
     <ImageView
@@ -208,8 +208,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/burnerRight"
-        android:layout_marginLeft="4dp"
         android:layout_alignBaseline="@+id/rightBurner_Whistle"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
         android:layout_toRightOf="@id/rightBurner_Whistle_Count"
         android:src="@drawable/timer"
@@ -222,9 +222,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/burnerRight"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="16dp"
-        android:layout_alignBaseline="@+id/rightBurner_Whistle"
         android:layout_toRightOf="@id/rightBurnerTimerIcon"
         android:visibility="invisible" />
 
@@ -233,12 +233,12 @@
         android:layout_width="25dp"
         android:layout_height="23dp"
         android:layout_below="@+id/burnerRight"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginRight="8dp"
         android:layout_toLeftOf="@id/dummyTextView_"
         android:saveEnabled="false"
-        android:layout_alignBaseline="@+id/rightBurner_Whistle"
         android:src="@drawable/vessel_orange"
         android:visibility="invisible"
 
@@ -323,8 +323,8 @@
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/leftBurner_Whistle"
         android:text="0"
-        android:textSize="20sp"
         android:textColor="@color/red"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
     <ImageView
@@ -401,6 +401,7 @@
 
         />
 
+
     <TextView
         android:id="@+id/topBurnerShowTimer"
         android:layout_width="wrap_content"
@@ -408,19 +409,24 @@
         android:layout_below="@id/burnerTop"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="40dp" />
+        android:layout_marginRight="50dp"
+        android:text="20"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        />
 
     <ImageView
         android:id="@+id/topTimerIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_below="@id/burnerTop"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_alignBaseline="@+id/topBurnerShowTimer"
         android:layout_toLeftOf="@+id/topBurnerShowTimer"
         android:src="@drawable/timer"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        />
 
     <TextView
         android:id="@+id/topBurner_Whistle_Count"
@@ -429,25 +435,26 @@
         android:layout_below="@id/burnerTop"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_alignBaseline="@+id/topBurnerShowTimer"
         android:layout_toLeftOf="@+id/topTimerIcon"
         android:text="0"
-        android:textSize="20sp"
         android:textColor="@color/red"
-        android:visibility="invisible" />
+        android:textSize="18sp"
+        android:visibility="invisible"
+        />
 
     <ImageView
         android:id="@+id/topBurner_whistle_img"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@id/burnerTop"
-        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_alignBaseline="@+id/topBurnerShowTimer"
         android:layout_toLeftOf="@+id/topBurner_Whistle_Count"
         android:src="@drawable/whistle_orange"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+
+
+        />
 
     <ImageView
         android:id="@+id/top_Burner_Vessel"
@@ -455,12 +462,12 @@
         android:layout_height="25dp"
         android:layout_below="@id/burnerTop"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:layout_alignBaseline="@+id/topBurnerShowTimer"
+        android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/topBurner_whistle_img"
         android:src="@drawable/vessel_orange"
-        android:visibility="invisible" />
+        android:visibility="invisible"
 
+        />
 
     <ImageView
         android:layout_width="100dp"

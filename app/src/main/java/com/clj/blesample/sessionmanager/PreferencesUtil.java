@@ -22,6 +22,8 @@ public class PreferencesUtil {
 
     public static final String RECEIVED_STATUS="received_status";
 
+    public static final String WHISTLE_COUNT="whistle_count";
+
     public static final String WRITE_VALUE="write_value";
 
     public static final String ZERO_WRITE_STATUS="zero_write_status";
