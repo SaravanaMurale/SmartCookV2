@@ -1006,8 +1006,6 @@ public class CharacteristicListFragment extends Fragment {
                         imageBlinking(topTimerIcon);
 
 
-
-
                     } else {
                         stopImageBlinking(topTimerIcon);
                         topTimerIcon.setVisibility(View.INVISIBLE);
@@ -1186,7 +1184,7 @@ public class CharacteristicListFragment extends Fragment {
 
             burnerTop.setProgress(burnerValue);
 
-            knobAngleTop.setText(""+ burnerValue);
+            knobAngleTop.setText("" + burnerValue);
 
             /*if (burnerValue == 19) {
                 knobAngleTop.setText("" + 0);
@@ -1298,14 +1296,29 @@ public class CharacteristicListFragment extends Fragment {
                 if (hex.equals("01")) {
 
                     topBurnerWhistle = FormatConversion.stringToInt(bur_ner);
+                    leftBurnerWhistle = 0xff;
+                    rightBurnerWhistle = 0xff;
+                    topBurnerTimer = 0Xff;
+                    leftBurnerTimer = 0xff;
+                    rightBurnerTimer = 0xff;
 
                 } else if (hex.equals("10")) {
 
                     leftBurnerWhistle = FormatConversion.stringToInt(bur_ner);
+                    rightBurnerWhistle = 0xff;
+                    topBurnerWhistle = 0xff;
+                    leftBurnerTimer = 0xff;
+                    topBurnerTimer = 0xff;
+                    rightBurnerTimer = 0xff;
 
                 } else if (hex.equals("11")) {
 
                     rightBurnerWhistle = FormatConversion.stringToInt(bur_ner);
+                    leftBurnerWhistle = 0xff;
+                    topBurnerWhistle = 0xff;
+                    rightBurnerTimer = 0xff;
+                    leftBurnerTimer = 0xff;
+                    topBurnerTimer = 0xff;
 
                 }
 
@@ -1370,18 +1383,27 @@ public class CharacteristicListFragment extends Fragment {
                     topBurnerTimer = FormatConversion.stringToInt(bur_ner);
                     rightBurnerTimer = 0xff;
                     leftBurnerTimer = 0xff;
+                    topBurnerWhistle=0xff;
+                    leftBurnerWhistle=0xff;
+                    rightBurnerWhistle=0xff;
 
                 } else if (hex.equals("10")) {
 
                     leftBurnerTimer = FormatConversion.stringToInt(bur_ner);
                     rightBurnerTimer = 0xff;
                     topBurnerTimer = 0xff;
+                    topBurnerWhistle=0xff;
+                    leftBurnerWhistle=0xff;
+                    rightBurnerWhistle=0xff;
 
                 } else if (hex.equals("11")) {
 
                     rightBurnerTimer = FormatConversion.stringToInt(bur_ner);
                     leftBurnerTimer = 0xff;
                     topBurnerTimer = 0xff;
+                    topBurnerWhistle=0xff;
+                    leftBurnerWhistle=0xff;
+                    rightBurnerWhistle=0xff;
 
                 }
 
