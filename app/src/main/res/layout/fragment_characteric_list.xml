@@ -98,20 +98,29 @@
 
     <ImageView
         android:id="@+id/whistleSet"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
-        android:src="@drawable/whistle_set" />
+        android:src="@drawable/whistlesetter" />
 
     <ImageView
         android:id="@+id/eTimer"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="10dp"
         android:layout_toLeftOf="@+id/whistleSet"
-        android:src="@drawable/eoff"
+        android:src="@drawable/timesetter"
 
+        />
+
+    <ImageView
+        android:id="@+id/emergencyStop"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@+id/eTimer"
+        android:layout_margin="10dp"
+        android:src="@drawable/emergencystop"
         />
 
 
@@ -177,7 +186,7 @@
     <ImageView
         android:id="@+id/rightBurner_Whistle"
         android:layout_width="25dp"
-        android:layout_height="23dp"
+        android:layout_height="25dp"
         android:layout_below="@id/burnerRight"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
@@ -231,7 +240,7 @@
     <ImageView
         android:id="@+id/rightBurnerVess_"
         android:layout_width="25dp"
-        android:layout_height="23dp"
+        android:layout_height="25dp"
         android:layout_below="@+id/burnerRight"
         android:layout_alignBaseline="@+id/rightBurner_Whistle"
         android:layout_centerHorizontal="true"
@@ -292,7 +301,7 @@
     <ImageView
         android:id="@+id/leftBurner_Vessel"
         android:layout_width="25dp"
-        android:layout_height="23dp"
+        android:layout_height="25dp"
         android:layout_below="@id/burnerLeft"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
@@ -301,8 +310,8 @@
 
     <ImageView
         android:id="@+id/leftBurner_Whistle"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_below="@id/burnerLeft"
         android:layout_alignBaseline="@+id/leftBurner_Vessel"
         android:layout_marginLeft="10dp"
@@ -418,8 +427,8 @@
 
     <ImageView
         android:id="@+id/topTimerIcon"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_below="@id/burnerTop"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
@@ -444,8 +453,8 @@
 
     <ImageView
         android:id="@+id/topBurner_whistle_img"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_below="@id/burnerTop"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
