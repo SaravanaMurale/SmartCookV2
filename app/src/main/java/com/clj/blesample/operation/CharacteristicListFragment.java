@@ -377,7 +377,7 @@ public class CharacteristicListFragment extends Fragment {
 
                                         topBurnerWhistleImage.setVisibility(View.VISIBLE);
                                         topBurnerWhistleCount.setVisibility(View.VISIBLE);
-                                        topBurnerWhistleCount.setText("0");
+                                        topBurnerWhistleCount.setText(""+burnerWhistleCount);
 
                                     } else if (burnerWhistleCount == 0) {
                                         topBurnerWhistleImage.setVisibility(View.INVISIBLE);
@@ -391,7 +391,7 @@ public class CharacteristicListFragment extends Fragment {
                                         PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, burnerWhistleCount);
                                         leftBurnerWhistleImage.setVisibility(View.VISIBLE);
                                         leftBurnerWhistleCount.setVisibility(View.VISIBLE);
-                                        leftBurnerWhistleCount.setText("0");
+                                        leftBurnerWhistleCount.setText(""+burnerWhistleCount);
                                     } else if (burnerWhistleCount == 0) {
                                         leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
                                         leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -404,7 +404,7 @@ public class CharacteristicListFragment extends Fragment {
                                         PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, burnerWhistleCount);
                                         rightBurnerWhistleImage.setVisibility(View.VISIBLE);
                                         rightBurnerWhistleCount.setVisibility(View.VISIBLE);
-                                        rightBurnerWhistleCount.setText("0");
+                                        rightBurnerWhistleCount.setText(""+burnerWhistleCount);
                                     } else if (burnerWhistleCount == 0) {
                                         rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
                                         rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -962,32 +962,41 @@ public class CharacteristicListFragment extends Fragment {
                         topBurnerWhistleCount.setVisibility(View.VISIBLE);
                         topBurnerWhistleCount.setText("" + topBurnerWhistle);
 
-                        int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
+                       // int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                        if (topBurnerWhistle == whistleCount) {
-                            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setCancelable(false);
-                            builder.setTitle("Whistle Finished");
-
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                    topBurnerWhistleImage.setVisibility(View.INVISIBLE);
-                                    topBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                                    topBurnerWhistleCount.setText("0");
-
-                                    dialog.cancel();
-                                }
-                            });
-
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
+                        //if (topBurnerWhistle == whistleCount) {
+                            //PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
 
-                        }
+
+
+                       // }
+
+                    } else if(topBurnerWhistle==0){
+
+                        topBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                        topBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                        topBurnerWhistleCount.setText("0");
+
+                       /* AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setCancelable(false);
+                        builder.setTitle("Whistle Finished");
+
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                topBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                                topBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                                topBurnerWhistleCount.setText("0");
+
+                                dialog.cancel();
+                            }
+                        });
+
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();*/
+
 
                     }
                 }
@@ -1021,30 +1030,40 @@ public class CharacteristicListFragment extends Fragment {
                         leftBurnerWhistleCount.setVisibility(View.VISIBLE);
                         leftBurnerWhistleCount.setText("" + leftBurnerWhistle);
 
-                        int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
+                        //int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                        if (leftBurnerWhistle == whistleCount) {
-                            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
+                        //if (leftBurnerWhistle == whistleCount) {
+                           // PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setCancelable(false);
-                            builder.setTitle("Whistle Finished");
 
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                        //}
 
-                                    leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
-                                    leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                                    leftBurnerWhistleCount.setText("0");
 
-                                    dialog.cancel();
-                                }
-                            });
 
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
-                        }
+                    }else if(leftBurnerWhistle==0){
+
+                        leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                        leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                        leftBurnerWhistleCount.setText("0");
+
+                        /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setCancelable(false);
+                        builder.setTitle("Whistle Finished");
+
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                                leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                                leftBurnerWhistleCount.setText("0");
+
+                                dialog.cancel();
+                            }
+                        });
+
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();*/
 
                     }
 
@@ -1079,32 +1098,40 @@ public class CharacteristicListFragment extends Fragment {
                         rightBurnerWhistleCount.setVisibility(View.VISIBLE);
                         rightBurnerWhistleCount.setText("" + rightBurnerWhistle);
 
-                        int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
+                        //int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                        if (rightBurnerWhistle == whistleCount) {
+                       // if (rightBurnerWhistle == whistleCount) {
                             PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setCancelable(false);
-                            builder.setTitle("Whistle Finished");
 
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                        //}
 
-                                    rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
-                                    rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
-                                    rightBurnerWhistleCount.setText("0");
+                    }else if(rightBurnerWhistle==0){
 
-                                    dialog.cancel();
-                                }
-                            });
+                        rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                        rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                        rightBurnerWhistleCount.setText("0");
 
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
-                        }
+                        /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setCancelable(false);
+                        builder.setTitle("Whistle Finished");
 
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
+                                rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
+                                rightBurnerWhistleCount.setText("0");
+
+                                dialog.cancel();
+                            }
+                        });
+
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();*/
                     }
+
                 }
                 if (i == 7 && whistleTimerFlag) {
                     int rightBurnerTimer = data[i];
