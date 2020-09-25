@@ -66,7 +66,7 @@ public class CharacteristicListFragment extends Fragment {
     TextView topBurnerWhistleCount, leftBurnerWhistleCount, rightBurnerWhistleCount;
 
     ImageView menuIcon;
-    ImageView whistleSet;
+    ImageView whistleSet,emergencyStop;
 
     ImageView leftTimerIcon, rightTimerIcon, topTimerIcon;
     TextView topTimerCount, rightTimerCount, leftTimerCount;
@@ -233,6 +233,44 @@ public class CharacteristicListFragment extends Fragment {
 
         eTimer = (ImageView) v.findViewById(R.id.eTimer);
 
+        emergencyStop=(ImageView)v.findViewById(R.id.emergencyStop);
+
+        emergencyStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setCancelable(false);
+                builder.setTitle("You want to turn off stove?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+                            callMe(1, null, null, 3);
+                        }
+
+                        dialog.cancel();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+
+            }
+        });
 
         eTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -779,6 +817,13 @@ public class CharacteristicListFragment extends Fragment {
             wrietUserData(userData, BURNER, secondFrameStatus);
         }
 
+        if (propList.size() > 0 && position == 1 && secondFrameStatus == 3) {
+            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
+            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
+            //((OperationActivity) getActivity()).changePage(2);
+            wrietUserData("ss", "12", 3);
+        }
+
 
     }
 
@@ -928,6 +973,9 @@ public class CharacteristicListFragment extends Fragment {
 
             PreferencesUtil.setValueString(getActivity(), PreferencesUtil.RECEIVED_STATUS, "true");
         } else if (data.length == 9) {
+
+
+
 
             boolean whistleTimerFlag = false;
 
@@ -1444,7 +1492,7 @@ public class CharacteristicListFragment extends Fragment {
                 secondFrameWithTimer[7] = (byte) (rightBurnerTimer);
                 secondFrameWithTimer[8] = (byte) ('#');
 
-                Toast.makeText(getActivity(), "Timer Data Sent", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Timer Data Sent", Toast.LENGTH_LONG).show();
 
                 BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
                 BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
@@ -1479,7 +1527,53 @@ public class CharacteristicListFragment extends Fragment {
                             }
                         });
 
-            } else {
+            } else if(secondFrameStatus == 3){
+
+                byte[] ret = new byte[6];
+                ret[0] = (byte) ('*');
+                ret[1] = (byte) (0XD1);
+                ret[2] = (byte) (0);
+                ret[3] = (byte) (0);
+                ret[4] = (byte) (0);
+                ret[5] = (byte) ('#');
+
+
+                BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+                BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+
+                BleManager.getInstance().write(
+                        bleDevice,
+                        characteristic.getService().getUuid().toString(),
+                        characteristic.getUuid().toString(),
+                        ret,
+                        new BleWriteCallback() {
+
+                            //Converting byte to String and displaying to user
+                            @Override
+                            public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onWriteFailure(final BleException exception) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        System.out.println("Exception" + exception.toString());
+                                    }
+                                });
+                            }
+                        });
+
+
+            }
+
+                else {
 
 
                 tempVal = 1;
@@ -1549,6 +1643,7 @@ public class CharacteristicListFragment extends Fragment {
 
 
                     System.out.println("BleSentValue" + angel_top);
+
 
 
                     BleManager.getInstance().write(

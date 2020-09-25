@@ -3,26 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.clj.blesample">
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/preethi_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".menuoperationactivity.AllBurnerStatisticsActivity"></activity>
+        <!--<activity android:name=".operation.BarChartActivity"></activity>-->
+        <activity android:name=".menuoperationactivity.AllBurnerStatisticsActivity" />
         <activity android:name=".menuoperationactivity.StatisticsReportActivity" />
         <activity android:name=".menuoperationactivity.MaintenanceServiceActivity" />
         <activity android:name=".menuoperationactivity.HistoryOfGasRefillActivity" />
-         <activity android:name=".operation.MenuActivity" />
-        <!-- <activity android:name=".MainActivity"></activity> -->
+        <activity android:name=".operation.MenuActivity" /> <!-- <activity android:name=".MainActivity"></activity> -->
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".operation.BarChartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,5 +27,11 @@
             android:name=".operation.OperationActivity"
             android:screenOrientation="landscape" />
     </application>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
 </manifest>

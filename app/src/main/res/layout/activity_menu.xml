@@ -11,6 +11,7 @@
         android:id="@+id/menuToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:title="Menu Operations"
         android:background="@color/colorPrimaryDark"></android.support.v7.widget.Toolbar>
 
     <RelativeLayout
@@ -271,6 +272,43 @@
 
 
     </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/preSetMenuBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewStaticsReportBlock"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/preSetImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/statistics" />
+
+        <TextView
+            android:id="@+id/preSetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/preSetImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="PreSet Menu" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+
+    </RelativeLayout>
+
 
 
 </RelativeLayout>
