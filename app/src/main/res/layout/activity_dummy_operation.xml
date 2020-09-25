@@ -13,7 +13,7 @@
         android:visibility="gone">
 
         <ListView
-            android:id="@+id/list_service"
+            android:id="@+id/list_service1"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
@@ -25,7 +25,7 @@
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/notify"
+            android:id="@+id/notify1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -33,7 +33,7 @@
             android:text="Notify" />
 
         <Button
-            android:id="@+id/write"
+            android:id="@+id/write1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -41,20 +41,20 @@
             android:text="Write" />
 
         <TextView
-            android:id="@+id/show_text"
+            android:id="@+id/show_text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Showing Received Data From Stove" />
 
         <TextView
-            android:id="@+id/show_received_data"
+            android:id="@+id/show_received_data1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp" />
 
         <EditText
-            android:id="@+id/edit_data"
+            android:id="@+id/edit_data1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="send data to stove"
@@ -62,14 +62,14 @@
             />
 
         <Button
-            android:id="@+id/send_btn"
+            android:id="@+id/send_btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Send" />
 
         <TextView
-            android:id="@+id/user_entered_data"
+            android:id="@+id/user_entered_data1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -80,26 +80,24 @@
 
 
     <ImageView
-        android:id="@+id/menuIcon"
+        android:id="@+id/menuIcon1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="10dp"
-        android:src="@drawable/menu"
-        android:visibility="gone"
-        />
+        android:src="@drawable/menu" />
 
     <ImageView
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/menuIcon"
+        android:layout_toRightOf="@+id/menuIcon1"
         android:src="@drawable/maintanence"
-
+        android:visibility="gone"
         />
 
     <ImageView
-        android:id="@+id/whistleSet"
+        android:id="@+id/whistleSet1"
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_alignParentRight="true"
@@ -107,27 +105,28 @@
         android:src="@drawable/whistlesetter" />
 
     <ImageView
-        android:id="@+id/eTimer"
+        android:id="@+id/eTimer1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="10dp"
-        android:layout_toLeftOf="@+id/whistleSet"
+        android:layout_toLeftOf="@+id/whistleSet1"
         android:src="@drawable/timesetter"
+
 
         />
 
     <ImageView
-        android:id="@+id/emergencyStop"
+        android:id="@+id/emergencyStop1"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_toLeftOf="@+id/eTimer"
         android:layout_margin="10dp"
+        android:layout_toLeftOf="@+id/eTimer1"
         android:src="@drawable/emergencystop"
-        />
+         />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
-        android:id="@+id/burnerRight"
+        android:id="@+id/burnerRight1"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_centerHorizontal="true"
@@ -156,14 +155,14 @@
 
 
     <TextView
-        android:id="@+id/dummyTextView_"
+        android:id="@+id/dummyTextView_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/burnerRight"
+        android:layout_below="@+id/burnerRight1"
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:id="@+id/knobRound"
+        android:id="@+id/knobRound1"
         android:layout_width="205dp"
         android:layout_height="205dp"
         android:layout_centerHorizontal="true"
@@ -174,7 +173,7 @@
 
 
     <TextView
-        android:id="@+id/rightBurnerKnobAngle"
+        android:id="@+id/rightBurnerKnobAngle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -186,28 +185,28 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/rightBurner_Whistle"
+        android:id="@+id/rightBurner_Whistle1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/burnerRight"
+        android:layout_below="@id/burnerRight1"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="15dp"
-        android:layout_toRightOf="@+id/dummyTextView_"
+        android:layout_toRightOf="@+id/dummyTextView_1"
         android:enabled="false"
         android:src="@drawable/whistle_orange"
         android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/rightBurner_Whistle_Count"
+        android:id="@+id/rightBurner_Whistle_Count1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/burnerRight"
-        android:layout_alignBaseline="@+id/rightBurner_Whistle"
+        android:layout_below="@+id/burnerRight1"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle1"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@id/rightBurner_Whistle"
+        android:layout_toRightOf="@id/rightBurner_Whistle1"
         android:enabled="false"
         android:text="0"
         android:textColor="@color/red"
@@ -215,40 +214,40 @@
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/rightBurnerTimerIcon"
+        android:id="@+id/rightBurnerTimerIcon1"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/burnerRight"
-        android:layout_alignBaseline="@+id/rightBurner_Whistle"
+        android:layout_below="@+id/burnerRight1"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle1"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@id/rightBurner_Whistle_Count"
+        android:layout_toRightOf="@id/rightBurner_Whistle_Count1"
         android:src="@drawable/timer"
         android:visibility="invisible"
 
         />
 
     <TextView
-        android:id="@+id/rightBurnerTimer"
+        android:id="@+id/rightBurnerTimer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/burnerRight"
-        android:layout_alignBaseline="@+id/rightBurner_Whistle"
+        android:layout_below="@id/burnerRight1"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle1"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@id/rightBurnerTimerIcon"
+        android:layout_toRightOf="@id/rightBurnerTimerIcon1"
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/rightBurnerVess_"
+        android:id="@+id/rightBurnerVess_1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@+id/burnerRight"
-        android:layout_alignBaseline="@+id/rightBurner_Whistle"
+        android:layout_below="@+id/burnerRight1"
+        android:layout_alignBaseline="@+id/rightBurner_Whistle1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@id/dummyTextView_"
+        android:layout_toLeftOf="@id/dummyTextView_1"
         android:saveEnabled="false"
         android:src="@drawable/vessel_orange"
         android:visibility="invisible"
@@ -257,7 +256,7 @@
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
-        android:id="@+id/burnerLeft"
+        android:id="@+id/burnerLeft1"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_marginLeft="05dp"
@@ -290,7 +289,7 @@
         />
 
     <TextView
-        android:id="@+id/leftBurnerKnobAngle"
+        android:id="@+id/leftBurnerKnobAngle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="115dp"
@@ -301,72 +300,72 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/leftBurner_Vessel"
+        android:id="@+id/leftBurner_Vessel1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/burnerLeft"
+        android:layout_below="@id/burnerLeft1"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/vessel_orange"
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/leftBurner_Whistle"
+        android:id="@+id/leftBurner_Whistle1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/burnerLeft"
-        android:layout_alignBaseline="@+id/leftBurner_Vessel"
+        android:layout_below="@id/burnerLeft1"
+        android:layout_alignBaseline="@+id/leftBurner_Vessel1"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/leftBurner_Vessel"
+        android:layout_toRightOf="@+id/leftBurner_Vessel1"
         android:src="@drawable/whistle_orange"
         android:visibility="invisible"
 
         />
 
     <TextView
-        android:id="@+id/leftBurner_Whistle_Count"
+        android:id="@+id/leftBurner_Whistle_Count1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/burnerLeft"
-        android:layout_alignBaseline="@+id/leftBurner_Whistle"
+        android:layout_below="@id/burnerLeft1"
+        android:layout_alignBaseline="@+id/leftBurner_Whistle1"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/leftBurner_Whistle"
+        android:layout_toRightOf="@+id/leftBurner_Whistle1"
         android:text="0"
         android:textColor="@color/red"
         android:textSize="20sp"
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/LeftTimerIcon"
+        android:id="@+id/LeftTimerIcon1"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@id/burnerLeft"
-        android:layout_alignBaseline="@id/leftBurner_Whistle"
+        android:layout_below="@id/burnerLeft1"
+        android:layout_alignBaseline="@id/leftBurner_Whistle1"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/leftBurner_Whistle_Count"
+        android:layout_toRightOf="@id/leftBurner_Whistle_Count1"
         android:src="@drawable/timer"
         android:visibility="invisible"
 
         />
 
     <TextView
-        android:id="@+id/leftBurnerTimer"
+        android:id="@+id/leftBurnerTimer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/burnerLeft"
-        android:layout_alignBaseline="@id/leftBurner_Whistle"
+        android:layout_below="@id/burnerLeft1"
+        android:layout_alignBaseline="@id/leftBurner_Whistle1"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/LeftTimerIcon"
+        android:layout_toRightOf="@id/LeftTimerIcon1"
 
         />
 
 
     <com.sdsmdg.harjot.crollerTest.Croller
-        android:id="@+id/burnerTop"
+        android:id="@+id/burnerTop1"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_alignParentRight="true"
@@ -399,7 +398,7 @@
         />
 
     <TextView
-        android:id="@+id/topBurnerKnobAngle"
+        android:id="@+id/topBurnerKnobAngle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -414,53 +413,50 @@
 
 
     <TextView
-        android:id="@+id/topBurnerShowTimer"
+        android:id="@+id/topBurnerShowTimer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/burnerTop"
+        android:layout_below="@id/burnerTop1"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="50dp"
         android:text="20"
         android:textColor="@color/red"
         android:textSize="18sp"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/topTimerIcon"
+        android:id="@+id/topTimerIcon1"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@id/burnerTop"
+        android:layout_below="@id/burnerTop1"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/topBurnerShowTimer"
+        android:layout_toLeftOf="@+id/topBurnerShowTimer1"
         android:src="@drawable/timer"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/topBurner_Whistle_Count"
+        android:id="@+id/topBurner_Whistle_Count1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/burnerTop"
+        android:layout_below="@id/burnerTop1"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/topTimerIcon"
+        android:layout_toLeftOf="@+id/topTimerIcon1"
         android:text="0"
         android:textColor="@color/red"
         android:textSize="18sp"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/topBurner_whistle_img"
+        android:id="@+id/topBurner_whistle_img1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/burnerTop"
+        android:layout_below="@id/burnerTop1"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/topBurner_Whistle_Count"
+        android:layout_toLeftOf="@+id/topBurner_Whistle_Count1"
         android:src="@drawable/whistle_orange"
         android:visibility="invisible"
 
@@ -468,13 +464,13 @@
         />
 
     <ImageView
-        android:id="@+id/top_Burner_Vessel"
+        android:id="@+id/top_Burner_Vessel1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/burnerTop"
+        android:layout_below="@id/burnerTop1"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/topBurner_whistle_img"
+        android:layout_toLeftOf="@+id/topBurner_whistle_img1"
         android:src="@drawable/vessel_orange"
         android:visibility="invisible"
 
