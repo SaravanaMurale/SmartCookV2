@@ -16,7 +16,7 @@
         <activity android:name=".menuoperationactivity.HistoryOfGasRefillActivity" />
         <activity android:name=".operation.MenuActivity" /> <!-- <activity android:name=".MainActivity"></activity> -->
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".operation.BarChartActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

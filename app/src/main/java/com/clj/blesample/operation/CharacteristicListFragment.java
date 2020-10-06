@@ -631,9 +631,11 @@ public class CharacteristicListFragment extends Fragment {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
 
-                if (progress >= 0) {
+                /*if (progress >= 0) {
                     return;
-                }
+                }*/
+
+                System.out.println("BurnerRight "+progress);
 
                 knobAngleRight.setTypeface(octinPrisonFont);
 

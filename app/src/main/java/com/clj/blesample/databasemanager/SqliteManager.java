@@ -74,6 +74,8 @@ public class SqliteManager extends SQLiteOpenHelper {
         db.execSQL(statisticsTable);
 
 
+
+
     }
 
     @Override
