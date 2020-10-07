@@ -7,10 +7,59 @@
     android:orientation="vertical"
     tools:context=".operation.BarChartActivity">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
+    <Spinner
+        android:id="@+id/burnerSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_border"
+        android:padding="15dp" />
+
+    <TextView
+        android:id="@+id/fromText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/burnerSpinner"
+        android:layout_margin="10dp"
+        android:text="From" />
+
+    <TextView
+        android:id="@+id/fromDate"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/fromText"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/rounded_border"
+        android:gravity="center_vertical"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/toText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/burnerSpinner"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:text="TO" />
+
+    <TextView
+        android:id="@+id/toDate"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/toText"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_border"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+
+        />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp" />
+        android:layout_below="@id/fromDate"
+        android:layout_margin="50dp"></com.github.mikephil.charting.charts.LineChart>
 
 </RelativeLayout>

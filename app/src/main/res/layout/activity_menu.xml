@@ -63,7 +63,7 @@
             />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -96,7 +96,7 @@
             android:text="Gas Consumption Per Day" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -129,7 +129,7 @@
             android:text="Balance Gas(Approx.)" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -162,7 +162,7 @@
             android:text="History Of Maintenance Service" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -196,7 +196,7 @@
             android:text="History Of Gas Refill" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -230,7 +230,7 @@
             android:text="Call Center Service" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -265,7 +265,7 @@
             android:text="View Statistics Report" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
@@ -301,7 +301,7 @@
             android:text="PreSet Menu" />
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow" />
