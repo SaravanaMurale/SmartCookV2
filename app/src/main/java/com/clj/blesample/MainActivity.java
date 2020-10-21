@@ -88,8 +88,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setReConnectCount(1, 5000)
                 .setConnectOverTime(20000)
                 .setOperateTimeout(5000);
-    }
 
+        //startScan();
+        checkPermissions();
+    }
 
 
     private void removeSessionValue() {
@@ -99,17 +101,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
 
             }
-        },1000);
+        }, 1000);
 
-        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.RECEIVED_STATUS);
+        PreferencesUtil.remove(MainActivity.this, PreferencesUtil.RECEIVED_STATUS);
 
-        String connectedStating=PreferencesUtil.getValueString(MainActivity.this,PreferencesUtil.RECEIVED_STATUS);
+        String connectedStating = PreferencesUtil.getValueString(MainActivity.this, PreferencesUtil.RECEIVED_STATUS);
 
-        System.out.println("MainActivityConnectedStatus "+connectedStating);
+        System.out.println("MainActivityConnectedStatus " + connectedStating);
 
-        PreferencesUtil.remove(MainActivity.this,PreferencesUtil.KNOB_ANGLE);
-
-
+        PreferencesUtil.remove(MainActivity.this, PreferencesUtil.KNOB_ANGLE);
 
 
     }
@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         BleManager.getInstance().disconnectAllDevice();
         BleManager.getInstance().destroy();
-
 
 
     }
@@ -184,12 +183,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mDeviceAdapter.setOnDeviceClickListener(new DeviceAdapter.OnDeviceClickListener() {
             @Override
             public void onConnect(BleDevice bleDevice) {
+
+
                 if (!BleManager.getInstance().isConnected(bleDevice)) {
                     BleManager.getInstance().cancelScan();
                     connect(bleDevice);
 
                 }
-
 
 
             }
@@ -300,6 +300,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 img_loading.clearAnimation();
                 img_loading.setVisibility(View.INVISIBLE);
                 btn_scan.setText(getString(R.string.start_scan));
+
+                System.out.println("CalledOnScanFinished");
+
+                for (int i = 0; i < scanResultList.size(); i++) {
+                    System.out.println("ListOFBLE" + scanResultList.get(i).getMac());
+
+                    if (PreferencesUtil.getValueString(MainActivity.this, PreferencesUtil.BLE_MAC_ADDRESS).equals(scanResultList.get(i).getMac())) {
+
+                        BleDevice bleDevice = scanResultList.get(i);
+                        Toast.makeText(MainActivity.this, "This device is already connected ", Toast.LENGTH_LONG).show();
+                        if (bleDevice != null) {
+                            connect(bleDevice);
+                        } else {
+
+                        }
+                        break;
+
+                    } else {
+                        Toast.makeText(MainActivity.this, "Please connect with stove ", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                //Toast.makeText(MainActivity.this, "MoveToNextActivity", Toast.LENGTH_LONG).show();
+
+
             }
         });
     }
@@ -330,15 +356,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Mycode
                 if (BleManager.getInstance().isConnected(bleDevice)) {
 
+                    PreferencesUtil.setValueString(MainActivity.this, PreferencesUtil.BLE_MAC_ADDRESS, bleDevice.getMac());
+
                     Intent intent = new Intent(MainActivity.this, OperationActivity.class);
                     intent.putExtra(OperationActivity.KEY_DATA, bleDevice);
                     progressDialog.dismiss();
                     startActivity(intent);
 
-                }
-                else {
+                } else {
 
-                    Toast.makeText(MainActivity.this,"Please Connect With Stove",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Please Connect With Stove", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -411,12 +438,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (!bluetoothAdapter.isEnabled()) {
 
-            if(Build.VERSION.SDK_INT<=Build.VERSION_CODES.LOLLIPOP_MR1){
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1) {
 
                 Toast.makeText(this, getString(R.string.please_open_blue), Toast.LENGTH_LONG).show();
                 return;
 
-            }else {
+            } else {
 
                 requestUserToEnableBluetooth();
             }
@@ -445,9 +472,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent actionToReqEnableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         startActivityForResult(actionToReqEnableBluetooth, REQ_CODE_TO_ENABLE);
     }
-
-
-
 
 
     private void onPermissionGranted(String permission) {
@@ -498,9 +522,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setScanRule();
                 startScan();
             }
-        }
-
-       else if (requestCode == REQ_CODE_TO_ENABLE) {
+        } else if (requestCode == REQ_CODE_TO_ENABLE) {
 
             if (resultCode == RESULT_OK) {
 

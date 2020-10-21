@@ -9,14 +9,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".operation.BarChartActivity"></activity>
+        <!-- <activity android:name=".operation.BarChartActivity"></activity> -->
         <activity android:name=".menuoperationactivity.AllBurnerStatisticsActivity" />
         <activity android:name=".menuoperationactivity.StatisticsReportActivity" />
         <activity android:name=".menuoperationactivity.MaintenanceServiceActivity" />
-        <activity android:name=".menuoperationactivity.HistoryOfGasRefillActivity" />
-        <!--<activity android:name=".operation.MenuActivity" />--> <!-- <activity android:name=".MainActivity"></activity> -->
+        <activity android:name=".menuoperationactivity.HistoryOfGasRefillActivity" /> <!-- <activity android:name=".operation.MenuActivity" /> -->
+        <!-- <activity android:name=".MainActivity"></activity> -->
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".operation.MenuActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,11 +27,11 @@
             android:name=".operation.OperationActivity"
             android:screenOrientation="landscape" />
     </application>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
 </manifest>

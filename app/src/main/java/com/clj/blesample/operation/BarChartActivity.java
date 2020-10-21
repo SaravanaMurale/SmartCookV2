@@ -20,9 +20,15 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.jjoe64.graphview.DefaultLabelFormatter;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class BarChartActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -34,6 +40,10 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
 
     DatePickerDialog.OnDateSetListener setListenerFromDate, setListenerToDate;
     TextView fromDate, toDate;
+
+    GraphView graphView;
+    LineGraphSeries<DataPoint> series;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd:MM:yyyy");
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -52,6 +62,10 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, burners);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
+
+        graphView = (GraphView) findViewById(R.id.graphView);
+        series = new LineGraphSeries<>(getDataPoint());
+        graphView.addSeries(series);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -104,17 +118,33 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
             }
         };
 
+        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                                                               @Override
+                                                               public String formatLabel(double value, boolean isValueX) {
 
-        ArrayList<String> xAXES = new ArrayList<>();
+                                                                   if (isValueX) {
+                                                                       return sdf.format(new Date((long) value));
+                                                                   } else {
+
+                                                                       return super.formatLabel(value, isValueX);
+                                                                   }
+                                                               }
+                                                           }
+        );
+
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(5);
+
+
+      /*  ArrayList<String> xAXES = new ArrayList<>();
         ArrayList<Entry> yAXESsin = new ArrayList<>();
         ArrayList<Entry> yAXEScos = new ArrayList<>();
         double x = 0 ;
-        int numDataPoints = 100;
+        int numDataPoints = 50;
 
         for(int i=0;i<numDataPoints;i++){
             float sinFunction = Float.parseFloat(String.valueOf(Math.sin(x)));
             float cosFunction = Float.parseFloat(String.valueOf(Math.cos(x)));
-            x = x + 0.1;
+            x = x + 1;
             yAXESsin.add(new Entry(sinFunction,i));
             yAXEScos.add(new Entry(cosFunction,i));
             xAXES.add(i, String.valueOf(x));
@@ -143,7 +173,32 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
         lineChart.setData(new LineData(lineDataSets));
 
         lineChart.setVisibleXRangeMaximum(65f);
+*/
 
+    }
+
+    private DataPoint[] getDataPoint() {
+
+        System.out.println("DateFormet " + new Date());
+
+        DataPoint[] dp = new DataPoint[]{
+
+
+                new DataPoint(new Date().getDate(), 1),
+                new DataPoint(new Date().getDate(), 5),
+                new DataPoint(new Date().getDate(), 10),
+                new DataPoint(new Date().getDate(), 15),
+                new DataPoint(new Date().getDate(), 20),
+                new DataPoint(new Date().getDate(), 25),
+                new DataPoint(new Date().getDate(), 30),
+                new DataPoint(new Date().getDate(), 35),
+                new DataPoint(new Date().getDate(), 40),
+                new DataPoint(new Date().getDate(), 45)
+
+
+        };
+
+        return dp;
 
     }
 

@@ -60,6 +60,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/fromDate"
-        android:layout_margin="50dp"></com.github.mikephil.charting.charts.LineChart>
+        android:layout_margin="50dp"
+        android:visibility="gone"></com.github.mikephil.charting.charts.LineChart>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fromDate"
+        android:layout_margin="50dp" />
 
 </RelativeLayout>

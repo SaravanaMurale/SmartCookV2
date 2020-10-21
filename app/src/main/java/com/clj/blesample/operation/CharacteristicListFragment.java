@@ -66,7 +66,7 @@ public class CharacteristicListFragment extends Fragment {
     TextView topBurnerWhistleCount, leftBurnerWhistleCount, rightBurnerWhistleCount;
 
     ImageView menuIcon;
-    ImageView whistleSet,emergencyStop;
+    ImageView whistleSet, emergencyStop;
 
     ImageView leftTimerIcon, rightTimerIcon, topTimerIcon;
     TextView topTimerCount, rightTimerCount, leftTimerCount;
@@ -233,7 +233,7 @@ public class CharacteristicListFragment extends Fragment {
 
         eTimer = (ImageView) v.findViewById(R.id.eTimer);
 
-        emergencyStop=(ImageView)v.findViewById(R.id.emergencyStop);
+        emergencyStop = (ImageView) v.findViewById(R.id.emergencyStop);
 
         emergencyStop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,7 +258,6 @@ public class CharacteristicListFragment extends Fragment {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
 
 
                         dialog.cancel();
@@ -415,7 +414,7 @@ public class CharacteristicListFragment extends Fragment {
 
                                         topBurnerWhistleImage.setVisibility(View.VISIBLE);
                                         topBurnerWhistleCount.setVisibility(View.VISIBLE);
-                                        topBurnerWhistleCount.setText(""+burnerWhistleCount);
+                                        topBurnerWhistleCount.setText("" + burnerWhistleCount);
 
                                     } else if (burnerWhistleCount == 0) {
                                         topBurnerWhistleImage.setVisibility(View.INVISIBLE);
@@ -429,7 +428,7 @@ public class CharacteristicListFragment extends Fragment {
                                         PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, burnerWhistleCount);
                                         leftBurnerWhistleImage.setVisibility(View.VISIBLE);
                                         leftBurnerWhistleCount.setVisibility(View.VISIBLE);
-                                        leftBurnerWhistleCount.setText(""+burnerWhistleCount);
+                                        leftBurnerWhistleCount.setText("" + burnerWhistleCount);
                                     } else if (burnerWhistleCount == 0) {
                                         leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
                                         leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -442,7 +441,7 @@ public class CharacteristicListFragment extends Fragment {
                                         PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, burnerWhistleCount);
                                         rightBurnerWhistleImage.setVisibility(View.VISIBLE);
                                         rightBurnerWhistleCount.setVisibility(View.VISIBLE);
-                                        rightBurnerWhistleCount.setText(""+burnerWhistleCount);
+                                        rightBurnerWhistleCount.setText("" + burnerWhistleCount);
                                     } else if (burnerWhistleCount == 0) {
                                         rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
                                         rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -632,7 +631,7 @@ public class CharacteristicListFragment extends Fragment {
             public void onProgressChanged(Croller croller, int progress) {
 
 
-                System.out.println("BurnerRight "+progress);
+                System.out.println("BurnerRight " + progress);
 
                 knobAngleRight.setTypeface(octinPrisonFont);
 
@@ -974,8 +973,6 @@ public class CharacteristicListFragment extends Fragment {
         } else if (data.length == 9) {
 
 
-
-
             boolean whistleTimerFlag = false;
 
             for (int i = 0; i < data.length; i++) {
@@ -1009,17 +1006,15 @@ public class CharacteristicListFragment extends Fragment {
                         topBurnerWhistleCount.setVisibility(View.VISIBLE);
                         topBurnerWhistleCount.setText("" + topBurnerWhistle);
 
-                       // int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
+                        // int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
                         //if (topBurnerWhistle == whistleCount) {
-                            //PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
+                        //PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
 
+                        // }
 
-
-                       // }
-
-                    } else if(topBurnerWhistle==0){
+                    } else if (topBurnerWhistle == 0) {
 
                         topBurnerWhistleImage.setVisibility(View.INVISIBLE);
                         topBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -1080,14 +1075,13 @@ public class CharacteristicListFragment extends Fragment {
                         //int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
                         //if (leftBurnerWhistle == whistleCount) {
-                           // PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
+                        // PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
 
                         //}
 
 
-
-                    }else if(leftBurnerWhistle==0){
+                    } else if (leftBurnerWhistle == 0) {
 
                         leftBurnerWhistleImage.setVisibility(View.INVISIBLE);
                         leftBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -1147,13 +1141,13 @@ public class CharacteristicListFragment extends Fragment {
 
                         //int whistleCount = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_COUNT);
 
-                       // if (rightBurnerWhistle == whistleCount) {
-                            PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
+                        // if (rightBurnerWhistle == whistleCount) {
+                        PreferencesUtil.setValueSInt(getActivity(), PreferencesUtil.WHISTLE_COUNT, 0);
 
 
                         //}
 
-                    }else if(rightBurnerWhistle==0){
+                    } else if (rightBurnerWhistle == 0) {
 
                         rightBurnerWhistleImage.setVisibility(View.INVISIBLE);
                         rightBurnerWhistleCount.setVisibility(View.INVISIBLE);
@@ -1457,27 +1451,27 @@ public class CharacteristicListFragment extends Fragment {
                     topBurnerTimer = FormatConversion.stringToInt(bur_ner);
                     rightBurnerTimer = 0xff;
                     leftBurnerTimer = 0xff;
-                    topBurnerWhistle=0xff;
-                    leftBurnerWhistle=0xff;
-                    rightBurnerWhistle=0xff;
+                    topBurnerWhistle = 0xff;
+                    leftBurnerWhistle = 0xff;
+                    rightBurnerWhistle = 0xff;
 
                 } else if (hex.equals("10")) {
 
                     leftBurnerTimer = FormatConversion.stringToInt(bur_ner);
                     rightBurnerTimer = 0xff;
                     topBurnerTimer = 0xff;
-                    topBurnerWhistle=0xff;
-                    leftBurnerWhistle=0xff;
-                    rightBurnerWhistle=0xff;
+                    topBurnerWhistle = 0xff;
+                    leftBurnerWhistle = 0xff;
+                    rightBurnerWhistle = 0xff;
 
                 } else if (hex.equals("11")) {
 
                     rightBurnerTimer = FormatConversion.stringToInt(bur_ner);
                     leftBurnerTimer = 0xff;
                     topBurnerTimer = 0xff;
-                    topBurnerWhistle=0xff;
-                    leftBurnerWhistle=0xff;
-                    rightBurnerWhistle=0xff;
+                    topBurnerWhistle = 0xff;
+                    leftBurnerWhistle = 0xff;
+                    rightBurnerWhistle = 0xff;
 
                 }
 
@@ -1526,7 +1520,7 @@ public class CharacteristicListFragment extends Fragment {
                             }
                         });
 
-            } else if(secondFrameStatus == 3){
+            } else if (secondFrameStatus == 3) {
 
                 byte[] ret = new byte[6];
                 ret[0] = (byte) ('*');
@@ -1570,9 +1564,7 @@ public class CharacteristicListFragment extends Fragment {
                         });
 
 
-            }
-
-                else {
+            } else {
 
 
                 tempVal = 1;
@@ -1642,7 +1634,6 @@ public class CharacteristicListFragment extends Fragment {
 
 
                     System.out.println("BleSentValue" + angel_top);
-
 
 
                     BleManager.getInstance().write(

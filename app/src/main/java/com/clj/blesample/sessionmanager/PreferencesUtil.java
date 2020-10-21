@@ -30,6 +30,8 @@ public class PreferencesUtil {
 
     public static final String PREVIOUS_VALUE_CHECK="prev_val_check";
 
+    public static final String BLE_MAC_ADDRESS="ble_mac";
+
     public static void setValueString(Context context, String key, String value) {
 
         if (context == null) return;
