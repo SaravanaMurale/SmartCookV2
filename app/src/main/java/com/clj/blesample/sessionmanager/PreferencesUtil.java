@@ -10,27 +10,14 @@ public class PreferencesUtil {
 
     //Shared Preference Name For Whole App
     private static final String SHARED_PREF_NAME = "pref_name_scsk";
-    public static final String KNOB_ANGLE="knob_angle";
-    public static final String LEFT_KNOB_ANGLE="left_knob_angle";
-    public static final String RIGHT_KNOB_ANGLE="right_knob_angle";
-    public static final String NO_VALUE="no_value";
-    public static final String BURNER_NAME="burner_name";
+    public static final String KNOB_ANGLE = "knob_angle";
+    ;
+    public static final String NO_VALUE = "no_value";
 
-    public static final String TOP_BURNER_VESSEL="top_burner_vessel";
-    public static final String LEFT_BURNER_VESSEL="left_burner_vessel";
-    public static final String RIGHT_BURNER_VESSEL="right_burner_vessel";
+    public static final String RECEIVED_STATUS = "received_status";
 
-    public static final String RECEIVED_STATUS="received_status";
 
-    public static final String WHISTLE_COUNT="whistle_count";
-
-    public static final String WRITE_VALUE="write_value";
-
-    public static final String ZERO_WRITE_STATUS="zero_write_status";
-
-    public static final String PREVIOUS_VALUE_CHECK="prev_val_check";
-
-    public static final String BLE_MAC_ADDRESS="ble_mac";
+    public static final String BLE_MAC_ADDRESS = "ble_mac";
 
     public static void setValueString(Context context, String key, String value) {
 
@@ -67,7 +54,7 @@ public class PreferencesUtil {
 
     }
 
-    public static void remove(Context contextRemoveRewardID,String key){
+    public static void remove(Context contextRemoveRewardID, String key) {
 
         SharedPreferences removeRewardID = contextRemoveRewardID.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = removeRewardID.edit();

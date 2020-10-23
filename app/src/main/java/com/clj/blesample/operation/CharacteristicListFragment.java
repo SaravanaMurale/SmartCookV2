@@ -117,8 +117,7 @@ public class CharacteristicListFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        String knobRotation_Angle = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.KNOB_ANGLE);
-        System.out.println("OnResumeValue " + knobRotation_Angle);
+
 
         //Calls Notify
         if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
@@ -160,11 +159,6 @@ public class CharacteristicListFragment extends Fragment {
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service);
-
-
-
-
-
 
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {

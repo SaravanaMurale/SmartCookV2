@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/burnerSettingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Burner Settings" />
+
+        <Button
+            android:id="@+id/leftBurnerOperation"
+            android:layout_width="110dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/burnerSettingsText"
+            android:background="@drawable/rounded_button"
+            android:text="B1" />
+
+        <Button
+            android:id="@+id/centerBurnerOperation"
+            android:layout_width="110dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/burnerSettingsText"
+            android:layout_toRightOf="@id/leftBurnerOperation"
+            android:background="@drawable/rounded_button"
+            android:text="B1" />
+
+        <Button
+            android:id="@+id/rightBurnerOperation"
+            android:layout_width="110dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/burnerSettingsText"
+            android:layout_toRightOf="@id/centerBurnerOperation"
+            android:background="@drawable/rounded_button"
+            android:text="B1" />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

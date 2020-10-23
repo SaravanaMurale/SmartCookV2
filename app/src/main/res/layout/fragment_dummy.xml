@@ -1,12 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DummyFragment">
+    android:orientation="vertical"
+
+    tools:context=".DummyFragment1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <RelativeLayout
+            android:id="@+id/leftBurnerBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <Button
+                android:id="@+id/leftBurner"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_button"
+                android:text="B1" />
+
+            <Button
+                android:id="@+id/leftBurnerSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/leftBurner"
+                android:text="Burner Settings" />
+
+            <Button
+                android:id="@+id/leftBurnerEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/leftBurner"
+                android:text="Edit"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/centerBurnerBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/leftBurnerBlock">
+
+            <Button
+                android:id="@+id/centerBurner"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_button"
+                android:text="B1" />
+
+            <Button
+                android:id="@+id/centerBurnerSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/centerBurner"
+                android:text="Burner Settings" />
+
+            <Button
+                android:id="@+id/centerBurnerEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/centerBurner"
+                android:text="Edit"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rightBurnerBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/centerBurnerBlock">
+
+            <Button
+                android:id="@+id/rightBurner"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_button"
+                android:text="B1" />
+
+            <Button
+                android:id="@+id/rightBurnerSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/rightBurner"
+                android:text="Burner Settings" />
+
+            <Button
+                android:id="@+id/rightBurnerEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/rightBurner"
+                android:text="Edit"
+                android:visibility="gone" />
+
+        </RelativeLayout>
 
 
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</ScrollView>

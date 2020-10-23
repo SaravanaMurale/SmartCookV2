@@ -1,6 +1,8 @@
 package com.clj.blesample;
 
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -39,27 +41,53 @@ public class DummyActivity extends AppCompatActivity {
     public static final String FILE_NAME = "scsk.txt";
     FileOutputStream fos;
 
+    Button moveToFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummy);
 
-        editText = (EditText) findViewById(R.id.editText);
+        /*editText = (EditText) findViewById(R.id.editText);
         saveData = (Button) findViewById(R.id.saveData);
-        loadData = (Button) findViewById(R.id.loadData);
+        loadData = (Button) findViewById(R.id.loadData);*/
 
 
-        saveData.setOnClickListener(new View.OnClickListener() {
+        moveToFragment = (Button) findViewById(R.id.moveToFragment);
+
+        moveToFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*try {
+
+
+                moveToFragment.setVisibility(View.GONE);
+
+                Fragment fragment = new DummyFragment1();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
+
+        /*GradientDrawable bgShape = (GradientDrawable) round.getBackground();
+        bgShape.setColor(Color.BLACK);*/
+
+
+      /*  saveData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                *//*try {
                     fos=new FileOutputStream(FILE_NAME,true);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                }*/
+                }*//*
 
                 try {
-                    fos = openFileOutput(FILE_NAME,MODE_APPEND);
+                    fos = openFileOutput(FILE_NAME, MODE_APPEND);
                     fos.write(editText.getText().toString().getBytes());
 
                     editText.getText().clear();
@@ -115,7 +143,7 @@ public class DummyActivity extends AppCompatActivity {
                 }
             }
         });
-
+*/
 
     }
 
