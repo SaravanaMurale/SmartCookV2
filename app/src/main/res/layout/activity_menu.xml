@@ -47,7 +47,7 @@
             android:id="@+id/usagePatternImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/usage_pattern" />
+             />
 
         <TextView
             android:id="@+id/usagePatternText"
@@ -66,7 +66,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
     </RelativeLayout>
 
@@ -99,7 +99,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
     </RelativeLayout>
 
 
@@ -116,7 +116,7 @@
             android:id="@+id/balanceGasImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/gas" />
+             />
 
         <TextView
             android:id="@+id/balanceGasText"
@@ -132,7 +132,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
     </RelativeLayout>
 
@@ -149,7 +149,7 @@
             android:id="@+id/historyOfMaintenanceImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/gas_service" />
+            />
 
         <TextView
             android:id="@+id/gasMaintenanceText"
@@ -165,7 +165,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
 
     </RelativeLayout>
@@ -183,7 +183,7 @@
             android:id="@+id/historyOfGasRefillImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/gas_refill" />
+             />
 
         <TextView
             android:id="@+id/gasRefillText"
@@ -199,7 +199,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
 
     </RelativeLayout>
@@ -233,7 +233,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
 
     </RelativeLayout>
@@ -252,7 +252,7 @@
             android:id="@+id/staticsImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/statistics" />
+             />
 
         <TextView
             android:id="@+id/statisticsText"
@@ -268,7 +268,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
 
     </RelativeLayout>
@@ -288,7 +288,7 @@
             android:id="@+id/preSetImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/statistics" />
+             />
 
         <TextView
             android:id="@+id/preSetText"
@@ -304,7 +304,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/arrow" />
+             />
 
 
     </RelativeLayout>
