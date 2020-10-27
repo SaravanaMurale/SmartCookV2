@@ -1,6 +1,7 @@
 package com.clj.blesample;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clj.blesample.operation.MenuActivity;
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
@@ -23,6 +25,7 @@ public class DummyFragment1 extends Fragment {
 
 
     Button leftBurner, leftBurnerSettings, leftBurnerEdit, centerBurner, centerBurnerSettings, centerBurnerEdit, rightBurner, rightBurnerSettings, rightBurnerEdit;
+    ImageView menuIcon;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +44,15 @@ public class DummyFragment1 extends Fragment {
         rightBurner = (Button) view.findViewById(R.id.rightBurner);
         rightBurnerSettings = (Button) view.findViewById(R.id.rightBurnerSettings);
         rightBurnerEdit = (Button) view.findViewById(R.id.rightBurnerEdit);
+
+        menuIcon = (ImageView) view.findViewById(R.id.menuIcon);
+
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchMenuActivity();
+            }
+        });
 
         leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +78,13 @@ public class DummyFragment1 extends Fragment {
 
 
         return view;
+    }
+
+    private void launchMenuActivity() {
+
+        Intent intent = new Intent(this.getActivity(), MenuActivity.class);
+        startActivity(intent);
+
     }
 
     private void callDummyFragment2() {

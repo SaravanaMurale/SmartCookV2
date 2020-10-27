@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".operation.MenuActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/menuToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="Menu Operations"
-        android:background="@color/colorPrimaryDark"></android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/myAccountBlock"
@@ -29,13 +22,14 @@
             android:text="My Account"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/usagePatterBlock"
+        android:id="@+id/profileSettingBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/myAccountBlock"
@@ -44,79 +38,85 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/usagePatternImage"
+            android:id="@+id/profileSettingImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-             />
-
-        <TextView
-            android:id="@+id/usagePatternText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/usagePatternImage"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Usage Pattern"
-            android:textColor="@color/color_grey_ke"
-
-            />
+            android:src="@drawable/call_center" />
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-             />
+            android:src="@drawable/arrow" />
+
+        <TextView
+            android:id="@+id/profileSettingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/profileSettingImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Profile Setting"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/avgConsumptionPerDayBlock"
+        android:id="@+id/recipeMenuBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/usagePatterBlock"
+        android:layout_below="@id/profileSettingBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/avgConsumptionPerDayImage"
+            android:id="@+id/recipeMenuImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/consumption_per_day" />
-
-        <TextView
-            android:id="@+id/avgConsumptionPerDayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/avgConsumptionPerDayImage"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Gas Consumption Per Day" />
+            android:src="@drawable/recipe" />
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-             />
+            android:src="@drawable/arrow" />
+
+        <TextView
+            android:id="@+id/recipeMenuText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/recipeMenuImage"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Recipe Menu"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </RelativeLayout>
 
-
     <RelativeLayout
-        android:id="@+id/balanceGasBlock"
+        android:id="@+id/productServiceBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/avgConsumptionPerDayBlock"
+        android:layout_below="@id/recipeMenuBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/balanceGasImage"
+            android:id="@+id/productServiceImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-             />
+            android:src="@drawable/productservice" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
 
         <TextView
             android:id="@+id/balanceGasText"
@@ -124,32 +124,35 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/balanceGasImage"
+            android:layout_toRightOf="@+id/productServiceImage"
             android:fontFamily="sans-serif-condensed"
-            android:text="Balance Gas(Approx.)" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-             />
+            android:text="Product Service"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
+
     <RelativeLayout
-        android:id="@+id/historyOfMaintenanceBlock"
+        android:id="@+id/settingsBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/balanceGasBlock"
+        android:layout_below="@id/productServiceBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/historyOfMaintenanceImage"
+            android:id="@+id/settingsImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            />
+            android:src="@drawable/settings" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
 
         <TextView
             android:id="@+id/gasMaintenanceText"
@@ -157,33 +160,35 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/historyOfMaintenanceImage"
+            android:layout_toRightOf="@+id/settingsImage"
             android:fontFamily="sans-serif-condensed"
-            android:text="History Of Maintenance Service" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-             />
+            android:text="Settings"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/historyOfCyclenderRefilBlock"
+        android:id="@+id/aboutUsBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/historyOfMaintenanceBlock"
+        android:layout_below="@id/settingsBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/historyOfGasRefillImage"
+            android:id="@+id/aboutUsImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-             />
+            android:src="@drawable/aboutus" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
 
         <TextView
             android:id="@+id/gasRefillText"
@@ -191,33 +196,35 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/historyOfGasRefillImage"
+            android:layout_toRightOf="@+id/aboutUsImage"
             android:fontFamily="sans-serif-condensed"
-            android:text="History Of Gas Refill" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-             />
+            android:text="About Us"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/callCenterServiceBlock"
+        android:id="@+id/contactUsBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/historyOfCyclenderRefilBlock"
+        android:layout_below="@id/aboutUsBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/callCenterServiceImage"
+            android:id="@+id/contactUsImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/call_center" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
 
         <TextView
             android:id="@+id/callCenterServiceText"
@@ -225,25 +232,20 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/callCenterServiceImage"
+            android:layout_toRightOf="@+id/contactUsImage"
             android:fontFamily="sans-serif-condensed"
-            android:text="Call Center Service" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-             />
+            android:text="Contact Us"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
 
-
     <RelativeLayout
-        android:id="@+id/viewStaticsReportBlock"
+        android:id="@+id/signOutBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/callCenterServiceBlock"
+        android:layout_below="@id/contactUsBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:padding="8dp">
@@ -252,43 +254,49 @@
             android:id="@+id/staticsImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-             />
+            android:src="@drawable/signout" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
 
         <TextView
-            android:id="@+id/statisticsText"
+            android:id="@+id/signOutText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/staticsImage"
             android:fontFamily="sans-serif-condensed"
-            android:text="View Statistics Report" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-             />
+            android:text="Sign Out"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
-
 
 
     <RelativeLayout
         android:id="@+id/preSetMenuBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/viewStaticsReportBlock"
+        android:layout_below="@id/signOutBlock"
         android:layout_margin="8dp"
         android:background="@color/white"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/preSetImage"
             android:layout_width="30dp"
-            android:layout_height="30dp"
-             />
+            android:layout_height="30dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/preSetText"
@@ -300,15 +308,16 @@
             android:fontFamily="sans-serif-condensed"
             android:text="PreSet Menu" />
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-             />
-
 
     </RelativeLayout>
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/menuToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:title="Menu Operations"></android.support.v7.widget.Toolbar>
 
 
 </RelativeLayout>
