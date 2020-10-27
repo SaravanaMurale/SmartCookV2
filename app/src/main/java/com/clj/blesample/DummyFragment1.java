@@ -1,10 +1,6 @@
 package com.clj.blesample;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,11 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.clj.blesample.operation.MenuActivity;
-import com.sdsmdg.harjot.crollerTest.Croller;
-import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
+import com.clj.blesample.menuoperationactivity.MenuActivity;
 
 
 public class DummyFragment1 extends Fragment {

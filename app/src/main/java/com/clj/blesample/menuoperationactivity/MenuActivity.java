@@ -1,4 +1,4 @@
-package com.clj.blesample.operation;
+package com.clj.blesample.menuoperationactivity;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -14,10 +14,11 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.clj.blesample.R;
+import com.clj.blesample.operation.BarChartActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    RelativeLayout userPatternBlock, gasConsumptionBlock, balanceGasBlock, historyOfMaintenanceBlock, gasRefillBlock, customerServiceBlock, viewStaticsReportBlock, preSetMenuBlock;
+    RelativeLayout  profileSettingBlock, recipeMenuBlock, productServiceBlock, settingsBlock, contactUsBlock, signOutBlock, preSetMenuBlock;
 
     public static final int REQUEST_PHONE_CALL = 121;
 
@@ -31,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
         initView();
-        gasConsumptionBlock.setOnClickListener(new View.OnClickListener() {
+        profileSettingBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -44,7 +45,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
         //Customercare Service call and message
-        customerServiceBlock.setOnClickListener(new View.OnClickListener() {
+        contactUsBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -100,7 +101,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-        gasRefillBlock.setOnClickListener(new View.OnClickListener() {
+        settingsBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -130,12 +131,12 @@ public class MenuActivity extends AppCompatActivity {
 
     private void initView() {
 
-        gasConsumptionBlock = (RelativeLayout) findViewById(R.id.avgConsumptionPerDayBlock);
-        customerServiceBlock = (RelativeLayout) findViewById(R.id.callCenterServiceBlock);
-        gasRefillBlock = (RelativeLayout) findViewById(R.id.historyOfCyclenderRefilBlock);
-        historyOfMaintenanceBlock = (RelativeLayout) findViewById(R.id.historyOfMaintenanceBlock);
-        viewStaticsReportBlock = (RelativeLayout) findViewById(R.id.viewStaticsReportBlock);
-        preSetMenuBlock = (RelativeLayout) findViewById(R.id.preSetMenuBlock);
+        profileSettingBlock = (RelativeLayout) findViewById(R.id.profileSettingBlock);
+        recipeMenuBlock = (RelativeLayout) findViewById(R.id.recipeMenuBlock);
+        productServiceBlock = (RelativeLayout) findViewById(R.id.productServiceBlock);
+        settingsBlock = (RelativeLayout) findViewById(R.id.settingsBlock);
+        contactUsBlock = (RelativeLayout) findViewById(R.id.contactUsBlock);
+        signOutBlock = (RelativeLayout) findViewById(R.id.signOutBlock);
 
 
     }
