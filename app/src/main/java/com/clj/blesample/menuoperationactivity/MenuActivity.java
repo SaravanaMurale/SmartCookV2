@@ -43,6 +43,13 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        productServiceBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         //Customercare Service call and message
         contactUsBlock.setOnClickListener(new View.OnClickListener() {
