@@ -78,15 +78,8 @@ public class CharacteristicListFragment extends Fragment {
         //end of status bar
         View v = inflater.inflate(R.layout.fragment_characteric_list, null);
 
-        getFont();
-
         initView(v);
         return v;
-    }
-
-    private void getFont() {
-
-        octinPrisonFont = FontUtil.getOctinPrisonFont(getActivity());
     }
 
 
@@ -97,12 +90,12 @@ public class CharacteristicListFragment extends Fragment {
 
 
         //Calls Notify
-        if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+       /* if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
 
             callMe(0, null, null, 0);
 
 
-        }
+        }*/
 
 
         //Notify
@@ -135,7 +128,7 @@ public class CharacteristicListFragment extends Fragment {
 
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());
-        ListView listView_device = (ListView) v.findViewById(R.id.list_service);
+        ListView listView_device = (ListView) v.findViewById(R.id.list_service_character);
 
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {
@@ -150,18 +143,6 @@ public class CharacteristicListFragment extends Fragment {
 
             }
         });*/
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         listView_device.setAdapter(mResultAdapter);
@@ -345,7 +326,7 @@ public class CharacteristicListFragment extends Fragment {
                             public void run() {
 
 
-                              //  splitEachBurnerDataFromReceivedByte(data);
+                               splitEachBurnerDataFromReceivedByte(data);
 
 
                             }
@@ -355,12 +336,9 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
-
-
-
-
-
-
+    private void splitEachBurnerDataFromReceivedByte(byte[] data) {
+        System.out.println("ReceivedData "+data);
+    }
 
 
     private void runOnUiThread(Runnable runnable) {
