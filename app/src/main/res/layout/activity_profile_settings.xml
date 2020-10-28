@@ -86,7 +86,7 @@
         android:id="@+id/changePasswordBlock"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/emailBlock"
+        android:layout_below="@id/mobileBlock"
         android:layout_marginTop="10dp">
 
         <ImageView
@@ -113,7 +113,9 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:src="@drawable/user"
+        />
 
 
 </RelativeLayout>

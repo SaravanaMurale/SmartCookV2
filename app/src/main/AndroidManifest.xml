@@ -9,14 +9,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".menuoperationactivity.SettingsActivity"></activity>
+        <!--<activity android:name=".menuoperationactivity.SplashScreenActivity"></activity>-->
+        <activity android:name=".menuoperationactivity.SettingsActivity" />
         <activity android:name=".menuoperationactivity.ProductServiceActivity" />
-        <activity android:name=".menuoperationactivity.ProfileSettingsActivity" /> <!-- <activity android:name=".operation.BarChartActivity"></activity> -->
-        <!-- <activity android:name=".operation.MenuActivity" /> -->
-        <!-- <activity android:name=".MainActivity"></activity> -->
+        <activity android:name=".menuoperationactivity.ProfileSettingsActivity" />
+        <activity android:name=".menuoperationactivity.BarChartActivity" /> <!-- <activity android:name=".operation.MenuActivity" /> -->
+         <activity android:name=".MainActivity"></activity>
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".menuoperationactivity.MenuActivity" />
-        <activity android:name=".DummyActivity">
+        <!--<activity android:name=".menuoperationactivity.SplashScreenActivity" />-->
+        <activity android:name=".menuoperationactivity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,11 +28,11 @@
             android:name=".operation.OperationActivity"
             android:screenOrientation="landscape" />
     </application>
-    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
 </manifest>

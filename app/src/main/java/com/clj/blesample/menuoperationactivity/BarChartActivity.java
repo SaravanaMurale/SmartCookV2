@@ -1,4 +1,4 @@
-package com.clj.blesample.operation;
+package com.clj.blesample.menuoperationactivity;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -16,17 +16,12 @@ import android.widget.TextView;
 
 import com.clj.blesample.R;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 

@@ -18,6 +18,7 @@ public class PreferencesUtil {
 
 
     public static final String BLE_MAC_ADDRESS = "ble_mac";
+    public static final String USER_ID = "user_id";
 
     public static void setValueString(Context context, String key, String value) {
 

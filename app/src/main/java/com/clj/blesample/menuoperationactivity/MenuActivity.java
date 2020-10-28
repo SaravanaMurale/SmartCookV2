@@ -14,15 +14,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.clj.blesample.R;
-import com.clj.blesample.operation.BarChartActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    RelativeLayout  profileSettingBlock, recipeMenuBlock, productServiceBlock, settingsBlock, contactUsBlock, signOutBlock, preSetMenuBlock;
+    RelativeLayout profileSettingBlock, recipeMenuBlock, productServiceBlock, settingsBlock, contactUsBlock, signOutBlock, preSetMenuBlock;
 
     public static final int REQUEST_PHONE_CALL = 121;
-
-
 
 
     @Override
@@ -36,7 +33,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MenuActivity.this, BarChartActivity.class);
+                Intent intent = new Intent(MenuActivity.this, ProfileSettingsActivity.class);
                 startActivity(intent);
 
 
@@ -47,8 +44,30 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent=new Intent(MenuActivity.this,ProductServiceActivity.class);
+                startActivity(intent);
+
             }
         });
+
+        signOutBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        settingsBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent settingsActivity = new Intent(MenuActivity.this, SettingsActivity.class);
+                startActivity(settingsActivity);
+
+            }
+        });
+
 
 
         //Customercare Service call and message
@@ -108,25 +127,14 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-        settingsBlock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                /*Intent historyOfGasRefillActivity=new Intent(MenuActivity.this, HistoryOfGasRefillActivity.class);
-                startActivity(historyOfGasRefillActivity);*/
-
-            }
-        });
 
 
-
-
-        preSetMenuBlock.setOnClickListener(new View.OnClickListener() {
+        /*preSetMenuBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callPreSetMenuDialog();
             }
-        });
+        });*/
 
 
     }
