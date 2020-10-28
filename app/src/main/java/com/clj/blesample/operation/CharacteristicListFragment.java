@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,9 +47,10 @@ public class CharacteristicListFragment extends Fragment {
     int SIZE_OF_CHARACTERISTIC = 0;
 
 
-
-    Typeface octinPrisonFont;
     int currentApiVersion;
+
+    Button leftBurner, leftBurnerSettings, leftBurnerEdit, centerBurner, centerBurnerSettings, centerBurnerEdit, rightBurner, rightBurnerSettings, rightBurnerEdit;
+    ImageView menuIcon;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -129,6 +131,7 @@ public class CharacteristicListFragment extends Fragment {
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service_character);
+
 
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {

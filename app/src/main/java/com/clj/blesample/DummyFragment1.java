@@ -26,7 +26,7 @@ public class DummyFragment1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dummy, container, false);
 
-        leftBurner = (Button) view.findViewById(R.id.leftBurner);
+        /*leftBurner = (Button) view.findViewById(R.id.leftBurner);
         leftBurnerSettings = (Button) view.findViewById(R.id.leftBurnerSettings);
         leftBurnerEdit = (Button) view.findViewById(R.id.leftBurnerEdit);
 
@@ -36,9 +36,9 @@ public class DummyFragment1 extends Fragment {
 
         rightBurner = (Button) view.findViewById(R.id.rightBurner);
         rightBurnerSettings = (Button) view.findViewById(R.id.rightBurnerSettings);
-        rightBurnerEdit = (Button) view.findViewById(R.id.rightBurnerEdit);
+        rightBurnerEdit = (Button) view.findViewById(R.id.rightBurnerEdit);*/
 
-        menuIcon = (ImageView) view.findViewById(R.id.menuIcon);
+//        menuIcon = (ImageView) view.findViewById(R.id.menuIcon);
 
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override

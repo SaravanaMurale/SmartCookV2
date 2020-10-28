@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context=".DummyFragment1">
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
@@ -17,10 +16,9 @@
             android:id="@+id/menuIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/menu"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            />
+            android:src="@drawable/menu" />
 
 
         <RelativeLayout
@@ -28,8 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/menuIcon"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_marginTop="10dp">
 
             <Button
                 android:id="@+id/leftBurner"
@@ -125,7 +122,7 @@
         </RelativeLayout>
 
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 
 </ScrollView>
