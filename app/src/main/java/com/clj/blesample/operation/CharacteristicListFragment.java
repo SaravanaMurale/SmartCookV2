@@ -6,7 +6,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,8 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clj.blesample.R;
+import com.clj.blesample.menuoperationactivity.EditActivity;
 import com.clj.blesample.menuoperationactivity.MenuActivity;
-import com.clj.blesample.utils.FontUtil;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.data.BleDevice;
@@ -41,7 +40,6 @@ public class CharacteristicListFragment extends Fragment {
     BluetoothGattCharacteristic characteristic;
     List<Integer> propList = new ArrayList<>();
     List<String> propNameList = new ArrayList<>();
-
 
 
     int SIZE_OF_CHARACTERISTIC = 0;
@@ -81,14 +79,30 @@ public class CharacteristicListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_characteric_list, null);
 
         initView(v);
+
+
+        leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CallEditActivity();
+            }
+        });
+
         return v;
+    }
+
+    private void CallEditActivity() {
+
+        Intent intent = new Intent(getActivity(), EditActivity.class);
+        startActivity(intent);
+
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-
 
 
         //Calls Notify
@@ -131,6 +145,18 @@ public class CharacteristicListFragment extends Fragment {
     private void initView(View v) {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service_character);
+
+        leftBurner = (Button) v.findViewById(R.id.leftBurner);
+        leftBurnerSettings = (Button) v.findViewById(R.id.leftBurnerSettings);
+        leftBurnerEdit = (Button) v.findViewById(R.id.leftBurnerEdit);
+
+        centerBurner = (Button) v.findViewById(R.id.centerBurner);
+        centerBurnerSettings = (Button) v.findViewById(R.id.centerBurnerSettings);
+        centerBurnerEdit = (Button) v.findViewById(R.id.centerBurnerEdit);
+
+        rightBurner = (Button) v.findViewById(R.id.rightBurner);
+        rightBurnerSettings = (Button) v.findViewById(R.id.rightBurnerSettings);
+        rightBurnerEdit = (Button) v.findViewById(R.id.rightBurnerEdit);
 
 
         //To check write Data
@@ -202,21 +228,6 @@ public class CharacteristicListFragment extends Fragment {
         });
     }
 
-    private String burnerFinder(String toString) {
-        String burner = "";
-
-        if (toString.equals("Right")) {
-            burner = "01";
-        } else if (toString.equals("Left")) {
-            burner = "10";
-        } else if (toString.equals("Center")) {
-            burner = "11";
-        }
-
-        return burner;
-
-    }
-
 
     private void callMe(int position, String userData, String BURNER, int secondFrameStatus) {
 
@@ -280,7 +291,7 @@ public class CharacteristicListFragment extends Fragment {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             //((OperationActivity) getActivity()).changePage(2);
-           // wrietUserData("ss", "12", 3);
+            // wrietUserData("ss", "12", 3);
         }
 
 
@@ -329,7 +340,7 @@ public class CharacteristicListFragment extends Fragment {
                             public void run() {
 
 
-                               splitEachBurnerDataFromReceivedByte(data);
+                                splitEachBurnerDataFromReceivedByte(data);
 
 
                             }
@@ -340,7 +351,7 @@ public class CharacteristicListFragment extends Fragment {
     }
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
-        System.out.println("ReceivedData "+data);
+        System.out.println("ReceivedData " + data);
     }
 
 

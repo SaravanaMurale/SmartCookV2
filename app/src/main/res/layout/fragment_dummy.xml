@@ -7,13 +7,14 @@
     android:orientation="vertical"
     tools:context=".DummyFragment1">
 
+
     <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <ImageView
-            android:id="@+id/menuIcon"
+            android:id="@+id/menuIcon1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
@@ -25,7 +26,7 @@
             android:id="@+id/leftBurnerBlock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/menuIcon"
+            android:layout_below="@id/menuIcon1"
             android:layout_marginTop="10dp">
 
             <Button
@@ -33,7 +34,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/vessel_on"
                 android:text="B1" />
 
             <Button
@@ -66,7 +67,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/vessel_on"
                 android:text="B1" />
 
             <Button
@@ -99,7 +100,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/vessel_on"
                 android:text="B1" />
 
             <Button

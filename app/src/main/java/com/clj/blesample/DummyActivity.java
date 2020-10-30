@@ -66,7 +66,7 @@ public class DummyActivity extends AppCompatActivity {
                 Fragment fragment = new DummyFragment1();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.replace(R.id.fragmentContainer1, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 

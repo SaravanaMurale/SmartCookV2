@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".menuoperationactivity.EditActivity">
 
-   <!-- <RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
@@ -25,8 +28,8 @@
             android:layout_height="200dp"
             android:layout_below="@id/burnerSettingsText"
             android:layout_margin="10dp"
+            android:background="@drawable/not_in_use"
             android:layout_toRightOf="@id/leftBurnerOperation"
-            android:background="@drawable/vessel_on"
             android:text="B1" />
 
         <Button
@@ -36,7 +39,7 @@
             android:layout_below="@id/burnerSettingsText"
             android:layout_margin="10dp"
             android:layout_toRightOf="@id/centerBurnerOperation"
-            android:background="@drawable/vessel_on"
+            android:background="@drawable/vessel_off"
             android:text="B1" />
 
         <TextView
@@ -48,34 +51,37 @@
 
         <TextView
             android:id="@+id/timerText"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/leftBurnerOperation"
             android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:padding="10dp"
+            android:gravity="center"
             android:background="@drawable/rounded_border"
             android:text="Timer" />
 
         <TextView
             android:id="@+id/whistleText"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/leftBurnerOperation"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:padding="10dp"
+            android:gravity="center"
             android:background="@drawable/rounded_border"
             android:text="Whistle Count" />
 
 
         <TextView
             android:id="@+id/sub"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/timerText"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:layout_marginTop="30dp"
+            android:padding="10dp"
             android:text="-"
+            android:gravity="center"
             android:background="@drawable/rounded_border"
             android:textSize="20sp"
 
@@ -83,13 +89,14 @@
 
         <TextView
             android:id="@+id/add"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/whistleText"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:layout_marginTop="30dp"
+            android:padding="10dp"
             android:text="+"
+            android:gravity="center"
             android:background="@drawable/rounded_border"
             android:textSize="20sp" />
 
@@ -99,8 +106,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/timerText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:padding="5dp"
+            android:layout_marginTop="40dp"
+            android:padding="10dp"
             android:background="@drawable/rounded_border"
             android:text="15 minutes" />
 
@@ -109,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sub"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Flame Mode" />
 
         <TextView
@@ -117,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/flamMode"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:padding="20dp"
             android:background="@drawable/rounded_border"
             android:text="SIM" />
@@ -129,7 +136,7 @@
             android:layout_below="@id/flamMode"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:padding="20dp"
             android:background="@drawable/rounded_border"
             android:text="HIGH" />
@@ -140,13 +147,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/flamMode"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:padding="20dp"
             android:background="@drawable/rounded_border"
             android:text="OFF" />
 
 
-    </RelativeLayout>-->
+    </RelativeLayout>
 
-
-</ScrollView>
+</RelativeLayout>
