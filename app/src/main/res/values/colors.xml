@@ -14,5 +14,7 @@
     <color name="white">#ffffff</color>
     <color name="color_grey_ke">#808080</color>
     <color name="blue">#5c6bc0</color>
+    <color name="burner_on_green">#c2d93d</color>
+
 
 </resources>
