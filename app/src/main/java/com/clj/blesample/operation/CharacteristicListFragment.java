@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,9 @@ public class CharacteristicListFragment extends Fragment {
     Button leftBurner, leftBurnerSettings, leftBurnerEdit, centerBurner, centerBurnerSettings, centerBurnerEdit, rightBurner, rightBurnerSettings, rightBurnerEdit;
     ImageView menuIcon;
 
+    byte[] currentByte, currentByte1;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -90,13 +94,6 @@ public class CharacteristicListFragment extends Fragment {
         });
 
         return v;
-    }
-
-    private void CallEditActivity() {
-
-        Intent intent = new Intent(getActivity(), EditActivity.class);
-        startActivity(intent);
-
     }
 
 
@@ -352,6 +349,41 @@ public class CharacteristicListFragment extends Fragment {
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
         System.out.println("ReceivedData " + data);
+        //currentByte=data;
+
+    }
+
+    private void CallEditActivity() {
+        currentByte = new byte[4];
+        currentByte1 = new byte[5];
+
+        currentByte[0] = 0;
+        currentByte[1] = 1;
+        currentByte[2] = 0;
+        currentByte[3] = 1;
+
+        currentByte1[0] = 1;
+        currentByte1[1] = 1;
+        currentByte1[2] = 1;
+        currentByte1[3] = 1;
+        currentByte1[4] = 1;
+
+        System.out.println("MyLength" + currentByte.length);
+
+        ArrayList<byte[]> arrayList = new ArrayList<>();
+        arrayList.add(currentByte);
+        arrayList.add(currentByte1);
+
+        Intent intent = new Intent(getActivity(), EditActivity.class);
+        //intent.putExtra("currentByte_size", arrayList.size());
+        intent.putExtra("currentByteArrayList", arrayList);
+        /*for (int i = 0; i < arrayList.size(); i++) {
+            intent.putExtra("currentByte" + i, arrayList.get(i));
+        }
+*/
+        startActivity(intent);
+
+
     }
 
 

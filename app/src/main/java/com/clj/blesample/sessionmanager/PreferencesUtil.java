@@ -11,12 +11,8 @@ public class PreferencesUtil {
     //Shared Preference Name For Whole App
     private static final String SHARED_PREF_NAME = "pref_name_scsk";
     public static final String KNOB_ANGLE = "knob_angle";
-    ;
     public static final String NO_VALUE = "no_value";
-
     public static final String RECEIVED_STATUS = "received_status";
-
-
     public static final String BLE_MAC_ADDRESS = "ble_mac";
     public static final String USER_ID = "user_id";
 
