@@ -98,7 +98,13 @@ public class EditActivity extends AppCompatActivity {
 
                 System.out.println("ReceivedData" + burner + " " + timerInMin + " " + whistleInCount + " " + flameMode);
 
-                startBurnerClickListener.onStartClick(burner, timerInMin, whistleInCount, flameMode);
+               // startBurnerClickListener.onStartClick(burner, timerInMin, whistleInCount, flameMode);
+
+                /*Bundle bundle = new Bundle();
+                bundle.putString("edttext", "From Activity");
+
+                CharacteristicListFragment fragobj = new CharacteristicListFragment();
+                fragobj.setArguments(bundle);*/
 
                 onBackPressed();
 

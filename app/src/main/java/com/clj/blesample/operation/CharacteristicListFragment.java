@@ -87,9 +87,12 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
 
         initView(v);
 
+        /*String strtext = getArguments().getString("edttext");
+
+        System.out.println("ReceivedTExt" + strtext);*/
+
         /*EditActivity editActivity=new EditActivity();
         editActivity.EditActivityMethod(this);*/
-
 
 
         leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +141,6 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         alert.show();
 
     }
-
-
 
 
     @Override
