@@ -30,7 +30,7 @@ public class ServiceListFragment extends Fragment {
     private ResultAdapter mResultAdapter;
 
     //MyCode
-    int SECOND_POSITION_SERVICE=0;
+    int SECOND_POSITION_SERVICE = 0;
     BluetoothGattService service;
 
     @Override
@@ -47,13 +47,12 @@ public class ServiceListFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        if(SECOND_POSITION_SERVICE==3 && mResultAdapter!=null ){
-            System.out.println("MyServicePosition"+SECOND_POSITION_SERVICE);
+        if (SECOND_POSITION_SERVICE == 3 && mResultAdapter != null) {
+            System.out.println("MyServicePosition" + SECOND_POSITION_SERVICE);
 
             callMe(2);
         }
     }
-
 
 
     private void initView(View v) {
@@ -80,10 +79,10 @@ public class ServiceListFragment extends Fragment {
 
     //MyCode
     private void callMe(int position) {
-         service = mResultAdapter.getItem(position);
-        System.out.println("ServiceValue"+service);
-                ((OperationActivity) getActivity()).setBluetoothGattService(service);
-                ((OperationActivity) getActivity()).changePage(1);
+        service = mResultAdapter.getItem(position);
+        System.out.println("ServiceValue" + service);
+        ((OperationActivity) getActivity()).setBluetoothGattService(service);
+        ((OperationActivity) getActivity()).changePage(1);
     }
 
 
@@ -127,8 +126,8 @@ public class ServiceListFragment extends Fragment {
 
         @Override
         public int getCount() {
-            System.out.println("SERVICEPOSITION_SIZE"+bluetoothGattServices.size());
-            SECOND_POSITION_SERVICE=bluetoothGattServices.size();
+            System.out.println("SERVICEPOSITION_SIZE" + bluetoothGattServices.size());
+            SECOND_POSITION_SERVICE = bluetoothGattServices.size();
             return bluetoothGattServices.size();
         }
 

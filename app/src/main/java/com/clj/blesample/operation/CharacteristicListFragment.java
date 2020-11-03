@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.clj.blesample.R;
 import com.clj.blesample.menuoperationactivity.EditActivity;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class CharacteristicListFragment extends Fragment {
+public class CharacteristicListFragment extends Fragment implements EditActivity.StartBurnerClickListener {
 
 
     private ResultAdapter mResultAdapter;
@@ -86,26 +87,33 @@ public class CharacteristicListFragment extends Fragment {
 
         initView(v);
 
+        /*EditActivity editActivity=new EditActivity();
+        editActivity.EditActivityMethod(this);*/
+
+
 
         leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                CallEditActivity();
+                String left = "00";
+                CallEditActivity(left);
             }
         });
 
         centerBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CallEditActivity();
+                String center = "01";
+                CallEditActivity(center);
             }
         });
 
         rightBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callAlertDialog();
+                String right = "10";
+                CallEditActivity(right);
             }
         });
 
@@ -115,7 +123,7 @@ public class CharacteristicListFragment extends Fragment {
     private void callAlertDialog() {
 
         final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-       // alert.setTitle("Vessel is not detected");
+        // alert.setTitle("Vessel is not detected");
         alert.setMessage("Please Place Vessel");
         alert.setIcon(R.drawable.preethi_logo);
 
@@ -130,6 +138,8 @@ public class CharacteristicListFragment extends Fragment {
         alert.show();
 
     }
+
+
 
 
     @Override
@@ -388,7 +398,7 @@ public class CharacteristicListFragment extends Fragment {
 
     }
 
-    private void CallEditActivity() {
+    private void CallEditActivity(String burner) {
         currentByte = new byte[4];
         currentByte1 = new byte[5];
 
@@ -411,6 +421,7 @@ public class CharacteristicListFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), EditActivity.class);
         //intent.putExtra("currentByte_size", arrayList.size());
+        intent.putExtra("BURNER", burner);
         intent.putExtra("currentByteArrayList", arrayList);
         /*for (int i = 0; i < arrayList.size(); i++) {
             intent.putExtra("currentByte" + i, arrayList.get(i));
@@ -436,6 +447,13 @@ public class CharacteristicListFragment extends Fragment {
             mResultAdapter.addResult(characteristic);
         }
         mResultAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onStartClick(String burner, int timerInMinute, int whistleInCount, String flameMode) {
+
+        Toast.makeText(getActivity(), "Value Received", Toast.LENGTH_LONG).show();
+
     }
 
     private class ResultAdapter extends BaseAdapter {

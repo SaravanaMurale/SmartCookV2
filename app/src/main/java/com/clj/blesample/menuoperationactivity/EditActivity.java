@@ -1,6 +1,7 @@
 package com.clj.blesample.menuoperationactivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,25 +10,34 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.clj.blesample.R;
+import com.clj.blesample.operation.CharacteristicListFragment;
+import com.clj.blesample.operation.OperationActivity;
 
 import java.util.ArrayList;
 
 public class EditActivity extends AppCompatActivity {
 
-    Button operateLeftBurner, operateCenterBurner, operateRightBurner;
+    Button operateLeftBurner, operateCenterBurner, operateRightBurner, start, cancel;
     TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle;
     int timerInMin = 5;
     int whistleInCount = 2;
 
-    B1TimerClickListener b1TimerClickListener;
+    StartBurnerClickListener startBurnerClickListener;
 
     byte[] bytes1, byte2;
 
     boolean timerFlag, whistleFlag;
 
+    String burner = "";
 
-    interface B1TimerClickListener {
-        public void onB1TimerClick();
+    String flameMode = "";
+
+    public interface StartBurnerClickListener {
+        public void onStartClick(String burner, int timerInMinute, int whistleInCount, String flameMode);
+    }
+
+    public void EditActivityMethod(CharacteristicListFragment context) {
+        startBurnerClickListener = (StartBurnerClickListener) context;
     }
 
     @Override
@@ -38,6 +48,7 @@ public class EditActivity extends AppCompatActivity {
         ArrayList<byte[]> byteArrayList = new ArrayList<>();
 
         Intent intent = getIntent();
+        burner = intent.getStringExtra("BURNER");
         byteArrayList = (ArrayList<byte[]>) intent.getSerializableExtra("currentByteArrayList");
 
        /* int byteSize = intent.getIntExtra("currentByte_size", 0);
@@ -81,6 +92,26 @@ public class EditActivity extends AppCompatActivity {
             whistle.setVisibility(View.INVISIBLE);
         }
 
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                System.out.println("ReceivedData" + burner + " " + timerInMin + " " + whistleInCount + " " + flameMode);
+
+                startBurnerClickListener.onStartClick(burner, timerInMin, whistleInCount, flameMode);
+
+                onBackPressed();
+
+
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
@@ -225,6 +256,9 @@ public class EditActivity extends AppCompatActivity {
         sim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                flameMode = "sim";
+
                 sim.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 high.setBackgroundColor(getResources().getColor(R.color.white));
                 off.setBackgroundColor(getResources().getColor(R.color.white));
@@ -236,6 +270,8 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                flameMode = "sim";
+
                 high.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 sim.setBackgroundColor(getResources().getColor(R.color.white));
                 off.setBackgroundColor(getResources().getColor(R.color.white));
@@ -246,6 +282,8 @@ public class EditActivity extends AppCompatActivity {
         off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                flameMode = "off";
 
                 off.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 sim.setBackgroundColor(getResources().getColor(R.color.white));
@@ -273,5 +311,10 @@ public class EditActivity extends AppCompatActivity {
         sim = (TextView) findViewById(R.id.sim);
         high = (TextView) findViewById(R.id.high);
         off = (TextView) findViewById(R.id.off);
+
+        start = (Button) findViewById(R.id.start);
+        cancel = (Button) findViewById(R.id.cancel);
+
+
     }
 }
