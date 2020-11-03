@@ -141,6 +141,7 @@ public class EditActivity extends AppCompatActivity {
                 operateAdd.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 operateSub.setBackgroundColor(getResources().getColor(R.color.white));
 
+                operateSub.setEnabled(true);
 
                 if (timerFlag) {
 
@@ -172,13 +173,22 @@ public class EditActivity extends AppCompatActivity {
                             minute.setText("" + timerInMin + " minute");
                         } else if (timerInMin == 0) {
                             whistle.setText("" + timerInMin + "whistle");
-                            operateSub.setEnabled(false);
-                            operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+
+                            if (whistleInCount == 0 && timerInMin == 0) {
+                                operateSub.setEnabled(false);
+                                operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                            }
+
                         }
                     } else if (timerInMin == 0) {
                         minute.setText("" + timerInMin + "whistle");
-                        operateSub.setEnabled(false);
-                        operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                        if (whistleInCount == 0 && timerInMin == 0) {
+                            operateSub.setEnabled(false);
+                            operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                        } else {
+                            operateSub.setEnabled(true);
+                        }
+
                     }
 
                 } else if (whistleFlag) {
@@ -189,13 +199,22 @@ public class EditActivity extends AppCompatActivity {
                             whistle.setText("" + whistleInCount + "whistle");
                         } else if (whistleInCount == 0) {
                             whistle.setText("" + whistleInCount + "whistle");
-                            operateSub.setEnabled(false);
-                            operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+
+                            if (timerInMin == 0 && whistleInCount == 0) {
+                                operateSub.setEnabled(false);
+                                operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                            }
+
                         }
                     } else if (whistleInCount == 0) {
                         whistle.setText("" + whistleInCount + "whistle");
-                        operateSub.setEnabled(false);
-                        operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                        if (timerInMin == 0 && whistleInCount == 0) {
+                            operateSub.setEnabled(false);
+                            operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                        } else {
+                            operateSub.setEnabled(true);
+                        }
+
 
                     }
                 }
