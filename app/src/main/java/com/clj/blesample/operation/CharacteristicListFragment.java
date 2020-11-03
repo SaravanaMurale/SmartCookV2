@@ -2,9 +2,11 @@ package com.clj.blesample.operation;
 
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -93,7 +95,40 @@ public class CharacteristicListFragment extends Fragment {
             }
         });
 
+        centerBurnerSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CallEditActivity();
+            }
+        });
+
+        rightBurnerSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callAlertDialog();
+            }
+        });
+
         return v;
+    }
+
+    private void callAlertDialog() {
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+       // alert.setTitle("Vessel is not detected");
+        alert.setMessage("Please Place Vessel");
+        alert.setIcon(R.drawable.preethi_logo);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+
+            }
+        });
+
+        alert.show();
+
     }
 
 
