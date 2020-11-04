@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 
 import com.clj.blesample.model.MaintenaceServiceDTO;
 import com.clj.blesample.model.StatisticsDTO;
+import com.clj.blesample.utils.MathUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,15 @@ public class SqliteManager extends SQLiteOpenHelper {
     public static final String ST_COOKING_STATUS = "cooking_status";
 
 
+    public static final String SIGNUP_TABLE = "signuptable";
+    public static final String USER_NAME = "user_name";
+    public static final String USER_EMAIL = "user_email";
+    public static final String USER_MOBILE = "user_mobile";
+    public static final String USER_PASSWORD = "user_password";
+    public static final String USER_ADDRESS = "user_address";
+    public static final String USER_CREATION_DATE = "user_creation_date";
+
+
     public SqliteManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -47,7 +57,7 @@ public class SqliteManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(\n" +
+        /*String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(\n" +
                 "    " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT add_cart_pk PRIMARY KEY AUTOINCREMENT,\n" +
                 "    " + MISSUE_ID + " varchar(200) NOT NULL,\n" +
                 "    " + FIXED_DATE + " tinyint(4) NOT NULL,\n" +
@@ -67,19 +77,49 @@ public class SqliteManager extends SQLiteOpenHelper {
                 "    " + ST_DURATION + " varchar(200) NOT NULL\n," +
                 "    " + ST_COOKING_STATUS + " varchar(200) NOT NULL\n," +
                 "    " + DEVICE_ID + " varchar(200) NOT NULL\n" +
+                ");";*/
+
+        String signUpTable = "CREATE TABLE IF NOT EXISTS " + SIGNUP_TABLE + "(\n" +
+                "    " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT add_cart_pk PRIMARY KEY AUTOINCREMENT,\n" +
+                "    " + USER_NAME + " varchar(200) NOT NULL,\n" +
+                "    " + USER_EMAIL + " tinyint(4) NOT NULL,\n" +
+                "    " + USER_MOBILE + " varchar(200) NOT NULL,\n" +
+                "    " + USER_PASSWORD + " varchar(200) NOT NULL,\n" +
+                "    " + USER_ADDRESS + " varchar(200) NOT NULL\n," +
+                "    " + USER_CREATION_DATE + " varchar(200) NOT NULL\n" +
                 ");";
 
 
-        db.execSQL(sql);
-        db.execSQL(statisticsTable);
+        /*db.execSQL(sql);
+        db.execSQL(statisticsTable);*/
 
-
+        db.execSQL(signUpTable);
 
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+
+    public boolean addUser(String userName, String userEmail, String mobileNumber, String userPassword, String userAddress) {
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        /*try {*/
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(USER_NAME, userName);
+        contentValues.put(USER_EMAIL, userEmail);
+        contentValues.put(USER_MOBILE, mobileNumber);
+        contentValues.put(USER_PASSWORD, userPassword);
+        contentValues.put(USER_ADDRESS, userAddress);
+        contentValues.put(USER_CREATION_DATE, MathUtil.dateAndTime());
+
+        return sqLiteDatabase.insert(SIGNUP_TABLE, null, contentValues) != -1;
 
     }
 
@@ -131,7 +171,7 @@ public class SqliteManager extends SQLiteOpenHelper {
     }
 
 
-    public boolean addStatisticsBurnerValue(String cooking_ID, String date, String time, String burner, String angle, String duration, String cookingStatus,String deviceID) {
+    public boolean addStatisticsBurnerValue(String cooking_ID, String date, String time, String burner, String angle, String duration, String cookingStatus, String deviceID) {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -193,6 +233,28 @@ public class SqliteManager extends SQLiteOpenHelper {
         return reportList;
 
 
+    }
+
+    public String validateLoginUser(String userEmail, String password) {
+
+        String username = "";
+
+        SQLiteDatabase selectAllData = getReadableDatabase();
+
+        Cursor userData = selectAllData.rawQuery("select user_name,user_email from signuptable where userEmail=? and user_password=? ", new String[]{userEmail, password});
+
+        if (userData.moveToFirst()) {
+
+            do {
+
+                username = userData.getString(0);
+
+            }
+            while (userData.moveToNext());
+
+        }
+
+        return username;
     }
 
 

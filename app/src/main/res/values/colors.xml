@@ -16,5 +16,8 @@
     <color name="blue">#5c6bc0</color>
     <color name="burner_on_green">#c2d93d</color>
 
+    <color name="bg_start">#414283</color>
+    <color name="bg_end">#24b6df</color>
+
 
 </resources>
