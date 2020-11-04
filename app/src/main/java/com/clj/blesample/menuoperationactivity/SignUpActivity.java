@@ -1,6 +1,7 @@
 package com.clj.blesample.menuoperationactivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,6 +59,9 @@ public class SignUpActivity extends AppCompatActivity {
                     signUpAddress.getText().clear();
 
                     Toast.makeText(SignUpActivity.this, "User Added Successfully", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(SignUpActivity.this, "User Is Not Added Successfully", Toast.LENGTH_LONG).show();

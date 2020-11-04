@@ -241,13 +241,16 @@ public class SqliteManager extends SQLiteOpenHelper {
 
         SQLiteDatabase selectAllData = getReadableDatabase();
 
-        Cursor userData = selectAllData.rawQuery("select user_name,user_email from signuptable where userEmail=? and user_password=? ", new String[]{userEmail, password});
+        Cursor userData = selectAllData.rawQuery("select id,user_name from signuptable where user_email=? and user_password=? ", new String[]{userEmail, password});
 
         if (userData.moveToFirst()) {
 
             do {
 
-                username = userData.getString(0);
+                int id = userData.getInt(0);
+                System.out.println("ReceivedUserId"+id);
+                username = userData.getString(1);
+
 
             }
             while (userData.moveToNext());
