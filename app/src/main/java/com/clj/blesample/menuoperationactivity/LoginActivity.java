@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clj.blesample.MainActivity;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText loginUserName, loginPassword;
     private Button btnLogin;
+    private TextView signUp;
 
     SqliteManager sqliteManager;
 
@@ -40,11 +42,20 @@ public class LoginActivity extends AppCompatActivity {
 
         loginUserName = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_password);
+        signUp = (TextView) findViewById(R.id.signUp);
 
         btnLogin = (Button) findViewById(R.id.loginBtn);
 
         loginUserName.addTextChangedListener(new MyTextWatcher(loginUserName));
         loginPassword.addTextChangedListener(new MyTextWatcher(loginPassword));
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +64,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 String userName = sqliteManager.validateLoginUser(loginUserName.getText().toString(), loginPassword.getText().toString());
 
-                if (userName != null) {
+                if (!userName.equals("empty")) {
                     Toast.makeText(LoginActivity.this, "Received UserName" + userName, Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    finish();
                     startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, "You have entered wrong username or password" + userName, Toast.LENGTH_LONG).show();

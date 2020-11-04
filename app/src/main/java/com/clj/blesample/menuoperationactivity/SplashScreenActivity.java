@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 
 public class SplashScreenActivity extends AppCompatActivity {
+
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +38,21 @@ public class SplashScreenActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
 
-            Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+            Intent intent;
 
-            // user_id = PreferencesUtil.getValueString(SplashScreen.this, PreferenceUtil.USERID);
+            userId = PreferencesUtil.getValueInt(SplashScreenActivity.this, PreferencesUtil.USER_ID);
 
+            if (userId > 0) {
+                intent = new Intent(SplashScreenActivity.this, MainActivity.class);
 
-            startActivity(intent);
+            } else {
+                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+
+            }
+
             finish();
+            startActivity(intent);
+
 
         }
     }

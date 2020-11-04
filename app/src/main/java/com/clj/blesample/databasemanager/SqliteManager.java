@@ -3,13 +3,12 @@ package com.clj.blesample.databasemanager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
 import com.clj.blesample.model.MaintenaceServiceDTO;
 import com.clj.blesample.model.StatisticsDTO;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.blesample.utils.MathUtil;
 
 import java.util.ArrayList;
@@ -50,8 +49,13 @@ public class SqliteManager extends SQLiteOpenHelper {
     public static final String USER_CREATION_DATE = "user_creation_date";
 
 
+    Context mCtx;
+
     public SqliteManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        mCtx = context;
+
     }
 
     @Override
@@ -237,7 +241,7 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     public String validateLoginUser(String userEmail, String password) {
 
-        String username = "";
+        String username = "empty";
 
         SQLiteDatabase selectAllData = getReadableDatabase();
 
@@ -248,7 +252,10 @@ public class SqliteManager extends SQLiteOpenHelper {
             do {
 
                 int id = userData.getInt(0);
-                System.out.println("ReceivedUserId"+id);
+                System.out.println("ReceivedUserId" + id);
+
+                PreferencesUtil.setValueSInt(mCtx, PreferencesUtil.USER_ID, id);
+
                 username = userData.getString(1);
 
 
