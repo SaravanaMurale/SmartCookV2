@@ -201,6 +201,16 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         rightBurnerSettings = (Button) v.findViewById(R.id.rightBurnerSettings);
         rightBurnerEdit = (Button) v.findViewById(R.id.rightBurnerEdit);
 
+        menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
+
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         //To check write Data
         /*send_btn.setOnClickListener(new View.OnClickListener() {

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.clj.blesample.R;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -44,7 +45,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(MenuActivity.this,ProductServiceActivity.class);
+                Intent intent = new Intent(MenuActivity.this, ProductServiceActivity.class);
                 startActivity(intent);
 
             }
@@ -53,6 +54,12 @@ public class MenuActivity extends AppCompatActivity {
         signOutBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                PreferencesUtil.clearAll(MenuActivity.this);
+
+                Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -65,9 +72,9 @@ public class MenuActivity extends AppCompatActivity {
                 Intent settingsActivity = new Intent(MenuActivity.this, SettingsActivity.class);
                 startActivity(settingsActivity);
 
+
             }
         });
-
 
 
         //Customercare Service call and message

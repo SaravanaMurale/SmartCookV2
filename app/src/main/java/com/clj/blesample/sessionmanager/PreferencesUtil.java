@@ -45,7 +45,7 @@ public class PreferencesUtil {
 
     }
 
-    public static int  getValueInt(Context context, String key) {
+    public static int getValueInt(Context context, String key) {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_NAME, Activity.MODE_PRIVATE);
         return preferences.getInt(key, 0);
 
@@ -61,4 +61,13 @@ public class PreferencesUtil {
 
     }
 
+    public static void clearAll(Context context) {
+
+        SharedPreferences removeRewardID = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = removeRewardID.edit();
+        editor.clear();
+        editor.commit();
+
+
+    }
 }

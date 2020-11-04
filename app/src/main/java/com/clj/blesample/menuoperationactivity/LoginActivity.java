@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (!userName.equals("empty")) {
                     Toast.makeText(LoginActivity.this, "Received UserName" + userName, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    finish();
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "You have entered wrong username or password" + userName, Toast.LENGTH_LONG).show();
                 }
@@ -120,4 +120,16 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+
 }
