@@ -10,7 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +26,10 @@ import android.widget.Toast;
 import com.clj.blesample.R;
 import com.clj.blesample.menuoperationactivity.EditActivity;
 import com.clj.blesample.menuoperationactivity.MenuActivity;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
+import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 
@@ -35,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class CharacteristicListFragment extends Fragment implements EditActivity.StartBurnerClickListener {
+public class CharacteristicListFragment extends Fragment {
 
 
     private ResultAdapter mResultAdapter;
@@ -55,6 +57,8 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
     ImageView menuIcon;
 
     byte[] currentByte, currentByte1;
+
+    String left = "00", center = "01", right = "10";
 
 
     @Override
@@ -94,12 +98,14 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         /*EditActivity editActivity=new EditActivity();
         editActivity.EditActivityMethod(this);*/
 
+        getStoveData();
+
 
         leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String left = "00";
+
                 CallEditActivity(left);
             }
         });
@@ -107,7 +113,7 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         centerBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String center = "01";
+
                 CallEditActivity(center);
             }
         });
@@ -115,7 +121,32 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         rightBurnerSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String right = "10";
+
+                CallEditActivity(right);
+            }
+        });
+
+        leftBurnerEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                CallEditActivity(left);
+            }
+        });
+
+        centerBurnerEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CallEditActivity(center);
+            }
+        });
+
+        rightBurnerEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 CallEditActivity(right);
             }
         });
@@ -123,22 +154,8 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         return v;
     }
 
-    private void callAlertDialog() {
+    private void getStoveData() {
 
-        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        // alert.setTitle("Vessel is not detected");
-        alert.setMessage("Please Place Vessel");
-        alert.setIcon(R.drawable.preethi_logo);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-
-            }
-        });
-
-        alert.show();
 
     }
 
@@ -146,6 +163,55 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
     @Override
     public void onResume() {
         super.onResume();
+
+        //Calls Notify
+        if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+
+            Toast.makeText(getActivity(), "NotifyCalled", Toast.LENGTH_LONG).show();
+
+            // callMe(0, null, 0, 0, 0);
+
+        }
+
+
+        String selectedBurner = PreferencesUtil.getValueString(getActivity(), PreferencesUtil.BURNER);
+        int selectedTimer = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.TIMER_IN_MINUTE);
+        int selectedWhistle = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.WHISTLE_IN_COUNT);
+        int selectedFlameModde = PreferencesUtil.getValueInt(getActivity(), PreferencesUtil.FLAME_MODE);
+
+        if (selectedBurner.equals("no_value") && selectedTimer <= 0 && selectedWhistle <= 0 && selectedFlameModde <= 0) {
+            Toast.makeText(getActivity(), "Empty Write Data", Toast.LENGTH_LONG).show();
+        } else {
+
+            if (selectedBurner.equals("00")) {
+                leftBurnerSettings.setVisibility(View.INVISIBLE);
+                leftBurnerEdit.setVisibility(View.VISIBLE);
+            } else if (selectedBurner.equals("01")) {
+                centerBurnerSettings.setVisibility(View.INVISIBLE);
+                centerBurnerEdit.setVisibility(View.VISIBLE);
+            } else if (selectedBurner.equals("10")) {
+                rightBurnerSettings.setVisibility(View.INVISIBLE);
+                rightBurnerEdit.setVisibility(View.VISIBLE);
+            }
+
+            Toast.makeText(getActivity(), "WriteCalled", Toast.LENGTH_LONG).show();
+
+            System.out.println("ReceivedStoredPreferenceValue" + selectedBurner + " " + selectedTimer + " " + selectedWhistle + " " + selectedFlameModde);
+
+            //Calls Write
+            if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+
+                //callMe(1, selectedBurner, selectedTimer, selectedWhistle, selectedFlameModde);
+
+                PreferencesUtil.remove(getActivity(), PreferencesUtil.BURNER);
+                PreferencesUtil.remove(getActivity(), PreferencesUtil.TIMER_IN_MINUTE);
+                PreferencesUtil.remove(getActivity(), PreferencesUtil.WHISTLE_IN_COUNT);
+                PreferencesUtil.remove(getActivity(), PreferencesUtil.FLAME_MODE);
+
+
+            }
+
+        }
 
 
         //Calls Notify
@@ -201,12 +267,12 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         rightBurnerSettings = (Button) v.findViewById(R.id.rightBurnerSettings);
         rightBurnerEdit = (Button) v.findViewById(R.id.rightBurnerEdit);
 
-        menuIcon=(ImageView)v.findViewById(R.id.menuIcon);
+        menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
 
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),MenuActivity.class);
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
                 startActivity(intent);
             }
         });
@@ -282,7 +348,7 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
     }
 
 
-    private void callMe(int position, String userData, String BURNER, int secondFrameStatus) {
+    private void callMe(int position, String burner, int timerInMin, int whistleInCount, int flameMode) {
 
         //Position 0 -->Notify
         //Position 1 -->Write
@@ -317,38 +383,70 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
 
 
         }
-        if (propList.size() > 0 && position == 1 && secondFrameStatus == 0) {
+        if (propList.size() > 0 && position == 1) {
             ((OperationActivity) getActivity()).setCharacteristic(characteristic);
             ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
             //((OperationActivity) getActivity()).changePage(2);
-            //wrietUserData(userData, BURNER, 0);
-        }
-
-        //Whistle Count Set
-        if (propList.size() > 0 && position == 1 && secondFrameStatus == 1) {
-            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
-            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
-            //((OperationActivity) getActivity()).changePage(2);
-            //wrietUserData(userData, BURNER, secondFrameStatus);
-        }
-
-        //Timer Count Set
-        if (propList.size() > 0 && position == 1 && secondFrameStatus == 2) {
-            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
-            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
-            //((OperationActivity) getActivity()).changePage(2);
-            //wrietUserData(userData, BURNER, secondFrameStatus);
-        }
-
-        if (propList.size() > 0 && position == 1 && secondFrameStatus == 3) {
-            ((OperationActivity) getActivity()).setCharacteristic(characteristic);
-            ((OperationActivity) getActivity()).setCharaProp(propList.get(0));
-            //((OperationActivity) getActivity()).changePage(2);
-            // wrietUserData("ss", "12", 3);
+            wrietUserData(burner, timerInMin, whistleInCount, flameMode);
         }
 
 
     }
+
+
+    private void wrietUserData(String burner, int timerInMin, int whistleInCount, int flameMode) {
+
+
+        byte[] startBurner = new byte[9];
+
+
+        startBurner[0] = (byte) ('*');
+        startBurner[1] = (byte) (0xC0);
+                /*secondFrame[2] = (byte) (burner);
+                secondFrame[3] = (byte) ();
+                secondFrame[4] = (byte) ();
+                secondFrame[5] = (byte) (leftBurnerTimer);
+                secondFrame[6] = (byte) (rightBurnerWhistle);
+                secondFrame[7] = (byte) (rightBurnerTimer);*/
+        startBurner[8] = (byte) ('#');
+
+
+        BleDevice bleDevice = ((OperationActivity) getActivity()).getBleDevice();
+        BluetoothGattCharacteristic characteristic = ((OperationActivity) getActivity()).getCharacteristic();
+
+
+        BleManager.getInstance().write(
+                bleDevice,
+                characteristic.getService().getUuid().toString(),
+                characteristic.getUuid().toString(),
+                startBurner,
+                new BleWriteCallback() {
+
+                    //Converting byte to String and displaying to user
+                    @Override
+                    public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWriteFailure(final BleException exception) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                System.out.println("Exception" + exception.toString());
+                            }
+                        });
+                    }
+                });
+
+
+    }
+
 
     private void gettingStoveData() {
 
@@ -405,7 +503,19 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
         System.out.println("ReceivedData " + data);
-        //currentByte=data;
+        currentByte = data;
+
+        if (data.length == 7) {
+
+            if (data[0] == 42) {
+
+
+            }
+
+        } else {
+            Toast.makeText(getActivity(), "Length is less than 7", Toast.LENGTH_LONG).show();
+        }
+
 
     }
 
@@ -460,10 +570,22 @@ public class CharacteristicListFragment extends Fragment implements EditActivity
         mResultAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void onStartClick(String burner, int timerInMinute, int whistleInCount, String flameMode) {
+    private void callAlertDialog() {
 
-        Toast.makeText(getActivity(), "Value Received", Toast.LENGTH_LONG).show();
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        // alert.setTitle("Vessel is not detected");
+        alert.setMessage("Please Place Vessel");
+        alert.setIcon(R.drawable.preethi_logo);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+
+            }
+        });
+
+        alert.show();
 
     }
 

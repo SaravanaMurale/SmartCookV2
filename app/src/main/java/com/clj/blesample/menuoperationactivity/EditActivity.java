@@ -8,21 +8,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.clj.blesample.R;
 import com.clj.blesample.operation.CharacteristicListFragment;
 import com.clj.blesample.operation.OperationActivity;
+import com.clj.blesample.sessionmanager.PreferencesUtil;
+import com.clj.blesample.utils.FontUtil;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class EditActivity extends AppCompatActivity {
 
     Button operateLeftBurner, operateCenterBurner, operateRightBurner, start, cancel;
-    TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle;
+    TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle, burnerSettingsText;
     int timerInMin = 5;
     int whistleInCount = 2;
 
-    StartBurnerClickListener startBurnerClickListener;
 
     byte[] bytes1, byte2;
 
@@ -30,15 +33,8 @@ public class EditActivity extends AppCompatActivity {
 
     String burner = "";
 
-    String flameMode = "";
+    int flameMode = -1;
 
-    public interface StartBurnerClickListener {
-        public void onStartClick(String burner, int timerInMinute, int whistleInCount, String flameMode);
-    }
-
-    public void EditActivityMethod(CharacteristicListFragment context) {
-        startBurnerClickListener = (StartBurnerClickListener) context;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +64,8 @@ public class EditActivity extends AppCompatActivity {
 
         }
 
+        //setBurner();
+
         /*System.out.println("ByteAtZero" + bytes1[0]);
         System.out.println("ByteAtOne" + bytes1[1]);
         System.out.println("ByteAtTwo" + bytes1[2]);
@@ -88,7 +86,7 @@ public class EditActivity extends AppCompatActivity {
         timerFlag = true;
         whistleFlag = false;
         if (timerInMin > 0) {
-            minute.setText("" + timerInMin + " minute");
+            minute.setText("" + timerInMin);
             whistle.setVisibility(View.INVISIBLE);
         }
 
@@ -96,17 +94,28 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                System.out.println("ReceivedData" + burner + " " + timerInMin + " " + whistleInCount + " " + flameMode);
+                if (timerInMin > 0 && whistleInCount > 0 && flameMode > 0) {
+                    System.out.println("ReceivedData" + burner + " " + timerInMin + " " + whistleInCount + " " + flameMode);
 
-               // startBurnerClickListener.onStartClick(burner, timerInMin, whistleInCount, flameMode);
+                    PreferencesUtil.setValueString(EditActivity.this, PreferencesUtil.BURNER, burner);
+                    PreferencesUtil.setValueSInt(EditActivity.this, PreferencesUtil.TIMER_IN_MINUTE, timerInMin);
+                    PreferencesUtil.setValueSInt(EditActivity.this, PreferencesUtil.WHISTLE_IN_COUNT, whistleInCount);
+                    PreferencesUtil.setValueSInt(EditActivity.this, PreferencesUtil.FLAME_MODE, flameMode);
+
+                    onBackPressed();
+
+                } else {
+                    Toast.makeText(EditActivity.this, "Please Select Time or Whistle and Flame Mode", Toast.LENGTH_LONG).show();
+                }
+
+
+                // startBurnerClickListener.onStartClick(burner, timerInMin, whistleInCount, flameMode);
 
                 /*Bundle bundle = new Bundle();
                 bundle.putString("edttext", "From Activity");
 
                 CharacteristicListFragment fragobj = new CharacteristicListFragment();
                 fragobj.setArguments(bundle);*/
-
-                onBackPressed();
 
 
             }
@@ -115,10 +124,25 @@ public class EditActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onBackPressed();
             }
         });
 
+    }
+
+    private void setBurner() {
+
+        if (burner.equals("00")) {
+
+            burnerSettingsText.setText("Left Burner Settings");
+
+        } else if (burner.equals("01")) {
+
+            burnerSettingsText.setText("Center Burner Settings");
+
+        } else if (burner.equals("10")) {
+            burnerSettingsText.setText("Right Burner Settings");
+        }
     }
 
 
@@ -139,9 +163,11 @@ public class EditActivity extends AppCompatActivity {
                 whistle.setVisibility(View.INVISIBLE);
 
                 if (timerInMin > 0) {
-                    minute.setText("" + timerInMin + " minute");
+
+                    minute.setText("" + timerInMin);
                 } else {
-                    minute.setText("" + timerInMin + " minute");
+
+                    minute.setText("" + timerInMin);
                 }
 
             }
@@ -162,9 +188,9 @@ public class EditActivity extends AppCompatActivity {
                 whistle.setVisibility(View.VISIBLE);
 
                 if (whistleInCount > 0) {
-                    whistle.setText("" + whistleInCount + " whistle");
+                    whistle.setText("" + whistleInCount);
                 } else {
-                    minute.setText("" + whistleInCount + " whistle");
+                    minute.setText("" + whistleInCount);
                 }
 
             }
@@ -176,6 +202,7 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 operateAdd.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
+                operateSub.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 operateSub.setBackgroundColor(getResources().getColor(R.color.white));
 
                 operateSub.setEnabled(true);
@@ -183,11 +210,11 @@ public class EditActivity extends AppCompatActivity {
                 if (timerFlag) {
 
                     timerInMin = timerInMin + 1;
-                    minute.setText("" + timerInMin + " minute");
+                    minute.setText("" + timerInMin);
 
                 } else if (whistleFlag) {
                     whistleInCount = whistleInCount + 1;
-                    whistle.setText("" + whistleInCount + " whistle");
+                    whistle.setText("" + whistleInCount);
                 }
 
                 //b1TimerClickListener.onB1TimerClick();
@@ -198,6 +225,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operateSub.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
+                operateAdd.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 operateAdd.setBackgroundColor(getResources().getColor(R.color.white));
 
                 if (timerFlag) {
@@ -207,9 +235,9 @@ public class EditActivity extends AppCompatActivity {
                         timerInMin = timerInMin - 1;
 
                         if (timerInMin > 0) {
-                            minute.setText("" + timerInMin + " minute");
+                            minute.setText("" + timerInMin);
                         } else if (timerInMin == 0) {
-                            whistle.setText("" + timerInMin + "whistle");
+                            whistle.setText("" + timerInMin);
 
                             if (whistleInCount == 0 && timerInMin == 0) {
                                 operateSub.setEnabled(false);
@@ -218,7 +246,7 @@ public class EditActivity extends AppCompatActivity {
 
                         }
                     } else if (timerInMin == 0) {
-                        minute.setText("" + timerInMin + "whistle");
+                        minute.setText("" + timerInMin);
                         if (whistleInCount == 0 && timerInMin == 0) {
                             operateSub.setEnabled(false);
                             operateSub.setBackgroundColor(getResources().getColor(R.color.white));
@@ -233,9 +261,9 @@ public class EditActivity extends AppCompatActivity {
                         whistleInCount = whistleInCount - 1;
 
                         if (whistleInCount > 0) {
-                            whistle.setText("" + whistleInCount + "whistle");
+                            whistle.setText("" + whistleInCount);
                         } else if (whistleInCount == 0) {
-                            whistle.setText("" + whistleInCount + "whistle");
+                            whistle.setText("" + whistleInCount);
 
                             if (timerInMin == 0 && whistleInCount == 0) {
                                 operateSub.setEnabled(false);
@@ -244,7 +272,7 @@ public class EditActivity extends AppCompatActivity {
 
                         }
                     } else if (whistleInCount == 0) {
-                        whistle.setText("" + whistleInCount + "whistle");
+                        whistle.setText("" + whistleInCount);
                         if (timerInMin == 0 && whistleInCount == 0) {
                             operateSub.setEnabled(false);
                             operateSub.setBackgroundColor(getResources().getColor(R.color.white));
@@ -263,8 +291,13 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                flameMode = "sim";
+                flameMode = 1;
 
+                sim.setTextColor(getResources().getColor(R.color.red));
+                high.setTextColor(getResources().getColor(R.color.black));
+                off.setTextColor(getResources().getColor(R.color.black));
+
+                sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 sim.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 high.setBackgroundColor(getResources().getColor(R.color.white));
                 off.setBackgroundColor(getResources().getColor(R.color.white));
@@ -276,8 +309,14 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                flameMode = "sim";
+                flameMode = 2;
 
+                high.setTextColor(getResources().getColor(R.color.red));
+                sim.setTextColor(getResources().getColor(R.color.black));
+                off.setTextColor(getResources().getColor(R.color.black));
+
+
+                high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 high.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 sim.setBackgroundColor(getResources().getColor(R.color.white));
                 off.setBackgroundColor(getResources().getColor(R.color.white));
@@ -289,8 +328,14 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                flameMode = "off";
+                flameMode = 0;
 
+                off.setTextColor(getResources().getColor(R.color.red));
+                sim.setTextColor(getResources().getColor(R.color.black));
+                high.setTextColor(getResources().getColor(R.color.black));
+
+
+                off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 off.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
                 sim.setBackgroundColor(getResources().getColor(R.color.white));
                 high.setBackgroundColor(getResources().getColor(R.color.white));
@@ -320,6 +365,11 @@ public class EditActivity extends AppCompatActivity {
 
         start = (Button) findViewById(R.id.start);
         cancel = (Button) findViewById(R.id.cancel);
+
+        burnerSettingsText = (TextView) findViewById(R.id.burnerSettingsText);
+
+        minute.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        whistle.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
 
     }
