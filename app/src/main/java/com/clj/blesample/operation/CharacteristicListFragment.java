@@ -194,10 +194,9 @@ public class CharacteristicListFragment extends Fragment {
 
         if (homeByte[3] == 1) {
 
-            leftBurner.setText("Vessel");
-            leftBurner.setTextSize(22);
+            Toast.makeText(getActivity(), "whistle set", Toast.LENGTH_LONG).show();
         } else {
-
+            Toast.makeText(getActivity(), "whistle is not set", Toast.LENGTH_LONG).show();
             //leftBurner.setText("");
         }
 
@@ -227,11 +226,10 @@ public class CharacteristicListFragment extends Fragment {
 
         if (homeByte[7] == 1) {
 
-            centerBurner.setText("Vessel");
-            centerBurner.setTextSize(22);
+            Toast.makeText(getActivity(), "whistle set", Toast.LENGTH_LONG).show();
         } else {
 
-            centerBurner.setText("");
+            Toast.makeText(getActivity(), "whistle is not set", Toast.LENGTH_LONG).show();
         }
         //End Center Burner
 
@@ -259,11 +257,10 @@ public class CharacteristicListFragment extends Fragment {
 
         if (homeByte[11] == 1) {
 
-            rightBurner.setText("Vessel");
-            rightBurner.setTextSize(22);
+            Toast.makeText(getActivity(), "whistle set", Toast.LENGTH_LONG).show();
         } else {
 
-            rightBurner.setText("");
+            Toast.makeText(getActivity(), "whistle is not set", Toast.LENGTH_LONG).show();
         }
         //End Right Burner
 
