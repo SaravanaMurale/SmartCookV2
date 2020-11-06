@@ -46,6 +46,9 @@ dependencies {
     //Circular ImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Ripple
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+
     //Material Design
     //implementation 'com.google.android.material:material:1.0.0'
 

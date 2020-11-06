@@ -299,8 +299,8 @@ public class EditActivity extends AppCompatActivity {
 
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 sim.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                high.setBackgroundColor(getResources().getColor(R.color.white));
-                off.setBackgroundColor(getResources().getColor(R.color.white));
+                high.setBackgroundColor(getResources().getColor(R.color.grey));
+                off.setBackgroundColor(getResources().getColor(R.color.grey));
 
             }
         });
@@ -318,8 +318,8 @@ public class EditActivity extends AppCompatActivity {
 
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 high.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                sim.setBackgroundColor(getResources().getColor(R.color.white));
-                off.setBackgroundColor(getResources().getColor(R.color.white));
+                sim.setBackgroundColor(getResources().getColor(R.color.grey));
+                off.setBackgroundColor(getResources().getColor(R.color.grey));
 
             }
         });
@@ -337,8 +337,8 @@ public class EditActivity extends AppCompatActivity {
 
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 off.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                sim.setBackgroundColor(getResources().getColor(R.color.white));
-                high.setBackgroundColor(getResources().getColor(R.color.white));
+                sim.setBackgroundColor(getResources().getColor(R.color.grey));
+                high.setBackgroundColor(getResources().getColor(R.color.grey));
 
             }
         });

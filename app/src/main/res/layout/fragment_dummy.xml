@@ -34,7 +34,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/vessel_on"
+                android:background="@drawable/burner_vessel_on"
                 android:text="B1" />
 
             <Button
@@ -67,7 +67,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/vessel_on"
+                android:background="@drawable/burner_vessel_on"
                 android:text="B1" />
 
             <Button
@@ -100,7 +100,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/vessel_on"
+                android:background="@drawable/burner_vessel_on"
                 android:text="B1" />
 
             <Button

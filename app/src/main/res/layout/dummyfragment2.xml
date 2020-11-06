@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:layout_below="@id/burnerSettingsText"
             android:layout_margin="10dp"
-            android:background="@drawable/vessel_on"
+            android:background="@drawable/burner_vessel_on"
             android:text="B1" />
 
         <Button
@@ -26,7 +26,7 @@
             android:layout_below="@id/burnerSettingsText"
             android:layout_margin="10dp"
             android:layout_toRightOf="@id/leftBurnerOperation"
-            android:background="@drawable/vessel_on"
+            android:background="@drawable/burner_vessel_on"
             android:text="B1" />
 
         <Button
@@ -36,7 +36,7 @@
             android:layout_below="@id/burnerSettingsText"
             android:layout_margin="10dp"
             android:layout_toRightOf="@id/centerBurnerOperation"
-            android:background="@drawable/vessel_on"
+            android:background="@drawable/burner_vessel_on"
             android:text="B1" />
 
         <TextView

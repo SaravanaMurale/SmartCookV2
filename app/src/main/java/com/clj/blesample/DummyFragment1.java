@@ -82,12 +82,12 @@ public class DummyFragment1 extends Fragment {
 
     private void callDummyFragment2() {
 
-        Fragment fragment = new DummyFragment2();
+        /*Fragment fragment = new DummyFragment2();
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
     }
 

@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +59,8 @@ public class CharacteristicListFragment extends Fragment {
 
     String left = "00", center = "01", right = "10";
 
+    byte[] homeByte = new byte[12];
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -98,7 +99,7 @@ public class CharacteristicListFragment extends Fragment {
         /*EditActivity editActivity=new EditActivity();
         editActivity.EditActivityMethod(this);*/
 
-        getStoveData();
+        setStoveData();
 
 
         leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +155,117 @@ public class CharacteristicListFragment extends Fragment {
         return v;
     }
 
-    private void getStoveData() {
+    private void setStoveData() {
+
+        homeByte[0] = 0; //active
+        homeByte[1] = 0; //vessel
+        homeByte[2] = 1; //timer
+        homeByte[3] = 0; //whistle
+
+        homeByte[4] = 0;
+        homeByte[5] = 0;
+        homeByte[6] = 0;
+        homeByte[7] = 0;
+
+        homeByte[8] = 1;
+        homeByte[9] = 0;
+        homeByte[10] = 0;
+        homeByte[11] = 0;
+
+        //Left Burner
+
+        if (homeByte[0] == 1 && homeByte[1] == 1) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+        } else if (homeByte[0] == 1 && homeByte[1] == 0) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+        } else if (homeByte[0] == 0 && homeByte[1] == 0) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+        }
+
+        if (homeByte[2] == 1) {
+
+            leftBurner.setText("15:00");
+            leftBurner.setTextColor(getResources().getColor(R.color.black));
+            leftBurner.setTextSize(25);
+        } else {
+
+            leftBurner.setText("");
+        }
+
+        if (homeByte[3] == 1) {
+
+            leftBurner.setText("Vessel");
+            leftBurner.setTextSize(22);
+        } else {
+
+            //leftBurner.setText("");
+        }
+
+        //End Left Burner
+
+        //Center Burner
+
+
+        if (homeByte[4] == 1 && homeByte[5] == 1) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+        } else if (homeByte[4] == 1 && homeByte[5] == 0) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+        } else if (homeByte[4] == 0 && homeByte[5] == 0) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+
+        }
+
+
+        if (homeByte[6] == 1) {
+
+            centerBurner.setText("15:00");
+            centerBurner.setTextSize(25);
+        } else {
+
+            centerBurner.setText("");
+        }
+
+        if (homeByte[7] == 1) {
+
+            centerBurner.setText("Vessel");
+            centerBurner.setTextSize(22);
+        } else {
+
+            centerBurner.setText("");
+        }
+        //End Center Burner
+
+        //Right Burner
+
+
+        if (homeByte[8] == 1 && homeByte[9] == 1) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+        } else if (homeByte[8] == 1 && homeByte[9] == 0) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+        } else if (homeByte[8] == 0 && homeByte[9] == 0) {
+            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+
+        }
+
+
+        if (homeByte[10] == 1) {
+
+            rightBurner.setText("15:00");
+            rightBurner.setTextSize(25);
+        } else {
+
+            rightBurner.setText("");
+        }
+
+        if (homeByte[11] == 1) {
+
+            rightBurner.setText("Vessel");
+            rightBurner.setTextSize(22);
+        } else {
+
+            rightBurner.setText("");
+        }
+        //End Right Burner
 
 
     }
