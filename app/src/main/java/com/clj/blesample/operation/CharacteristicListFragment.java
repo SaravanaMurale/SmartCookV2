@@ -14,6 +14,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -31,6 +34,7 @@ import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
+import com.skyfishjy.library.RippleBackground;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,13 +57,15 @@ public class CharacteristicListFragment extends Fragment {
     int currentApiVersion;
 
     Button leftBurner, leftBurnerSettings, leftBurnerEdit, centerBurner, centerBurnerSettings, centerBurnerEdit, rightBurner, rightBurnerSettings, rightBurnerEdit;
-    ImageView menuIcon;
+    ImageView menuIcon, vesselLeft, vesselCenter, vesselRight, timerLeft, timerCenter, timerRight;
 
     byte[] currentByte, currentByte1;
 
     String left = "00", center = "01", right = "10";
 
     byte[] homeByte = new byte[12];
+
+    RippleBackground rippleLeft, rippleCenter, rippleRight;
 
 
     @Override
@@ -157,8 +163,8 @@ public class CharacteristicListFragment extends Fragment {
 
     private void setStoveData() {
 
-        homeByte[0] = 0; //active
-        homeByte[1] = 0; //vessel
+        homeByte[0] = 1; //active
+        homeByte[1] = 1; //vessel
         homeByte[2] = 1; //timer
         homeByte[3] = 0; //whistle
 
@@ -175,11 +181,21 @@ public class CharacteristicListFragment extends Fragment {
         //Left Burner
 
         if (homeByte[0] == 1 && homeByte[1] == 1) {
+            rippleLeft.startRippleAnimation();
             leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+            vesselLeft.setVisibility(View.VISIBLE);
+
         } else if (homeByte[0] == 1 && homeByte[1] == 0) {
+            rippleLeft.startRippleAnimation();
             leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+            vesselLeft.setVisibility(View.INVISIBLE);
         } else if (homeByte[0] == 0 && homeByte[1] == 0) {
+            if (rippleLeft.isRippleAnimationRunning()) {
+                rippleLeft.stopRippleAnimation();
+            }
             leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+            vesselLeft.setVisibility(View.INVISIBLE);
+
         }
 
         if (homeByte[2] == 1) {
@@ -187,9 +203,14 @@ public class CharacteristicListFragment extends Fragment {
             leftBurner.setText("15:00");
             leftBurner.setTextColor(getResources().getColor(R.color.black));
             leftBurner.setTextSize(25);
+            timerLeft.setVisibility(View.VISIBLE);
+            blinkImage(timerLeft);
+
         } else {
 
             leftBurner.setText("");
+            timerLeft.setVisibility(View.INVISIBLE);
+            stopImageBlinking(timerLeft);
         }
 
         if (homeByte[3] == 1) {
@@ -203,14 +224,21 @@ public class CharacteristicListFragment extends Fragment {
         //End Left Burner
 
         //Center Burner
-
-
         if (homeByte[4] == 1 && homeByte[5] == 1) {
-            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+            rippleCenter.startRippleAnimation();
+            centerBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+            vesselCenter.setVisibility(View.VISIBLE);
         } else if (homeByte[4] == 1 && homeByte[5] == 0) {
-            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+            rippleCenter.startRippleAnimation();
+            centerBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+            vesselCenter.setVisibility(View.INVISIBLE);
         } else if (homeByte[4] == 0 && homeByte[5] == 0) {
-            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+
+            if (rippleCenter.isRippleAnimationRunning()) {
+                rippleCenter.stopRippleAnimation();
+            }
+            centerBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+            vesselCenter.setVisibility(View.INVISIBLE);
 
         }
 
@@ -219,9 +247,16 @@ public class CharacteristicListFragment extends Fragment {
 
             centerBurner.setText("15:00");
             centerBurner.setTextSize(25);
+
+            timerCenter.setVisibility(View.VISIBLE);
+            blinkImage(timerCenter);
+
+
         } else {
 
             centerBurner.setText("");
+            timerCenter.setVisibility(View.INVISIBLE);
+            stopImageBlinking(timerCenter);
         }
 
         if (homeByte[7] == 1) {
@@ -237,11 +272,20 @@ public class CharacteristicListFragment extends Fragment {
 
 
         if (homeByte[8] == 1 && homeByte[9] == 1) {
-            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+            rippleRight.startRippleAnimation();
+            rightBurner.setBackground(getResources().getDrawable(R.drawable.burner_vessel_on));
+            vesselRight.setVisibility(View.VISIBLE);
         } else if (homeByte[8] == 1 && homeByte[9] == 0) {
-            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+            rippleRight.startRippleAnimation();
+            rightBurner.setBackground(getResources().getDrawable(R.drawable.burner_on_vessel_off));
+            vesselRight.setVisibility(View.INVISIBLE);
         } else if (homeByte[8] == 0 && homeByte[9] == 0) {
-            leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+            if (rippleRight.isRippleAnimationRunning()) {
+                rippleRight.stopRippleAnimation();
+            }
+            rightBurner.setBackground(getResources().getDrawable(R.drawable.burner_off_vessel_off));
+            vesselRight.setVisibility(View.INVISIBLE);
+
 
         }
 
@@ -250,8 +294,13 @@ public class CharacteristicListFragment extends Fragment {
 
             rightBurner.setText("15:00");
             rightBurner.setTextSize(25);
-        } else {
 
+            timerRight.setVisibility(View.VISIBLE);
+            blinkImage(timerCenter);
+
+        } else {
+            timerRight.setVisibility(View.INVISIBLE);
+            stopImageBlinking(timerRight);
             rightBurner.setText("");
         }
 
@@ -265,6 +314,19 @@ public class CharacteristicListFragment extends Fragment {
         //End Right Burner
 
 
+    }
+
+    private void blinkImage(ImageView timerIcon) {
+        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+        animation.setDuration(1000); //1 second duration for each animation cycle
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+        animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+        timerIcon.startAnimation(animation);
+    }
+
+    private void stopImageBlinking(ImageView topTimerIcon) {
+        topTimerIcon.clearAnimation();
     }
 
 
@@ -374,6 +436,18 @@ public class CharacteristicListFragment extends Fragment {
         rightBurner = (Button) v.findViewById(R.id.rightBurner);
         rightBurnerSettings = (Button) v.findViewById(R.id.rightBurnerSettings);
         rightBurnerEdit = (Button) v.findViewById(R.id.rightBurnerEdit);
+
+        rippleLeft = (RippleBackground) v.findViewById(R.id.leftBurnerRipple);
+        rippleCenter = (RippleBackground) v.findViewById(R.id.centerBurnerRipple);
+        rippleRight = (RippleBackground) v.findViewById(R.id.rightBurnerRipple);
+
+        vesselLeft = (ImageView) v.findViewById(R.id.vesselLeft);
+        vesselCenter = (ImageView) v.findViewById(R.id.vesselCenter);
+        vesselRight = (ImageView) v.findViewById(R.id.vesselRight);
+
+        timerLeft = (ImageView) v.findViewById(R.id.timerLeft);
+        timerCenter = (ImageView) v.findViewById(R.id.timerCenter);
+        timerRight = (ImageView) v.findViewById(R.id.timerRight);
 
         menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
 
