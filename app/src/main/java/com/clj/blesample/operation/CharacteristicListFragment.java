@@ -29,6 +29,7 @@ import com.clj.blesample.R;
 import com.clj.blesample.menuoperationactivity.EditActivity;
 import com.clj.blesample.menuoperationactivity.MenuActivity;
 import com.clj.blesample.sessionmanager.PreferencesUtil;
+import com.clj.blesample.utils.FontUtil;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.callback.BleWriteCallback;
@@ -200,6 +201,7 @@ public class CharacteristicListFragment extends Fragment {
 
         if (homeByte[2] == 1) {
 
+            leftBurner.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
             leftBurner.setText("15:00");
             leftBurner.setTextColor(getResources().getColor(R.color.black));
             leftBurner.setTextSize(25);
@@ -244,10 +246,9 @@ public class CharacteristicListFragment extends Fragment {
 
 
         if (homeByte[6] == 1) {
-
+            centerBurner.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
             centerBurner.setText("15:00");
             centerBurner.setTextSize(25);
-
             timerCenter.setVisibility(View.VISIBLE);
             blinkImage(timerCenter);
 
@@ -291,9 +292,9 @@ public class CharacteristicListFragment extends Fragment {
 
 
         if (homeByte[10] == 1) {
-
+            rightBurner.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
             rightBurner.setText("15:00");
-            rightBurner.setTextSize(25);
+            rightBurner.setTextSize(30);
 
             timerRight.setVisibility(View.VISIBLE);
             blinkImage(timerCenter);
@@ -428,14 +429,21 @@ public class CharacteristicListFragment extends Fragment {
         leftBurner = (Button) v.findViewById(R.id.leftBurner);
         leftBurnerSettings = (Button) v.findViewById(R.id.leftBurnerSettings);
         leftBurnerEdit = (Button) v.findViewById(R.id.leftBurnerEdit);
+        leftBurnerSettings.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
+        leftBurnerEdit.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
 
         centerBurner = (Button) v.findViewById(R.id.centerBurner);
         centerBurnerSettings = (Button) v.findViewById(R.id.centerBurnerSettings);
         centerBurnerEdit = (Button) v.findViewById(R.id.centerBurnerEdit);
+        centerBurnerEdit.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
+        centerBurnerSettings.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
+
 
         rightBurner = (Button) v.findViewById(R.id.rightBurner);
         rightBurnerSettings = (Button) v.findViewById(R.id.rightBurnerSettings);
         rightBurnerEdit = (Button) v.findViewById(R.id.rightBurnerEdit);
+        rightBurnerEdit.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
+        rightBurnerSettings.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
 
         rippleLeft = (RippleBackground) v.findViewById(R.id.leftBurnerRipple);
         rippleCenter = (RippleBackground) v.findViewById(R.id.centerBurnerRipple);

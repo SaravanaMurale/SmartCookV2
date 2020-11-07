@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gray">
 
     <ImageView
         android:id="@+id/menuIcon"
@@ -28,7 +29,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="60dp">
 
         <RelativeLayout
@@ -45,7 +46,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_border"
-                android:text="Setting"
+                android:text="SET"
                 android:textColor="@color/gold"
                 android:visibility="visible" />
 
@@ -60,6 +61,24 @@
                 android:text="Edit"
                 android:textColor="@color/gold"
                 android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/vesselRight"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/rightBurnerRipple"
+                android:src="@drawable/vessel_orange" />
+
+            <ImageView
+                android:id="@+id/timerRight"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/vesselRight"
+                android:src="@drawable/timer" />
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/rightBurnerRipple"
@@ -76,26 +95,6 @@
                     android:layout_margin="10dp"
                     android:text="B3" />
             </com.skyfishjy.library.RippleBackground>
-
-            <ImageView
-                android:id="@+id/vesselRight"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/vessel_orange"
-                android:layout_toRightOf="@id/rightBurnerRipple"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                />
-
-            <ImageView
-                android:id="@+id/timerRight"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/timer"
-                android:layout_toRightOf="@id/vesselRight"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                />
 
 
         </RelativeLayout>
@@ -114,8 +113,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_border"
-                android:text="Setting"
-                android:textColor="@color/black"
+                android:text="SET"
+                android:textColor="@color/gold"
                 android:visibility="visible" />
 
 
@@ -128,8 +127,28 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_border"
                 android:text="Edit"
+                android:textSize="30sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/vesselLeft"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/leftBurnerRipple"
+                android:src="@drawable/vessel_orange" />
+
+            <ImageView
+                android:id="@+id/timerLeft"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/vesselLeft"
+                android:src="@drawable/timer" />
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/leftBurnerRipple"
@@ -149,26 +168,6 @@
 
             </com.skyfishjy.library.RippleBackground>
 
-            <ImageView
-                android:id="@+id/vesselLeft"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/vessel_orange"
-                android:layout_toRightOf="@id/leftBurnerRipple"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                />
-
-            <ImageView
-                android:id="@+id/timerLeft"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/timer"
-                android:layout_toRightOf="@id/vesselLeft"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -186,7 +185,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_border"
-                android:text="Setting"
+                android:text="SET"
                 android:textColor="@color/gold"
                 android:visibility="visible" />
 
@@ -201,6 +200,24 @@
                 android:text="Edit"
                 android:textColor="@color/gold"
                 android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/vesselCenter"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/centerBurnerRipple"
+                android:src="@drawable/vessel_orange" />
+
+            <ImageView
+                android:id="@+id/timerCenter"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/vesselCenter"
+                android:src="@drawable/timer" />
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/centerBurnerRipple"
@@ -218,26 +235,6 @@
                     android:text="B2" />
 
             </com.skyfishjy.library.RippleBackground>
-            <ImageView
-                android:id="@+id/vesselCenter"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/vessel_orange"
-                android:layout_toRightOf="@id/centerBurnerRipple"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                />
-
-            <ImageView
-                android:id="@+id/timerCenter"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/timer"
-                android:layout_toRightOf="@id/vesselCenter"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                />
-
 
 
         </RelativeLayout>
