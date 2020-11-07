@@ -352,7 +352,9 @@ public class EditActivity extends AppCompatActivity {
         operateRightBurner = (Button) findViewById(R.id.rightBurnerOperation);
 
         operateTimer = (TextView) findViewById(R.id.timerText);
+        operateTimer.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         operateWhistleCount = (TextView) findViewById(R.id.whistleText);
+        operateWhistleCount.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         minute = (TextView) findViewById(R.id.minute);
         whistle = (TextView) findViewById(R.id.whistle);
 
@@ -360,11 +362,17 @@ public class EditActivity extends AppCompatActivity {
         operateAdd = (TextView) findViewById(R.id.add);
 
         sim = (TextView) findViewById(R.id.sim);
+        sim.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         high = (TextView) findViewById(R.id.high);
+        high.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         off = (TextView) findViewById(R.id.off);
+        off.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
         start = (Button) findViewById(R.id.start);
         cancel = (Button) findViewById(R.id.cancel);
+        start.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        cancel.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+
 
         burnerSettingsText = (TextView) findViewById(R.id.burnerSettingsText);
 

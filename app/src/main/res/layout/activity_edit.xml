@@ -20,7 +20,7 @@
             android:layout_height="200dp"
             android:layout_below="@id/burnerSettingsText"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/burner_vessel_on"
             android:text="B1" />
 
@@ -31,7 +31,7 @@
             android:layout_below="@id/burnerSettingsText"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/not_in_use"
             android:text="B2" />
@@ -42,7 +42,7 @@
             android:layout_height="200dp"
             android:layout_below="@id/burnerSettingsText"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/burner_on_vessel_off"
             android:text="B3" />
 
@@ -55,17 +55,20 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="30dp"
-            android:text="Cancel" />
+            android:text="Cancel"
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sim"
-            android:layout_alignParentRight="true"
+
             android:layout_marginLeft="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
+            android:layout_centerHorizontal="true"
             android:text="Start" />
 
 
@@ -81,7 +84,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/leftBurnerOperation"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_border"
             android:gravity="center"
             android:padding="10dp"
@@ -95,10 +98,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/leftBurnerOperation"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="Whistle"
             android:textColor="@color/black"
             android:textSize="20sp" />
