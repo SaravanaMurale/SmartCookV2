@@ -169,7 +169,7 @@ public class CharacteristicListFragment extends Fragment {
         homeByte[2] = 1; //timer
         homeByte[3] = 0; //whistle
 
-        homeByte[4] = 0;
+        homeByte[4] = 1;
         homeByte[5] = 0;
         homeByte[6] = 0;
         homeByte[7] = 0;

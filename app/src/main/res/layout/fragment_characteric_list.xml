@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gray">
+    android:background="@drawable/white_black_bg">
 
     <ImageView
         android:id="@+id/menuIcon"
@@ -31,13 +31,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="50dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/centerBurnerBlock"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="15dp">
 
             <Button
                 android:id="@+id/rightBurnerSettings"
@@ -83,18 +83,18 @@
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/rightBurnerRipple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:rb_color="@color/blue"
-                app:rb_radius="20dp"
-                app:rb_rippleAmount="10"
-                app:rb_scale="6">
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                app:rb_radius="19dp"
+                app:rb_color="#4792f4"
+                app:rb_rippleAmount="13"
+                app:rb_scale="7">
 
                 <Button
                     android:id="@+id/rightBurner"
                     android:layout_width="190dp"
                     android:layout_height="190dp"
-                    android:layout_margin="10dp"
+                    android:layout_centerInParent="true"
                     android:text="B3" />
             </com.skyfishjy.library.RippleBackground>
 
@@ -105,7 +105,7 @@
             android:id="@+id/leftBurnerBlock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            >
 
             <Button
                 android:id="@+id/leftBurnerSettings"
@@ -154,17 +154,18 @@
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/leftBurnerRipple"
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                app:rb_radius="18dp"
-                app:rb_rippleAmount="15"
-                app:rb_scale="6.5">
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                app:rb_radius="19dp"
+                app:rb_color="#4792f4"
+                app:rb_rippleAmount="13"
+                app:rb_scale="7">
 
                 <Button
                     android:id="@+id/leftBurner"
                     android:layout_width="190dp"
                     android:layout_height="190dp"
-                    android:layout_margin="15dp"
+                    android:layout_centerInParent="true"
                     android:text="15"
                     android:textColor="@color/black" />
 
@@ -177,7 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/leftBurnerBlock"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="15dp">
 
             <Button
                 android:id="@+id/centerBurnerSettings"
@@ -223,17 +224,18 @@
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/centerBurnerRipple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
                 app:rb_radius="19dp"
-                app:rb_rippleAmount="10"
-                app:rb_scale="6">
+                app:rb_color="#4792f4"
+                app:rb_rippleAmount="13"
+                app:rb_scale="7">
 
                 <Button
                     android:id="@+id/centerBurner"
                     android:layout_width="190dp"
                     android:layout_height="190dp"
-                    android:layout_margin="10dp"
+                    android:layout_centerInParent="true"
                     android:text="B2" />
 
             </com.skyfishjy.library.RippleBackground>
