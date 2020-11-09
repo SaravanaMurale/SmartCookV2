@@ -15,6 +15,7 @@ import com.clj.blesample.operation.CharacteristicListFragment;
 import com.clj.blesample.operation.OperationActivity;
 import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.blesample.utils.FontUtil;
+import com.skyfishjy.library.RippleBackground;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ public class EditActivity extends AppCompatActivity {
 
     Button operateLeftBurner, operateCenterBurner, operateRightBurner, start, cancel;
     TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle, burnerSettingsText,flamModeText;
+    RippleBackground rippleEditLeft, rippleEditCenter, rippleEditRight;
     int timerInMin = 5;
     int whistleInCount = 2;
 
@@ -137,15 +139,24 @@ public class EditActivity extends AppCompatActivity {
     private void setBurner() {
 
         if (burner.equals("00")) {
+            rippleEditLeft.startRippleAnimation();
+            rippleEditCenter.stopRippleAnimation();
+            rippleEditRight.stopRippleAnimation();
 
             System.out.println("LeftBurnerSettings");
             burnerSettingsText.setText("Left Burner Settings");
 
         } else if (burner.equals("01")) {
+            rippleEditLeft.stopRippleAnimation();
+            rippleEditCenter.startRippleAnimation();
+            rippleEditRight.stopRippleAnimation();
             System.out.println("CenterBurnerSettings");
             burnerSettingsText.setText("Center Burner Settings");
 
         } else if (burner.equals("10")) {
+            rippleEditLeft.stopRippleAnimation();
+            rippleEditCenter.stopRippleAnimation();
+            rippleEditRight.startRippleAnimation();
             System.out.println("RightBurnerSettings");
             burnerSettingsText.setText("Right Burner Settings");
         }
@@ -395,6 +406,10 @@ public class EditActivity extends AppCompatActivity {
 
         minute.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         whistle.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+
+        rippleEditLeft = (RippleBackground) findViewById(R.id.leftBurnerEditRipple);
+        rippleEditCenter = (RippleBackground)findViewById(R.id.centerBurnerEditRipple);
+        rippleEditRight = (RippleBackground) findViewById(R.id.rightBurnerEditRipple);
 
 
     }
