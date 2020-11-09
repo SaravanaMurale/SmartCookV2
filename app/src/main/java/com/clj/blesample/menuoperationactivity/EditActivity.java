@@ -294,13 +294,17 @@ public class EditActivity extends AppCompatActivity {
                 flameMode = 1;
 
                 sim.setTextColor(getResources().getColor(R.color.red));
-                high.setTextColor(getResources().getColor(R.color.black));
-                off.setTextColor(getResources().getColor(R.color.black));
-
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 sim.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                high.setBackgroundColor(getResources().getColor(R.color.grey));
-                off.setBackgroundColor(getResources().getColor(R.color.grey));
+
+                high.setTextColor(getResources().getColor(R.color.black));
+                high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+                off.setTextColor(getResources().getColor(R.color.black));
+                off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+
+
+
+
 
             }
         });
@@ -312,14 +316,15 @@ public class EditActivity extends AppCompatActivity {
                 flameMode = 2;
 
                 high.setTextColor(getResources().getColor(R.color.red));
-                sim.setTextColor(getResources().getColor(R.color.black));
-                off.setTextColor(getResources().getColor(R.color.black));
-
-
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 high.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                sim.setBackgroundColor(getResources().getColor(R.color.grey));
-                off.setBackgroundColor(getResources().getColor(R.color.grey));
+
+                sim.setTextColor(getResources().getColor(R.color.black));
+                sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+                off.setTextColor(getResources().getColor(R.color.black));
+                off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+
+
 
             }
         });
@@ -331,14 +336,13 @@ public class EditActivity extends AppCompatActivity {
                 flameMode = 0;
 
                 off.setTextColor(getResources().getColor(R.color.red));
-                sim.setTextColor(getResources().getColor(R.color.black));
-                high.setTextColor(getResources().getColor(R.color.black));
-
-
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 off.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                sim.setBackgroundColor(getResources().getColor(R.color.grey));
-                high.setBackgroundColor(getResources().getColor(R.color.grey));
+
+                sim.setTextColor(getResources().getColor(R.color.white));
+                sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+                high.setTextColor(getResources().getColor(R.color.white));
+                high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
 
             }
         });

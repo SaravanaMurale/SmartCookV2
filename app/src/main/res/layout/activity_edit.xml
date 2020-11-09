@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/white_black_bg"
     tools:context=".menuoperationactivity.EditActivity">
 
     <RelativeLayout
@@ -89,6 +90,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Timer"
+            android:textStyle="bold"
             android:textColor="@color/gold"
             android:textSize="20sp" />
 
@@ -103,7 +105,8 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Whistle"
-            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textColor="@color/gold"
             android:textSize="20sp" />
 
         <TextView
@@ -116,6 +119,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="-"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
 
@@ -132,6 +136,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="+"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -157,6 +162,7 @@
             android:layout_marginTop="40dp"
             android:padding="10dp"
             android:text="2"
+            android:textStyle="bold"
             android:textColor="@color/red"
             android:textSize="25sp"
             android:visibility="invisible" />
@@ -178,6 +184,7 @@
             android:background="@drawable/rounded_border"
             android:padding="20dp"
             android:text="SIM"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -192,6 +199,7 @@
             android:background="@drawable/rounded_border"
             android:padding="20dp"
             android:text="HIGH"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -205,6 +213,7 @@
             android:background="@drawable/rounded_border"
             android:padding="20dp"
             android:text="OFF"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

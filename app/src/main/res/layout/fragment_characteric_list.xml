@@ -7,13 +7,12 @@
 
     <ImageView
         android:id="@+id/menuIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
         android:background="@color/black"
-        android:src="@drawable/menu"
-        android:visibility="gone" />
+        android:src="@drawable/menu1" />
 
 
     <ListView
@@ -85,8 +84,8 @@
                 android:id="@+id/rightBurnerRipple"
                 android:layout_width="230dp"
                 android:layout_height="230dp"
-                app:rb_radius="19dp"
                 app:rb_color="#4792f4"
+                app:rb_radius="19dp"
                 app:rb_rippleAmount="13"
                 app:rb_scale="7">
 
@@ -104,8 +103,7 @@
         <RelativeLayout
             android:id="@+id/leftBurnerBlock"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/leftBurnerSettings"
@@ -156,8 +154,8 @@
                 android:id="@+id/leftBurnerRipple"
                 android:layout_width="230dp"
                 android:layout_height="230dp"
-                app:rb_radius="19dp"
                 app:rb_color="#4792f4"
+                app:rb_radius="19dp"
                 app:rb_rippleAmount="13"
                 app:rb_scale="7">
 
@@ -226,8 +224,8 @@
                 android:id="@+id/centerBurnerRipple"
                 android:layout_width="230dp"
                 android:layout_height="230dp"
-                app:rb_radius="19dp"
                 app:rb_color="#4792f4"
+                app:rb_radius="19dp"
                 app:rb_rippleAmount="13"
                 app:rb_scale="7">
 

@@ -19,7 +19,7 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/menu" />
+            android:src="@drawable/menu_icon" />
 
 
         <RelativeLayout
