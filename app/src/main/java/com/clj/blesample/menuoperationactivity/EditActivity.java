@@ -22,7 +22,7 @@ import java.util.logging.Level;
 public class EditActivity extends AppCompatActivity {
 
     Button operateLeftBurner, operateCenterBurner, operateRightBurner, start, cancel;
-    TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle, burnerSettingsText;
+    TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle, burnerSettingsText,flamModeText;
     int timerInMin = 5;
     int whistleInCount = 2;
 
@@ -40,6 +40,8 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+        initView();
 
         ArrayList<byte[]> byteArrayList = new ArrayList<>();
 
@@ -64,7 +66,7 @@ public class EditActivity extends AppCompatActivity {
 
         }
 
-        //setBurner();
+        setBurner();
 
         /*System.out.println("ByteAtZero" + bytes1[0]);
         System.out.println("ByteAtOne" + bytes1[1]);
@@ -78,7 +80,7 @@ public class EditActivity extends AppCompatActivity {
         System.out.println("ByteAtFour" + byte2[4]);*/
 
 
-        initView();
+
         backgroundChangeOperation();
 
         operateTimer.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
@@ -136,13 +138,15 @@ public class EditActivity extends AppCompatActivity {
 
         if (burner.equals("00")) {
 
+            System.out.println("LeftBurnerSettings");
             burnerSettingsText.setText("Left Burner Settings");
 
         } else if (burner.equals("01")) {
-
+            System.out.println("CenterBurnerSettings");
             burnerSettingsText.setText("Center Burner Settings");
 
         } else if (burner.equals("10")) {
+            System.out.println("RightBurnerSettings");
             burnerSettingsText.setText("Right Burner Settings");
         }
     }
@@ -385,6 +389,9 @@ public class EditActivity extends AppCompatActivity {
 
 
         burnerSettingsText = (TextView) findViewById(R.id.burnerSettingsText);
+        burnerSettingsText.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        flamModeText=(TextView)findViewById(R.id.flamMode);
+        flamModeText.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
         minute.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         whistle.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
