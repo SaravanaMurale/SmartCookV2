@@ -82,7 +82,9 @@ public class EditActivity extends AppCompatActivity {
         backgroundChangeOperation();
 
         operateTimer.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-        operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.white));
+        operateTimer.setTextColor(getResources().getColor(R.color.red));
+        operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+
         timerFlag = true;
         whistleFlag = false;
         if (timerInMin > 0) {
@@ -153,7 +155,9 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operateTimer.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.white));
+                operateTimer.setTextColor(getResources().getColor(R.color.red));
+                operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+                operateWhistleCount.setTextColor(getResources().getColor(R.color.white));
                 //minuteOrWhistleCount.setText("5 minute");
 
                 timerFlag = true;
@@ -178,7 +182,9 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                operateTimer.setBackgroundColor(getResources().getColor(R.color.white));
+                operateWhistleCount.setTextColor(getResources().getColor(R.color.red));
+                operateTimer.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+                operateTimer.setTextColor(getResources().getColor(R.color.white));
                 //minuteOrWhistleCount.setText("1");
 
                 timerFlag = false;
@@ -202,8 +208,10 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 operateAdd.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
+                operateAdd.setTextColor(getResources().getColor(R.color.red));
                 operateSub.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                operateSub.setBackgroundColor(getResources().getColor(R.color.white));
+                operateSub.setTextColor(getResources().getColor(R.color.white));
+
 
                 operateSub.setEnabled(true);
 
@@ -225,8 +233,10 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operateSub.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
+                operateSub.setTextColor(getResources().getColor(R.color.red));
                 operateAdd.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                operateAdd.setBackgroundColor(getResources().getColor(R.color.white));
+                operateAdd.setTextColor(getResources().getColor(R.color.white));
+
 
                 if (timerFlag) {
 
@@ -297,13 +307,10 @@ public class EditActivity extends AppCompatActivity {
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 sim.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
 
-                high.setTextColor(getResources().getColor(R.color.black));
+                high.setTextColor(getResources().getColor(R.color.white));
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                off.setTextColor(getResources().getColor(R.color.black));
+                off.setTextColor(getResources().getColor(R.color.white));
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-
-
-
 
 
             }
@@ -319,11 +326,10 @@ public class EditActivity extends AppCompatActivity {
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 high.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
 
-                sim.setTextColor(getResources().getColor(R.color.black));
+                sim.setTextColor(getResources().getColor(R.color.white));
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                off.setTextColor(getResources().getColor(R.color.black));
+                off.setTextColor(getResources().getColor(R.color.white));
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-
 
 
             }
