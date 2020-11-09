@@ -29,15 +29,16 @@
 
         <Button
             android:id="@+id/start"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/sim"
-
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="50dp"
+
             android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:text="Start" />
+
+            android:background="@drawable/rounded_border"
+            android:text="Start"
+            android:textColor="@color/red" />
 
         <TextView
             android:id="@+id/burnerSettingsText"
@@ -219,8 +220,7 @@
             app:rb_color="#4792f4"
             app:rb_radius="19dp"
             app:rb_rippleAmount="5"
-            app:rb_scale="6"
-            >
+            app:rb_scale="6">
 
             <Button
                 android:id="@+id/centerBurnerOperation"
@@ -242,8 +242,7 @@
             app:rb_color="#4792f4"
             app:rb_radius="19dp"
             app:rb_rippleAmount="5"
-            app:rb_scale="6"
-            >
+            app:rb_scale="6">
 
             <Button
                 android:id="@+id/rightBurnerOperation"
