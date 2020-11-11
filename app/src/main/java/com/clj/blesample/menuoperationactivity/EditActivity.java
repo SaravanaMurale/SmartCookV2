@@ -1,24 +1,20 @@
 package com.clj.blesample.menuoperationactivity;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clj.blesample.R;
-import com.clj.blesample.operation.CharacteristicListFragment;
-import com.clj.blesample.operation.OperationActivity;
 import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.blesample.utils.FontUtil;
 import com.skyfishjy.library.RippleBackground;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -42,6 +38,8 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         initView();
 

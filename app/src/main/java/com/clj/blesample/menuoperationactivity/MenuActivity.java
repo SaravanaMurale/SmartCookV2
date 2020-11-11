@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.clj.blesample.R;
@@ -18,7 +19,7 @@ import com.clj.blesample.sessionmanager.PreferencesUtil;
 
 public class MenuActivity extends AppCompatActivity {
 
-    RelativeLayout profileSettingBlock, recipeMenuBlock, productServiceBlock, settingsBlock, contactUsBlock, signOutBlock, preSetMenuBlock;
+    RelativeLayout profileSettingBlock, gasConsumptionBlock, recipeMenuBlock, productServiceBlock, settingsBlock, contactUsBlock, signOutBlock, preSetMenuBlock;
 
     public static final int REQUEST_PHONE_CALL = 121;
 
@@ -27,6 +28,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         initView();
@@ -38,6 +41,14 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+            }
+        });
+
+        gasConsumptionBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, BarChartActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -154,6 +165,7 @@ public class MenuActivity extends AppCompatActivity {
     private void initView() {
 
         profileSettingBlock = (RelativeLayout) findViewById(R.id.profileSettingBlock);
+        gasConsumptionBlock = (RelativeLayout) findViewById(R.id.gasConsumptionBlock);
         recipeMenuBlock = (RelativeLayout) findViewById(R.id.recipeMenuBlock);
         productServiceBlock = (RelativeLayout) findViewById(R.id.productServiceBlock);
         settingsBlock = (RelativeLayout) findViewById(R.id.settingsBlock);

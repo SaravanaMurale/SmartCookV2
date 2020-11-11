@@ -8,9 +8,10 @@
         android:icon="@mipmap/preethi_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".menuoperationactivity.LoginActivity"></activity>
-        <activity android:name=".menuoperationactivity.SignUpActivity"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+        <!--<activity android:name=".menuoperationactivity.GasConsumptionActivity"></activity>-->
+        <activity android:name=".menuoperationactivity.LoginActivity" />
+        <activity android:name=".menuoperationactivity.SignUpActivity" />
         <activity android:name=".menuoperationactivity.EditActivity" />
         <activity android:name=".menuoperationactivity.SettingsActivity" />
         <activity android:name=".menuoperationactivity.ProductServiceActivity" />
@@ -18,8 +19,9 @@
         <activity android:name=".menuoperationactivity.BarChartActivity" />
         <activity android:name=".menuoperationactivity.MenuActivity" />
         <activity android:name=".MainActivity" /> <!-- <activity android:name=".DummyActivity"></activity> -->
-
-        <activity android:name=".menuoperationactivity.SplashScreenActivity">
+        <activity android:name=".menuoperationactivity.GasConsumptionActivity"
+            android:screenOrientation="landscape"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,12 +30,11 @@
         </activity>
         <activity android:name=".operation.OperationActivity" />
     </application>
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

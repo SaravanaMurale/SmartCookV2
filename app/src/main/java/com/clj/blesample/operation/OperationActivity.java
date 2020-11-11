@@ -39,6 +39,8 @@ public class OperationActivity extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_operation);
+
+
         initData();
         initView();
         //Setting up current Page

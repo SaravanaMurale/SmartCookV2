@@ -1,9 +1,13 @@
 package com.clj.blesample.menuoperationactivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.clj.blesample.MainActivity;
 import com.clj.blesample.R;
@@ -16,11 +20,14 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
 
+
+        setContentView(R.layout.activity_splash_screen);
         new SplashDownCountDown(3000, 1000).start();
 
     }
+
+
 
     private class SplashDownCountDown extends CountDownTimer {
 

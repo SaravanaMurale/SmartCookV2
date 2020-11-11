@@ -16,18 +16,25 @@ import android.widget.TextView;
 
 import com.clj.blesample.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class BarChartActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     LineChart lineChart;
+
+    GraphView graphView;
 
 
     String[] burners = {"Select Burner", "Center", "Left", "Right"};
@@ -36,7 +43,7 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
     DatePickerDialog.OnDateSetListener setListenerFromDate, setListenerToDate;
     TextView fromDate, toDate;
 
-    GraphView graphView;
+    
     LineGraphSeries<DataPoint> series;
     SimpleDateFormat sdf = new SimpleDateFormat("dd:MM:yyyy");
 
@@ -130,7 +137,7 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
         graphView.getGridLabelRenderer().setNumHorizontalLabels(5);
 
 
-      /*  ArrayList<String> xAXES = new ArrayList<>();
+        ArrayList<String> xAXES = new ArrayList<>();
         ArrayList<Entry> yAXESsin = new ArrayList<>();
         ArrayList<Entry> yAXEScos = new ArrayList<>();
         double x = 0 ;
@@ -168,7 +175,6 @@ public class BarChartActivity extends AppCompatActivity implements AdapterView.O
         lineChart.setData(new LineData(lineDataSets));
 
         lineChart.setVisibleXRangeMaximum(65f);
-*/
 
     }
 
