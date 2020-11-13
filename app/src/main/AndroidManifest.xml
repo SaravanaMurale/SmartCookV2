@@ -18,10 +18,10 @@
         <activity android:name=".menuoperationactivity.ProfileSettingsActivity" />
         <activity android:name=".menuoperationactivity.BarChartActivity" />
         <activity android:name=".menuoperationactivity.MenuActivity" />
-        <activity android:name=".MainActivity" /> <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".menuoperationactivity.GasConsumptionActivity"
-            android:screenOrientation="landscape"
-            >
+        <!-- <activity android:name=".MainActivity" />--> <!-- <activity android:name=".DummyActivity"></activity> -->
+        <activity
+            android:name=".menuoperationactivity.GasConsumptionActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".operation.OperationActivity" />
     </application>
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />

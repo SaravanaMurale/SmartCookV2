@@ -340,7 +340,7 @@ public class CharacteristicListFragment extends Fragment {
 
             Toast.makeText(getActivity(), "NotifyCalled", Toast.LENGTH_LONG).show();
 
-            // callMe(0, null, 0, 0, 0);
+             callMe(0, null, 0, 0, 0);
 
         }
 
@@ -692,10 +692,19 @@ public class CharacteristicListFragment extends Fragment {
     }
 
     private void splitEachBurnerDataFromReceivedByte(byte[] data) {
-        System.out.println("ReceivedData " + data);
+
+//        System.out.println(data[0]+" "+data[1]+" "+data[2]+" "+data[3]+" "+data[4]+" "+data[5]+" "+data[6]+" "+data[7]);
+
+        System.out.println("ReceivedLength " + data.length);
         currentByte = data;
 
-        if (data.length == 7) {
+        if(data.length==7){
+            Toast.makeText(getActivity(),"Length 7 Received",Toast.LENGTH_LONG).show();
+        }else if(data.length==9){
+            Toast.makeText(getActivity(),"Length 9 Received",Toast.LENGTH_LONG).show();
+        }
+
+        /*if (data.length == 7) {
 
             if (data[0] == 42) {
 
@@ -704,7 +713,7 @@ public class CharacteristicListFragment extends Fragment {
 
         } else {
             Toast.makeText(getActivity(), "Length is less than 7", Toast.LENGTH_LONG).show();
-        }
+        }*/
 
 
     }

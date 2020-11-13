@@ -28,6 +28,9 @@ public class GasConsumptionActivity extends AppCompatActivity {
         // generate Dates
         Calendar calendar = Calendar.getInstance();
         Date d1 = calendar.getTime();
+      // int d1= calendar.get(Calendar.DAY_OF_MONTH);
+
+        System.out.println("DayAndMonth"+d1);
 
         calendar.add(Calendar.DATE, 1);
         Date d2 = calendar.getTime();
@@ -59,6 +62,8 @@ public class GasConsumptionActivity extends AppCompatActivity {
         GraphView graph=(GraphView) findViewById(R.id.graphView);
         series=new LineGraphSeries<DataPoint>();
 
+        System.out.println("AllDate"+d1+" "+d2+" "+d3+" "+d4+" "+d5+" "+d6+" "+d7+" "+d8+" "+d9+" "+d10);
+
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(d1, 10),
@@ -85,12 +90,15 @@ public class GasConsumptionActivity extends AppCompatActivity {
 
 // set manual x bounds to have nice steps
         graph.getViewport().setMinX(d1.getTime());
-        graph.getViewport().setMaxX(d3.getTime());
-        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMaxX(d10.getTime());
+        graph.getViewport().setXAxisBoundsManual(false);
 
-// as we use dates as labels, the human rounding to nice readable numbers
-// is not necessary
+
         graph.getGridLabelRenderer().setHumanRounding(false);
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setScalable(true);
+        graph.getViewport().scrollToEnd();
+
 
         //set Manual X axis
         /*graph.getViewport().setXAxisBoundsManual(true);
@@ -102,8 +110,6 @@ public class GasConsumptionActivity extends AppCompatActivity {
         graph.getViewport().setMinY(0);
         graph.getViewport().setMaxX(15);*/
 
-        graph.getViewport().setScrollable(true);
-        graph.getViewport().setScalable(true);
 
     }
 }
