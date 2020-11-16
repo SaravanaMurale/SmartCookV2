@@ -13,6 +13,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -26,21 +27,35 @@ public class GasConsumptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gas_consumption);
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         String fromDate = intent.getStringExtra("FROMDATE");
         String toDate = intent.getStringExtra("TODATE");
         intent.getStringExtra("BURNER");
-        System.out.println("stringDate" + fromDate);
+        System.out.println("stringDate" + fromDate);*/
 
         GraphView graph = (GraphView) findViewById(R.id.graphView);
         series = new LineGraphSeries<DataPoint>();
 
 
-        long numberOfDays = findDifferenceBetweenDates(fromDate, toDate);
-        int noOfDays = (int) numberOfDays;
+        //long numberOfDays = findDifferenceBetweenDates(fromDate, toDate);
+        //int noOfDays = (int) numberOfDays;
+
+        /*Calendar calendar = Calendar.getInstance();
+        for (int i = 0; i < noOfDays; i++) {
+
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = format.parse(fromDate);
+                calendar.setTime(date);
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
+                Date d = calendar.getTime();
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
 
-
+        }*/
 
 
         // generate Dates
@@ -58,25 +73,43 @@ public class GasConsumptionActivity extends AppCompatActivity {
         Date d3 = calendar.getTime();
 
 
+        calendar.add(Calendar.DATE, 1);
+        Date d4 = calendar.getTime();
         // System.out.println("AllDate" + d1 + " " + d2 + " " + d3 + " " + d4 + " " + d5 + " " + d6 + " " + d7 + " " + d8 + " " + d9 + " " + d10);
 
 
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(d1, 10),
-                new DataPoint(d2, 2),
-                new DataPoint(d3, 8),
+        ArrayList<Date> arrayList = new ArrayList<>();
 
-        });
+        arrayList.add(d1);
+        arrayList.add(d2);
+        arrayList.add(d3);
+        arrayList.add(d4);
+
+        ArrayList<Integer> value = new ArrayList<>();
+        value.add(10);
+        value.add(2);
+        value.add(8);
+        value.add(4);
+
+        for (int i = 0; i < arrayList.size(); i++) {
+             series = new LineGraphSeries<>(new DataPoint[]{
+                            new DataPoint(arrayList.get(i), value.get(i)),
+
+
+                    });
+
+        }
+
 
         graph.addSeries(series);
 
         // set date label formatter
         graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(GasConsumptionActivity.this));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(noOfDays); // only 4 because of the space
+        graph.getGridLabelRenderer().setNumHorizontalLabels(4); // only 4 because of the space
 
 // set manual x bounds to have nice steps
         graph.getViewport().setMinX(d1.getTime());
-        graph.getViewport().setMaxX(d2.getTime());
+        graph.getViewport().setMaxX(d3.getTime());
 
         graph.getViewport().setXAxisBoundsManual(false);
 
