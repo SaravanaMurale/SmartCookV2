@@ -8,7 +8,6 @@
     tools:context=".DummyFragment1">
 
 
-
     <RelativeLayout
         android:id="@+id/leftBurnerBlock"
         android:layout_width="match_parent"
@@ -36,6 +35,15 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:src="@drawable/burner" />
+
+        <ImageView
+            android:id="@+id/leftBurnerVesselEmpty"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/leftBurner"
+            android:src="@drawable/vessel_empty" />
 
 
         <LinearLayout
@@ -87,8 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/leftBurnerBlock"
-        android:layout_marginTop="40dp"
-        >
+        android:layout_marginTop="40dp">
 
 
         <Button
@@ -111,6 +118,15 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:src="@drawable/burner" />
+
+        <ImageView
+            android:id="@+id/centerBurnerVesselEmpty"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/centerBurner"
+            android:src="@drawable/vessel_empty" />
 
 
         <LinearLayout
@@ -162,8 +178,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/centerBurnerBlock"
-        android:layout_marginTop="40dp"
-        >
+        android:layout_marginTop="40dp">
 
 
         <Button
@@ -186,6 +201,15 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:src="@drawable/burner" />
+
+        <ImageView
+            android:id="@+id/rightBurnerVesselEmpty"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/rightBurner"
+            android:src="@drawable/vessel_empty" />
 
 
         <LinearLayout
@@ -231,7 +255,6 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>
