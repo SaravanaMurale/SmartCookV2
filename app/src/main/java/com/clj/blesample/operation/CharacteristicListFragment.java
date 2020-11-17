@@ -426,7 +426,7 @@ public class CharacteristicListFragment extends Fragment {
         mResultAdapter = new ResultAdapter(getActivity());
         ListView listView_device = (ListView) v.findViewById(R.id.list_service_character);
 
-        leftBurner = (Button) v.findViewById(R.id.leftBurner);
+        /*leftBurner = (Button) v.findViewById(R.id.leftBurner);
         leftBurnerSettings = (Button) v.findViewById(R.id.leftBurnerSettings);
         leftBurnerEdit = (Button) v.findViewById(R.id.leftBurnerEdit);
         leftBurnerSettings.setTypeface(FontUtil.getOctinPrisonFont(getActivity()));
@@ -455,7 +455,7 @@ public class CharacteristicListFragment extends Fragment {
 
         timerLeft = (ImageView) v.findViewById(R.id.timerLeft);
         timerCenter = (ImageView) v.findViewById(R.id.timerCenter);
-        timerRight = (ImageView) v.findViewById(R.id.timerRight);
+        timerRight = (ImageView) v.findViewById(R.id.timerRight);*/
 
         menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
 
@@ -681,7 +681,7 @@ public class CharacteristicListFragment extends Fragment {
                             public void run() {
 
 
-                                splitEachBurnerDataFromReceivedByte(data);
+                                //splitEachBurnerDataFromReceivedByte(data);
 
 
                             }

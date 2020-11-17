@@ -23,5 +23,8 @@
 
     <color name="default_color">#EEEEEE</color>
 
+    <color name="btn_start">#0ed0f7</color>
+    <color name="btn_end">#b2fefa</color>
+
 
 </resources>

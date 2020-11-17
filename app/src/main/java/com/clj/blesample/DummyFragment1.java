@@ -17,8 +17,7 @@ import com.clj.blesample.menuoperationactivity.MenuActivity;
 public class DummyFragment1 extends Fragment {
 
 
-    Button leftBurner, leftBurnerSettings, leftBurnerEdit, centerBurner, centerBurnerSettings, centerBurnerEdit, rightBurner, rightBurnerSettings, rightBurnerEdit;
-    ImageView menuIcon;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,48 +25,6 @@ public class DummyFragment1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dummy, container, false);
 
-        /*leftBurner = (Button) view.findViewById(R.id.leftBurner);
-        leftBurnerSettings = (Button) view.findViewById(R.id.leftBurnerSettings);
-        leftBurnerEdit = (Button) view.findViewById(R.id.leftBurnerEdit);
-
-        centerBurner = (Button) view.findViewById(R.id.centerBurner);
-        centerBurnerSettings = (Button) view.findViewById(R.id.centerBurnerSettings);
-        centerBurnerEdit = (Button) view.findViewById(R.id.centerBurnerEdit);
-
-        rightBurner = (Button) view.findViewById(R.id.rightBurner);
-        rightBurnerSettings = (Button) view.findViewById(R.id.rightBurnerSettings);
-        rightBurnerEdit = (Button) view.findViewById(R.id.rightBurnerEdit);*/
-
-//        menuIcon = (ImageView) view.findViewById(R.id.menuIcon);
-
-        menuIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchMenuActivity();
-            }
-        });
-
-        leftBurnerSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                callDummyFragment2();
-            }
-        });
-
-        centerBurnerSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callDummyFragment2();
-            }
-        });
-
-        rightBurnerSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callDummyFragment2();
-            }
-        });
 
 
         return view;

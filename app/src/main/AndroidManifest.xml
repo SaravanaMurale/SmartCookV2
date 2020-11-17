@@ -20,10 +20,9 @@
         <activity android:name=".menuoperationactivity.ProfileSettingsActivity" />
         <activity android:name=".menuoperationactivity.BarChartActivity" />
         <!--<activity android:name=".menuoperationactivity.MenuActivity" />-->
-         <activity android:name=".MainActivity" /> <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".menuoperationactivity.GasConsumptionActivity"
-            android:screenOrientation="landscape"
-            >
+         <!--<activity android:name=".MainActivity" />-->
+        <!-- <activity android:name=".DummyActivity"></activity> -->
+        <activity android:name=".DummyActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,122 +8,230 @@
     tools:context=".DummyFragment1">
 
 
-    <!--<RelativeLayout
+
+    <RelativeLayout
+        android:id="@+id/leftBurnerBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_marginTop="40dp">
+
+
+        <Button
+            android:id="@+id/leftBurnerSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border"
+            android:padding="5dp"
+            android:text="Burner Setting" />
+
 
         <ImageView
-            android:id="@+id/menuIcon1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/leftBurner"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/burner" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/leftBurner"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/leftBurnerVessel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/vessel_present" />
+
+            <ImageView
+                android:id="@+id/leftBurnerTimer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/timer_present" />
+
+            <ImageView
+                android:id="@+id/leftBurnerWhistle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/whistle_present" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/leftBurnerTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+            android:text="10 min"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/centerBurnerBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leftBurnerBlock"
+        android:layout_marginTop="40dp"
+        >
+
+
+        <Button
+            android:id="@+id/centerBurnerSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/menu_icon" />
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border"
+            android:padding="5dp"
+            android:text="Burner Setting" />
 
 
-        <RelativeLayout
-            android:id="@+id/leftBurnerBlock"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/centerBurner"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/burner" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/menuIcon1"
-            android:layout_marginTop="10dp">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/centerBurner"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/leftBurner"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_margin="20dp"
-                android:background="@drawable/burner_vessel_on"
-                android:text="B1" />
+            <ImageView
+                android:id="@+id/centerBurnerVessel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/vessel_present" />
 
-            <Button
-                android:id="@+id/leftBurnerSettings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_toRightOf="@id/leftBurner"
-                android:text="Burner Settings" />
+            <ImageView
+                android:id="@+id/centerBurnerTimer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/timer_present" />
 
-            <Button
-                android:id="@+id/leftBurnerEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_toRightOf="@id/leftBurner"
-                android:text="Edit"
-                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/centerBurnerWhistle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/whistle_present" />
 
-        </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/centerBurnerBlock"
-            android:layout_width="match_parent"
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/centerBurnerTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/leftBurnerBlock">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+            android:text="10 min"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/centerBurner"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_margin="20dp"
-                android:background="@drawable/burner_vessel_on"
-                android:text="B1" />
+    </RelativeLayout>
 
-            <Button
-                android:id="@+id/centerBurnerSettings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_toRightOf="@id/centerBurner"
-                android:text="Burner Settings" />
+    <RelativeLayout
+        android:id="@+id/rightBurnerBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/centerBurnerBlock"
+        android:layout_marginTop="40dp"
+        >
 
-            <Button
-                android:id="@+id/centerBurnerEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_toRightOf="@id/centerBurner"
-                android:text="Edit"
-                android:visibility="gone" />
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rightBurnerBlock"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/rightBurnerSetting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/centerBurnerBlock">
-
-            <Button
-                android:id="@+id/rightBurner"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_margin="20dp"
-                android:background="@drawable/burner_vessel_on"
-                android:text="B1" />
-
-            <Button
-                android:id="@+id/rightBurnerSettings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_toRightOf="@id/rightBurner"
-                android:text="Burner Settings" />
-
-            <Button
-                android:id="@+id/rightBurnerEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_toRightOf="@id/rightBurner"
-                android:text="Edit"
-                android:visibility="gone" />
-
-        </RelativeLayout>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border"
+            android:padding="5dp"
+            android:text="Burner Setting" />
 
 
-    </RelativeLayout>-->
+        <ImageView
+            android:id="@+id/rightBurner"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/burner" />
 
 
-</ScrollView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/rightBurner"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/rightBurnerVessel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/vessel_present" />
+
+            <ImageView
+                android:id="@+id/rightBurnerTimer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/timer_present" />
+
+            <ImageView
+                android:id="@+id/rightBurnerWhistle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/whistle_present" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/rightBurnerTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+            android:text="10 min"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
