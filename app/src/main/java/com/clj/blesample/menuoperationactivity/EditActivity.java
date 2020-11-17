@@ -58,15 +58,15 @@ public class EditActivity extends AppCompatActivity {
 
         System.out.println("ArrayListSize" + barray.size());*/
 
-        for (int i = 0; i < byteArrayList.size(); i++) {
+        /*for (int i = 0; i < byteArrayList.size(); i++) {
             System.out.println("DATA" + byteArrayList.get(i));
 
             bytes1 = byteArrayList.get(0);
             byte2 = byteArrayList.get(1);
 
-        }
+        }*/
 
-        setBurner();
+        //setBurner();
 
         /*System.out.println("ByteAtZero" + bytes1[0]);
         System.out.println("ByteAtOne" + bytes1[1]);
@@ -167,10 +167,10 @@ public class EditActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                operateTimer.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                operateTimer.setTextColor(getResources().getColor(R.color.red));
-                operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                operateWhistleCount.setTextColor(getResources().getColor(R.color.white));
+                operateTimer.setBackgroundColor(getResources().getColor(R.color.timer_bg));
+                operateTimer.setTextColor(getResources().getColor(R.color.black));
+                operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.whistle_bg));
+                operateWhistleCount.setTextColor(getResources().getColor(R.color.black));
                 //minuteOrWhistleCount.setText("5 minute");
 
                 timerFlag = true;
@@ -194,10 +194,10 @@ public class EditActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                operateWhistleCount.setTextColor(getResources().getColor(R.color.red));
-                operateTimer.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                operateTimer.setTextColor(getResources().getColor(R.color.white));
+                operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.timer_bg));
+                operateWhistleCount.setTextColor(getResources().getColor(R.color.black));
+                operateTimer.setBackgroundColor(getResources().getColor(R.color.whistle_bg));
+                operateTimer.setTextColor(getResources().getColor(R.color.black));
                 //minuteOrWhistleCount.setText("1");
 
                 timerFlag = false;
@@ -370,9 +370,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        operateLeftBurner = (Button) findViewById(R.id.leftBurnerOperation);
-        operateCenterBurner = (Button) findViewById(R.id.centerBurnerOperation);
-        operateRightBurner = (Button) findViewById(R.id.rightBurnerOperation);
+
 
         operateTimer = (TextView) findViewById(R.id.timerText);
         operateTimer.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
@@ -405,9 +403,7 @@ public class EditActivity extends AppCompatActivity {
         minute.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         whistle.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
-        rippleEditLeft = (RippleBackground) findViewById(R.id.leftBurnerEditRipple);
-        rippleEditCenter = (RippleBackground)findViewById(R.id.centerBurnerEditRipple);
-        rippleEditRight = (RippleBackground) findViewById(R.id.rightBurnerEditRipple);
+
 
 
     }
