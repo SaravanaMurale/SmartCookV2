@@ -24,7 +24,22 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/button_border"
             android:padding="5dp"
-            android:text="Burner Setting" />
+            android:text="Burner Setting"
+            android:visibility="visible"
+            />
+
+        <Button
+            android:id="@+id/leftBurnerEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border"
+            android:padding="5dp"
+            android:text="Edit"
+            android:visibility="invisible"
+            />
 
 
         <ImageView
@@ -47,12 +62,15 @@
 
 
         <LinearLayout
+            android:id="@+id/leftBurnerWidgetsBlock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/leftBurner"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+            >
 
             <ImageView
                 android:id="@+id/leftBurnerVessel"
@@ -109,6 +127,19 @@
             android:padding="5dp"
             android:text="Burner Setting" />
 
+        <Button
+            android:id="@+id/centerBurnerEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border"
+            android:padding="5dp"
+            android:text="Center"
+            android:visibility="invisible"
+            />
+
 
         <ImageView
             android:id="@+id/centerBurner"
@@ -130,6 +161,7 @@
 
 
         <LinearLayout
+            android:id="@+id/centerBurnerWidgetsBlock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -190,7 +222,22 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/button_border"
             android:padding="5dp"
-            android:text="Burner Setting" />
+            android:text="Burner Setting"
+
+            />
+
+        <Button
+            android:id="@+id/rightBurnerEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border"
+            android:padding="5dp"
+            android:text="Edit"
+            android:visibility="invisible"
+            />
 
 
         <ImageView
@@ -213,6 +260,7 @@
 
 
         <LinearLayout
+            android:id="@+id/rightBurnerWidgetsBlock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
