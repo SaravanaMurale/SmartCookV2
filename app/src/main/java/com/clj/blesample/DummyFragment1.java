@@ -29,6 +29,8 @@ public class DummyFragment1 extends Fragment {
 
     LinearLayout leftBurnerWidgetBlock,centerBurnerWidgetBlock,rightBurnerWidgetBlock;
 
+    byte[] burnerValue = new byte[12];
+
 
 
     @Override
@@ -39,8 +41,39 @@ public class DummyFragment1 extends Fragment {
 
         initView(view);
 
+        setValueToBurner();
+
 
         return view;
+    }
+
+    private void setValueToBurner() {
+
+        //Left
+        burnerValue[0] = 1; //active
+        burnerValue[1] = 1; //vessel
+        burnerValue[2] = 1; //timer
+        burnerValue[3] = 1; //whistle
+
+        //Center
+        burnerValue[4] = 0;
+        burnerValue[5] = 0;
+        burnerValue[6] = 0;
+        burnerValue[7] = 0;
+
+        //Right
+        burnerValue[8] = 1;
+        burnerValue[9] = 0;
+        burnerValue[10] = 0;
+        burnerValue[11] = 0;
+
+        if(burnerValue[0]==1 && burnerValue[1]==1 ){
+            //leftBurner.setBackground(getResources().getDrawable(R.drawable.burner_with_vessel));
+            leftBurner.setImageDrawable(getResources().getDrawable(R.drawable.burner_with_vessel));
+        }
+
+
+
     }
 
     private void initView(View view) {

@@ -25,8 +25,7 @@
             android:background="@drawable/button_border"
             android:padding="5dp"
             android:text="Burner Setting"
-            android:visibility="visible"
-            />
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/leftBurnerEdit"
@@ -38,8 +37,7 @@
             android:background="@drawable/button_border"
             android:padding="5dp"
             android:text="Edit"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
 
 
         <ImageView
@@ -58,7 +56,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/leftBurner"
-            android:src="@drawable/vessel_empty" />
+            android:src="@drawable/vessel_empty"
+            android:visibility="invisible" />
 
 
         <LinearLayout
@@ -68,28 +67,26 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/leftBurner"
-            android:orientation="vertical"
-
-            >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/leftBurnerVessel"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/vessel_present" />
 
             <ImageView
                 android:id="@+id/leftBurnerTimer"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/timer_present" />
 
             <ImageView
                 android:id="@+id/leftBurnerWhistle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/whistle_present" />
 
 
@@ -137,8 +134,7 @@
             android:background="@drawable/button_border"
             android:padding="5dp"
             android:text="Center"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
 
 
         <ImageView
@@ -157,7 +153,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/centerBurner"
-            android:src="@drawable/vessel_empty" />
+            android:src="@drawable/vessel_empty"
+            android:visibility="invisible" />
 
 
         <LinearLayout
@@ -171,22 +168,22 @@
 
             <ImageView
                 android:id="@+id/centerBurnerVessel"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/vessel_present" />
 
             <ImageView
                 android:id="@+id/centerBurnerTimer"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/timer_present" />
 
             <ImageView
                 android:id="@+id/centerBurnerWhistle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/whistle_present" />
 
 
@@ -236,8 +233,7 @@
             android:background="@drawable/button_border"
             android:padding="5dp"
             android:text="Edit"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
 
 
         <ImageView
@@ -251,12 +247,13 @@
 
         <ImageView
             android:id="@+id/rightBurnerVesselEmpty"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/rightBurner"
-            android:src="@drawable/vessel_empty" />
+            android:src="@drawable/vessel_empty"
+            android:visibility="invisible" />
 
 
         <LinearLayout
@@ -270,22 +267,22 @@
 
             <ImageView
                 android:id="@+id/rightBurnerVessel"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/vessel_present" />
 
             <ImageView
                 android:id="@+id/rightBurnerTimer"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/timer_present" />
 
             <ImageView
                 android:id="@+id/rightBurnerWhistle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/whistle_present" />
 
 
