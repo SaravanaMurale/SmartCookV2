@@ -21,7 +21,6 @@ public class DummyGraphView extends AppCompatActivity {
 
     String[]  axisData = {"10/11", "11/11", "12/11", "13/11", "14/11", "15/11", "16/11" };
 
-
     int[] yAxisData = {80, 30, 70, 20, 15, 50, 10};
 
     @Override

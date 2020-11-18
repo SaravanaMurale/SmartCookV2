@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.clj.blesample.databasemanager.SqliteManager;
 import com.sdsmdg.harjot.crollerTest.Croller;
 
 import java.io.BufferedReader;
@@ -27,9 +28,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class DummyActivity extends AppCompatActivity {
 
@@ -44,45 +48,41 @@ public class DummyActivity extends AppCompatActivity {
     public static final String FILE_NAME = "scsk.txt";
     FileOutputStream fos;
 
-    Button moveToFragment;
+    Button moveToFragment, saveInSqlite;
 
-  /*  @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            hideSystemUI();
-        }
-    }*/
+    List<String> burnerList = new ArrayList<>();
+    List<String> listInString = new ArrayList<>();
+    List<Integer> gasUsageLisst = new ArrayList<>();
+    String date1 = "1/11/2020";
+    String date2 = "2/11/2020";
+    String date3 = "3/11/2020";
+    String date4 = "4/11/2020";
+    String date5 = "5/11/2020";
+    String date6 = "6/11/2020";
+    String date7 = "7/11/2020";
+    String date8 = "8/11/2020";
+    String date9 = "9/11/2020";
+    String date10 = "10/11/2020";
 
-   /* private void hideSystemUI() {
-        // Enables regular immersive mode.
-        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
-        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_IMMERSIVE
-                        // Set the content to appear under the system bars so that the
-                        // content doesn't resize when the system bars hide and show.
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        // Hide the nav bar and status bar
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
-    }*/
+    SqliteManager sqliteManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-       /* getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN );
-*/
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_dummy);
+
+        sqliteManager = new SqliteManager(DummyActivity.this);
+
+        gasUsageList();
+
+        usageDateList();
+
+        burnerList();
+
+
+
 
         /*editText = (EditText) findViewById(R.id.editText);
         saveData = (Button) findViewById(R.id.saveData);
@@ -90,6 +90,16 @@ public class DummyActivity extends AppCompatActivity {
 
 
         moveToFragment = (Button) findViewById(R.id.moveToFragment);
+        saveInSqlite = (Button) findViewById(R.id.saveInSqlite);
+
+        saveInSqlite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                saveDataToSqliteDB();
+
+            }
+        });
 
         moveToFragment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +191,96 @@ public class DummyActivity extends AppCompatActivity {
 */
 
     }
+
+    private void burnerList() {
+
+        burnerList.add("00");
+        burnerList.add("01");
+        burnerList.add("10");
+        burnerList.add("00");
+        burnerList.add("01");
+        burnerList.add("10");
+        burnerList.add("00");
+        burnerList.add("01");
+        burnerList.add("10");
+        burnerList.add("00");
+
+    }
+
+    private void usageDateList() {
+        /*Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+        System.out.println(sDate1 + "\t" + date1);
+
+        dateList.add();*/
+
+        listInString.add(date1);
+        listInString.add(date2);
+        listInString.add(date3);
+        listInString.add(date4);
+        listInString.add(date5);
+        listInString.add(date6);
+        listInString.add(date7);
+        listInString.add(date8);
+        listInString.add(date9);
+        listInString.add(date10);
+
+
+    }
+
+    private void gasUsageList() {
+
+        gasUsageLisst.add(10);
+        gasUsageLisst.add(2);
+        gasUsageLisst.add(8);
+        gasUsageLisst.add(6);
+        gasUsageLisst.add(4);
+        gasUsageLisst.add(8);
+        gasUsageLisst.add(1);
+        gasUsageLisst.add(5);
+        gasUsageLisst.add(7);
+        gasUsageLisst.add(2);
+
+    }
+
+
+    private void saveDataToSqliteDB() {
+
+        for (int i = 0; i < listInString.size(); i++) {
+
+            try {
+                Date dateFormet = new SimpleDateFormat("dd/MM/yyyy").parse(listInString.get(i));
+
+                System.out.println("StringToDateFormet" + dateFormet);
+                System.out.println("GasUsageValue" + gasUsageLisst.get(i));
+
+                sqliteManager.addGasConsumptionPattern(dateFormet, gasUsageLisst.get(i), burnerList.get(i));
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+    }
+
+
+    /*    for (int i = 0; i < listInString.size(); i++) {
+
+            try {
+                Date dateFormet = new SimpleDateFormat("dd/MM/yyyy").parse(listInString.get(i));
+
+                System.out.println("StringToDateFormet" + dateFormet);
+                System.out.println("GasUsageValue"); gasUsageLisst.get(i);
+
+                sqliteManager.addGasConsumptionPattern(dateFormet, gasUsageLisst.get(i),burnerList.get(i));
+
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }*/
 
 
 }

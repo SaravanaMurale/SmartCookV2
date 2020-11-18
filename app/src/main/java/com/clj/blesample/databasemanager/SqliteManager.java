@@ -11,7 +11,9 @@ import com.clj.blesample.model.StatisticsDTO;
 import com.clj.blesample.sessionmanager.PreferencesUtil;
 import com.clj.blesample.utils.MathUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SqliteManager extends SQLiteOpenHelper {
@@ -47,6 +49,11 @@ public class SqliteManager extends SQLiteOpenHelper {
     public static final String USER_PASSWORD = "user_password";
     public static final String USER_ADDRESS = "user_address";
     public static final String USER_CREATION_DATE = "user_creation_date";
+
+    public static final String GCP_TABLE = "gasconsumptionpattern";
+    public static final String GCP_BURNER = "gcp_burner";
+    public static final String GCP_USAGE_DATE = "gcp_usage_date";
+    public static final String GCP__USAGE_VALUE = "gcp_usage_value";
 
 
     Context mCtx;
@@ -104,6 +111,23 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+    public void addGasConsumptionPattern(Date date, int gasValue, String burner) {
+
+        System.out.println("ReceivedValueInSqliteDB" + date + " " + gasValue + " " + burner);
+
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        //Date date1=simpleDateFormat.parse(date);
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(GCP_BURNER, burner);
+        //contentValues.put(GCP_USAGE_DATE, simpleDateFormat.parse(date));
+        contentValues.put(GCP__USAGE_VALUE, burner);
 
     }
 
