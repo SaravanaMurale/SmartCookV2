@@ -24,7 +24,9 @@
         <activity android:name=".menuoperationactivity.BarChartActivity" /> <!-- <activity android:name=".menuoperationactivity.MenuActivity" /> -->
         <!-- <activity android:name=".MainActivity" /> -->
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity android:name=".DummyActivity">
+        <activity
+            android:name=".DummyGraphView"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

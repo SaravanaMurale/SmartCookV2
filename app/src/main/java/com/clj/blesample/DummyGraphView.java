@@ -19,7 +19,7 @@ public class DummyGraphView extends AppCompatActivity {
 
     LineChartView lineChartView;
 
-    String[]  axisData = {"10/11/2020", "11/11/2020", "12/11/2020", "13/11/2020", "14/11/2020", "15/11/2020", "16/11/2020" };
+    String[]  axisData = {"10/11", "11/11", "12/11", "13/11", "14/11", "15/11", "16/11" };
 
 
     int[] yAxisData = {80, 30, 70, 20, 15, 50, 10};
