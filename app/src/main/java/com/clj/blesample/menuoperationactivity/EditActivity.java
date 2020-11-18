@@ -24,6 +24,8 @@ public class EditActivity extends AppCompatActivity {
     int timerInMin = 5;
     int whistleInCount = 2;
 
+    TextView miniMinute, miniWhistle;
+
 
     byte[] bytes1, byte2;
 
@@ -83,6 +85,8 @@ public class EditActivity extends AppCompatActivity {
         backgroundChangeOperation();
 
         operateTimer.setBackground(getResources().getDrawable(R.drawable.edit_button_border_on));
+        miniWhistle.setVisibility(View.INVISIBLE);
+        miniMinute.setVisibility(View.VISIBLE);
         operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.edit_button_border_off));
 
         timerFlag = true;
@@ -171,6 +175,8 @@ public class EditActivity extends AppCompatActivity {
                 operateWhistleCount.setTextColor(getResources().getColor(R.color.black));*/
 
                 operateTimer.setBackground(getResources().getDrawable(R.drawable.edit_button_border_on));
+                miniWhistle.setVisibility(View.INVISIBLE);
+                miniMinute.setVisibility(View.VISIBLE);
                 operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.edit_button_border_off));
                 //minuteOrWhistleCount.setText("5 minute");
 
@@ -202,6 +208,8 @@ public class EditActivity extends AppCompatActivity {
                 //minuteOrWhistleCount.setText("1");
 
                 operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.edit_button_border_on));
+                miniWhistle.setVisibility(View.VISIBLE);
+                miniMinute.setVisibility(View.INVISIBLE);
                 operateTimer.setBackground(getResources().getDrawable(R.drawable.edit_button_border_off));
 
 
@@ -396,6 +404,10 @@ public class EditActivity extends AppCompatActivity {
 
         start = (Button) findViewById(R.id.start);
         cancel = (Button) findViewById(R.id.cancel);
+
+        miniMinute = (TextView) findViewById(R.id.miniMinute);
+        miniWhistle = (TextView) findViewById(R.id.miniwhistle);
+
         //start.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         //cancel.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
