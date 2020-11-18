@@ -35,7 +35,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/rounded_border"
             android:text="Start"
-            android:textColor="@color/red" />
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/leftBurnerOperation"
@@ -54,37 +54,36 @@
             android:layout_height="180dp"
             android:layout_below="@+id/burnerSettingsText"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/burner" />
 
         <ImageView
             android:id="@+id/vesselEdit"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/vessel_present"
-            android:layout_toRightOf="@+id/burnerEdit"
-            android:layout_marginTop="40dp"
+            android:layout_below="@+id/burnerSettingsText"
             android:layout_marginLeft="20dp"
-            />
+            android:layout_marginTop="60dp"
+            android:layout_toRightOf="@+id/burnerEdit"
+            android:src="@drawable/vessel_present" />
 
         <ImageView
             android:id="@+id/timerEdit"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/timer_present"
-            android:layout_toRightOf="@+id/burnerEdit"
             android:layout_below="@id/vesselEdit"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            />
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/burnerEdit"
+            android:src="@drawable/timer_present" />
 
         <TextView
             android:id="@+id/burnerSettingsText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:text="Burner Settings"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
 
@@ -94,9 +93,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/burnerEdit"
             android:layout_marginTop="30dp"
-            android:background="@color/timer_bg"
+            android:background="@drawable/edit_button_border_on"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="6dp"
             android:text="Timer"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -111,7 +110,7 @@
             android:layout_marginTop="30dp"
             android:background="@color/whistle_bg"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="6dp"
             android:text="Whistle"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -157,7 +156,7 @@
             android:layout_marginTop="40dp"
             android:padding="10dp"
             android:text="15"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:visibility="visible" />
 
@@ -170,7 +169,7 @@
             android:layout_marginTop="40dp"
             android:padding="10dp"
             android:text="2"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
             android:visibility="invisible" />
@@ -182,7 +181,7 @@
             android:layout_below="@id/sub"
             android:layout_marginTop="20dp"
             android:text="Flame Mode"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
@@ -194,9 +193,8 @@
             android:background="@drawable/rounded_border"
             android:padding="20dp"
             android:text="SIM"
-            android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/high"
@@ -210,8 +208,7 @@
             android:padding="20dp"
             android:text="HIGH"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
 
         <TextView
@@ -225,8 +222,7 @@
             android:padding="20dp"
             android:text="OFF"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
 
     </RelativeLayout>

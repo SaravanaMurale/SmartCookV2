@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class EditActivity extends AppCompatActivity {
 
     Button operateLeftBurner, operateCenterBurner, operateRightBurner, start, cancel;
-    TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle, burnerSettingsText,flamModeText;
+    TextView operateTimer, operateWhistleCount, operateSub, operateAdd, sim, high, off, minute, whistle, burnerSettingsText, flamModeText;
     RippleBackground rippleEditLeft, rippleEditCenter, rippleEditRight;
     int timerInMin = 5;
     int whistleInCount = 2;
@@ -80,12 +80,10 @@ public class EditActivity extends AppCompatActivity {
         System.out.println("ByteAtFour" + byte2[4]);*/
 
 
-
         backgroundChangeOperation();
 
-        operateTimer.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-        operateTimer.setTextColor(getResources().getColor(R.color.red));
-        operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.rounded_border));
+        operateTimer.setBackground(getResources().getDrawable(R.drawable.edit_button_border_on));
+        operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.edit_button_border_off));
 
         timerFlag = true;
         whistleFlag = false;
@@ -167,10 +165,13 @@ public class EditActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                operateTimer.setBackgroundColor(getResources().getColor(R.color.timer_bg));
+                /*operateTimer.setBackgroundColor(getResources().getColor(R.color.timer_bg));
                 operateTimer.setTextColor(getResources().getColor(R.color.black));
                 operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.whistle_bg));
-                operateWhistleCount.setTextColor(getResources().getColor(R.color.black));
+                operateWhistleCount.setTextColor(getResources().getColor(R.color.black));*/
+
+                operateTimer.setBackground(getResources().getDrawable(R.drawable.edit_button_border_on));
+                operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.edit_button_border_off));
                 //minuteOrWhistleCount.setText("5 minute");
 
                 timerFlag = true;
@@ -194,11 +195,15 @@ public class EditActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.timer_bg));
+                /*operateWhistleCount.setBackgroundColor(getResources().getColor(R.color.timer_bg));
                 operateWhistleCount.setTextColor(getResources().getColor(R.color.black));
                 operateTimer.setBackgroundColor(getResources().getColor(R.color.whistle_bg));
-                operateTimer.setTextColor(getResources().getColor(R.color.black));
+                operateTimer.setTextColor(getResources().getColor(R.color.black));*/
                 //minuteOrWhistleCount.setText("1");
+
+                operateWhistleCount.setBackground(getResources().getDrawable(R.drawable.edit_button_border_on));
+                operateTimer.setBackground(getResources().getDrawable(R.drawable.edit_button_border_off));
+
 
                 timerFlag = false;
                 whistleFlag = true;
@@ -221,9 +226,9 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 operateAdd.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                operateAdd.setTextColor(getResources().getColor(R.color.red));
+                operateAdd.setTextColor(getResources().getColor(R.color.black));
                 operateSub.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                operateSub.setTextColor(getResources().getColor(R.color.white));
+                operateSub.setTextColor(getResources().getColor(R.color.black));
 
 
                 operateSub.setEnabled(true);
@@ -246,9 +251,9 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operateSub.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
-                operateSub.setTextColor(getResources().getColor(R.color.red));
+                operateSub.setTextColor(getResources().getColor(R.color.black));
                 operateAdd.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                operateAdd.setTextColor(getResources().getColor(R.color.white));
+                operateAdd.setTextColor(getResources().getColor(R.color.black));
 
 
                 if (timerFlag) {
@@ -316,13 +321,13 @@ public class EditActivity extends AppCompatActivity {
 
                 flameMode = 1;
 
-                sim.setTextColor(getResources().getColor(R.color.red));
+                sim.setTextColor(getResources().getColor(R.color.black));
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 sim.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
 
-                high.setTextColor(getResources().getColor(R.color.white));
+                high.setTextColor(getResources().getColor(R.color.black));
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                off.setTextColor(getResources().getColor(R.color.white));
+                off.setTextColor(getResources().getColor(R.color.black));
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
 
 
@@ -335,13 +340,13 @@ public class EditActivity extends AppCompatActivity {
 
                 flameMode = 2;
 
-                high.setTextColor(getResources().getColor(R.color.red));
+                high.setTextColor(getResources().getColor(R.color.black));
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 high.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
 
-                sim.setTextColor(getResources().getColor(R.color.white));
+                sim.setTextColor(getResources().getColor(R.color.black));
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                off.setTextColor(getResources().getColor(R.color.white));
+                off.setTextColor(getResources().getColor(R.color.black));
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
 
 
@@ -354,13 +359,13 @@ public class EditActivity extends AppCompatActivity {
 
                 flameMode = 0;
 
-                off.setTextColor(getResources().getColor(R.color.red));
+                off.setTextColor(getResources().getColor(R.color.black));
                 off.setBackground(getResources().getDrawable(R.drawable.rounded_border));
                 off.setBackgroundColor(getResources().getColor(R.color.burner_on_green));
 
-                sim.setTextColor(getResources().getColor(R.color.white));
+                sim.setTextColor(getResources().getColor(R.color.black));
                 sim.setBackground(getResources().getDrawable(R.drawable.rounded_border));
-                high.setTextColor(getResources().getColor(R.color.white));
+                high.setTextColor(getResources().getColor(R.color.black));
                 high.setBackground(getResources().getDrawable(R.drawable.rounded_border));
 
             }
@@ -373,9 +378,9 @@ public class EditActivity extends AppCompatActivity {
 
 
         operateTimer = (TextView) findViewById(R.id.timerText);
-        operateTimer.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //operateTimer.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         operateWhistleCount = (TextView) findViewById(R.id.whistleText);
-        operateWhistleCount.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //operateWhistleCount.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         minute = (TextView) findViewById(R.id.minute);
         whistle = (TextView) findViewById(R.id.whistle);
 
@@ -383,27 +388,25 @@ public class EditActivity extends AppCompatActivity {
         operateAdd = (TextView) findViewById(R.id.add);
 
         sim = (TextView) findViewById(R.id.sim);
-        sim.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //sim.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         high = (TextView) findViewById(R.id.high);
-        high.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //high.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
         off = (TextView) findViewById(R.id.off);
-        off.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //off.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
         start = (Button) findViewById(R.id.start);
         cancel = (Button) findViewById(R.id.cancel);
-        start.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
-        cancel.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //start.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //cancel.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
 
         burnerSettingsText = (TextView) findViewById(R.id.burnerSettingsText);
-        burnerSettingsText.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
-        flamModeText=(TextView)findViewById(R.id.flamMode);
-        flamModeText.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //burnerSettingsText.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        flamModeText = (TextView) findViewById(R.id.flamMode);
+        //flamModeText.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
-        minute.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
-        whistle.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
-
-
+        //minute.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
+        //whistle.setTypeface(FontUtil.getOctinPrisonFont(EditActivity.this));
 
 
     }
