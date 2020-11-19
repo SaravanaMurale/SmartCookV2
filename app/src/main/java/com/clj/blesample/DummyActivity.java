@@ -261,26 +261,10 @@ public class DummyActivity extends AppCompatActivity {
 
         }
 
+        Toast.makeText(DummyActivity.this, "All Value Inserted", Toast.LENGTH_LONG).show();
+
 
     }
-
-
-    /*    for (int i = 0; i < listInString.size(); i++) {
-
-            try {
-                Date dateFormet = new SimpleDateFormat("dd/MM/yyyy").parse(listInString.get(i));
-
-                System.out.println("StringToDateFormet" + dateFormet);
-                System.out.println("GasUsageValue"); gasUsageLisst.get(i);
-
-                sqliteManager.addGasConsumptionPattern(dateFormet, gasUsageLisst.get(i),burnerList.get(i));
-
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-        }*/
 
 
 }
