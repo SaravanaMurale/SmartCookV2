@@ -146,23 +146,37 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     public List<GasConsumptionPatternDTO> searchByDates(String burner, Date startDate, Date endDate) {
 
+        String sDate = "02/11/2020";
+        String eDate = "07/11/2020";
+
         List<GasConsumptionPatternDTO> gasConsumptionPatternDTOList = new ArrayList<>();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyy");
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + GCP_TABLE + " where " + GCP_BURNER + " and DATE(" + GCP_USAGE_DATE + ")>=? and DATE(" + GCP_USAGE_DATE + ")<=?",
-                new String[]{burner, simpleDateFormat.format(startDate), simpleDateFormat.format(endDate)});
 
-        if (cursor.moveToNext()) {
+        /*Cursor cursor = sqLiteDatabase.rawQuery("select id,gcp_burner,gcp_usage_value,gcp_usage_date from " + GCP_TABLE + " where DATE(" + GCP_USAGE_DATE + ")>=? and DATE(" + GCP_USAGE_DATE + ")<=?",
+                new String[]{simpleDateFormat.format(startDate), simpleDateFormat.format(endDate)});
+*/
+
+        Cursor cursor = sqLiteDatabase.rawQuery("select id,gcp_burner,gcp_usage_value,gcp_usage_date from " + GCP_TABLE + " where " + GCP_USAGE_DATE + ">=? and " + GCP_USAGE_DATE + "<=?",
+                new String[]{sDate, eDate});
+
+        if (cursor.moveToFirst()) {
 
             do {
                 try {
+
+                    System.out.println("RrangeID " + cursor.getInt(0));
+                    System.out.println("RrangeBURNER " + cursor.getString(1));
+                    System.out.println("RrangeUSAGE " + cursor.getInt(2));
+                    System.out.println("DATE " + cursor.getString(3));
+
                     GasConsumptionPatternDTO gasConsumptionPatternDTO = new GasConsumptionPatternDTO(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), simpleDateFormat.parse(cursor.getString(3)));
                     gasConsumptionPatternDTOList.add(gasConsumptionPatternDTO);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-            } while (cursor.moveToFirst());
+            } while (cursor.moveToNext());
 
 
         }

@@ -49,7 +49,7 @@ public class DummyActivity extends AppCompatActivity {
     public static final String FILE_NAME = "scsk.txt";
     FileOutputStream fos;
 
-    Button moveToFragment, saveInSqlite, searchByBurner;
+    Button moveToFragment, saveInSqlite, searchByBurner, searchByDate;
 
     List<String> burnerList = new ArrayList<>();
     List<String> listInString = new ArrayList<>();
@@ -93,6 +93,26 @@ public class DummyActivity extends AppCompatActivity {
         moveToFragment = (Button) findViewById(R.id.moveToFragment);
         saveInSqlite = (Button) findViewById(R.id.saveInSqlite);
         searchByBurner = (Button) findViewById(R.id.searchByBurner);
+        searchByDate = (Button) findViewById(R.id.searchByDate);
+
+        searchByDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    List<GasConsumptionPatternDTO> gasConsumptionPatternDTOList = sqliteManager.searchByDates("00", new SimpleDateFormat("dd/MM/yyyy").parse("02/11/2020"), new SimpleDateFormat("dd/MM/yyyy").parse("07/11/2020"));
+                    for (int i = 0; i < gasConsumptionPatternDTOList.size(); i++) {
+
+                        System.out.println("RangeSizeOfGasConsumptionPatters " + gasConsumptionPatternDTOList.size());
+
+
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         searchByBurner.setOnClickListener(new View.OnClickListener() {
             @Override

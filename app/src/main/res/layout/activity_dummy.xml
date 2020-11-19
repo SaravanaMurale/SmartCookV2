@@ -24,9 +24,15 @@
         android:id="@+id/searchByBurner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search By Burner"
-        />
+        android:layout_below="@id/saveInSqlite"
+        android:text="Search By Burner" />
 
+    <Button
+        android:id="@+id/searchByDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchByBurner"
+        android:text="Search By Date" />
 
 
     <FrameLayout
