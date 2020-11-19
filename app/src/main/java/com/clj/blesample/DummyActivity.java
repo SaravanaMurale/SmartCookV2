@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 
 import com.clj.blesample.databasemanager.SqliteManager;
+import com.clj.blesample.model.GasConsumptionPatternDTO;
 import com.sdsmdg.harjot.crollerTest.Croller;
 
 import java.io.BufferedReader;
@@ -48,7 +49,7 @@ public class DummyActivity extends AppCompatActivity {
     public static final String FILE_NAME = "scsk.txt";
     FileOutputStream fos;
 
-    Button moveToFragment, saveInSqlite;
+    Button moveToFragment, saveInSqlite, searchByBurner;
 
     List<String> burnerList = new ArrayList<>();
     List<String> listInString = new ArrayList<>();
@@ -91,6 +92,21 @@ public class DummyActivity extends AppCompatActivity {
 
         moveToFragment = (Button) findViewById(R.id.moveToFragment);
         saveInSqlite = (Button) findViewById(R.id.saveInSqlite);
+        searchByBurner = (Button) findViewById(R.id.searchByBurner);
+
+        searchByBurner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<GasConsumptionPatternDTO> gasConsumptionPatternDTOList = sqliteManager.searchByBurner("00");
+
+                for (int i = 0; i < gasConsumptionPatternDTOList.size(); i++) {
+
+                    System.out.println("SizeOfGasConsumptionPatters " + gasConsumptionPatternDTOList.size());
+
+                }
+
+            }
+        });
 
         saveInSqlite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,16 +210,16 @@ public class DummyActivity extends AppCompatActivity {
 
     private void burnerList() {
 
-        burnerList.add("00");
-        burnerList.add("01");
-        burnerList.add("10");
-        burnerList.add("00");
-        burnerList.add("01");
-        burnerList.add("10");
-        burnerList.add("00");
-        burnerList.add("01");
-        burnerList.add("10");
-        burnerList.add("00");
+        burnerList.add(0, "00");
+        burnerList.add(1, "01");
+        burnerList.add(2, "10");
+        burnerList.add(3, "00");
+        burnerList.add(4, "01");
+        burnerList.add(5, "10");
+        burnerList.add(6, "00");
+        burnerList.add(7, "01");
+        burnerList.add(8, "10");
+        burnerList.add(9, "00");
 
     }
 
@@ -213,32 +229,32 @@ public class DummyActivity extends AppCompatActivity {
 
         dateList.add();*/
 
-        listInString.add(date1);
-        listInString.add(date2);
-        listInString.add(date3);
-        listInString.add(date4);
-        listInString.add(date5);
-        listInString.add(date6);
-        listInString.add(date7);
-        listInString.add(date8);
-        listInString.add(date9);
-        listInString.add(date10);
+        listInString.add(0, date1);
+        listInString.add(1, date2);
+        listInString.add(2, date3);
+        listInString.add(3, date4);
+        listInString.add(4, date5);
+        listInString.add(5, date6);
+        listInString.add(6, date7);
+        listInString.add(7, date8);
+        listInString.add(8, date9);
+        listInString.add(9, date10);
 
 
     }
 
     private void gasUsageList() {
 
-        gasUsageLisst.add(10);
-        gasUsageLisst.add(2);
-        gasUsageLisst.add(8);
-        gasUsageLisst.add(6);
-        gasUsageLisst.add(4);
-        gasUsageLisst.add(8);
-        gasUsageLisst.add(1);
-        gasUsageLisst.add(5);
-        gasUsageLisst.add(7);
-        gasUsageLisst.add(2);
+        gasUsageLisst.add(0, 10);
+        gasUsageLisst.add(1, 2);
+        gasUsageLisst.add(2, 8);
+        gasUsageLisst.add(3, 6);
+        gasUsageLisst.add(4, 4);
+        gasUsageLisst.add(5, 8);
+        gasUsageLisst.add(6, 1);
+        gasUsageLisst.add(7, 5);
+        gasUsageLisst.add(8, 7);
+        gasUsageLisst.add(9, 2);
 
     }
 
@@ -255,13 +271,13 @@ public class DummyActivity extends AppCompatActivity {
 
                 sqliteManager.addGasConsumptionPattern(dateFormet, gasUsageLisst.get(i), burnerList.get(i));
 
+                Toast.makeText(DummyActivity.this, "Value Inserted " + i, Toast.LENGTH_LONG).show();
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
         }
-
-        Toast.makeText(DummyActivity.this, "All Value Inserted", Toast.LENGTH_LONG).show();
 
 
     }

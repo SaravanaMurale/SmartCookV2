@@ -20,6 +20,15 @@
         android:layout_below="@id/moveToFragment"
         android:text="SaveInDB" />
 
+    <Button
+        android:id="@+id/searchByBurner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search By Burner"
+        />
+
+
+
     <FrameLayout
         android:id="@+id/fragmentContainer1"
         android:layout_width="match_parent"

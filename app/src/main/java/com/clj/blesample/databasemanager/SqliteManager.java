@@ -92,14 +92,14 @@ public class SqliteManager extends SQLiteOpenHelper {
                 "    " + DEVICE_ID + " varchar(200) NOT NULL\n" +
                 ");";*/
 
-        String signUpTable = "CREATE TABLE IF NOT EXISTS " + SIGNUP_TABLE + "(\n" +
+        String gasConPatTable = "CREATE TABLE IF NOT EXISTS " + GCP_TABLE + "(\n" +
                 "    " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT add_cart_pk PRIMARY KEY AUTOINCREMENT,\n" +
                 "    " + GCP_BURNER + " varchar(200) NOT NULL,\n" +
-                "    " + GCP_USAGE_VALUE + " varchar(200) NOT NULL,\n" +
+                "    " + GCP_USAGE_VALUE + " INTEGER NOT NULL,\n" +
                 "    " + GCP_USAGE_DATE + " text NOT NULL\n" +
                 ");";
 
-        String gasConPatTable = "CREATE TABLE IF NOT EXISTS " + GCP_TABLE + "(\n" +
+        String signUpTable = "CREATE TABLE IF NOT EXISTS " + SIGNUP_TABLE + "(\n" +
                 "    " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT add_cart_pk PRIMARY KEY AUTOINCREMENT,\n" +
                 "    " + USER_NAME + " varchar(200) NOT NULL,\n" +
                 "    " + USER_EMAIL + " tinyint(4) NOT NULL,\n" +
@@ -137,21 +137,21 @@ public class SqliteManager extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(GCP_BURNER, burner);
-        contentValues.put(GCP_USAGE_VALUE, burner);
+        contentValues.put(GCP_USAGE_VALUE, gasValue);
         contentValues.put(GCP_USAGE_DATE, simpleDateFormat.format(date));
 
         return sqLiteDatabase.insert(GCP_TABLE, null, contentValues) != -1;
 
     }
 
-    public void searchByDates(Date startDate, Date endDate) {
+    public List<GasConsumptionPatternDTO> searchByDates(String burner, Date startDate, Date endDate) {
 
         List<GasConsumptionPatternDTO> gasConsumptionPatternDTOList = new ArrayList<>();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyy");
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("select * from " + GCP_TABLE + " where " + GCP_BURNER + " and DATE(" + GCP_USAGE_DATE + ")>=? and DATE(" + GCP_USAGE_DATE + ")<=?",
-                new String[]{simpleDateFormat.format(startDate), simpleDateFormat.format(endDate)});
+                new String[]{burner, simpleDateFormat.format(startDate), simpleDateFormat.format(endDate)});
 
         if (cursor.moveToNext()) {
 
@@ -166,6 +166,36 @@ public class SqliteManager extends SQLiteOpenHelper {
 
 
         }
+
+        return gasConsumptionPatternDTOList;
+
+    }
+
+    public List<GasConsumptionPatternDTO> searchByBurner(String burner) {
+
+        List<GasConsumptionPatternDTO> gasConsumptionPatternDTOList = new ArrayList<>();
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyy");
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select id,gcp_burner,gcp_usage_value,gcp_usage_date from gasconsumptionpattern where gcp_burner=?", new String[]{burner});
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                System.out.println("ID " + cursor.getInt(0));
+                System.out.println("BURNER " + cursor.getString(1));
+                System.out.println("USAGE " + cursor.getInt(2));
+                System.out.println("DATE " + cursor.getString(3));
+
+                //GasConsumptionPatternDTO gasConsumptionPatternDTO = new GasConsumptionPatternDTO(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), simpleDateFormat.parse(cursor.getString(3)));
+                //gasConsumptionPatternDTOList.add(gasConsumptionPatternDTO);
+            } while (cursor.moveToNext());
+
+
+        }
+
+        return gasConsumptionPatternDTOList;
 
     }
 
