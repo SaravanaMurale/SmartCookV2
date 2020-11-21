@@ -61,8 +61,19 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="3dp"
         android:layout_marginBottom="120dp"
-        android:src="@drawable/knob_off_black"
+        android:src="@drawable/knob_off_black" />
 
+    <TextView
+        android:id="@+id/leftSimText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sim"
+        android:layout_toRightOf="@id/leftSim"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
         />
 
 
