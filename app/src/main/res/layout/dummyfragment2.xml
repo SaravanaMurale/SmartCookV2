@@ -159,19 +159,18 @@
         android:id="@+id/rightWhistle"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignParentRight="true"
+       android:layout_below="@id/rightBurner1"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/whistle_green"
+        android:layout_alignParentRight="true"
         android:layout_marginRight="60dp"
-        />
+        android:src="@drawable/whistle_green" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/stove_green"
-
+        android:layout_below="@id/rightBurner1"
         android:layout_toLeftOf="@id/rightWhistle"
+        android:src="@drawable/stove_green"
 
         />
 
