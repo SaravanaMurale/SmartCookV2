@@ -5,15 +5,33 @@
     android:orientation="vertical">
 
 
+
+
     <ImageView
-        android:id="@+id/menuIcon"
+        android:id="@+id/menuEStop"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:background="@color/black"
-        android:src="@drawable/menu1"
-        android:visibility="gone" />
+        android:src="@drawable/e_stop"
+        android:layout_margin="7dp"
+        />
+
+    <ImageView
+        android:id="@+id/menuSetTimer"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_toRightOf="@+id/menuEStop"
+        android:src="@drawable/timer_blue"
+        android:layout_margin="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/menuSetWhistle"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_toRightOf="@+id/menuSetTimer"
+        android:src="@drawable/whistle_blue"
+        android:layout_margin="5dp"
+        />
 
 
     <ImageView
@@ -68,6 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sim"
+        android:textAllCaps="true"
         android:layout_toRightOf="@id/leftSim"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="120dp"
@@ -87,14 +106,40 @@
         android:layout_toRightOf="@id/leftBurner"
         android:src="@drawable/knob_off_black" />
 
+    <TextView
+        android:id="@+id/leftOffText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Off"
+        android:textAllCaps="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/leftOff"
+        android:layout_marginBottom="120dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        />
+
     <ImageView
         android:id="@+id/leftHigh"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_above="@id/leftBurner"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginBottom="3dp"
         android:src="@drawable/knob_high_black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leftHigh"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="20dp"
+        android:text="High"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        />
 
     <ImageView
         android:id="@+id/centerBurner1"
@@ -102,7 +147,7 @@
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/knob" />
 
     <ImageView
