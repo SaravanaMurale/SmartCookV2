@@ -144,7 +144,7 @@ public class DummyActivity extends AppCompatActivity {
 
                 moveToFragment.setVisibility(View.GONE);
 
-                Fragment fragment = new DummyFragment1();
+                Fragment fragment = new DummyFragment2();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer1, fragment);

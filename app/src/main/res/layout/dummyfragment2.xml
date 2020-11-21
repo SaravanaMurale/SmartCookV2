@@ -1,152 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-   <!-- <RelativeLayout
+
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:background="@color/black"
+        android:src="@drawable/menu1"
+        android:visibility="gone" />
+
+
+    <ImageView
+        android:id="@+id/leftBurner"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/knob" />
+
+    <ImageView
+        android:id="@+id/leftTimer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/timer_green" />
+
+    <ImageView
+        android:id="@+id/leftStove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/leftTimer"
+        android:src="@drawable/stove_green" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/leftStove"
+        android:src="@drawable/whistle_green" />
+
+
+    <ImageView
+        android:id="@+id/leftSim"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="120dp"
+        android:src="@drawable/knob_off_black"
+
+        />
+
+
+    <ImageView
+        android:id="@+id/leftOff"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toRightOf="@id/leftBurner"
+        android:src="@drawable/knob_off_black" />
+
+    <ImageView
+        android:id="@+id/leftHigh"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_above="@id/leftBurner"
+        android:layout_marginLeft="120dp"
+        android:layout_marginBottom="3dp"
+        android:src="@drawable/knob_high_black" />
+
+    <ImageView
+        android:id="@+id/centerBurner1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/knob" />
+
+    <ImageView
+        android:id="@+id/centerStove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/centerBurner1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/stove_green" />
+
+    <ImageView
+        android:id="@+id/centerTimer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/centerBurner1"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@id/centerStove"
+        android:src="@drawable/timer_green" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/centerBurner1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/centerStove"
+        android:src="@drawable/whistle_green" />
+
+    <ImageView
+        android:id="@+id/centerSim"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="120dp"
+        android:layout_toLeftOf="@id/centerBurner1"
+        android:src="@drawable/knob_off_green" />
+
+
+    <ImageView
+        android:id="@+id/centerHigh"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/knob_high_red" />
+
+    <ImageView
+        android:id="@+id/centerOff"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="120dp"
+        android:layout_toRightOf="@id/centerBurner1"
+        android:src="@drawable/knob_off_red" />
+
+    <ImageView
+        android:id="@+id/rightBurner1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/knob" />
+
+    <ImageView
+        android:id="@+id/rightWhistle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/whistle_green"
+        android:layout_marginRight="60dp"
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/stove_green"
+
+        android:layout_toLeftOf="@id/rightWhistle"
+
+        />
+
+    <ImageView
+        android:id="@+id/rightOff"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:src="@drawable/knob_off_red" />
+
+    <ImageView
+        android:id="@+id/rightSim"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toLeftOf="@id/rightBurner1"
+        android:src="@drawable/knob_off_red" />
+
+    <ImageView
+        android:id="@+id/rightHigh"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_above="@id/rightBurner1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="120dp"
+        android:src="@drawable/knob_high_green" />
+
+    <ListView
+        android:id="@+id/list_service_character"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:scrollbars="none"
+        android:visibility="gone" />
 
 
-        <Button
-            android:id="@+id/leftBurnerOperation"
-            android:layout_width="110dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/burnerSettingsText"
-            android:layout_margin="10dp"
-            android:background="@drawable/burner_vessel_on"
-            android:text="B1" />
+</RelativeLayout>
 
-        <Button
-            android:id="@+id/centerBurnerOperation"
-            android:layout_width="110dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/burnerSettingsText"
-            android:layout_margin="10dp"
-            android:layout_toRightOf="@id/leftBurnerOperation"
-            android:background="@drawable/burner_vessel_on"
-            android:text="B1" />
 
-        <Button
-            android:id="@+id/rightBurnerOperation"
-            android:layout_width="110dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/burnerSettingsText"
-            android:layout_margin="10dp"
-            android:layout_toRightOf="@id/centerBurnerOperation"
-            android:background="@drawable/burner_vessel_on"
-            android:text="B1" />
-
-        <TextView
-            android:id="@+id/burnerSettingsText"
-            android:layout_width="wrap_content"
+    <!-- <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Burner Settings" />
-
-        <TextView
-            android:id="@+id/timerText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/leftBurnerOperation"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:background="@drawable/rounded_border"
-            android:text="Timer" />
-
-        <TextView
-            android:id="@+id/whistleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/leftBurnerOperation"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:background="@drawable/rounded_border"
-            android:text="Whistle Count" />
+            android:layout_margin="10dp">
 
 
-        <TextView
-            android:id="@+id/sub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/timerText"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:text="-"
-            android:background="@drawable/rounded_border"
-            android:textSize="20sp"
+            <Button
+                android:id="@+id/leftBurnerOperation"
+                android:layout_width="110dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/burnerSettingsText"
+                android:layout_margin="10dp"
+                android:background="@drawable/burner_vessel_on"
+                android:text="B1" />
 
-            />
+            <Button
+                android:id="@+id/centerBurnerOperation"
+                android:layout_width="110dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/burnerSettingsText"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@id/leftBurnerOperation"
+                android:background="@drawable/burner_vessel_on"
+                android:text="B1" />
 
-        <TextView
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/whistleText"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:text="+"
-            android:background="@drawable/rounded_border"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/rightBurnerOperation"
+                android:layout_width="110dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/burnerSettingsText"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@id/centerBurnerOperation"
+                android:background="@drawable/burner_vessel_on"
+                android:text="B1" />
 
-        <TextView
-            android:id="@+id/minutes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/timerText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:padding="5dp"
-            android:background="@drawable/rounded_border"
-            android:text="15 minutes" />
+            <TextView
+                android:id="@+id/burnerSettingsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Burner Settings" />
 
-        <TextView
-            android:id="@+id/flamMode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sub"
-            android:layout_marginTop="10dp"
-            android:text="Flame Mode" />
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftBurnerOperation"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/rounded_border"
+                android:text="Timer" />
 
-        <TextView
-            android:id="@+id/sim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/flamMode"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:background="@drawable/rounded_border"
-            android:text="SIM" />
-
-        <TextView
-            android:id="@+id/high"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/flamMode"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:background="@drawable/rounded_border"
-            android:text="HIGH" />
-
-        <TextView
-            android:id="@+id/off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/flamMode"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
-            android:background="@drawable/rounded_border"
-            android:text="OFF" />
+            <TextView
+                android:id="@+id/whistleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftBurnerOperation"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/rounded_border"
+                android:text="Whistle Count" />
 
 
-    </RelativeLayout>-->
+            <TextView
+                android:id="@+id/sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timerText"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:text="-"
+                android:background="@drawable/rounded_border"
+                android:textSize="20sp"
+
+                />
+
+            <TextView
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/whistleText"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:text="+"
+                android:background="@drawable/rounded_border"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/timerText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:padding="5dp"
+                android:background="@drawable/rounded_border"
+                android:text="15 minutes" />
+
+            <TextView
+                android:id="@+id/flamMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sub"
+                android:layout_marginTop="10dp"
+                android:text="Flame Mode" />
+
+            <TextView
+                android:id="@+id/sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flamMode"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/rounded_border"
+                android:text="SIM" />
+
+            <TextView
+                android:id="@+id/high"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flamMode"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/rounded_border"
+                android:text="HIGH" />
+
+            <TextView
+                android:id="@+id/off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flamMode"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/rounded_border"
+                android:text="OFF" />
 
 
-</ScrollView>
+        </RelativeLayout>-->

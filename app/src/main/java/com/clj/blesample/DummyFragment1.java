@@ -24,7 +24,7 @@ import com.clj.blesample.menuoperationactivity.MenuActivity;
 public class DummyFragment1 extends Fragment {
 
 
-    ImageView leftBurner, leftBurnerVessel, leftBurnerTimer, leftBurnerWhistle, leftBurnerVesselEmpty;
+    /*ImageView leftBurner, leftBurnerVessel, leftBurnerTimer, leftBurnerWhistle, leftBurnerVesselEmpty;
     Button leftBurnerSetting, leftBurnerEdit;
 
     ImageView centerBurner, centerBurnerVessel, centerBurnerTimer, centerBurnerWhistle, centerBurnerVesselEmpty;
@@ -37,7 +37,7 @@ public class DummyFragment1 extends Fragment {
 
     TextView leftBurnerTime, centerBurnerTime, rightBurnerTime;
 
-    byte[] burnerValue = new byte[12];
+    byte[] burnerValue = new byte[12];*/
 
 
     @Override
@@ -46,15 +46,15 @@ public class DummyFragment1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dummy, container, false);
 
-        initView(view);
+        //initView(view);
 
-        setValueToBurner();
+        //setValueToBurner();
 
 
         return view;
     }
 
-    private void setValueToBurner() {
+    /*private void setValueToBurner() {
 
         //Left
         burnerValue[0] = 1; //active
@@ -105,7 +105,7 @@ public class DummyFragment1 extends Fragment {
         }
 
 
-    }
+    }*/
 
     private void blinkImage(ImageView timerIcon) {
         Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
@@ -120,7 +120,7 @@ public class DummyFragment1 extends Fragment {
         topTimerIcon.clearAnimation();
     }
 
-    private void initView(View view) {
+    /*private void initView(View view) {
 
         leftBurner = (ImageView) view.findViewById(R.id.leftBurner);
         leftBurnerVessel = (ImageView) view.findViewById(R.id.leftBurnerVessel);
@@ -165,7 +165,7 @@ public class DummyFragment1 extends Fragment {
         });
 
 
-    }
+    }*/
 
     private void launchMenuActivity() {
 
