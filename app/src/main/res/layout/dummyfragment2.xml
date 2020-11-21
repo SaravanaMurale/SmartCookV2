@@ -18,11 +18,11 @@
 
     <ImageView
         android:id="@+id/leftBurner"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="45dp"
         android:src="@drawable/knob" />
 
     <ImageView
@@ -30,7 +30,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginBottom="5dp"
         android:src="@drawable/timer_green" />
 
@@ -86,8 +86,8 @@
 
     <ImageView
         android:id="@+id/centerBurner1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
@@ -147,12 +147,12 @@
 
     <ImageView
         android:id="@+id/rightBurner1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="35dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="45dp"
         android:src="@drawable/knob" />
 
     <ImageView
@@ -163,6 +163,7 @@
         android:layout_alignParentBottom="true"
         android:src="@drawable/whistle_green"
         android:layout_marginRight="60dp"
+        android:layout_marginBottom="5dp"
         />
 
     <ImageView
@@ -172,7 +173,9 @@
         android:src="@drawable/stove_green"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/rightWhistle"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        />
 
     <ImageView
         android:layout_width="30dp"
@@ -181,6 +184,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/rightStove"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
         />
 
     <ImageView
