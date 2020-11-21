@@ -45,6 +45,7 @@
         android:src="@drawable/stove_green" />
 
     <ImageView
+        android:id="@+id/leftWhistle"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
@@ -113,6 +114,7 @@
         android:src="@drawable/timer_green" />
 
     <ImageView
+        android:id="@+id/centerWhistle"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@id/centerBurner1"
@@ -178,6 +180,7 @@
         />
 
     <ImageView
+        android:id="@+id/rightTimer"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/timer_green"
