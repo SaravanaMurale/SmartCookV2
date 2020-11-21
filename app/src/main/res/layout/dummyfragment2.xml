@@ -159,19 +159,28 @@
         android:id="@+id/rightWhistle"
         android:layout_width="30dp"
         android:layout_height="30dp"
-       android:layout_below="@id/rightBurner1"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/whistle_green"
         android:layout_marginRight="60dp"
-        android:src="@drawable/whistle_green" />
+        />
+
+    <ImageView
+        android:id="@+id/rightStove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/stove_green"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/rightWhistle"
+        android:layout_marginRight="20dp" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@id/rightBurner1"
-        android:layout_toLeftOf="@id/rightWhistle"
-        android:src="@drawable/stove_green"
-
+        android:src="@drawable/timer_green"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/rightStove"
+        android:layout_marginRight="20dp"
         />
 
     <ImageView
