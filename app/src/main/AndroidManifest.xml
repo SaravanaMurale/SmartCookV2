@@ -18,7 +18,9 @@
         <activity android:name=".menuoperationactivity.LoginActivity" />
         <activity android:name=".menuoperationactivity.SignUpActivity" />
         <activity android:name=".menuoperationactivity.EditActivity" />
-        <activity android:name=".operation.OperationActivity" />
+        <activity
+            android:name=".operation.OperationActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".menuoperationactivity.SettingsActivity" />
         <activity android:name=".menuoperationactivity.ProductServiceActivity" />
         <activity android:name=".menuoperationactivity.ProfileSettingsActivity" />
@@ -33,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".operation.OperationActivity" />
+
     </application>
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
