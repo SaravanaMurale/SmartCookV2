@@ -306,6 +306,34 @@ public class CharacteristicListFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(getActivity());
+                builder.setCancelable(false);
+                builder.setTitle("You want to turn off stove?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if (SIZE_OF_CHARACTERISTIC == 2 && mResultAdapter != null) {
+                            callMe(1, "null", 1, 3, 0);
+                        }
+
+                        dialog.cancel();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        dialog.cancel();
+                    }
+                });
+
+                android.support.v7.app.AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
             }
         });
 

@@ -18,15 +18,15 @@
         <activity android:name=".menuoperationactivity.LoginActivity" />
         <activity android:name=".menuoperationactivity.SignUpActivity" />
         <activity android:name=".menuoperationactivity.EditActivity" />
+        <activity android:name=".operation.OperationActivity" />
         <activity android:name=".menuoperationactivity.SettingsActivity" />
         <activity android:name=".menuoperationactivity.ProductServiceActivity" />
         <activity android:name=".menuoperationactivity.ProfileSettingsActivity" />
-        <activity android:name=".menuoperationactivity.BarChartActivity" /> <!-- <activity android:name=".menuoperationactivity.MenuActivity" /> -->
+        <activity android:name=".menuoperationactivity.BarChartActivity" />
+        <!-- <activity android:name=".menuoperationactivity.MenuActivity" /> -->
         <!-- <activity android:name=".MainActivity" /> -->
         <!-- <activity android:name=".DummyActivity"></activity> -->
-        <activity
-            android:name=".DummyActivity"
-            android:screenOrientation="landscape">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
