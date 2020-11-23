@@ -18,9 +18,11 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +58,15 @@ public class CharacteristicListFragment extends Fragment {
     ImageView leftOffImg, leftHighImg, leftSimImg;
     ImageView rightOffImg, rightHighImg, rightSimImg;
     ImageView centerOffImg, centerHighImg, centerSimImg;
+
+    ImageView menuEStop, menuSetTimer, menuSetWhistle;
+
+    ImageView leftTimer, leftVessel, leftWhistle;
+    ImageView rightTimer, rightVessel, rightWhistle;
+    ImageView centerTimer, centerVessel, centerWhistle;
+
+    Spinner mSpinner, mSpinnerWhistleCount, mSelectBurner;
+    ImageView eTimer;
 
 
     String left = "00", center = "01", right = "10";
@@ -206,6 +217,136 @@ public class CharacteristicListFragment extends Fragment {
         centerOffImg = (ImageView) v.findViewById(R.id.centerOff);
         centerHighImg = (ImageView) v.findViewById(R.id.centerHigh);
         centerSimImg = (ImageView) v.findViewById(R.id.centerSim);
+
+        menuEStop = (ImageView) v.findViewById(R.id.menuEStop);
+        menuSetTimer = (ImageView) v.findViewById(R.id.menuSetTimer);
+        menuSetWhistle = (ImageView) v.findViewById(R.id.menuSetWhistle);
+
+        leftTimer = (ImageView) v.findViewById(R.id.leftTimer);
+        leftVessel = (ImageView) v.findViewById(R.id.leftStove);
+        leftWhistle = (ImageView) v.findViewById(R.id.leftWhistle);
+
+        rightTimer = (ImageView) v.findViewById(R.id.rightTimer);
+        rightVessel = (ImageView) v.findViewById(R.id.rightStove);
+        rightWhistle = (ImageView) v.findViewById(R.id.rightWhistle);
+
+        centerTimer = (ImageView) v.findViewById(R.id.centerTimer);
+        centerVessel = (ImageView) v.findViewById(R.id.centerStove);
+        centerWhistle = (ImageView) v.findViewById(R.id.centerWhistle);
+
+
+        leftOffImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                callMe(1, "00", 0, 1, 0);
+
+            }
+        });
+
+        leftHighImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                callMe(1, "00", 0, 1, 1);
+
+            }
+        });
+
+        leftSimImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "00", 0, 1, 0);
+            }
+        });
+
+        rightOffImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "01", 0, 1, 0);
+            }
+        });
+
+        rightHighImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "01", 0, 1, 0);
+            }
+        });
+
+        rightSimImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "01", 0, 1, 0);
+            }
+        });
+
+        centerOffImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "10", 0, 1, 0);
+            }
+        });
+
+        centerHighImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "10", 0, 1, 0);
+            }
+        });
+
+        centerSimImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callMe(1, "10", 0, 1, 0);
+            }
+        });
+
+        menuEStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        menuSetWhistle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String burners[] = {"Burner", "Center", "Left", "Right"};
+                String whistleCount[] = {"Whistle", "0", "1", "2", "3", "4", "5"};
+
+                android.support.v7.app.AlertDialog.Builder mBuilder = new android.support.v7.app.AlertDialog.Builder(getActivity());
+                View mView = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
+                mBuilder.setTitle("Select");
+
+                mSpinner = (Spinner) mView.findViewById(R.id.spinnerData);
+                mSpinnerWhistleCount = (Spinner) mView.findViewById(R.id.spinnerWhistleCount);
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,
+                        burners);
+
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                ArrayAdapter<String> arrayAdapterWhistle = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,
+                        whistleCount);
+
+                arrayAdapterWhistle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                mSpinner.setAdapter(arrayAdapter);
+                mSpinnerWhistleCount.setAdapter(arrayAdapterWhistle);
+
+
+            }
+        });
+
+        menuSetTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
 
        /* menuIcon = (ImageView) v.findViewById(R.id.menuIcon);
@@ -432,7 +573,7 @@ public class CharacteristicListFragment extends Fragment {
                             public void run() {
 
 
-                                //splitEachBurnerDataFromReceivedByte(data);
+                                splitEachBurnerDataFromReceivedByte(data);
 
 
                             }

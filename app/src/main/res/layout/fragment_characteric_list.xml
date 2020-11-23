@@ -5,26 +5,68 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-  <!--  <ImageView
-        android:id="@+id/menuIcon"
+
+    <ImageView
+        android:id="@+id/menuEStop"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:background="@color/black"
-        android:src="@drawable/menu1"
-        android:visibility="gone" />
+        android:layout_margin="7dp"
+        android:src="@drawable/e_stop" />
 
 
     <ImageView
+        android:id="@+id/menuSetTimer"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/menuEStop"
+        android:src="@drawable/timer_blue" />
+
+    <ImageView
+        android:id="@+id/menuSetWhistle"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/menuSetTimer"
+        android:src="@drawable/whistle_blue" />
+
+    <ImageView
         android:id="@+id/leftBurner"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="45dp"
         android:src="@drawable/knob" />
 
+
+    <ImageView
+        android:id="@+id/leftTimer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/timer_green" />
+
+    <ImageView
+        android:id="@+id/leftStove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/leftTimer"
+        android:src="@drawable/stove_green" />
+
+    <ImageView
+        android:id="@+id/leftWhistle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/leftStove"
+        android:src="@drawable/whistle_green" />
 
     <ImageView
         android:id="@+id/leftSim"
@@ -33,9 +75,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="3dp"
         android:layout_marginBottom="120dp"
-        android:src="@drawable/knob_off_black"
-
-        />
+        android:src="@drawable/knob_off_black" />
 
 
     <ImageView
@@ -53,17 +93,18 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_above="@id/leftBurner"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginBottom="3dp"
         android:src="@drawable/knob_high_black" />
 
+
     <ImageView
         android:id="@+id/centerBurner1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/knob" />
 
     <ImageView
@@ -81,19 +122,19 @@
         android:layout_height="30dp"
         android:layout_below="@id/centerBurner1"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:layout_toLeftOf="@id/centerStove"
         android:src="@drawable/timer_green" />
 
     <ImageView
+        android:id="@+id/centerWhistle"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/whistle_green"
-        android:layout_toRightOf="@id/centerStove"
         android:layout_below="@id/centerBurner1"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        />
+        android:layout_toRightOf="@id/centerStove"
+        android:src="@drawable/whistle_green" />
 
     <ImageView
         android:id="@+id/centerSim"
@@ -102,7 +143,6 @@
         android:layout_marginTop="120dp"
         android:layout_toLeftOf="@id/centerBurner1"
         android:src="@drawable/knob_off_green" />
-
 
     <ImageView
         android:id="@+id/centerHigh"
@@ -121,13 +161,44 @@
 
     <ImageView
         android:id="@+id/rightBurner1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="35dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="45dp"
         android:src="@drawable/knob" />
+
+    <ImageView
+        android:id="@+id/rightWhistle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/whistle_green" />
+
+
+    <ImageView
+        android:id="@+id/rightStove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toLeftOf="@id/rightWhistle"
+        android:src="@drawable/stove_green" />
+
+    <ImageView
+        android:id="@+id/rightTimer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toLeftOf="@id/rightStove"
+        android:src="@drawable/timer_green" />
 
     <ImageView
         android:id="@+id/rightOff"
@@ -156,7 +227,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="120dp"
         android:src="@drawable/knob_high_green" />
--->
+
     <ListView
         android:id="@+id/list_service_character"
         android:layout_width="match_parent"
@@ -168,6 +239,43 @@
         android:paddingEnd="10dp"
         android:scrollbars="none"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/leftSimText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toRightOf="@id/leftSim"
+        android:text="Sim"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/leftOffText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toLeftOf="@id/leftOff"
+        android:text="Off"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leftHigh"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="20dp"
+        android:text="High"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

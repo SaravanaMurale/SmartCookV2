@@ -7,7 +7,7 @@
 
 
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/menuEStop"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -284,7 +284,7 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:scrollbars="none"
-        android:visibility="gone" />
+        android:visibility="gone" />-->
 
 
 </RelativeLayout>
