@@ -1,368 +1,367 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+  <ListView
+      android:id="@+id/list_service_character"
+      android:layout_width="match_parent"
+      android:layout_height="300dp"
+      android:layout_marginTop="10dp"
+      android:divider="@android:color/darker_gray"
+      android:dividerHeight="0.5dp"
+      android:paddingStart="10dp"
+      android:paddingEnd="10dp"
+      android:scrollbars="none"
+      android:visibility="invisible" />
 
-  <!--  <ImageView
-        android:id="@+id/menuEStop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="7dp"
-        android:src="@drawable/e_stop" />
+  <ImageView
+      android:id="@+id/menuEStop"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:src="@drawable/e_stop"
+      android:layout_margin="7dp"
+      />
 
+  <ImageView
+      android:id="@+id/menuSetTimer"
+      android:layout_width="55dp"
+      android:layout_height="55dp"
+      android:layout_toRightOf="@+id/menuEStop"
+      android:src="@drawable/timer_blue"
+      android:layout_margin="5dp"
+      />
 
-    <ImageView
-        android:id="@+id/menuSetTimer"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_margin="5dp"
-        android:layout_toRightOf="@+id/menuEStop"
-        android:src="@drawable/timer_blue" />
-
-    <ImageView
-        android:id="@+id/menuSetWhistle"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_margin="5dp"
-        android:layout_toRightOf="@+id/menuSetTimer"
-        android:src="@drawable/whistle_blue" />
-
-    <ImageView
-        android:id="@+id/leftCircle"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="45dp"
-        android:src="@drawable/knob" />
-
-
-    <ImageView
-        android:id="@+id/leftTimer"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="70dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/timer_green" />
-
-    <ImageView
-        android:id="@+id/leftStove"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="5dp"
-        android:layout_toRightOf="@id/leftTimer"
-        android:src="@drawable/stove_green" />
-
-    <ImageView
-        android:id="@+id/leftWhistle"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/leftStove"
-        android:src="@drawable/whistle_green" />
-
-    <ImageView
-        android:id="@+id/leftSim"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="3dp"
-        android:layout_marginBottom="120dp"
-        android:src="@drawable/knob_off_black" />
+  <ImageView
+      android:id="@+id/menuSetWhistle"
+      android:layout_width="55dp"
+      android:layout_height="55dp"
+      android:layout_toRightOf="@+id/menuSetTimer"
+      android:src="@drawable/whistle_blue"
+      android:layout_margin="5dp"
+      />
 
 
-    <ImageView
-        android:id="@+id/leftOff"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="2dp"
-        android:layout_marginBottom="120dp"
-        android:layout_toRightOf="@id/leftCircle"
-        android:src="@drawable/knob_off_black" />
+  <ImageView
+      android:id="@+id/leftCircle"
+      android:layout_width="180dp"
+      android:layout_height="180dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="40dp"
+      android:layout_marginBottom="45dp"
+      android:src="@drawable/knob" />
 
-    <ImageView
-        android:id="@+id/leftHigh"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_above="@id/leftCircle"
-        android:layout_marginLeft="110dp"
-        android:layout_marginBottom="3dp"
-        android:src="@drawable/knob_high_black" />
+  <ImageView
+      android:id="@+id/leftTimer"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="70dp"
+      android:layout_marginBottom="5dp"
+      android:src="@drawable/timer_green" />
 
+  <ImageView
+      android:id="@+id/leftStove"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="15dp"
+      android:layout_marginBottom="5dp"
+      android:layout_toRightOf="@id/leftTimer"
+      android:src="@drawable/stove_green" />
 
-    <ImageView
-        android:id="@+id/centerCircle"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/knob" />
-
-    <ImageView
-        android:id="@+id/centerStove"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/centerCircle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/stove_green" />
-
-    <ImageView
-        android:id="@+id/centerTimer"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/centerCircle"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_toLeftOf="@id/centerStove"
-        android:src="@drawable/timer_green" />
-
-    <ImageView
-        android:id="@+id/centerWhistle"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/centerCircle"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/centerStove"
-        android:src="@drawable/whistle_green" />
-
-    <ImageView
-        android:id="@+id/centerSim"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="120dp"
-        android:layout_toLeftOf="@id/centerCircle"
-        android:src="@drawable/knob_off_green" />
-
-    <ImageView
-        android:id="@+id/centerHigh"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/knob_high_red" />
-
-    <ImageView
-        android:id="@+id/centerOff"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="120dp"
-        android:layout_toRightOf="@id/centerCircle"
-        android:src="@drawable/knob_off_red" />
-
-    <ImageView
-        android:id="@+id/rightCircle"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="45dp"
-        android:src="@drawable/knob"
-        />
-
-    <ImageView
-        android:id="@+id/rightWhistle"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="60dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/whistle_green" />
-
-    <ImageView
-        android:id="@+id/rightStove"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_toLeftOf="@id/rightWhistle"
-        android:src="@drawable/stove_green" />
-
-    <ImageView
-        android:id="@+id/rightTimer"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_toLeftOf="@id/rightStove"
-        android:src="@drawable/timer_green" />
-
-    <ImageView
-        android:id="@+id/rightOff"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
-        android:src="@drawable/knob_off_red" />
+  <ImageView
+      android:id="@+id/leftWhistle"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="20dp"
+      android:layout_toRightOf="@id/leftStove"
+      android:src="@drawable/whistle_green" />
 
 
-    <ImageView
-        android:id="@+id/rightSim"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="120dp"
-        android:layout_toLeftOf="@id/rightCircle"
-        android:src="@drawable/knob_off_red" />
+  <ImageView
+      android:id="@+id/leftSim"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="3dp"
+      android:layout_marginBottom="120dp"
+      android:src="@drawable/knob_off_black" />
 
-    <ImageView
-        android:id="@+id/rightHigh"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_above="@id/rightCircle"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="120dp"
-        android:src="@drawable/knob_high_green" />
+  <TextView
+      android:id="@+id/leftSimText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Sim"
+      android:textAllCaps="true"
+      android:layout_toRightOf="@id/leftSim"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="120dp"
+      android:textStyle="bold"
+      android:layout_marginLeft="20dp"
+      android:textColor="@color/black"
+      />
 
-    <ListView
-        android:id="@+id/list_service_character"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:scrollbars="none"
-        android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/centerHighSim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="130dp"
-        android:layout_toRightOf="@id/centerSim"
-        android:text="SIM"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+  <ImageView
+      android:id="@+id/leftOff"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="2dp"
+      android:layout_marginBottom="120dp"
+      android:layout_toRightOf="@id/leftCircle"
+      android:src="@drawable/knob_off_black" />
 
-    <TextView
-        android:id="@+id/centerHighText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:text="High"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+  <TextView
+      android:id="@+id/leftOffText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Off"
+      android:textAllCaps="true"
+      android:layout_alignParentBottom="true"
+      android:layout_toLeftOf="@id/leftOff"
+      android:layout_marginBottom="120dp"
+      android:layout_marginRight="20dp"
+      android:textStyle="bold"
+      android:textColor="@color/black"
+      />
 
-    <TextView
-        android:id="@+id/centerOffText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
-        android:layout_marginRight="30dp"
-        android:layout_toLeftOf="@id/centerOff"
-        android:text="OFF"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+  <ImageView
+      android:id="@+id/leftHigh"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_above="@id/leftCircle"
+      android:layout_marginLeft="110dp"
+      android:layout_marginBottom="3dp"
+      android:src="@drawable/knob_high_black" />
 
-    <TextView
-        android:id="@+id/rightOffText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="130dp"
-        android:layout_toLeftOf="@+id/rightOff"
-        android:text="OFF"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:visibility="gone"
-        />
+  <TextView
+      android:id="@+id/leftHighText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/leftHigh"
+      android:layout_marginLeft="110dp"
+      android:layout_marginTop="20dp"
+      android:text="High"
+      android:textAllCaps="true"
+      android:textStyle="bold"
+      android:textColor="@color/black"
+      />
 
-    <TextView
-        android:id="@+id/rightSimText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="125dp"
-        android:layout_toRightOf="@id/rightSim"
-        android:text="SIM"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+  <ImageView
+      android:id="@+id/centerCircle"
+      android:layout_width="180dp"
+      android:layout_height="180dp"
+      android:layout_centerHorizontal="true"
+      android:layout_marginLeft="10dp"
+      android:layout_marginTop="40dp"
+      android:src="@drawable/knob" />
 
-        android:visibility="gone"/>
+  <ImageView
+      android:id="@+id/centerStove"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_below="@id/centerCircle"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="5dp"
+      android:src="@drawable/stove_green" />
 
-    <TextView
-        android:id="@+id/rightHighText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/rightCircle"
-        android:layout_below="@id/rightHigh"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="110dp"
-        android:text="High"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        />
+  <ImageView
+      android:id="@+id/centerTimer"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_below="@id/centerCircle"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="15dp"
+      android:layout_toLeftOf="@id/centerStove"
+      android:src="@drawable/timer_green" />
 
-    <TextView
-        android:id="@+id/leftSimText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="120dp"
-        android:layout_toRightOf="@id/leftSim"
-        android:text="Sim"
-        android:textAllCaps="true"
+  <ImageView
+      android:id="@+id/centerWhistle"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_below="@id/centerCircle"
+      android:layout_marginLeft="15dp"
+      android:layout_marginTop="5dp"
+      android:layout_toRightOf="@id/centerStove"
+      android:src="@drawable/whistle_green" />
 
-        android:visibility="gone"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+  <ImageView
+      android:id="@+id/centerSim"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_marginTop="120dp"
+      android:layout_toLeftOf="@id/centerCircle"
+      android:src="@drawable/knob_off_green" />
 
-    <TextView
-        android:id="@+id/leftOffText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="120dp"
-        android:layout_toLeftOf="@id/leftOff"
-        android:text="Off"
-        android:visibility="gone"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/leftHigh"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="20dp"
-        android:text="High"
-        android:textAllCaps="true"
+  <ImageView
+      android:id="@+id/centerHigh"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_centerHorizontal="true"
+      android:src="@drawable/knob_high_red" />
 
-        android:visibility="gone"
-        android:textColor="@color/black"
-        android:textSize="20sp" />-->
+  <TextView
+      android:id="@+id/centerHighText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="60dp"
+      android:text="High"
+      android:textAllCaps="true"
+      android:textColor="@color/black"
+      android:textStyle="bold" />
 
+  <ImageView
+      android:id="@+id/centerOff"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_marginTop="120dp"
+      android:layout_toRightOf="@id/centerCircle"
+      android:src="@drawable/knob_off_red" />
+
+  <TextView
+      android:id="@+id/centerOffText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="125dp"
+      android:layout_marginRight="30dp"
+      android:layout_toLeftOf="@id/centerOff"
+      android:text="OFF"
+      android:textColor="@color/black"
+      android:textStyle="bold" />
+
+
+  <TextView
+      android:id="@+id/centerHighSim"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="130dp"
+      android:layout_toRightOf="@id/centerSim"
+      android:text="SIM"
+      android:textColor="@color/black"
+      android:textStyle="bold" />
+
+
+  <ImageView
+      android:id="@+id/rightCircle"
+      android:layout_width="180dp"
+      android:layout_height="180dp"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginRight="35dp"
+      android:layout_marginBottom="45dp"
+      android:src="@drawable/knob" />
+
+  <ImageView
+      android:id="@+id/rightWhistle"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      android:src="@drawable/whistle_green"
+      android:layout_marginRight="60dp"
+      android:layout_marginBottom="5dp"
+      />
+
+  <ImageView
+      android:id="@+id/rightStove"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:src="@drawable/stove_green"
+      android:layout_alignParentBottom="true"
+      android:layout_toLeftOf="@id/rightWhistle"
+      android:layout_marginRight="20dp"
+      android:layout_marginBottom="5dp"
+      />
+
+  <ImageView
+      android:id="@+id/rightTimer"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:src="@drawable/timer_green"
+      android:layout_alignParentBottom="true"
+      android:layout_toLeftOf="@id/rightStove"
+      android:layout_marginRight="20dp"
+      android:layout_marginBottom="5dp"
+      />
+
+  <ImageView
+      android:id="@+id/rightOff"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="120dp"
+      android:src="@drawable/knob_off_red" />
+
+  <TextView
+      android:id="@+id/rightOffText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginRight="30dp"
+      android:layout_marginBottom="130dp"
+      android:layout_toLeftOf="@+id/rightOff"
+      android:text="OFF"
+      android:textAllCaps="true"
+      android:textColor="@color/black"
+      android:textStyle="bold" />
+
+
+
+  <ImageView
+      android:id="@+id/rightSim"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginRight="3dp"
+      android:layout_marginBottom="120dp"
+      android:layout_toLeftOf="@id/rightCircle"
+      android:src="@drawable/knob_off_red" />
+
+  <TextView
+      android:id="@+id/rightSimText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="20dp"
+      android:layout_marginBottom="125dp"
+      android:layout_toRightOf="@id/rightSim"
+      android:text="SIM"
+      android:textAllCaps="true"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      />
+
+
+  <ImageView
+      android:id="@+id/rightHigh"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_above="@id/rightCircle"
+      android:layout_alignParentRight="true"
+      android:layout_marginRight="120dp"
+      android:src="@drawable/knob_high_green" />
+
+  <TextView
+      android:id="@+id/rightHighText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="High"
+      android:layout_below="@+id/rightHigh"
+      android:layout_alignParentRight="true"
+      android:layout_marginRight="120dp"
+      android:layout_marginTop="20sp"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      />
 
 </RelativeLayout>
 

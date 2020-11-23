@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
 
 
@@ -35,7 +35,7 @@
 
 
     <ImageView
-        android:id="@+id/leftBurner"
+        android:id="@+id/leftCircle"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_alignParentBottom="true"
@@ -103,7 +103,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="2dp"
         android:layout_marginBottom="120dp"
-        android:layout_toRightOf="@id/leftBurner"
+        android:layout_toRightOf="@id/leftCircle"
         android:src="@drawable/knob_off_black" />
 
     <TextView
@@ -125,7 +125,7 @@
         android:id="@+id/leftHigh"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_above="@id/leftBurner"
+        android:layout_above="@id/leftCircle"
         android:layout_marginLeft="110dp"
         android:layout_marginBottom="3dp"
         android:src="@drawable/knob_high_black" />
@@ -143,7 +143,7 @@
         />
 
     <ImageView
-        android:id="@+id/centerBurner1"
+        android:id="@+id/centerCircle"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
@@ -155,7 +155,7 @@
         android:id="@+id/centerStove"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@id/centerBurner1"
+        android:layout_below="@id/centerCircle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:src="@drawable/stove_green" />
@@ -164,7 +164,7 @@
         android:id="@+id/centerTimer"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@id/centerBurner1"
+        android:layout_below="@id/centerCircle"
         android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@id/centerStove"
@@ -174,7 +174,7 @@
         android:id="@+id/centerWhistle"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@id/centerBurner1"
+        android:layout_below="@id/centerCircle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/centerStove"
@@ -185,7 +185,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="120dp"
-        android:layout_toLeftOf="@id/centerBurner1"
+        android:layout_toLeftOf="@id/centerCircle"
         android:src="@drawable/knob_off_green" />
 
 
@@ -212,7 +212,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="120dp"
-        android:layout_toRightOf="@id/centerBurner1"
+        android:layout_toRightOf="@id/centerCircle"
         android:src="@drawable/knob_off_red" />
 
     <TextView
@@ -240,7 +240,7 @@
 
 
     <ImageView
-        android:id="@+id/rightBurner1"
+        android:id="@+id/rightCircle"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_alignParentRight="true"
@@ -313,7 +313,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="120dp"
-        android:layout_toLeftOf="@id/rightBurner1"
+        android:layout_toLeftOf="@id/rightCircle"
         android:src="@drawable/knob_off_red" />
 
     <TextView
@@ -335,7 +335,7 @@
         android:id="@+id/rightHigh"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_above="@id/rightBurner1"
+        android:layout_above="@id/rightCircle"
         android:layout_alignParentRight="true"
         android:layout_marginRight="120dp"
         android:src="@drawable/knob_high_green" />
@@ -352,7 +352,6 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         />
-
     <ListView
         android:id="@+id/list_service_character"
         android:layout_width="match_parent"
