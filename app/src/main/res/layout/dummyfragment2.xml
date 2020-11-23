@@ -7,7 +7,7 @@
 
 
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/menuEStop"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -90,7 +90,7 @@
         android:layout_toRightOf="@id/leftSim"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="120dp"
-        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         />
@@ -116,7 +116,8 @@
         android:layout_toLeftOf="@id/leftOff"
         android:layout_marginBottom="120dp"
         android:layout_marginRight="20dp"
-        android:textSize="20sp"
+        android:textStyle="bold"
+
         android:textColor="@color/black"
         />
 
@@ -137,7 +138,7 @@
         android:layout_marginTop="20dp"
         android:text="High"
         android:textAllCaps="true"
-        android:textSize="20sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         />
 
@@ -195,6 +196,17 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/knob_high_red" />
 
+    <TextView
+        android:id="@+id/centerHighText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="High"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/centerOff"
         android:layout_width="35dp"
@@ -202,6 +214,30 @@
         android:layout_marginTop="120dp"
         android:layout_toRightOf="@id/centerBurner1"
         android:src="@drawable/knob_off_red" />
+
+    <TextView
+        android:id="@+id/centerOffText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@id/centerOff"
+        android:text="OFF"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/centerHighSim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="130dp"
+        android:layout_toRightOf="@id/centerSim"
+        android:text="SIM"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
 
     <ImageView
         android:id="@+id/rightBurner1"
@@ -255,6 +291,21 @@
         android:layout_marginBottom="120dp"
         android:src="@drawable/knob_off_red" />
 
+    <TextView
+        android:id="@+id/rightOffText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="130dp"
+        android:layout_toLeftOf="@+id/rightOff"
+        android:text="OFF"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+
+
     <ImageView
         android:id="@+id/rightSim"
         android:layout_width="35dp"
@@ -265,6 +316,21 @@
         android:layout_toLeftOf="@id/rightBurner1"
         android:src="@drawable/knob_off_red" />
 
+    <TextView
+        android:id="@+id/rightSimText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="125dp"
+        android:layout_toRightOf="@id/rightSim"
+        android:text="SIM"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+
     <ImageView
         android:id="@+id/rightHigh"
         android:layout_width="35dp"
@@ -273,6 +339,19 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="120dp"
         android:src="@drawable/knob_high_green" />
+
+    <TextView
+        android:id="@+id/rightHighText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High"
+        android:layout_below="@+id/rightHigh"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="120dp"
+        android:layout_marginTop="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
 
     <ListView
         android:id="@+id/list_service_character"
@@ -284,7 +363,7 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:scrollbars="none"
-        android:visibility="gone" />-->
+        android:visibility="gone" />
 
 
 </RelativeLayout>
